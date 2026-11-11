@@ -36,7 +36,7 @@ h1 span { color:var(--mute); font-weight:400; }
 .stage { position:relative; margin-top:24px; height:452px; border-radius:6px; overflow:hidden; }
 .stage img { object-position:50% 58%; }
 .switch { position:absolute; left:50%; bottom:20px; transform:translateX(-50%); display:flex; padding:4px; border-radius:999px; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); font-size:14px; font-weight:500; }
-.switch span { padding:9px 18px; border-radius:999px; } .switch .on { background:var(--ink); color:#fff; }
+.switch span { padding:9px 18px; border-radius:999px; white-space:nowrap; } .switch .on { background:var(--ink); color:#fff; }
 .stage .act { position:absolute; right:20px; bottom:20px; display:flex; gap:8px; } .stage .act .o { background:rgba(255,255,255,.92); box-shadow:none; }
 .stage .cnt { position:absolute; left:20px; bottom:20px; background:rgba(255,255,255,.92); border-radius:999px; padding:9px 16px; font-size:13px; font-weight:500; }
 .list { padding:56px 40px 48px; }
@@ -50,11 +50,24 @@ h1 span { color:var(--mute); font-weight:400; }
 .car h3 { font-weight:500; font-size:17px; line-height:1.25; letter-spacing:-.01em; } .car h3 + p { color:var(--mute); font-size:13px; margin-top:2px; }
 .car .row { display:grid; grid-template-columns:auto auto 1fr; gap:20px; margin-top:16px; padding-top:12px; border-top:1px solid var(--line); }
 .car .fig { gap:2px; } .car .fig b { font-size:26px; letter-spacing:-.03em; line-height:1.1; } .car .fig:last-child { justify-self:end; text-align:right; } .car .lab { font-size:11px; }
+.cta { display:flex; gap:8px; align-self:end; }
+/* On a desk the figures sit beside the photo, so the frame can be tall enough to hold the whole car */
+@media (min-width:601px) {
+  .hero { display:grid; grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); grid-template-rows:auto auto 1fr; column-gap:48px; padding-top:28px; }
+  .top { grid-column:1; display:block; } .top > .lab { margin-top:14px; }
+  h1 { font-size:44px; } h1 span { display:block; font-size:.62em; letter-spacing:-.02em; margin-top:8px; }
+  .figs { grid-column:1; grid-template-columns:1fr 1fr; gap:32px 24px; margin-top:28px; padding-top:24px; align-content:start; }
+  .figs .fig:last-child { justify-self:start; text-align:left; }
+  .fig b { font-size:60px; }
+  .cta { grid-column:1; padding-bottom:4px; }
+  .stage { grid-column:2; grid-row:1 / 4; height:auto; aspect-ratio:3/2; margin-top:0; }
+  .stage img { object-position:50% 50%; }
+}
 .pcar, .dock { display:none; }
 
 @media (max-width:600px) {
   header { grid-template-columns:1fr auto; padding:0 16px; height:56px; gap:12px; } .search { display:none; } header nav span { display:none; } .logo { font-size:13px; }
-  .hero { padding:8px 16px 0; } .top .btnrow, .top > div:last-child { display:none; }
+  .hero { padding:8px 16px 0; } .cta { display:none; } .top .btnrow, .top > div:last-child { display:none; }
   h1 { font-size:28px; }
   .stage { order:-1; height:auto; aspect-ratio:4/3; margin:0 -16px 16px; border-radius:0; } .hero { display:flex; flex-direction:column; }
   .stage .act, .stage .cnt { display:none; } .switch { bottom:12px; font-size:12px; white-space:nowrap; } .switch span { padding:8px 10px; }
@@ -96,11 +109,11 @@ h1 span { color:var(--mute); font-weight:400; }
     <div class="fig"><b>6<small>speed manual</small></b><span class="lab">Gearbox</span></div>
     <div class="fig"><b>$229,888</b><span class="lab">Plus on-road costs</span></div>
   </div>
+  <div class="cta"><span class="btn">Book a test drive</span><span class="btn o">See this car</span></div>
   <div class="stage">
-    <img src="/img/hero/512-1920.avif" alt="">
+    <img src="/img/cars/512/1-1600.avif" alt="">
     <span class="cnt">1 of 5 photos</span>
     <div class="switch"><span class="on">Skyline GT-R</span><span>Century</span><span>Crown Hybrid</span><span>Alphard</span></div>
-    <div class="act"><span class="btn o">See this car</span><span class="btn">Book a test drive</span></div>
   </div>
   <div class="psearch"><span>Model or code</span><span class="n">62 cars</span></div>
 </section>
