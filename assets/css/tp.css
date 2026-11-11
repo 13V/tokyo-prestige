@@ -1502,3 +1502,77 @@ html:not([data-look="figures"]) .intro__skip {
     border: 0;
   }
 }
+
+
+/* ==========================================================================
+   60 / 30 / 10. Near-black is the ground (60). Midnight blue, taken from the night sky in the hero
+   photos, is the secondary (30): cards, panels, form fields, the footer and every other band of the
+   page. Vermilion stays the accent (10): the main action, status and focus only.
+   ========================================================================== */
+html:not([data-look="figures"]) {
+  --ink-1: #0c1222;
+  --ink-2: #111a2e;
+  --ink-3: #18233c;
+  --ink-4: #22304f;
+  --mid: #0e1528;
+  --line: rgba(150, 175, 255, 0.11);
+  --line-2: rgba(150, 175, 255, 0.22);
+}
+html:not([data-look="figures"]) .card,
+html:not([data-look="figures"]) .deal--side,
+html:not([data-look="figures"]) .quick-wrap--inline {
+  background: var(--ink-2);
+}
+html:not([data-look="figures"]) .input,
+html:not([data-look="figures"]) .select,
+html:not([data-look="figures"]) .find__input {
+  background-color: var(--ink-3);
+}
+html:not([data-look="figures"]) .input:hover,
+html:not([data-look="figures"]) .select:hover {
+  background-color: var(--ink-4);
+}
+html:not([data-look="figures"]) .btn--quiet {
+  background: var(--ink-3);
+}
+html:not([data-look="figures"]) .btn--ghost {
+  border-color: var(--line-2);
+  background: rgba(150, 175, 255, 0.05);
+}
+html:not([data-look="figures"]) .chip span,
+html:not([data-look="figures"]) .hdr__call,
+html:not([data-look="figures"]) .card__go,
+html:not([data-look="figures"]) .feat__ctl {
+  border-color: var(--line-2);
+}
+html:not([data-look="figures"]) .find {
+  background: rgba(14, 21, 40, 0.82);
+  border-color: var(--line-2);
+}
+html:not([data-look="figures"]) .find .select,
+html:not([data-look="figures"]) .find .find__input {
+  background-color: transparent;
+}
+/* bands: every other section of a page, and the footer, sit on the secondary */
+html:not([data-look="figures"]) main > .sec:nth-of-type(even),
+html:not([data-look="figures"]) .ftr,
+html:not([data-look="figures"]) .dock,
+html:not([data-look="figures"]) .menu__sheet {
+  background: var(--mid);
+}
+html:not([data-look="figures"]) main > .sec:nth-of-type(even) {
+  padding-top: var(--s-10);
+  padding-bottom: var(--s-10);
+}
+html:not([data-look="figures"]) .hdr::before {
+  background: rgba(9, 13, 24, 0.82);
+}
+html:not([data-look="figures"]) .flt {
+  background: rgba(9, 13, 24, 0.92);
+}
+@media (max-width: 899px) {
+  html:not([data-look="figures"]) .find .select,
+  html:not([data-look="figures"]) .find .find__input {
+    background-color: var(--ink-3);
+  }
+}
