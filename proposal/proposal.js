@@ -161,3 +161,13 @@
     lamp.classList.remove("is-on");
   });
 })();
+
+// the film: a large play button over the poster; the browser's own controls take over once it plays
+(() => {
+  const v = document.querySelector("video[data-film]"), b = document.querySelector("[data-film-play]");
+  if (!v || !b) return;
+  const box = v.parentElement;
+  b.addEventListener("click", () => { v.play(); v.focus(); });
+  v.addEventListener("play", () => box.classList.add("is-playing"));
+  v.addEventListener("ended", () => { box.classList.remove("is-playing"); v.load(); });
+})();

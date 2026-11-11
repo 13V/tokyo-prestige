@@ -1,0 +1,342 @@
+{
+ "hero": {
+  "frame": {
+   "x": 192,
+   "y": -43.1875,
+   "w": 1728,
+   "h": 1080
+  },
+  "feat": {
+   "x": 562,
+   "y": 888.3125,
+   "w": 1078,
+   "h": 52.78125
+  },
+  "go": {
+   "x": 1483.21875,
+   "y": 888.703125,
+   "w": 156.78125,
+   "h": 52
+  },
+  "find": {
+   "x": 280,
+   "y": 986,
+   "w": 1360,
+   "h": 70
+  },
+  "wake": {
+   "x": 853.640625,
+   "y": 101.953125,
+   "w": 982.875,
+   "h": 740.546875,
+   "mask": "linear-gradient(90deg, rgba(0, 0, 0, 0), rgb(0, 0, 0) 7%, rgb(0, 0, 0) 93%, rgba(0, 0, 0, 0)), linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 7%, rgb(0, 0, 0) 93%, rgba(0, 0, 0, 0))"
+  }
+ },
+ "home": {
+  "h": 6588,
+  "secs": [
+   {
+    "c": "hero",
+    "id": "hero-h",
+    "y": 0,
+    "h": 864,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "find",
+    "id": "",
+    "y": 770,
+    "h": 70,
+    "x": 88,
+    "w": 1360
+   },
+   {
+    "c": "sec",
+    "id": "fresh-h",
+    "y": 864,
+    "h": 1354,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "sec sec--tight",
+    "id": "body-h",
+    "y": 2218,
+    "h": 841,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "sec",
+    "id": "why-h",
+    "y": 3058,
+    "h": 836,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "sec sec--tight",
+    "id": "soon-h",
+    "y": 3894,
+    "h": 1269,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "sec",
+    "id": "visit-h",
+    "y": 5163,
+    "h": 872,
+    "x": 0,
+    "w": 1536
+   }
+  ]
+ },
+ "stock": {
+  "h": 4172,
+  "secs": [
+   {
+    "c": "lst",
+    "id": "",
+    "y": 0,
+    "h": 3619,
+    "x": 0,
+    "w": 1536
+   }
+  ]
+ },
+ "car": {
+  "h": 6341,
+  "secs": [
+   {
+    "c": "car",
+    "id": "",
+    "y": 0,
+    "h": 5789,
+    "x": 0,
+    "w": 1536
+   },
+   {
+    "c": "gal gal--n5",
+    "id": "",
+    "y": 112,
+    "h": 512,
+    "x": 88,
+    "w": 1360
+   },
+   {
+    "c": "nums",
+    "id": "",
+    "y": 913,
+    "h": 115,
+    "x": 88,
+    "w": 916
+   },
+   {
+    "c": "car__side",
+    "id": "",
+    "y": 672,
+    "h": 4314,
+    "x": 1068,
+    "w": 380
+   },
+   {
+    "c": "quick-wrap",
+    "id": "quick-side",
+    "y": 869,
+    "h": 421,
+    "x": 1093,
+    "w": 330
+   },
+   {
+    "c": "dock",
+    "id": "",
+    "y": 0,
+    "h": 0,
+    "x": 0,
+    "w": 0
+   }
+  ]
+ },
+ "card": {
+  "w": 320,
+  "h": 464.90625,
+  "html": " <div class=\"shot card__shot\"><img src=\"/img/cars/1459/1-960.avif\" srcset=\"/img/cars/1459/1-480.avif 480w, /img/cars/1459/1-960.avif 960w\" sizes=\"(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw\" width=\"2560\" height=\"1920\" alt=\"1996 Toyota Soarer GT Limited, black: front three-quarter\" loading=\"lazy\" decoding=\"async\"> <div class=\"card__top\"><span class=\"status\">Available</span><span class=\"card__tag\">Just Arrived</span></div> <div class=\"card__ticks\" aria-hidden=\"true\"><i class=\"is-on\"></i><i></i><i></i><i></i><i></i></div> </div> <div class=\"card__body\"> <p class=\"code card__code\"><span>UZZ31</span><span class=\"num\">1996</span></p> <h2 class=\"card__title\"><a href=\"/cars/1996-toyota-soarer-uzz31-gt-limited-1459\">Toyota Soarer</a></h2> <p class=\"card__grade\">GT Limited</p> <p class=\"card__facts num\"><span>38,523 km</span><span>4-speed automatic</span><span>RWD</span></p> <p class=\"card__price\"><b class=\"num\">$44,888</b><small>plus on-road costs</small></p> <p class=\"card__sub\">UZZ31 · GT Limited · 4-speed automatic</p> <div class=\"figs card__figs\"><div class=\"fig\"><span class=\"fig__l\">Year</span><b class=\"num\">1996</b></div><div class=\"fig\"><span class=\"fig__l\">Kilometres</span><b class=\"num\">38,523<small>km</small></b></div><div class=\"fig\"><span class=\"fig__l\">Plus on-road costs</span><b class=\"num\">$44,888</b></div></div> </div> <a class=\"card__ask\" href=\"/cars/1996-toyota-soarer-uzz31-gt-limited-1459#quick\" aria-label=\"Enquire about the 1996 Toyota Soarer\">Enquire<",
+  "parts": {
+   "status": null,
+   "title": {
+    "x": 17,
+    "y": 280.09375,
+    "w": 286,
+    "h": 25.296875
+   },
+   "code": {
+    "x": 17,
+    "y": 255.5,
+    "w": 286,
+    "h": 18.59375
+   },
+   "facts": {
+    "x": 17,
+    "y": 345.078125,
+    "w": 286,
+    "h": 34.6875
+   },
+   "price": {
+    "x": 17,
+    "y": 393.765625,
+    "w": 286,
+    "h": 52.140625
+   },
+   "ask": {
+    "x": 223.625,
+    "y": 407.90625,
+    "w": 83.375,
+    "h": 44
+   }
+  }
+ },
+ "phForm": {
+  "name": {
+   "x": 33,
+   "y": 226.0625,
+   "w": 324,
+   "h": 48
+  },
+  "contact": {
+   "x": 33,
+   "y": 308.65625,
+   "w": 324,
+   "h": 48
+  },
+  "btn": {
+   "x": 33,
+   "y": 492.140625,
+   "w": 324,
+   "h": 48
+  }
+ },
+ "portal": {
+  "tiles": {
+   "x": 144,
+   "y": 169,
+   "w": 1248,
+   "h": 108
+  },
+  "an": {
+   "x": 144,
+   "y": 347,
+   "w": 1248,
+   "h": 542
+  },
+  "list": {
+   "x": 144,
+   "y": 1019,
+   "w": 1248,
+   "h": 5360
+  },
+  "row": {
+   "x": 144,
+   "y": 1019,
+   "w": 1248,
+   "h": 168
+  },
+  "add": {
+   "x": 1418.375,
+   "y": 10,
+   "w": 101.625,
+   "h": 44
+  },
+  "sheet": {
+   "x": 428,
+   "y": 26.5,
+   "w": 680,
+   "h": 811
+  },
+  "lk": {
+   "x": 457,
+   "y": 157,
+   "w": 257.21875,
+   "h": 48
+  },
+  "lkgo": {
+   "x": 987.453125,
+   "y": 161,
+   "w": 91.546875,
+   "h": 44
+  },
+  "lk1": {
+   "x": 457,
+   "y": 130.5,
+   "w": 257.21875,
+   "h": 48
+  },
+  "lkgo1": {
+   "x": 987.453125,
+   "y": 134.5,
+   "w": 91.546875,
+   "h": 44
+  },
+  "listRow": {
+   "row": {
+    "x": 144,
+    "y": 190,
+    "w": 1248,
+    "h": 168
+   },
+   "sold": {
+    "x": 1229.984375,
+    "y": 302,
+    "w": 150,
+    "h": 44
+   },
+   "adv": {
+    "x": 1229.984375,
+    "y": 252,
+    "w": 150,
+    "h": 44
+   },
+   "btns": [
+    "<button class=\"btn btn--sm\" type=\"button\" data-ad=\"\">Advertise</button>",
+    "<button class=\"btn btn--sm btn--red\" type=\"button\" data-sold=\"\">Mark sold</butto"
+   ]
+  },
+  "sw": [
+   {
+    "x": 1028,
+    "y": 173,
+    "w": 52,
+    "h": 32,
+    "on": "true"
+   },
+   {
+    "x": 1028,
+    "y": 241,
+    "w": 52,
+    "h": 32,
+    "on": "false"
+   },
+   {
+    "x": 1028,
+    "y": 309,
+    "w": 52,
+    "h": 32,
+    "on": "false"
+   },
+   {
+    "x": 1028,
+    "y": 377,
+    "w": 52,
+    "h": 32,
+    "on": "false"
+   }
+  ],
+  "adSheet": {
+   "x": 428,
+   "y": 873,
+   "w": 680,
+   "h": 776
+  }
+ }
+}

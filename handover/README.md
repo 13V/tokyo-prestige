@@ -47,6 +47,20 @@ where each car is advertised, and copy ad text written from the listing. It show
 - Not connected: Carsales, Facebook, Instagram, and any plate or RedBook lookup. Each says so on screen.
 - Sample: views, calls, days in stock, visits and "searched for, not found". Labelled Sample on screen.
 
+## The proposal film (`handover/proposal-film.mp4`, and near the top of `/proposal`)
+
+94 seconds, 1920 by 1080, with sound. The master is `handover/proposal-film.mp4`; the proposal page plays a
+smaller encode, `proposal/img/film.mp4`.
+- How it is made: `tools/film/film.html` is one timeline page; `capture.cjs` takes the stills from the local
+  demo, `render.cjs` steps the timeline frame by frame into video, `mix.cjs` lays the sounds on their cues.
+  The sound effects and music were generated with ElevenLabs (`sfx.sh`; the key is read from the environment
+  and is not stored anywhere in the repo).
+- What is real in it: every screen is the demo as built; the speed figures are the measured ones above.
+- What is illustrative: the AI receptionist, old-lead follow-up and automation scenes are marked Example;
+  they show what can be built, not things that exist. The security list is what Lumen commits to build
+  (two-step sign-in, staff roles, encryption, daily backups); the demo stock manager has no sign-in yet.
+- The opening uses the generated drift clip, so it needs the same dealer approval as the homepage intro.
+
 ## What is in this folder
 
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page

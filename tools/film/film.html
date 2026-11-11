@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><title>Tokyo Prestige: the proposal film</title>
+<style>
+@font-face { font-family: Inter; src: url(inter-latin-400.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: Inter; src: url(inter-latin-500.woff2) format("woff2"); font-weight: 500 700; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #0b0c0d; --paper: #f4f4f1; --mut: #a5a7a8; --red: #d04034; --redt: #f0695d; --teal: #2a7c99; --coral: #f3805e; --ok: #7fd4a0;
+  --sunset: linear-gradient(180deg, #2a7c99 0%, #4d8096 22%, #839aa7 42%, #b5adb4 58%, #e0b5af 74%, #f1a898 88%, #f3805e 100%); }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+body { font: 400 28px/1.3 Inter, system-ui, sans-serif; color: var(--paper); -webkit-font-smoothing: antialiased; letter-spacing: -0.011em; }
+#stage { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: #050506; }
+.scene { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+.abs { position: absolute; }
+.bg { position: absolute; inset: 0; background: radial-gradient(1200px 700px at 78% 8%, rgba(42, 124, 153, 0.26), transparent 62%), radial-gradient(1000px 700px at 8% 100%, rgba(243, 128, 94, 0.2), transparent 60%), #07080a; }
+.grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 96px 96px; -webkit-mask-image: radial-gradient(900px 600px at 50% 50%, #000, transparent); }
+.eyebrow { font-size: 20px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mut); font-weight: 500; }
+.eyebrow b { color: var(--coral); font-weight: 500; }
+.h { font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; }
+.h1 { font-size: 112px; } .h2 { font-size: 78px; } .h3 { font-size: 56px; } .h4 { font-size: 40px; letter-spacing: -0.025em; line-height: 1.1; }
+.sub { color: #c9cbcc; font-size: 30px; line-height: 1.35; }
+.ln { display: block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; } .ln > span { display: block; }
+.grad { background: linear-gradient(90deg, #6fb6cc, #e0b5af 55%, #f3805e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.chip { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); font-size: 20px; color: #dcdcd8; white-space: nowrap; }
+.chip i { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); }
+.win { position: absolute; border-radius: 18px; overflow: hidden; background: #0c0d0e; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 50px 120px rgba(0,0,0,.7), 0 0 160px rgba(42,124,153,.16); }
+.win__bar { height: 40px; background: #17181a; display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid rgba(255,255,255,.07); }
+.win__bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a3c40; }
+.win__bar span { margin-left: 18px; height: 24px; flex: 0 0 420px; border-radius: 999px; background: #0e0f10; color: #8d8f91; font-size: 13px; display: flex; align-items: center; padding: 0 14px; letter-spacing: 0; }
+.win__view { position: relative; overflow: hidden; }
+.win__view img { position: absolute; left: 0; top: 0; display: block; }
+.ring { position: absolute; border-radius: 16px; box-shadow: 0 0 0 3px var(--redt), 0 0 0 9px rgba(240,105,93,.22), 0 0 50px rgba(240,105,93,.5); opacity: 0; }
+.cursor { position: absolute; left: 0; top: 0; width: 28px; height: 28px; z-index: 50; opacity: 0; filter: drop-shadow(0 4px 8px rgba(0,0,0,.6)); }
+.tap { position: absolute; left: 0; top: 0; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; border: 3px solid #fff; opacity: 0; z-index: 49; }
+.phone { position: absolute; border-radius: 56px; padding: 14px; background: #1b1c1f; box-shadow: 0 0 0 2px #303236, 0 60px 130px rgba(0,0,0,.75), 0 0 140px rgba(243,128,94,.14); }
+.phone__v { position: relative; overflow: hidden; border-radius: 44px; background: #060607; }
+.phone__v img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.chap { position: absolute; left: 64px; top: 48px; z-index: 80; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,244,241,.72); font-weight: 500; opacity: 0; display: flex; gap: 14px; align-items: center; }
+.chap b { color: var(--coral); font-weight: 500; }
+.mark { position: absolute; right: 64px; top: 44px; z-index: 80; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: rgba(244,244,241,.72); opacity: 0; }
+#prog { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: linear-gradient(90deg, #2a7c99, #e0b5af, #f3805e); transform-origin: 0 50%; z-index: 90; }
+.card3 { position: absolute; top: 300px; width: 548px; height: 600px; border-radius: 28px; background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.03)); border: 1px solid rgba(255,255,255,.13); padding: 34px; opacity: 0; overflow: hidden; }
+.card3 h3 { font-size: 38px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.08; }
+.card3 p.d { position: absolute; left: 34px; right: 34px; bottom: 32px; font-size: 23px; line-height: 1.35; color: #c2c4c5; }
+.eg { position: absolute; right: 26px; top: 26px; font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: #8d8f91; }
+.bub { max-width: 400px; padding: 14px 18px; border-radius: 20px; font-size: 23px; line-height: 1.3; opacity: 0; margin-top: 12px; }
+.bub.a { background: #26282c; border-bottom-left-radius: 6px; } .bub.b { background: linear-gradient(135deg, #2a7c99, #3f8ea8); margin-left: auto; border-bottom-right-radius: 6px; }
+.lead { display: flex; justify-content: space-between; align-items: center; gap: 12px; height: 62px; padding: 0 18px; border-radius: 16px; background: #1b1c1f; margin-top: 10px; font-size: 20px; color: #7c7e80; position: relative; overflow: hidden; }
+.lead small { font-size: 16px; } .lead .lit { position: absolute; inset: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 18px; background: linear-gradient(90deg, #233a35, #1f2a2e); color: #eafff3; opacity: 0; } .lead .lit small { color: var(--ok); }
+.flow { display: flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 18px; white-space: nowrap; }
+.flow span { height: 46px; padding: 0 14px; border-radius: 12px; background: #1f2023; border: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; opacity: 0; }
+.flow span.hot { background: rgba(243,128,94,.16); border-color: rgba(243,128,94,.5); color: #ffd9cc; }
+.flow em { color: #7c7e80; font-style: normal; opacity: 0; }
+.sec { display: flex; align-items: center; gap: 22px; font-size: 32px; letter-spacing: -0.02em; margin-top: 26px; opacity: 0; }
+.sec i { flex: none; width: 44px; height: 44px; border-radius: 50%; background: rgba(127,212,160,.16); border: 1.5px solid var(--ok); display: grid; place-items: center; }
+.co { position: absolute; left: 1010px; width: 800px; opacity: 0; display: grid; grid-template-columns: 60px 1fr; gap: 4px 22px; }
+.co b.n { grid-row: 1 / 3; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 24px; font-weight: 500; border: 1.5px solid rgba(255,255,255,.28); color: #fff; }
+.co h4 { font-size: 34px; font-weight: 500; letter-spacing: -0.028em; } .co p { font-size: 23px; color: #b9bbbc; line-height: 1.32; }
+.dot { position: absolute; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: var(--red); color: #fff; font-size: 20px; font-weight: 500; display: grid; place-items: center; box-shadow: 0 0 0 6px rgba(208,64,52,.28), 0 6px 20px rgba(0,0,0,.5); opacity: 0; }
+.stat { position: absolute; opacity: 0; } .stat b { display: block; font-size: 84px; font-weight: 500; letter-spacing: -0.045em; line-height: 1; } .stat span { font-size: 21px; color: var(--mut); }
+.foot { position: absolute; left: 0; right: 0; bottom: 30px; text-align: center; font-size: 19px; color: #8d8f91; opacity: 0; }
+</style></head>
+<body><div id="stage"></div>
+<script>
+const T = 94, FPS = 30;
+const stage = document.getElementById("stage");
+const CUES = []; const cue = (n, t, v = 1) => CUES.push({ n, t, v });
+const E = "cubic-bezier(.16,.84,.24,1)", EIO = "cubic-bezier(.65,0,.35,1)", LIN = "linear";
+const h = (html, parent = stage) => { const d = document.createElement("div"); d.innerHTML = html.trim(); const el = d.firstElementChild; parent.appendChild(el); return el; };
+// one animation per property per element: keys are [time, value, easing-to-next]
+const K = (el, props) => { for (const [p, keys] of Object.entries(props)) { const ks = keys.slice().sort((a, b) => a[0] - b[0]); const kf = []; if (ks[0][0] > 0) kf.push({ offset: 0, [p]: ks[0][1], easing: LIN }); ks.forEach(([t, v, e]) => kf.push({ offset: Math.min(1, t / T), [p]: v, easing: e || E })); if (ks[ks.length - 1][0] < T) kf.push({ offset: 1, [p]: ks[ks.length - 1][1] }); const a = el.animate(kf, { duration: T * 1000, fill: "both" }); a.pause(); } return el; };
+const vis = (el, a, b, fi = 0.5, fo = 0.4, max = 1) => K(el, { opacity: [[a, 0, "ease-out"], [a + fi, max, LIN], [b - fo, max, "ease-in"], [b, 0]] });
+const up = (el, a, b, d = 40, fi = 0.7, fo = 0.35) => { vis(el, a, b, fi, fo); return K(el, { translate: [[a, `0 ${d}px`], [a + fi + 0.2, "0 0", LIN], [b - fo, "0 0", "ease-in"], [b, `0 -${d / 2}px`]] }); };
+const rise = (el, a, b, gap = 0.1) => { [...el.querySelectorAll(".ln > span")].forEach((s, i) => K(s, { translate: [[a + i * gap, "0 110%"], [a + i * gap + 0.9, "0 0", LIN], [b - 0.45, "0 0", "ease-in"], [b, "0 -110%"]] })); return K(el, { opacity: [[a, 0, LIN], [a + 0.05, 1, LIN], [b - 0.02, 1, LIN], [b, 0]] }); };
+const lines = (s) => s.split("|").map((l) => `<span class="ln"><span>${l}</span></span>`).join("");
+const scene = (a, b, fi = 0.5, fo = 0.5) => vis(h(`<div class="scene"></div>`), a, b, fi, fo);
+const win = (p, x, y, w, vh, url) => { const el = h(`<div class="win" style="left:${x}px;top:${y}px;width:${w}px"><div class="win__bar"><i></i><i></i><i></i><span>${url}</span></div><div class="win__view" style="height:${vh}px"></div></div>`, p); el.view = el.querySelector(".win__view"); return el; };
+const ring = (p, x, y, w, hh, a, b, r = 16) => { const el = h(`<div class="ring" style="left:${x}px;top:${y}px;width:${w}px;height:${hh}px;border-radius:${r}px"></div>`, p); K(el, { opacity: [[a, 0], [a + 0.35, 1, LIN], [b - 0.3, 1], [b, 0]], scale: [[a, "1.08"], [a + 0.5, "1"]] }); return el; };
+const CUR = `<svg class="cursor" viewBox="0 0 28 28"><path d="M5 3l16 9.5-7 1.8-3.4 6.9z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>`;
+const cursor = (p, a, b, pts) => { const el = h(CUR, p); vis(el, a, b, 0.25, 0.25); K(el, { translate: pts.map(([t, x, y]) => [t, `${x}px ${y}px`, EIO]) }); return el; };
+const tap = (p, x, y, t, snd = "click", v = 0.8) => { const el = h(`<div class="tap" style="translate:${x}px ${y}px"></div>`, p); K(el, { opacity: [[t, 0, LIN], [t + 0.04, 0.9, "ease-out"], [t + 0.5, 0]], scale: [[t, "0.3", "ease-out"], [t + 0.5, "1.2"]] }); if (snd) cue(snd, t - 0.03, v); };
+const chapter = (n, name, a, b) => { const el = h(`<div class="chap"><b>${n}</b><span>${name}</span></div>`); vis(el, a + 0.4, b, 0.5, 0.3); };
+const img = (p, src, w, hh, st = "") => h(`<img src="shots/${src}" style="width:${w}px;${hh ? `height:${hh}px;` : ""}${st}">`, p);
+
+/* ---------- 0. title, 0 to 4 ---------- */
+{ const s = scene(0, 4.1, 0.3, 0.5); h(`<div class="bg"></div>`, s); h(`<div class="grid"></div>`, s);
+  const row = h(`<div class="abs" style="left:0;right:0;top:300px;display:flex;justify-content:center;align-items:center;gap:40px"><img src="shots/tp-logo.png" style="height:120px"><span style="font-size:44px;color:#77797b">×</span><span style="font-size:60px;font-weight:500;letter-spacing:-.04em">Lumen adl</span></div>`, s);
+  up(row, 0.3, 4, 30);
+  const t = h(`<div class="abs h h1" style="left:0;right:0;top:500px;text-align:center">${lines("The new Tokyo Prestige website.")}</div>`, s); rise(t, 0.7, 4);
+  const t2 = h(`<div class="abs sub" style="left:0;right:0;top:660px;text-align:center;font-size:36px">A ninety second tour. Then what comes <span class="grad">after it</span>.</div>`, s); up(t2, 1.5, 3.9, 24);
+  cue("impact", 0.9, 0.9); }
+
+/* ---------- 1. the hero, 4 to 17.6 ---------- */
+{ const a = 4, b = 17.7; const s = scene(a, b, 0.6, 0.5); 
+  const cam = h(`<div class="abs" style="inset:0;transform-origin:1101px 915px"></div>`, s);
+  img(cam, "hero-bare.png", 1920, 1080, "position:absolute;left:0;top:0");
+  const v = h(`<video data-at="4.5" muted playsinline preload="auto" src="shots/drift.mp4" style="position:absolute;left:853.6px;top:102px;width:982.9px;height:740.5px;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect"></video>`, cam);
+  K(v, { opacity: [[4.3, 0, LIN], [5.0, 1, LIN], [11.2, 1, "ease-in-out"], [12.0, 0]] });
+  const full = img(cam, "hero.png", 1920, 1080, "position:absolute;left:0;top:0"); K(full, { opacity: [[11.3, 0, "ease-in-out"], [12.3, 1]] });
+  K(cam, { scale: [[12.6, "1", EIO], [14.0, "1.4"]] });
+  const hide = img(cam, "hero-bare.png", 1920, 1080, "position:absolute;left:0;top:0;clip-path:inset(500px 900px 205px 0)"); K(hide, { opacity: [[12.7, 0, "ease-in-out"], [13.5, 1]] });
+  ring(cam, 552, 876, 1098, 78, 13.6, 17.4, 18);
+  const scrim = h(`<div class="abs" style="left:0;right:0;top:300px;height:560px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82) 45%,rgba(0,0,0,.82) 80%,transparent)"></div>`, s); vis(scrim, 13.0, b, 0.8, 0.4);
+  const left = "left:150px;";
+  const c1 = h(`<div class="abs" style="${left}top:520px;width:640px"><div class="h h2">${lines("You get three|seconds to earn|a second look.")}</div></div>`, s); rise(c1, 4.9, 7.9);
+  const c2 = h(`<div class="abs" style="${left}top:520px;width:680px"><div class="h h2">${lines("So it opens with|a drift through|<span class='grad'>neon Tokyo.</span>")}</div></div>`, s); rise(c2, 8.1, 11.3);
+  const c3 = h(`<div class="abs" style="left:346px;top:500px;width:1300px"><div class="h h2">${lines("And lands on a real car,|in stock, with its real price.")}</div><p class="sub" style="margin-top:22px;opacity:.95">Not a stock video. The hero is the stock list: code, kilometres, price, one tap to the car.</p></div>`, s); rise(c3, 14.0, 17.5); 
+  const chipP = h(`<div class="abs chip" style="left:346px;top:440px"><i></i>Plays once per visit. One tap to skip.</div>`, s); up(chipP, 14.6, 17.4, 16);
+  cue("drift", 4.5, 0.75); cue("whoosh2", 11.2, 0.8); cue("whoosh1", 12.7, 0.6); cue("tick", 13.6, 0.9); }
+
+/* ---------- 2. the page, 17.6 to 28.2 ---------- */
+{ const a = 17.5, b = 28.3; const s = scene(a, b); h(`<div class="bg"></div>`, s); chapter("02", "One page, every kind of buyer", a, b);
+  const w = win(s, 600, 170, 1260, 720, "tokyoprestige.com.au"); K(w, { translate: [[a, "140px 60px"], [a + 1.1, "0 0"]], scale: [[a, "0.94"], [a + 1.1, "1"]] });
+  const sc = 1260 / 1536, page = img(w.view, "home-long.jpg", 1260);
+  const Y = (y) => `0 ${-Math.round(y * sc)}px`;
+  K(page, { translate: [[19.6, Y(0), EIO], [20.8, Y(840), LIN], [22.3, Y(900), EIO], [23.4, Y(2200), LIN], [24.9, Y(2250), EIO], [26.0, Y(3880), LIN], [27.4, Y(3960), EIO], [28.3, Y(5100)]] });
+  ring(w.view, 88 * sc - 6, 770 * sc - 6, 1360 * sc + 12, 70 * sc + 12, 18.3, 19.6, 14);
+  const caps = [[17.9, 20.4, "Knows the|chassis code?", "Search JZS171 and go straight to it."], [20.6, 23.0, "Came to|browse?", "The newest arrivals are first, with prices."], [23.2, 25.6, "Not sure|yet?", "Start with a shape: sedan, wagon, van, coupe."], [25.8, 28.2, "Waiting for|something rare?", "See what is on the way from Japan, and ask to be told."]];
+  caps.forEach(([t0, t1, hd, sb], i) => { const c = h(`<div class="abs" style="left:80px;top:360px;width:500px"><div class="eyebrow" style="margin-bottom:22px"><b>0${i + 1}</b> &nbsp;of 04</div><div class="h h3">${lines(hd)}</div><p class="sub" style="margin-top:24px;font-size:28px">${sb}</p></div>`, s); rise(c, t0, t1); K(c.querySelector(".sub"), { opacity: [[t0 + 0.4, 0], [t0 + 1, 1]] }); cue("tick", t0 + 0.05, 0.7); });
+  cue("whoosh1", a - 0.15, 0.7); [19.6, 22.3, 24.9, 27.4].forEach((t) => cue("whoosh2", t, 0.35)); }
+
+/* ---------- 3. the card, 28.2 to 39.6 ---------- */
+{ const a = 28.2, b = 39.7; const s = scene(a, b); h(`<div class="bg"></div>`, s); h(`<div class="grid"></div>`, s); chapter("03", "The stock card", a, b);
+  const k = 1.9, cx = 250, cy = 110;
+  const cardW = h(`<div class="abs" style="left:${cx}px;top:${cy}px;width:${320 * k}px;height:${464.9 * k}px;border-radius:30px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 60px 140px rgba(0,0,0,.8),0 0 180px rgba(42,124,153,.2)"></div>`, s);
+  img(cardW, "card.png", 320 * k, 0, "display:block");
+  K(cardW, { translate: [[a, "0 80px"], [a + 1.0, "0 0"]], scale: [[a, "0.9"], [a + 1.0, "1"]], rotate: [[a, "-3deg"], [a + 1.0, "0deg"]] });
+  const hd = h(`<div class="abs" style="left:1010px;top:128px;width:800px"><div class="h h3">${lines("Every part of it|is there for a reason.")}</div></div>`, s); rise(hd, a + 0.4, b - 0.1);
+  const items = [
+    [30.0, [12, 10, 296, 36], "Status first", "Available or just arrived, before anything else."],
+    [31.7, [10, 250, 300, 84], "The name in bold, the code beside it", "Enthusiasts search UZZ31. Everyone else reads Soarer."],
+    [33.4, [10, 340, 300, 44], "Three quick answers", "Kilometres, gearbox, drive: what every buyer asks."],
+    [35.1, [10, 390, 200, 62], "The price, plainly", "Always with plus on-road costs. No surprises later."],
+    [36.8, [216, 400, 98, 60], "One red button", "The only red on the card. Stock list to enquiry in two taps."]];
+  items.forEach(([t, r, tt, d], i) => {
+    const c = h(`<div class="co" style="top:${330 + i * 132}px"><b class="n">${i + 1}</b><h4>${tt}</h4><p>${d}</p></div>`, s); up(c, t, b - 0.2, 26);
+    K(c, { filter: [[t, "brightness(1.25)"], [(items[i + 1] || [b])[0], "brightness(1.25)", LIN], [(items[i + 1] || [b])[0] + 0.4, "brightness(.62)"]] });
+    ring(s, cx + r[0] * k, cy + r[1] * k, r[2] * k, r[3] * k, t, (items[i + 1] || [b - 0.6])[0] + (i === 4 ? 0 : 0.05), i === 4 ? 40 : 14);
+    cue("tick", t, 0.85); });
+  tap(s, cx + 265 * k, cy + 430 * k, 38.7, "click", 0.9); cue("whoosh1", a - 0.1, 0.7); }
+
+/* ---------- 4. the car page, 39.6 to 53.2 ---------- */
+{ const a = 39.6, m = 45.6, b = 53.3; const s = scene(a, b); h(`<div class="bg"></div>`, s); chapter("04", "The car page", a, b);
+  const g = h(`<div class="abs" style="inset:0"></div>`, s); vis(g, a, m + 0.3, 0.4, 0.6);
+  const w = win(g, 500, 150, 1340, 800, "tokyoprestige.com.au/cars/2001-nissan-skyline-gt-r"); K(w, { translate: [[a, "0 90px"], [a + 1, "0 0"]] });
+  const sc = 1340 / 1536, page = img(w.view, "car-long.jpg", 1340);
+  K(page, { translate: [[a + 1.2, "0 0", EIO], [42.6, `0 ${-Math.round(430 * sc)}px`, LIN], [m + 0.3, `0 ${-Math.round(470 * sc)}px`]] });
+  ring(w.view, 1093 * sc - 8, (869 - 470) * sc - 8, 330 * sc + 16, 421 * sc + 16, 43.2, m, 20);
+  const c1 = h(`<div class="abs" style="left:70px;top:330px;width:410px"><div class="h h3">${lines("Photos|first.|Then the|figures.")}</div></div>`, g); rise(c1, a + 0.5, 42.9);
+  const c2 = h(`<div class="abs" style="left:70px;top:330px;width:420px"><div class="h h3">${lines("The form|is already|on the|page.")}</div><p class="sub" style="margin-top:22px;font-size:26px">No hunting for a contact link.</p></div>`, g); rise(c2, 43.1, m + 0.2);
+  cue("whoosh1", a - 0.1, 0.7); cue("whoosh2", a + 1.2, 0.35); cue("tick", 43.2, 0.85);
+  // phone: the instant form
+  const p = h(`<div class="abs" style="inset:0"></div>`, s); vis(p, m, b, 0.5, 0.5);
+  const ph = h(`<div class="phone" style="left:1190px;top:58px"><div class="phone__v" style="width:436px;height:936px"></div></div>`, p); const pv = ph.querySelector(".phone__v"); const ps = 436 / 390;
+  K(ph, { translate: [[m, "0 120px"], [m + 1, "0 0"]], rotate: [[m, "4deg"], [m + 1, "0deg"]] });
+  ["ph-form-0.png", "ph-form-1.png", "ph-form-2.png", "ph-form-3.png"].forEach((f) => img(pv, f, 436, 936));
+  const [i0, i1, i2, i3] = pv.querySelectorAll("img");
+  const wipe = (im, r, t0, t1) => { const top = r.y * ps - 4, bot = 936 - (r.y + r.h) * ps - 4; K(im, { clipPath: [[0, `inset(${top}px 100% ${bot}px 0)`, LIN], [t0, `inset(${top}px 100% ${bot}px 0)`, "steps(9, end)"], [t1, `inset(${top}px 0% ${bot}px 0)`, LIN], [t1 + 0.01, "inset(0 0 0 0)"]] }); };
+  wipe(i1, { y: 226, h: 48 }, 47.0, 47.9); wipe(i2, { y: 308, h: 48 }, 48.3, 49.3);
+  K(i3, { opacity: [[50.2, 0, "ease-out"], [50.6, 1]] });
+  tap(pv, 195 * ps, 250 * ps, 46.8, "click", 0.5); tap(pv, 195 * ps, 332 * ps, 48.1, "click", 0.5); tap(pv, 195 * ps, 516 * ps, 49.9, "click", 0.9);
+  cue("type", 47.0, 0.55); cue("type", 48.3, 0.55); cue("chime", 50.25, 0.85);
+  const t1 = h(`<div class="abs" style="left:150px;top:210px;width:980px"><div class="h h1">${lines("Name.|Number.|<span class='grad'>Send.</span>")}</div></div>`, p);
+  [...t1.querySelectorAll(".ln > span")].forEach((sp, i) => K(sp, { translate: [[[m + 0.5, 47.0, 49.9][i], "0 110%"], [[m + 0.5, 47.0, 49.9][i] + 0.7, "0 0"]] }));
+  [["100", "out of 100 for speed, on a phone", 150], ["1.9 s", "until the page is ready", 520], ["0.5 MB", "the whole car page", 850]].forEach(([n, l, x], i) => { const st = h(`<div class="stat" style="left:${x}px;top:700px;width:330px"><b>${n}</b><span>${l}</span></div>`, p); up(st, 50.8 + i * 0.25, b - 0.2, 26); cue("tick", 50.8 + i * 0.25, 0.6); });
+  const f = h(`<div class="abs" style="left:150px;top:860px;font-size:19px;color:#8d8f91">Lighthouse, phone profile, on the live demo, 11 November 2026. The demo form sends nowhere yet.</div>`, p); up(f, 51.6, b - 0.2, 10);
+  cue("whoosh1", m - 0.1, 0.7); }
+
+/* ---------- 5. the stock manager, 53.2 to 67.4 ---------- */
+{ const a = 53.2, b = 67.5; const s = scene(a, b); h(`<div class="bg"></div>`, s); chapter("05", "The stock manager", a, b);
+  const tt = h(`<div class="abs" style="left:0;right:0;top:380px;text-align:center"><div class="eyebrow" style="margin-bottom:26px">Behind the website</div><div class="h h1">${lines("One place to|<span class='grad'>run the stock.</span>")}</div></div>`, s); rise(tt, a + 0.3, 55.6);
+  const w = win(s, 240, 176, 1440, 810, "tokyoprestige.com.au/portal"); vis(w, 55.4, b, 0.6, 0.4); K(w, { translate: [[55.4, "0 80px"], [56.4, "0 0"]] });
+  const shots = ["portal-add-1.png", "portal-add-1.png", "portal-add-2.png", "portal-list-0.png", "portal-ad-0.png", "portal-ad-1.png", "portal-ad-2.png", "portal-list-1.png", "portal-list-2.png", "portal-1.png"];
+  const view = h(`<div class="abs" style="inset:0;transform-origin:720px 100px"></div>`, w.view); K(view, { scale: [[56.2, "1", EIO], [57.0, "1.32", LIN], [59.2, "1.32", EIO], [59.7, "1", LIN], [60.3, "1", EIO], [60.9, "1.32", LIN], [62.5, "1.32", EIO], [63.0, "1"]] });
+  const im = shots.map((f) => img(view, f, 1440, 810)); const sc = 1440 / 1536;
+  const at = { 1: 56.9, 2: 58.3, 3: 59.6, 4: 60.1, 5: 61.0, 6: 61.6, 7: 62.7, 8: 63.7, 9: 65.1 };
+  im.forEach((el, i) => { if (i) K(el, { opacity: [[at[i], 0, LIN], [at[i] + 0.04, 1]] }); });
+  // typed chassis number: a patch in the field's own colour uncovers the text a character at a time
+  { const r = { x: 457, y: 130.5, w: 258, h: 48 }; const cv = h(`<div class="abs" style="left:${(r.x + 8) * sc}px;top:${(r.y + 5) * sc}px;width:${(r.w - 16) * sc}px;height:${(r.h - 10) * sc}px;background:#222428"></div>`, view); K(cv, { clipPath: [[56.9, "inset(0 0 0 0%)", "steps(14, end)"], [57.9, "inset(0 0 0 62%)", LIN], [57.95, "inset(0 0 0 100%)"]] }); cue("type", 56.9, 0.55); }
+  cursor(view, 55.9, 66.8, [[55.9, 900, 500], [56.8, 600 * sc, 160 * sc], [57.9, 600 * sc, 160 * sc], [58.25, 1030 * sc, 160 * sc], [59.4, 1030 * sc, 160 * sc], [60.05, 1300 * sc, 276 * sc], [60.6, 1300 * sc, 276 * sc], [60.95, 1054 * sc, 258 * sc], [61.2, 1054 * sc, 258 * sc], [61.55, 1054 * sc, 326 * sc], [62.2, 1054 * sc, 326 * sc], [62.65, 1040 * sc, 700 * sc], [63.2, 1040 * sc, 700 * sc], [63.65, 1300 * sc, 326 * sc], [64.6, 1300 * sc, 326 * sc], [65.3, 1250 * sc, 470 * sc]]);
+  tap(view, 1034 * sc, 157 * sc, 58.3, "click", 0.9); cue("chime", 58.4, 0.5);
+  tap(view, 1304 * sc, 274 * sc, 60.1, "click", 0.8); tap(view, 1054 * sc, 257 * sc, 61.0, "click", 0.8); tap(view, 1054 * sc, 325 * sc, 61.6, "click", 0.8);
+  tap(view, 1304 * sc, 324 * sc, 63.7, null); cue("sold", 63.68, 0.95);
+  ring(view, 144 * sc + 990 * sc, 169 * sc - 6, 258 * sc + 6, 108 * sc + 12, 65.5, 67.2, 16); ring(view, 144 * sc - 6, 418 * sc, 420 * sc, 190 * sc, 65.7, 67.2, 16); cue("tick", 65.5, 0.85);
+  const caps = [[56.2, 59.5, "<b>Add a car.</b> Type the chassis number and the form fills itself."], [59.7, 63.0, "<b>Advertise.</b> Every channel from one screen, with the ad already written."], [63.2, 65.0, "<b>Mark sold.</b> One tap, and it comes off every channel."], [65.2, 67.3, "<b>Leads.</b> Every enquiry lands against its car."]];
+  caps.forEach(([t0, t1, tx]) => { const c = h(`<div class="abs" style="left:240px;right:240px;top:92px;font-size:34px;letter-spacing:-.022em;color:#c9cbcc;white-space:nowrap"><span class="ln"><span>${tx.replace("<b>", "<b style='color:#fff;font-weight:500'>")}</span></span></div>`, s); rise(c, t0, t1); });
+  const f = h(`<div class="foot" style="bottom:22px">A working demo you can open today. Carsales and Facebook are connected during the build.</div>`, s); vis(f, 56.6, b - 0.2);
+  cue("whoosh1", a - 0.1, 0.7); cue("whoosh2", 55.4, 0.5); }
+
+/* ---------- 6. after the website, 67.4 to 81 ---------- */
+{ const a = 67.4, b = 81.1; const s = scene(a, b); h(`<div class="bg"></div>`, s); h(`<div class="grid"></div>`, s); chapter("06", "After the website", a, b);
+  const big = h(`<div class="abs" style="left:0;right:0;top:400px;text-align:center"><div class="h h1">${lines("And it does not|<span class='grad'>stop there.</span>")}</div></div>`, s); rise(big, a + 0.3, 70.2);
+  cue("riser", a - 2.6, 0.5); cue("impact", a + 0.25, 0.75);
+  const hd = h(`<div class="abs" style="left:120px;top:150px;width:1500px"><div class="h h3">${lines("AI and automation, added when you are ready.")}</div></div>`, s); rise(hd, 70.2, b - 0.1);
+  const t = [70.6, 73.8, 77.0];
+  const c1 = h(`<div class="card3" style="left:120px"><span class="eg">Example</span><h3>An AI<br>receptionist</h3><div style="margin-top:20px"><div class="bub a">Is the Soarer still available?</div><div class="bub b">It is. Would Saturday at 10 suit for a test drive?</div><div class="bub a">Yes please.</div><div class="chip" style="margin-top:14px;opacity:0"><i></i>Test drive booked · team notified</div></div><p class="d">Answers every call and message, day or night. Hands the hard ones to your team.</p></div>`, s);
+  const c2 = h(`<div class="card3" style="left:686px"><span class="eg">Example</span><h3>Old leads,<br>brought back</h3><div style="margin-top:22px">${[["Asked about a Crown", "4 months ago"], ["Wanted an Alphard", "7 months ago"], ["Missed the last GT-R", "1 year ago"]].map(([x, y]) => `<div class="lead"><span>${x}</span><small>${y}</small><div class="lit"><span>${x}</span><small>Message sent</small></div></div>`).join("")}</div><p class="d">When the right car lands, the people who asked for it hear first.</p></div>`, s);
+  const c3 = h(`<div class="card3" style="left:1252px"><span class="eg">Example</span><h3>The repeat work,<br>running itself</h3><div style="margin-top:18px"><div class="flow"><span class="hot">Car added</span><em>→</em><span>Ads written</span><em>→</em><span>Listed</span></div><div class="flow"><span class="hot">Marked sold</span><em>→</em><span>Removed everywhere</span></div><div class="flow"><span class="hot">Service due</span><em>→</em><span>Reminder sent</span></div></div><p class="d">Less typing the same thing twice. More time on the floor selling.</p></div>`, s);
+  [c1, c2, c3].forEach((c, i) => { up(c, t[i], b - 0.2, 50); cue("shimmer", t[i] - 0.1, i ? 0.4 : 0.6); });
+  c1.querySelectorAll(".bub").forEach((x, i) => { const tt = t[0] + 0.7 + i * 0.75; K(x, { opacity: [[tt, 0], [tt + 0.3, 1]], translate: [[tt, "0 14px"], [tt + 0.4, "0 0"]] }); cue("tick", tt, 0.5); });
+  K(c1.querySelector(".chip"), { opacity: [[t[0] + 2.9, 0], [t[0] + 3.2, 1]] }); cue("chime", t[0] + 2.85, 0.45); cue("ring", t[0] + 0.05, 0.3);
+  c2.querySelectorAll(".lit").forEach((x, i) => { const tt = t[1] + 1.2 + i * 0.5; K(x, { opacity: [[tt, 0], [tt + 0.35, 1]] }); cue("tick", tt, 0.6); });
+  c3.querySelectorAll(".flow").forEach((fl, r) => [...fl.children].forEach((x, i) => { const tt = t[2] + 0.6 + r * 0.8 + i * 0.16; K(x, { opacity: [[tt, 0], [tt + 0.3, 1]], translate: [[tt, "-12px 0"], [tt + 0.4, "0 0"]] }); if (!i) cue("tick", tt, 0.55); }));
+  const f = h(`<div class="foot" style="bottom:70px;font-size:24px;color:#b9bbbc">One step at a time, each one scoped and priced with you first.</div>`, s); up(f, 79.2, b - 0.2, 14); }
+
+/* ---------- 7. trust, 81 to 88.6 ---------- */
+{ const a = 81, m = 85.3, b = 88.7; const s = scene(a, b); h(`<div class="bg"></div>`, s); chapter("07", "Security and service", a, b);
+  const A = h(`<div class="abs" style="inset:0"></div>`, s); vis(A, a, m + 0.2, 0.4, 0.5);
+  const sh = h(`<svg class="abs" style="left:200px;top:300px;width:380px;height:460px" viewBox="0 0 190 230" fill="none"><defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#6fb6cc"/><stop offset="1" stop-color="#f3805e"/></linearGradient></defs><path d="M95 8 176 38v72c0 56-36 92-81 112C50 202 14 166 14 110V38z" stroke="url(#sg)" stroke-width="5" fill="rgba(255,255,255,.04)"/><rect x="62" y="104" width="66" height="54" rx="10" fill="url(#sg)"/><path d="M74 104V88a21 21 0 0 1 42 0v16" stroke="url(#sg)" stroke-width="8"/><circle cx="95" cy="128" r="7" fill="#0b0c0d"/></svg>`, A);
+  K(sh, { opacity: [[a + 0.2, 0], [a + 0.6, 1]], scale: [[a + 0.2, "1.35"], [a + 0.62, "1", "ease-out"]] }); cue("lock", a + 0.5, 0.95);
+  const tx = h(`<div class="abs" style="left:700px;top:230px;width:1100px"><div class="h h2">${lines("Built secure|from the first line.")}</div></div>`, A); rise(tx, a + 0.4, m + 0.2);
+  const tk = `<i><svg width="20" height="16" viewBox="0 0 14 11" fill="none" stroke="#7fd4a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 5.5 5.2 9.2 12.5 1.5"/></svg></i>`;
+  const list = h(`<div class="abs" style="left:700px;top:440px;width:1100px">${["Two-step sign-in on every staff account", "Each person sees only what their job needs", "Encrypted in transit and at rest, backed up daily", "Your customers' details stay yours. Never sold, never shared."].map((x) => `<div class="sec">${tk}<span>${x}</span></div>`).join("")}</div>`, A);
+  list.querySelectorAll(".sec").forEach((x, i) => { const tt = a + 1.1 + i * 0.55; K(x, { opacity: [[tt, 0], [tt + 0.35, 1]], translate: [[tt, "30px 0"], [tt + 0.5, "0 0"]] }); cue("tick", tt, 0.75); });
+  const B = h(`<div class="abs" style="left:0;right:0;top:300px;text-align:center"><div class="eyebrow" style="margin-bottom:26px">And the service</div><div class="h h1">${lines("A small studio.|<span class='grad'>On purpose.</span>")}</div><p class="sub" style="margin-top:36px;font-size:38px">You call, we answer. Problems fixed fast, by the person who built it.</p></div>`, s); rise(B, m + 0.2, b); K(B.querySelector(".sub"), { opacity: [[m + 1.1, 0], [m + 1.7, 1]] });
+  cue("whoosh1", a - 0.1, 0.7); cue("whoosh2", m + 0.1, 0.6); }
+
+/* ---------- 8. end card, 88.6 to 94 ---------- */
+{ const a = 88.6, b = T; const s = scene(a, b + 1, 0.05, 0.1);
+  const g = h(`<div class="abs" style="inset:0;background:var(--sunset)"></div>`, s); K(g, { clipPath: [[a, "circle(0% at 50% 60%)", "cubic-bezier(.7,0,.2,1)"], [a + 1.1, "circle(120% at 50% 60%)"]] });
+  const t = h(`<div class="abs" style="left:0;right:0;top:250px;text-align:center;color:#0b0c0d"><div class="h" style="font-size:230px;letter-spacing:-.07em;line-height:.9">${lines("Lumen adl")}</div></div>`, s); rise(t, a + 0.6, b + 2);
+  const t2 = h(`<div class="abs" style="left:0;right:0;top:560px;text-align:center;color:#0b0c0d;font-size:52px;font-weight:500;letter-spacing:-.03em">Let's build it.</div>`, s); up(t2, a + 1.5, b + 2, 24);
+  const t3 = h(`<div class="abs" style="left:0;right:0;top:690px;display:flex;justify-content:center"><span style="height:72px;padding:0 36px;border-radius:999px;background:#0b0c0d;color:#f4f4f1;display:inline-flex;align-items:center;font-size:28px;font-weight:500">Troy Watson &nbsp;·&nbsp; www.lumenadl.com</span></div>`, s); up(t3, a + 2.0, b + 2, 24);
+  const blk = h(`<div class="abs" style="inset:0;background:#000"></div>`, s); K(blk, { opacity: [[b - 0.7, 0, "ease-in"], [b - 0.05, 1]] });
+  cue("whoosh2", a - 0.05, 0.9); cue("impact", a + 0.35, 0.7); cue("chime", a + 1.5, 0.5); }
+
+/* small Lumen mark and the progress line, over everything but the title and the end card */
+{ const m = h(`<div class="mark">Lumen adl</div>`); vis(m, 17.8, 88.5, 0.5, 0.3);
+  const p = h(`<div id="prog"></div>`); K(p, { scale: [[0, "0 1", LIN], [T, "1 1"]], opacity: [[4, 0, LIN], [4.6, 1, LIN], [88.2, 1, LIN], [88.6, 0]] }); }
+
+window.CUES = CUES; window.T = T; window.FPS = FPS;
+window.seek = async (t) => {
+  document.getAnimations().forEach((a) => { a.currentTime = t * 1000; });
+  for (const v of document.querySelectorAll("video[data-at]")) { const vt = Math.max(0, Math.min((v.duration || 7.3) - 0.05, t - parseFloat(v.dataset.at))); if (Math.abs(v.currentTime - vt) > 0.001) { await new Promise((r) => { v.addEventListener("seeked", r, { once: true }); v.currentTime = vt; setTimeout(r, 1500); }); } }
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+};
+// preview in a browser: ?play
+if (location.search.includes("play")) { const t0 = performance.now() - (parseFloat(new URLSearchParams(location.search).get("t")) || 0) * 1000; const loop = async () => { await window.seek(((performance.now() - t0) / 1000) % T); requestAnimationFrame(loop); }; loop(); }
+</script></body></html>
