@@ -1361,3 +1361,144 @@ html:not(.js) .look {
     display: none;
   }
 }
+
+
+/* ==========================================================================
+   Refinement of the dark look (it read as bold and blocky): rounder corners, pill-shaped actions, lighter
+   and less stretched type, borders swapped for soft fills. Tokens first, then the parts that set their own.
+   ========================================================================== */
+html:not([data-look="figures"]) {
+  --r: 12px;
+  --r-2: 18px;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-2: rgba(255, 255, 255, 0.16);
+}
+@media (max-width: 899px) {
+  html:not([data-look="figures"]) .find {
+    border-radius: 0;
+  }
+}
+html:not([data-look="figures"]) .display, html:not([data-look="figures"]) .h2, html:not([data-look="figures"]) .h3, html:not([data-look="figures"]) .car__title, html:not([data-look="figures"]) .ftr__big, html:not([data-look="figures"]) .deal__name, html:not([data-look="figures"]) .feat__title, html:not([data-look="figures"]) .card__title, html:not([data-look="figures"]) .blk h2, html:not([data-look="figures"]) .tile__txt b {
+  font-weight: 400;
+  font-stretch: 100%;
+  letter-spacing: -0.028em;
+}
+html:not([data-look="figures"]) .display {
+  line-height: 1.02;
+}
+html:not([data-look="figures"]) .btn {
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-stretch: 100%;
+  letter-spacing: 0;
+}
+html:not([data-look="figures"]) .btn--ghost {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+}
+html:not([data-look="figures"]) .btn--quiet {
+  background: rgba(255, 255, 255, 0.07);
+}
+html:not([data-look="figures"]) .input, html:not([data-look="figures"]) .select, html:not([data-look="figures"]) .find__input {
+  border-radius: 12px;
+  border-color: transparent;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+html:not([data-look="figures"]) .input:hover, html:not([data-look="figures"]) .select:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+html:not([data-look="figures"]) .chip span {
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.14);
+  font-weight: 400;
+}
+html:not([data-look="figures"]) .status, html:not([data-look="figures"]) .code, html:not([data-look="figures"]) .eyebrow, html:not([data-look="figures"]) .plate, html:not([data-look="figures"]) .card__tag {
+  letter-spacing: 0.06em;
+}
+html:not([data-look="figures"]) .card__top .status, html:not([data-look="figures"]) .card__tag, html:not([data-look="figures"]) .gal__hud .code, html:not([data-look="figures"]) .car__code {
+  border-radius: 999px;
+}
+html:not([data-look="figures"]) .card {
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 18px;
+}
+html:not([data-look="figures"]) .card__go {
+  border-radius: 50%;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html:not([data-look="figures"]) .card__price b {
+  font-weight: 300;
+}
+html:not([data-look="figures"]) .hdr__call {
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.16);
+  font-weight: 500;
+}
+html:not([data-look="figures"]) .seal {
+  border-radius: 8px;
+}
+html:not([data-look="figures"]) .brand__name {
+  font-weight: 500;
+}
+html:not([data-look="figures"]) .nav a {
+  font-weight: 400;
+}
+html:not([data-look="figures"]) .feat__ctl {
+  border-radius: 50%;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+html:not([data-look="figures"]) .feat__go {
+  border-radius: 999px;
+}
+html:not([data-look="figures"]) .find {
+  border-radius: 20px;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+html:not([data-look="figures"]) .find__go {
+  border-radius: 14px;
+}
+html:not([data-look="figures"]) .find__sel {
+  border-left-color: rgba(255, 255, 255, 0.08);
+}
+html:not([data-look="figures"]) .find .select, html:not([data-look="figures"]) .find .find__input {
+  background-color: transparent;
+}
+html:not([data-look="figures"]) .tile, html:not([data-look="figures"]) .tile__pic {
+  border-radius: 18px;
+}
+html:not([data-look="figures"]) .deal--side, html:not([data-look="figures"]) .quick-wrap--inline, html:not([data-look="figures"]) .est, html:not([data-look="figures"]) .enq, html:not([data-look="figures"]) .form, html:not([data-look="figures"]) .ph, html:not([data-look="figures"]) .seen {
+  border-radius: 20px;
+}
+html:not([data-look="figures"]) .deal--side {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: transparent;
+}
+html:not([data-look="figures"]) .dock__btn {
+  border-radius: 14px;
+}
+html:not([data-look="figures"]) .dock__btn--main {
+  border-radius: 999px;
+}
+html:not([data-look="figures"]) .gal__item, html:not([data-look="figures"]) .gal__all, html:not([data-look="figures"]) .visit__pic, html:not([data-look="figures"]) .enq__thumb {
+  border-radius: 14px;
+}
+html:not([data-look="figures"]) .flt .select, html:not([data-look="figures"]) .flt .input, html:not([data-look="figures"]) .flt__open {
+  border-radius: 999px;
+}
+html:not([data-look="figures"]) .intro__skip {
+  border-radius: 999px;
+}
+
+/* on a phone the search fields are separate controls, so each keeps its own soft fill */
+@media (max-width: 899px) {
+  html:not([data-look="figures"]) .find .select,
+  html:not([data-look="figures"]) .find .find__input {
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+  html:not([data-look="figures"]) .find {
+    border: 0;
+  }
+}
