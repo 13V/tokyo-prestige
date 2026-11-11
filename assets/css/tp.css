@@ -1798,3 +1798,11 @@ html[data-look="figures"] .card__ask {
   border-color: var(--shu);
   color: #fff;
 }
+
+/* a car marked sold in the stock manager (demo, this device) */
+.card.is-sold .card__shot img {
+  filter: grayscale(1) brightness(0.6);
+}
+.card.is-sold .status::before {
+  background: #8f8e88;
+}

@@ -181,6 +181,7 @@
       // HOOK: when data-endpoint is set, POST the fields as JSON and show the thank-you only on a 200.
       //   fetch(form.dataset.endpoint, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
       const v = form.elements.intent.value;
+      window.tpLead?.({ name: form.elements.name.value.trim(), contact: form.elements.contact.value.trim(), car: form.elements.car.value, stock: document.querySelector("[data-car]").dataset.id, intent: LABELS[v] || v, message: (form.elements.message?.value || "").trim(), source: "car page" });
       $("[data-enq-who]", done).textContent = form.elements.name.value.trim().split(/\s+/)[0];
       $("[data-enq-next]", done).textContent = NEXT[v] || NEXT.question;
       form.hidden = true;

@@ -159,6 +159,30 @@
     }
   }
 
+  // DEMO: every enquiry is also kept in this browser, so the stock manager (/portal) can show it as a lead.
+  // In a real build this is the POST to the lead endpoint.
+  window.tpLead = (lead) => {
+    try {
+      const all = JSON.parse(localStorage.getItem("tp-leads") || "[]");
+      all.push({ ...lead, at: Date.now() });
+      localStorage.setItem("tp-leads", JSON.stringify(all.slice(-200)));
+    } catch (e) {}
+  };
+
+  // DEMO: a car marked sold in the stock manager on this device shows as sold on the site, on this device
+  try {
+    const edits = (JSON.parse(localStorage.getItem("tp-portal") || "{}").edits) || {};
+    $$("[data-card]").forEach((card) => {
+      const e = edits[card.dataset.id];
+      if (!e || e.status !== "sold") return;
+      card.classList.add("is-sold");
+      const st = card.querySelector(".status");
+      if (st) st.textContent = "Sold";
+      const ask = card.querySelector(".card__ask");
+      if (ask) ask.remove();
+    });
+  } catch (e) {}
+
   // plain forms (contact, servicing, finance, stock alert): check name and a way to reply, then thank.
   // HOOK: when a form's data-endpoint is set, POST its fields there and thank only on a 200.
   $$("form[data-form]").forEach((form) => {
@@ -177,6 +201,7 @@
       e.preventDefault();
       const bad = required.filter((el) => !check(el));
       if (bad.length) return bad[0].focus();
+      window.tpLead({ name: (form.elements.name?.value || "").trim(), contact: (form.elements.contact?.value || form.elements.email?.value || "").trim(), car: form.elements.car?.value || "", stock: form.elements.stock?.value || "", message: (form.elements.message?.value || "").trim(), source: form.elements.source?.value || location.pathname });
       const who = (form.elements.name?.value || "").trim().split(/\s+/)[0];
       const done = document.createElement("div");
       done.className = "form__done";

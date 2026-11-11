@@ -8,6 +8,8 @@ const B = "http://localhost:4173";
   const br = await chromium.launch();
   const shot = async (url, file, phone, wait = 900, before) => {
     const ctx = await br.newContext(phone ? { viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true } : { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1.5 });
+    // the opening film plays once per visit; these are stills of the settled page
+    await ctx.addInitScript(() => { try { sessionStorage.setItem("tp-intro", "1"); } catch (e) {} });
     const p = await ctx.newPage();
     await p.goto(B + url, { waitUntil: "networkidle" });
     await p.waitForTimeout(wait);

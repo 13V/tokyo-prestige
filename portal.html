@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Stock manager: Tokyo Prestige (demo)</title>
+<meta name="theme-color" content="#060607">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/portal.css">
+</head>
+<body>
+<header class="bar">
+  <a class="bar__brand" href="/portal"><img src="/assets/img/tp-mark.png" width="255" height="149" alt=""><span>Stock manager</span></a>
+  <span class="pill pill--demo">Demo</span>
+  <span class="bar__sp"></span>
+  <a class="btn btn--ghost bar__site" href="/stock" target="_blank" rel="noopener">View the website</a>
+  <button class="btn btn--red" type="button" data-add>Add a car</button>
+</header>
+
+<main class="wrap">
+  <p class="note" role="note"><b>This is a demonstration.</b> Changes are saved in this browser only. Carsales, Facebook and Instagram are not connected, so nothing is published. Leads are real: they are the enquiries sent through the demo website in this browser. Figures marked Sample are made up, because a private demo has no visitors.</p>
+
+  <section class="tiles" aria-label="Stock at a glance" data-tiles></section>
+
+  <h2 class="h">Leads and analytics</h2>
+  <section class="an" aria-label="Leads and analytics" data-an></section>
+
+  <h2 class="h">Stock</h2>
+  <section class="tools" aria-label="Find a car">
+    <div class="tabs" role="tablist" aria-label="Status" data-tabs></div>
+    <label class="search"><span class="vh">Search stock</span><input type="search" placeholder="Search by model, code or stock number" data-q autocomplete="off"></label>
+  </section>
+
+  <section aria-label="Stock list">
+    <div class="list" data-list><p class="empty">Loading stock…</p></div>
+    <p class="more"><button class="btn btn--ghost" type="button" data-more hidden>Show more</button></p>
+  </section>
+
+  <p class="foot"><button class="link" type="button" data-reset>Reset the demo</button> · Stock is read from the same file the website uses: 123 cars from tokyoprestige.com.au, 11 November 2026.</p>
+</main>
+
+<!-- add or edit a car -->
+<dialog class="sheet" data-form-sheet aria-labelledby="f-h">
+  <form method="dialog" class="sheet__in" data-form novalidate>
+    <header class="sheet__top"><h2 id="f-h" data-form-h>Add a car</h2><button class="x" type="button" data-close aria-label="Close">×</button></header>
+    <fieldset class="lk" data-lk>
+      <legend>Start with the plate, VIN or chassis number</legend>
+      <div class="lk__row">
+        <label class="f"><span>Plate, VIN or chassis number</span><input name="lookup" autocapitalize="characters" autocomplete="off" placeholder="For example BNR34-402727" data-lk-id></label>
+        <label class="f"><span>Registered in</span><select name="state" data-lk-state><option value="">Not registered yet (import)</option><option>SA</option><option>VIC</option><option>NSW</option><option>QLD</option><option>WA</option><option>TAS</option><option>NT</option><option>ACT</option></select></label>
+        <button class="btn" type="button" data-lk-go>Look up</button>
+      </div>
+      <p class="lk__msg" data-lk-msg aria-live="polite">The form below fills in from the record. You check it, then save.</p>
+    </fieldset>
+    <div class="grid2">
+      <label class="f"><span>Year</span><input name="year" inputmode="numeric" maxlength="4" required></label>
+      <label class="f"><span>Make</span><input name="make" required list="makes"></label>
+      <label class="f"><span>Model</span><input name="model" required></label>
+      <label class="f"><span>Model code</span><input name="modelCode" placeholder="For example GRS214"></label>
+      <label class="f"><span>Kilometres</span><input name="km" inputmode="numeric"></label>
+      <label class="f"><span>Price, plus on-road costs</span><input name="price" inputmode="numeric" placeholder="Leave empty if not priced yet"></label>
+      <label class="f"><span>Gearbox</span><input name="transmission" placeholder="For example 6-speed automatic"></label>
+      <label class="f"><span>Colour</span><input name="colour"></label>
+      <label class="f f--wide"><span>VIN or chassis number</span><input name="vin"></label>
+      <label class="f"><span>Status</span><select name="status"><option value="coming-soon">Coming soon</option><option value="available">In stock</option><option value="under-contract">Under contract</option><option value="sold">Sold</option></select></label>
+      <label class="f"><span>Photos</span><input type="file" accept="image/*" multiple data-photos></label>
+    </div>
+    <datalist id="makes"><option>Toyota</option><option>Lexus</option><option>Nissan</option><option>Suzuki</option><option>Honda</option><option>Subaru</option><option>Mitsubishi</option></datalist>
+    <div class="thumbs" data-thumbs></div>
+    <div class="checks" data-checks aria-live="polite"></div>
+    <footer class="sheet__foot"><button class="btn btn--ghost" type="button" data-close>Cancel</button><button class="btn btn--red" type="submit" data-save>Save car</button></footer>
+  </form>
+</dialog>
+
+<!-- advertise a car -->
+<dialog class="sheet" data-ad-sheet aria-labelledby="a-h">
+  <div class="sheet__in">
+    <header class="sheet__top"><h2 id="a-h">Advertise</h2><button class="x" type="button" data-close aria-label="Close">×</button></header>
+    <p class="ad__car" data-ad-car></p>
+    <div class="chans" data-chans></div>
+    <h3 class="sub">Ad text, written from the listing</h3>
+    <div class="seg" role="tablist" data-ad-tabs></div>
+    <textarea class="ad__txt" rows="9" data-ad-text aria-label="Ad text"></textarea>
+    <footer class="sheet__foot"><span class="hint" data-ad-hint>Every figure comes from the listing. Check it before it goes out.</span><button class="btn btn--ghost" type="button" data-copy>Copy text</button><button class="btn btn--red" type="button" data-close>Done</button></footer>
+  </div>
+</dialog>
+
+<div class="toast" data-toast role="status" aria-live="polite" hidden></div>
+<script src="/assets/js/portal.js" defer></script>
+</body>
+</html>

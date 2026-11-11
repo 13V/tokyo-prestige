@@ -36,6 +36,17 @@ from their own logo file). Every way to enquire or call is red. Their TP mark is
 logo in the footer; both were cut from `TP-HR-logo.png` on their site, which has a dark background baked in,
 so a clean vector from the dealer would be sharper.
 
+## The stock manager (`/portal`, noindex)
+
+A demo of the staff side: add a car (starting from a VIN or chassis number), change status, mark sold, pick
+where each car is advertised, and copy ad text written from the listing. It shows leads and analytics per car.
+- Real on the device: stock edits (kept in the browser), and leads, which are the enquiries sent through the
+  demo site's forms in that browser. A car marked sold shows as sold on the demo site on that device.
+- Real lookups: a VIN that is in the dealer's stock file fills the whole form; a Japanese chassis number is
+  decoded to its model code and matched to a make and model already in stock.
+- Not connected: Carsales, Facebook, Instagram, and any plate or RedBook lookup. Each says so on screen.
+- Sample: views, calls, days in stock, visits and "searched for, not found". Labelled Sample on screen.
+
 ## What is in this folder
 
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page
