@@ -169,7 +169,7 @@ export function layout({ title, description, path: p, body, css = [], js = [], h
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures";var tq=new URLSearchParams(location.search).get("tone"),t=tq||localStorage.getItem("tp-tone");if(tq)localStorage.setItem("tp-tone",tq);if(t&&t!=="blue")d.dataset.tone=t}catch(e){}}(document.documentElement)</script>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 ${head}<link rel="stylesheet" href="/assets/css/tp.css">
 ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
 <script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
@@ -178,7 +178,7 @@ ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
 <a class="skip" href="#main">Skip to content</a>
 <header class="hdr${solidHeader ? " hdr--solid" : ""}" data-hdr>
   <div class="wrap hdr__in">
-    <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
+    <a class="brand" href="/" aria-label="Tokyo Prestige, home"><img class="brand__mark" src="/assets/img/tp-mark.png" width="255" height="149" alt=""><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main">${nav}</nav>
     <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">${dealer.licence}</span>
@@ -205,6 +205,7 @@ ${body}
   <div class="wrap">
     <div class="ftr__grid">
       <div>
+        <img class="ftr__logo" src="/assets/img/tp-logo.png" width="255" height="203" alt="Tokyo Prestige" loading="lazy">
         <p class="jp" lang="ja">東京からアデレードへ</p>
         <p class="ftr__big" style="margin-top:12px">${dealer.street}<br>${dealer.suburb} ${dealer.state} ${dealer.postcode}</p>
         <p style="margin-top:12px"><a class="link" href="${dealer.maps}" rel="noopener">Open in Maps ${icon.arrow.replace('class="arr"', 'class="arr" width="16" height="16"')}</a></p>

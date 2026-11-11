@@ -27,7 +27,14 @@ On a phone, cards sit two across, which cut the stock list from about 16 screens
 16 to 11. Every card has an Enquire button (Notify me on coming-soon cars) that lands on that car's instant
 form with the cursor in it. On the car page the year and kilometres now come before the form on a phone, and
 the longer form is folded under "More ways to enquire"; it opens by itself from Book a test drive, Hold and
-Video. `secondary-colour-options.png` shows six candidates for the secondary colour.
+Video.
+
+## Colour and logo
+
+60 / 30 / 10: near-black, steel graphite (the silver of their logo), and the logo's red (#d04034, measured
+from their own logo file). Every way to enquire or call is red. Their TP mark is in the header and the full
+logo in the footer; both were cut from `TP-HR-logo.png` on their site, which has a dark background baked in,
+so a clean vector from the dealer would be sharper.
 
 ## What is in this folder
 

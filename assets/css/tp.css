@@ -1505,18 +1505,18 @@ html:not([data-look="figures"]) .intro__skip {
 
 
 /* ==========================================================================
-   60 / 30 / 10. Near-black is the ground (60). Midnight blue, taken from the night sky in the hero
-   photos, is the secondary (30): cards, panels, form fields, the footer and every other band of the
-   page. Vermilion stays the accent (10): the main action, status and focus only.
+   60 / 30 / 10. Near-black is the ground (60). Steel graphite, the silver of the Tokyo Prestige
+   logo, is the secondary (30): cards, panels, form fields, the footer and every other band of the
+   page. The logo red is the accent (10): the main action, status and focus only.
    ========================================================================== */
 html:not([data-look="figures"]) {
-  --ink-1: #0c1222;
-  --ink-2: #111a2e;
-  --ink-3: #18233c;
-  --ink-4: #22304f;
-  --mid: #0e1528;
-  --line: rgba(150, 175, 255, 0.11);
-  --line-2: rgba(150, 175, 255, 0.22);
+  --ink-1: #111214;
+  --ink-2: #18191c;
+  --ink-3: #222428;
+  --ink-4: #2e3136;
+  --mid: #131416;
+  --line: rgba(225, 230, 240, 0.11);
+  --line-2: rgba(225, 230, 240, 0.22);
 }
 html:not([data-look="figures"]) .card,
 html:not([data-look="figures"]) .deal--side,
@@ -1537,7 +1537,7 @@ html:not([data-look="figures"]) .btn--quiet {
 }
 html:not([data-look="figures"]) .btn--ghost {
   border-color: var(--line-2);
-  background: rgba(150, 175, 255, 0.05);
+  background: rgba(225, 230, 240, 0.05);
 }
 html:not([data-look="figures"]) .chip span,
 html:not([data-look="figures"]) .hdr__call,
@@ -1546,7 +1546,7 @@ html:not([data-look="figures"]) .feat__ctl {
   border-color: var(--line-2);
 }
 html:not([data-look="figures"]) .find {
-  background: rgba(14, 21, 40, 0.82);
+  background: rgba(19, 20, 22, 0.82);
   border-color: var(--line-2);
 }
 html:not([data-look="figures"]) .find .select,
@@ -1565,10 +1565,10 @@ html:not([data-look="figures"]) main > .sec:nth-of-type(even) {
   padding-bottom: var(--s-10);
 }
 html:not([data-look="figures"]) .hdr::before {
-  background: rgba(9, 13, 24, 0.82);
+  background: rgba(12, 13, 14, 0.82);
 }
 html:not([data-look="figures"]) .flt {
-  background: rgba(9, 13, 24, 0.92);
+  background: rgba(12, 13, 14, 0.92);
 }
 @media (max-width: 899px) {
   html:not([data-look="figures"]) .find .select,
@@ -1734,167 +1734,67 @@ html:not([data-look="figures"]) .seal {
 
 
 /* ==========================================================================
-   Trying the secondary colour (the 30). A small picker on the page sets <html data-tone>: steel, warm,
-   blue (the default, as above) or paper. It is a demo control: once one is chosen, the others and the
-   picker come out.
+   The red is seen: every way to enquire or call is red, and so are the small labels that lead a section.
+   Their logo sits in the bar and the footer. Card titles are bold.
    ========================================================================== */
-
-html:not([data-look="figures"])[data-tone="steel"] {
-  --ink-1: #111214;
-  --ink-2: #18191c;
-  --ink-3: #222428;
-  --ink-4: #2e3136;
-  --mid: #131416;
-  --line: rgba(225, 230, 240, 0.11);
-  --line-2: rgba(225, 230, 240, 0.22);
+.brand__mark {
+  display: block;
+  height: 34px;
+  width: auto;
 }
-html:not([data-look="figures"])[data-tone="steel"] .find {
-  background: #131416d1;
+.ftr__logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin-bottom: var(--s-5);
 }
-html:not([data-look="figures"])[data-tone="steel"] .hdr::before {
-  background: #131416d1;
+html[data-look="figures"] .ftr__logo {
+  display: none;
 }
-html:not([data-look="figures"])[data-tone="steel"] .flt {
-  background: #131416eb;
+.card__title {
+  font-weight: 700;
 }
-html:not([data-look="figures"])[data-tone="steel"] .btn--ghost {
-  background: rgba(225, 230, 240, 0.05);
+html:not([data-look="figures"]) .card__title {
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
-
-html:not([data-look="figures"])[data-tone="warm"] {
-  --ink-1: #131312;
-  --ink-2: #1b1a18;
-  --ink-3: #252320;
-  --ink-4: #33302b;
-  --mid: #161514;
-  --line: rgba(255, 240, 220, 0.11);
-  --line-2: rgba(255, 240, 220, 0.22);
+html:not([data-look="figures"]) .card__ask,
+html:not([data-look="figures"]) .hdr__call {
+  background: var(--shu);
+  border-color: var(--shu);
+  color: #fff;
 }
-html:not([data-look="figures"])[data-tone="warm"] .find {
-  background: #161514d1;
+html:not([data-look="figures"]) .hdr__call svg {
+  color: #fff;
 }
-html:not([data-look="figures"])[data-tone="warm"] .hdr::before {
-  background: #161514d1;
-}
-html:not([data-look="figures"])[data-tone="warm"] .flt {
-  background: #161514eb;
-}
-html:not([data-look="figures"])[data-tone="warm"] .btn--ghost {
-  background: rgba(255, 240, 220, 0.05);
-}
-
-html:not([data-look="figures"])[data-tone="paper"] {
-  --ink-1: #101011;
-  --ink-2: #161617;
-  --ink-3: #1f1f21;
-  --ink-4: #2a2a2d;
-  --mid: #0c0c0d;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-2: rgba(255, 255, 255, 0.2);
-}
-html:not([data-look="figures"])[data-tone="paper"] .find,
-html:not([data-look="figures"])[data-tone="paper"] .hdr::before {
-  background: rgba(8, 8, 9, 0.82);
-}
-html:not([data-look="figures"])[data-tone="paper"] .flt {
-  background: rgba(8, 8, 9, 0.92);
-}
-/* the light surfaces: every other band of a page, and the panels people type into */
-html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even),
-html:not([data-look="figures"])[data-tone="paper"] .quick-wrap--inline,
-html:not([data-look="figures"])[data-tone="paper"] .deal--side,
-html:not([data-look="figures"])[data-tone="paper"] .est,
-html:not([data-look="figures"])[data-tone="paper"] .enq,
-html:not([data-look="figures"])[data-tone="paper"] .form {
-  background: #efece6;
-  color: #111110;
-  --text: #111110;
-  --text-2: #4a4944;
-  --text-3: #6b6a64;
-  --night: #efece6;
-  --ink-1: #f6f4ef;
-  --ink-2: #ffffff;
-  --ink-3: #e7e3da;
-  --ink-4: #dad5ca;
-  --line: rgba(17, 17, 16, 0.12);
-  --line-2: rgba(17, 17, 16, 0.25);
-  --shu-t: #b93227;
-}
-html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even) .btn--ghost,
-html:not([data-look="figures"])[data-tone="paper"] .deal--side .btn--ghost {
-  background: transparent;
-}
-html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even) .btn:not(.btn--shu):not(.btn--ghost):not(.btn--quiet) {
-  --bg: #111110;
-  --fg: #ffffff;
-}
-/* labels that sit on a photo keep their own dark chip and light text */
-html:not([data-look="figures"])[data-tone="paper"] .card__top .status,
-html:not([data-look="figures"])[data-tone="paper"] .tile__txt,
-html:not([data-look="figures"])[data-tone="paper"] .tile__txt b {
-  color: #f3f2ee;
-}
-html:not([data-look="figures"])[data-tone="paper"] .card__top .card__tag {
-  background: #ffffff;
-  color: #111110;
-}
-html:not([data-look="figures"])[data-tone="paper"] .chip input:checked + span {
-  background: #111110;
-  border-color: #111110;
-  color: #ffffff;
-}
-html:not([data-look="figures"])[data-tone="paper"] .card__ask:hover {
-  background: #111110;
-  color: #ffffff;
-}
-
-/* the picker */
-.tone {
-  position: fixed;
-  z-index: 60;
-  left: 12px;
-  bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 8px 6px 12px;
-  border-radius: 999px;
-  background: rgba(20, 20, 22, 0.92);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 8px 30px rgba(0, 0, 0, 0.5);
-  color: #f3f2ee;
-  font-size: 12px;
-}
-.has-dock .tone {
-  bottom: 84px;
-}
-@media (min-width: 1000px) {
-  .has-dock .tone {
-    bottom: 12px;
+@media (hover: hover) {
+  html:not([data-look="figures"]) .card__ask:hover,
+  html:not([data-look="figures"]) .hdr__call:hover {
+    background: #dc4a3e;
+    border-color: #dc4a3e;
+    color: #fff;
   }
 }
-.tone button {
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: none;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
+html:not([data-look="figures"]) .eyebrow {
+  color: var(--shu-t);
 }
-.tone button i {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--sw);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+html:not([data-look="figures"]) .card__top .card__tag:not(.card__tag--quiet) {
+  background: var(--shu);
+  color: #fff;
 }
-.tone button[aria-pressed="true"] i {
-  box-shadow: 0 0 0 2px #141416, 0 0 0 4px #f3f2ee;
+html:not([data-look="figures"]) .chip input:checked + span {
+  background: var(--shu);
+  border-color: var(--shu);
+  color: #fff;
 }
-html[data-look="figures"] .tone {
-  display: none;
+html:not([data-look="figures"]) .nav a[aria-current="page"] {
+  color: var(--shu-t);
+}
+html:not([data-look="figures"]) .ftr {
+  border-top: 2px solid var(--shu);
+}
+html[data-look="figures"] .card__ask {
+  background: var(--shu);
+  border-color: var(--shu);
+  color: #fff;
 }
