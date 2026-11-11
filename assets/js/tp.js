@@ -1,0 +1,172 @@
+// Tokyo Prestige: shared behaviour. Every page is complete without this file; it adds the motion.
+(() => {
+  "use strict";
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  // header: clear over a hero, solid once the page moves
+  const hdr = document.querySelector("[data-hdr]");
+  if (hdr && !hdr.classList.contains("hdr--solid")) {
+    const set = () => hdr.classList.toggle("is-solid", scrollY > 24);
+    set();
+    addEventListener("scroll", set, { passive: true });
+  }
+
+  // phone menu: Escape closes it, and it closes if the screen widens
+  const menu = document.querySelector("[data-menu]");
+  if (menu) {
+    addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary").focus();
+      }
+    });
+    menu.addEventListener("toggle", () => {
+      document.documentElement.style.overflow = menu.open ? "hidden" : "";
+      if (menu.open) hdr?.classList.add("is-solid");
+      else if (hdr && !hdr.classList.contains("hdr--solid")) hdr.classList.toggle("is-solid", scrollY > 24);
+    });
+    matchMedia("(min-width: 1100px)").addEventListener("change", (e) => e.matches && (menu.open = false));
+  }
+
+  // reveals: play once as a block comes into view
+  const reveals = $$("[data-reveal]");
+  if (calm || !("IntersectionObserver" in window)) reveals.forEach((el) => el.classList.add("is-in"));
+  else {
+    const io = new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }),
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  }
+
+  // numbers count to their value once (the value is already in the page)
+  const counts = $$("[data-count]");
+  if (counts.length && !calm && "IntersectionObserver" in window) {
+    const fmt = new Intl.NumberFormat("en-AU");
+    const io = new IntersectionObserver(
+      (es) =>
+        es.forEach((e) => {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          const el = e.target;
+          const to = Number(el.dataset.count);
+          const from = Number(el.dataset.from ?? (to > 3000 ? to * 0.94 : to > 1900 ? to - 12 : 0));
+          const plain = el.hasAttribute("data-plain");
+          const pre = el.dataset.pre || "";
+          const t0 = performance.now();
+          const dur = 1100;
+          const step = (t) => {
+            const p = Math.min(1, (t - t0) / dur);
+            const v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 4)));
+            el.textContent = pre + (plain ? v : fmt.format(v));
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }),
+      { threshold: 0.6 },
+    );
+    counts.forEach((el) => io.observe(el));
+  }
+
+  // stock cards: the photo eases through the car's angles, on hover with a mouse,
+  // or once as the card passes the middle of a phone screen. Extra photos load only then.
+  const cards = $$("[data-card]");
+  const prep = (card) => {
+    if (card._imgs) return card._imgs;
+    const shot = card.querySelector(".card__shot");
+    const first = shot.querySelector("img");
+    const id = card.dataset.id;
+    const imgs = [first];
+    card.dataset.angles
+      .split(",")
+      .slice(1)
+      .forEach((n) => {
+        const im = new Image();
+        im.decoding = "async";
+        im.alt = "";
+        im.width = first.width;
+        im.height = first.height;
+        im.sizes = first.sizes;
+        im.srcset = `/img/cars/${id}/${n}-480.avif 480w, /img/cars/${id}/${n}-960.avif 960w`;
+        im.src = `/img/cars/${id}/${n}-480.avif`;
+        first.after(im);
+        imgs.push(im);
+      });
+    // put them in order after the first
+    imgs.slice(1).forEach((im) => shot.insertBefore(im, shot.querySelector(".card__top")));
+    card._imgs = imgs;
+    card._i = 0;
+    return imgs;
+  };
+  const show = (card, i) => {
+    const imgs = prep(card);
+    const next = imgs[i];
+    const go = () => {
+      imgs.forEach((im, k) => {
+        im.classList.toggle("is-on", k === i && k !== 0);
+        if (k === 0) im.classList.toggle("is-off", i !== 0);
+      });
+      $$(".card__ticks i", card).forEach((t, k) => t.classList.toggle("is-on", k === i));
+      card._i = i;
+    };
+    if (next.complete && next.naturalWidth) go();
+    else next.addEventListener("load", go, { once: true });
+  };
+  if (cards.length && !calm) {
+    if (fine) {
+      cards.forEach((card) => {
+        let timer = 0;
+        const stop = () => {
+          clearInterval(timer);
+          timer = 0;
+          if (card._imgs) show(card, 0);
+        };
+        card.addEventListener("pointerenter", () => {
+          const n = card.dataset.angles.split(",").length;
+          if (n < 2 || timer) return;
+          prep(card);
+          let i = 0;
+          timer = setInterval(() => show(card, (i = (i + 1) % n)), 1150);
+          setTimeout(() => timer && show(card, (i = 1)), 180);
+        });
+        card.addEventListener("pointerleave", stop);
+      });
+    } else if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach((e) => {
+            const card = e.target;
+            if (e.isIntersecting) {
+              card.classList.add("is-seen");
+              const n = card.dataset.angles.split(",").length;
+              if (n < 3 || card._played) return;
+              card._played = true;
+              card.querySelector(".card__ticks").style.opacity = 1;
+              setTimeout(() => show(card, 2), 500);
+              setTimeout(() => show(card, 0), 2600);
+            } else card.classList.remove("is-seen");
+          }),
+        { rootMargin: "-38% 0px -38% 0px" },
+      );
+      cards.forEach((c) => io.observe(c));
+    }
+  }
+
+  // a car's photo travels from its card to its page (where the browser supports it)
+  if (!calm && "startViewTransition" in document) {
+    addEventListener("click", (e) => {
+      const a = e.target.closest?.("[data-card] a, a.hero__plate");
+      if (!a) return;
+      const img = a.closest("[data-card]")?.querySelector(".card__shot img");
+      $$("[style*='view-transition-name']").forEach((el) => (el.style.viewTransitionName = ""));
+      if (img) img.style.viewTransitionName = "car-photo";
+    });
+  }
+})();
