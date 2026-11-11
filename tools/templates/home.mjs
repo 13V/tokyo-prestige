@@ -79,13 +79,15 @@ export function home() {
 <section class="hero" data-hero aria-labelledby="hero-h">
   <div class="hero__stage" aria-hidden="true">
     <div class="hero__frame" data-frame>${feats.map(slide).join("")}
-      <video class="hero__air" data-air muted loop playsinline preload="none" data-src="/img/hero/air.mp4" tabindex="-1"></video>
+      <video class="intro__wake" data-intro-wake muted playsinline preload="none" data-src="/img/hero/wake.mp4" tabindex="-1"></video>
       <span class="hero__torch" data-torch></span>
     </div>
+    <video class="intro__run" data-intro-run muted playsinline preload="none" data-src="/img/hero/run.mp4" tabindex="-1"></video>
     <div class="hero__shade"></div>
   </div>
 
   <div class="wrap hero__in">
+    <button class="intro__skip" type="button" data-intro-skip hidden>Skip intro</button>
     <div class="hero__copy">
       <p class="jp hero__jp" lang="ja" data-hero-line style="--i:0">東京からアデレードへ</p>
       <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked Japanese imports.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
@@ -236,6 +238,6 @@ ${figuresHero}
     solidHeader: false,
     css: ["/assets/css/home.css"],
     js: ["/assets/js/home.js"],
-    head: `<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
+    head: `<script>!function(d){try{var c=navigator.connection;if(d.dataset.look!=="figures"&&!sessionStorage.getItem("tp-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!(c&&c.saveData))d.classList.add("intro")}catch(e){}}(document.documentElement)</script>\n<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
   });
 }

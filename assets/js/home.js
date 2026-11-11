@@ -51,7 +51,7 @@
   let at = 0;
   let busy = false;
   const mine = () => document.documentElement.dataset.look !== "figures"; // this hero belongs to the dark look
-  let paused = calm || !mine();
+  let paused = calm || !mine() || document.documentElement.classList.contains("intro");
   let userPaused = false;
   let run = null; // the progress animation on the active bar
 
@@ -163,7 +163,7 @@
 
   // it rests while it is hovered, focused, off screen or in a hidden tab, and there is a pause button
   const setPaused = () => {
-    const p = calm || userPaused || hovering || focused || !visible || document.hidden || !mine();
+    const p = calm || userPaused || hovering || focused || !visible || document.hidden || !mine() || document.documentElement.classList.contains("intro");
     if (p === paused) return;
     paused = p;
     if (run) paused ? run.pause() : run.play();
@@ -191,25 +191,57 @@
     setTimeout(progress, 2600);
   }
 
-  // the light passing through the room: fetched only once the page has loaded, never with reduced
-  // motion or data saving on, and it plays only while the hero is on screen in the dark look
-  const air = $("[data-air]", hero);
-  if (air && !calm && !(navigator.connection && navigator.connection.saveData)) {
-    let got = false;
-    const airSet = () => {
-      const on = mine() && visible && !document.hidden;
-      if (on && !got) {
-        got = true;
-        air.src = air.dataset.src;
-        air.addEventListener("playing", () => air.classList.add("is-on"), { once: true });
-      }
-      if (!got) return;
-      on ? air.play().catch(() => {}) : air.pause();
+  // the intro, once per visit (the page head decides whether to try it and sets html.intro)
+  const root = document.documentElement;
+  const runV = $("[data-intro-run]", hero);
+  const wakeV = $("[data-intro-wake]", hero);
+  const skip = $("[data-intro-skip]", hero);
+  if (root.classList.contains("intro") && runV && wakeV) {
+    let over = false;
+    const end = (played) => {
+      if (over) return;
+      over = true;
+      try {
+        sessionStorage.setItem("tp-intro", "1");
+      } catch (e) {}
+      skip.hidden = true;
+      if (played) root.classList.add("intro-done");
+      root.classList.remove("intro");
+      runV.classList.remove("is-on");
+      wakeV.classList.remove("is-on");
+      setTimeout(() => {
+        root.classList.remove("intro-done");
+        runV.remove();
+        wakeV.remove();
+      }, 1100);
+      removeEventListener("scroll", onScroll);
+      setPaused();
     };
-    addEventListener("load", () => setTimeout(airSet, 1800), { once: true });
-    document.addEventListener("visibilitychange", airSet);
-    document.addEventListener("tp:look", airSet);
-    new IntersectionObserver(() => setTimeout(airSet, 0), { threshold: 0.35 }).observe(hero);
+    const onScroll = () => scrollY > 120 && end(true);
+    const can = (v) =>
+      new Promise((res) => {
+        v.addEventListener("canplaythrough", () => res(true), { once: true });
+        v.addEventListener("error", () => res(false), { once: true });
+        v.preload = "auto";
+        v.src = v.dataset.src;
+        v.load();
+      });
+    Promise.race([Promise.all([can(runV), can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 4000))]).then((ok) => {
+      if (over) return;
+      if (!ok || ok.includes(false)) return end(false);
+      skip.hidden = false;
+      runV.classList.add("is-on");
+      runV.play().catch(() => end(false));
+      runV.addEventListener("ended", () => {
+        wakeV.classList.add("is-on");
+        runV.classList.remove("is-on");
+        wakeV.play().catch(() => end(true));
+      });
+      wakeV.addEventListener("ended", () => end(true));
+    });
+    skip.addEventListener("click", () => end(true));
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("keydown", (e) => e.key === "Escape" && end(true));
   }
 
   // on a phone, a swipe across the photo changes the car

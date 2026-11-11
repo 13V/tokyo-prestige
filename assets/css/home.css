@@ -110,22 +110,61 @@
   transition: opacity 400ms var(--ease);
 }
 /* a torch that follows the pointer across the dark showroom (desktop, set by home.js) */
-/* Headlights from the road pass through the dark room: a clip of light alone on black, screened over the
-   photo so it can only brighten it. The car underneath is still the dealer's own photograph. */
-.hero__air {
+/* The intro, once per visit: a night run down a Tokyo expressway falls to black, then the car wakes in the
+   dark showroom and the clip hands over to the page on its last frame, which is the dealer's own photo as
+   the hero shows it. Both clips are generated (Higgsfield); every other image on the site is as taken.
+   If the clips are not ready within a few seconds the hero simply opens as it always has. */
+.intro__run,
+.intro__wake {
   position: absolute;
   inset: 0;
-  z-index: 2;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: screen;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 1600ms var(--ease-io);
 }
-.hero__air.is-on {
-  opacity: 0.58;
+.intro__run {
+  z-index: 3;
+  transition: opacity 700ms var(--ease-io);
+}
+.intro__wake {
+  z-index: 2;
+  transition: opacity 900ms var(--ease-io);
+}
+.intro__run.is-on,
+.intro__wake.is-on {
+  opacity: 1;
+}
+/* lights off while the clips are fetched, and while they play */
+html.intro .hs,
+html.intro .hero__torch {
+  visibility: hidden !important;
+}
+/* when the clip hands over, the hero is already in its lit state: no second reveal */
+html.intro-done .hero__stage * {
+  animation-duration: 1ms !important;
+  animation-delay: 0s !important;
+}
+.intro__skip {
+  position: absolute;
+  z-index: 6;
+  top: calc(var(--bar-h) + 12px);
+  right: var(--gutter);
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  background: rgba(6, 6, 7, 0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font: inherit;
+  font-size: var(--t-13);
+  cursor: pointer;
+}
+.intro__skip[hidden] {
+  display: none;
 }
 .hero__torch {
   position: absolute;

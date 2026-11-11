@@ -1328,7 +1328,7 @@ textarea.input {
   padding: 0 18px;
   font-size: var(--t-14);
 }
-@media (max-width: 1239px) {
+@media (max-width: 1399px) {
   .hdr .look:not(.look--menu) {
     display: none;
   }
