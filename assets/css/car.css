@@ -16,6 +16,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  min-width: 44px;
   color: var(--text-2);
   text-decoration: none;
 }
@@ -268,6 +269,10 @@
   display: grid;
   gap: 8px;
   margin-top: var(--s-2);
+}
+/* on a phone the sticky bar carries the actions, so the inline copy is not repeated */
+.deal--inline .deal__acts {
+  display: none;
 }
 .deal--side {
   position: sticky;

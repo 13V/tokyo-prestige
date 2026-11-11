@@ -4,6 +4,7 @@
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".mjs": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml", ".avif": "image/avif", ".webp": "image/webp", ".jpg": "image/jpeg", ".png": "image/png", ".woff2": "font/woff2", ".mp4": "video/mp4", ".ico": "image/x-icon" };
@@ -21,7 +22,13 @@ http
         return res.end(fs.existsSync(path.join(ROOT, "404.html")) ? fs.readFileSync(path.join(ROOT, "404.html")) : "Not found");
       }
       const ext = path.extname(f);
-      res.writeHead(200, { "content-type": TYPES[ext] || "application/octet-stream", "cache-control": ext === ".html" ? "no-cache" : "public, max-age=600" });
+      const head = { "content-type": TYPES[ext] || "application/octet-stream", "cache-control": ext === ".html" ? "no-cache" : "public, max-age=600" };
+      // text is compressed, as Vercel does
+      if ([".html", ".css", ".js", ".json", ".svg"].includes(ext) && /gzip/.test(req.headers["accept-encoding"] || "")) {
+        head["content-encoding"] = "gzip";
+        buf = zlib.gzipSync(buf);
+      }
+      res.writeHead(200, head);
       res.end(buf);
     });
   })

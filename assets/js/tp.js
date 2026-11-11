@@ -159,6 +159,38 @@
     }
   }
 
+  // plain forms (contact, servicing, finance, stock alert): check name and a way to reply, then thank.
+  // HOOK: when a form's data-endpoint is set, POST its fields there and thank only on a 200.
+  $$("form[data-form]").forEach((form) => {
+    const okContact = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || v.replace(/[^\d]/g, "").length >= 8;
+    const rule = (el) => (el.name === "contact" || el.type === "tel" ? okContact(el.value.trim()) : el.type === "email" ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()) : el.value.trim().length > 1);
+    const check = (el) => {
+      const ok = rule(el);
+      el.setAttribute("aria-invalid", ok ? "false" : "true");
+      const err = el.parentElement.querySelector(".field__err");
+      if (err) err.hidden = ok;
+      return ok;
+    };
+    const required = $$("[required]", form);
+    required.forEach((el) => el.addEventListener("input", () => el.getAttribute("aria-invalid") === "true" && check(el)));
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const bad = required.filter((el) => !check(el));
+      if (bad.length) return bad[0].focus();
+      const who = (form.elements.name?.value || "").trim().split(/\s+/)[0];
+      const done = document.createElement("div");
+      done.className = "form__done";
+      done.tabIndex = -1;
+      done.innerHTML = `<span class="form__seal" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3.5 9.5 3.5 3.5 7.5-8"/></svg></span><h3 class="h3"></h3><p class="lede"></p><p class="ph__tag">Demo: nothing was sent</p>`;
+      done.querySelector("h3").textContent = who ? `Thanks, ${who}.` : "Thanks.";
+      done.querySelector("p").textContent = form.dataset.done || "The team will be in touch during opening hours.";
+      form.hidden = true;
+      form.after(done);
+      done.focus({ preventScroll: true });
+      done.scrollIntoView({ block: "center", behavior: calm ? "auto" : "smooth" });
+    });
+  });
+
   // a car's photo travels from its card to its page (where the browser supports it)
   if (!calm && "startViewTransition" in document) {
     addEventListener("click", (e) => {

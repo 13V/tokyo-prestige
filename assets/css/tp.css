@@ -175,6 +175,9 @@ button {
   background: var(--shu);
   color: var(--shu-ink);
 }
+[hidden] {
+  display: none !important;
+}
 .vh {
   position: absolute;
   width: 1px;
@@ -353,6 +356,11 @@ button {
   text-decoration: none;
   background: linear-gradient(currentColor, currentColor) 0 calc(100% - 9px) / 100% 1px no-repeat;
   transition: background-size var(--d-state) var(--ease);
+}
+.link svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
 }
 @media (hover: hover) {
   .link:hover {
@@ -974,6 +982,107 @@ textarea.input {
   }
 }
 
+/* ---------- a plain form (contact, servicing, finance, stock alert); tp.js validates it ---------- */
+.form {
+  display: grid;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+}
+.form__two {
+  display: grid;
+  gap: var(--s-4);
+}
+.form__set {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.form__set legend {
+  padding: 0;
+  margin-bottom: 8px;
+  font-size: var(--t-13);
+  font-weight: 500;
+  color: var(--text-2);
+}
+.form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.form__go {
+  justify-content: space-between;
+}
+.form__done {
+  display: grid;
+  gap: var(--s-3);
+  justify-items: start;
+  padding: var(--s-6) var(--s-5);
+  background: var(--ink-1);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-2);
+}
+.form__done:focus {
+  outline: none;
+}
+.form__seal {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--shu);
+  color: var(--shu-ink);
+  border-radius: var(--r);
+}
+.form__seal svg {
+  width: 24px;
+  height: 24px;
+}
+.fine {
+  color: var(--text-3);
+  font-size: var(--t-13);
+  line-height: 1.5;
+  max-width: 70ch;
+}
+.fine a {
+  color: var(--text-2);
+}
+@media (min-width: 600px) {
+  .form {
+    padding: var(--s-6);
+  }
+  .form__two {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form__go {
+    justify-self: start;
+    min-width: 220px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .form__done {
+    animation: form-done 600ms var(--ease) both;
+  }
+  .form__done .form__seal {
+    animation: form-seal 700ms var(--spring) 120ms both;
+  }
+  @keyframes form-done {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+  @keyframes form-seal {
+    from {
+      opacity: 0;
+      transform: scale(1.6) rotate(-8deg);
+    }
+  }
+}
+
 /* ---------- sections ---------- */
 .sec {
   padding-block: var(--s-10);
@@ -1044,7 +1153,7 @@ textarea.input {
   color: var(--text);
 }
 .ftr li a {
-  min-height: 40px;
+  min-height: 44px;
 }
 .ftr__big {
   font-size: var(--t-28);

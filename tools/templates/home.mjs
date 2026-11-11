@@ -1,51 +1,80 @@
-import { cars, card, dealer, esc, icon, km, layout, money, carUrl, KATAKANA } from "../lib.mjs";
+import { cars, card, dealer, esc, icon, km, layout, money, carUrl, photo, KATAKANA } from "../lib.mjs";
+
+// The four cars in the hero: one for each kind of buyer. Each has a hand-traced outline in assets/img/
+// (mask-<stock no>.svg) and the position of its headlight, so the light lands where the lamp is.
+const FEATURED = [
+  { id: "512", lamp: [70, 49] }, // Skyline GT-R BNR34
+  { id: "1412", lamp: [77, 54] }, // Century GZG50
+  { id: "1452", lamp: [64, 52] }, // Crown Hybrid G-Executive
+  { id: "9974441", lamp: [72, 43] }, // Alphard Hybrid
+];
+const SIZES = "(min-width: 900px) 133vh, 88vh";
+const srcset = (id) => [800, 1280, 1920].map((w) => `/img/hero/${id}-${w}.avif ${w}w`).join(", ");
 
 export function home() {
-  const hero = cars.find((c) => c.id === "512"); // 2001 Skyline GT-R BNR34: their photo, their price
-  const inYard = cars.filter((c) => c.status !== "coming-soon");
+  const feats = FEATURED.map((f) => ({ ...f, car: cars.find((c) => c.id === f.id) }));
   const available = cars.filter((c) => c.status === "available");
   const soon = cars.filter((c) => c.status === "coming-soon");
   const makes = [...new Set(available.map((c) => c.make))].sort();
   const bodies = [...new Set(available.map((c) => c.body))].sort();
   const count = (fn) => available.filter(fn).length;
-  // a small index for the live count in the search: make, body, price, status, searchable text
-  const index = available.map((c) => [c.make, c.body, c.price || 0, c.status === "available" ? 1 : 0, [c.make, c.model, c.modelCode, c.grade, c.year, c.body].filter(Boolean).join(" ").toLowerCase()]);
-  const fresh = [
-    ...available.filter((c) => c.badge === "Just Arrived"),
-    ...available.filter((c) => ["9942778", "1412", "1453", "1365", "1452", "1442"].includes(c.id)),
-  ].slice(0, 8);
+  const index = available.map((c) => [c.make, c.body, c.price || 0, 1, [c.make, c.model, c.modelCode, c.grade, c.year, c.body].filter(Boolean).join(" ").toLowerCase()]);
+  const fresh = [...available.filter((c) => c.badge === "Just Arrived"), ...available.filter((c) => ["9942778", "1453", "1365", "1442", "1448", "1355"].includes(c.id))].slice(0, 8);
+  const first = feats[0].car;
+  const featData = feats.map(({ car: c }) => ({ url: carUrl(c), jp: KATAKANA[c.model] || "", title: `${c.year} ${c.make} ${c.model}`, code: c.modelCode, km: km(c.km), price: money(c.price), note: c.priceNote.toLowerCase() }));
+  const BODY_ORDER = ["Sedan", "SUV & 4WD", "Wagon", "People mover", "Coupe", "Hatch", "Kei truck", "Convertible"];
+  const bodyTiles = BODY_ORDER.map((b) => ({ b, list: available.filter((c) => c.body === b) })).filter((x) => x.list.length);
+  const soonPick = ["1463", "1482", "1406", "1476", "1493", "1334", "1509", "1497"].map((id) => soon.find((c) => c.id === id)).filter(Boolean);
+
+  const imgAttrs = (id, i) => (i === 0 ? `src="/img/hero/${id}-1280.avif" srcset="${srcset(id)}"` : `data-src="/img/hero/${id}-1280.avif" data-srcset="${srcset(id)}"`);
+  const slide = ({ id, lamp, car: c }, i) => `
+      <div class="hs${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
+        <img class="hs__room" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">
+        <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
+        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-${id}.svg);mask-image:url(/assets/img/mask-${id}.svg)">
+          <img class="hs__img" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt="" decoding="async">
+          <span class="hs__beam"></span>
+        </div>
+        <span class="hs__lamp"></span>
+      </div>`;
 
   const body = `
 <section class="hero" data-hero aria-labelledby="hero-h">
   <div class="hero__stage" aria-hidden="true">
-    <div class="hero__frame">
-      <img class="hero__img hero__img--room" src="/img/hero/gtr-1280.avif" srcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" sizes="(min-width: 900px) 133vh, 88vh" width="2560" height="1920" alt="" fetchpriority="high" decoding="async">
-      <div class="hero__car">
-        <img class="hero__img hero__img--car" src="/img/hero/gtr-1280.avif" srcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" sizes="(min-width: 900px) 133vh, 88vh" width="2560" height="1920" alt="" decoding="async">
-        <div class="hero__beam"></div>
-      </div>
-      <div class="hero__lamp"></div>
+    <div class="hero__frame" data-frame>${feats.map(slide).join("")}
+      <span class="hero__torch" data-torch></span>
     </div>
     <div class="hero__shade"></div>
   </div>
 
   <div class="wrap hero__in">
-    <a class="hero__plate" href="${carUrl(hero)}" data-reveal style="--i:9">
-      <span class="jp" lang="ja">${KATAKANA[hero.model]}</span>
-      <span class="hero__plate-row"><span class="code">${hero.modelCode}</span><span class="num">${hero.year}</span><span class="num">${km(hero.km)} km</span></span>
-      <span class="hero__plate-name">Nissan ${esc(hero.model)}</span>
-      <span class="hero__plate-row"><b class="num">${money(hero.price)}</b><small>${esc(hero.priceNote.toLowerCase())}</small></span>
-      <span class="hero__plate-go">View this car ${icon.arrow}</span>
-    </a>
-
     <div class="hero__copy">
       <p class="jp hero__jp" lang="ja" data-hero-line style="--i:0">東京からアデレードへ</p>
       <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked in Japan.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
       <p class="lede hero__lede" data-hero-line style="--i:3"><span class="num">${available.length}</span> cars to see today at Marryatville, <span class="num">${soon.length}</span> more on the way. Serviced, complied and ready to register.</p>
     </div>
 
-    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find data-hero-line style="--i:4">
-      <input type="hidden" name="status" value="available">
+    <div class="feat" data-feat data-hero-line style="--i:4" role="group" aria-roledescription="carousel" aria-label="Featured cars">
+      <div class="feat__nav">
+        <span class="feat__idx code num"><b data-f="idx">01</b> / 0${feats.length}</span>
+        <div class="feat__bars">
+          ${feats.map(({ car: c }, i) => `<button class="feat__bar${i === 0 ? " is-on" : ""}" type="button" data-feat-go="${i}" aria-label="Show the ${esc(c.make)} ${esc(c.model)}"${i === 0 ? ' aria-current="true"' : ""}><i></i></button>`).join("")}
+        </div>
+        <button class="feat__ctl feat__ctl--prev" type="button" data-feat-prev aria-label="Previous car">${icon.chev}</button>
+        <button class="feat__ctl" type="button" data-feat-next aria-label="Next car">${icon.chev}</button>
+        <button class="feat__ctl feat__ctl--play" type="button" data-feat-toggle aria-label="Pause the featured cars" hidden><span></span></button>
+      </div>
+      <a class="feat__car" href="${carUrl(first)}" data-feat-link>
+        <span class="feat__name"><span class="jp" lang="ja" data-f="jp">${KATAKANA[first.model] || ""}</span><span class="feat__title" data-f="title">${first.year} ${esc(first.make)} ${esc(first.model)}</span></span>
+        <span class="feat__fact"><small>Model code</small><b class="feat__codev" data-f="code">${esc(first.modelCode)}</b></span>
+        <span class="feat__fact"><small>Kilometres</small><b class="num" data-f="km">${km(first.km)}</b></span>
+        <span class="feat__fact feat__fact--price"><small data-f="note">${esc(first.priceNote.toLowerCase())}</small><b class="num" data-f="price">${money(first.price)}</b></span>
+        <span class="feat__go"><span>View this car</span>${icon.arrow}</span>
+      </a>
+    </div>
+    <script type="application/json" id="feat-data">${JSON.stringify(featData)}</script>
+
+    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find data-hero-line style="--i:5">
       <div class="find__q">
         <label class="vh" for="q">Model, grade or model code</label>
         ${icon.search}
@@ -80,14 +109,83 @@ export function home() {
 
 <section class="sec" aria-labelledby="fresh-h">
   <div class="wrap">
-    <div class="sec__head">
-      <p class="eyebrow" data-reveal>In the showroom now</p>
-      <h2 class="h2" id="fresh-h" data-reveal style="--i:1">Just arrived, and worth a look.</h2>
+    <div class="sec__head sec__head--row">
+      <div class="sec__head-t"><p class="eyebrow" data-reveal>In the showroom now</p>
+      <h2 class="h2" id="fresh-h" data-reveal style="--i:1">Just arrived, and worth a look.</h2></div>
+      <a class="btn btn--ghost" href="/stock" data-reveal style="--i:2">See all ${available.length} cars ${icon.arrow}</a>
     </div>
     <div class="cards" data-cards>
       ${fresh.map((c, i) => card(c).replace("<article", `<article data-reveal style="--i:${i % 4}"`)).join("\n")}
     </div>
-    <p style="margin-top:32px" data-reveal><a class="btn btn--ghost" href="/stock">See all ${available.length} cars ${icon.arrow}</a></p>
+  </div>
+</section>
+
+<section class="sec sec--tight" aria-labelledby="body-h">
+  <div class="wrap">
+    <div class="sec__head"><p class="eyebrow" data-reveal>Start with a shape</p><h2 class="h2" id="body-h" data-reveal style="--i:1">What are you after?</h2></div>
+    <ul class="tiles">
+      ${bodyTiles
+        .map(({ b, list }, i) => {
+          const c = list.find((x) => x.price) || list[0];
+          const from = Math.min(...list.filter((x) => x.price).map((x) => x.price));
+          return `<li data-reveal style="--i:${i % 4}"><a class="tile" href="/stock?body=${encodeURIComponent(b)}"><span class="tile__pic shot">${photo(c, 1, { sizes: "(min-width: 900px) 24vw, 46vw", max: 960, alt: "" })}</span><span class="tile__txt"><b>${esc(b)}</b><span class="num">${list.length} ${list.length === 1 ? "car" : "cars"}${Number.isFinite(from) ? `, from ${money(from)}` : ""}</span></span></a></li>`;
+        })
+        .join("\n      ")}
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="why-h">
+  <div class="wrap why">
+    <div class="why__head">
+      <p class="eyebrow" data-reveal>Why buy here</p>
+      <h2 class="h2" id="why-h" data-reveal style="--i:1">Skip the import process. The car is already here.</h2>
+      <p class="lede" data-reveal style="--i:2">Tokyo Prestige sources, imports and complies the cars, then puts them on a showroom floor five minutes from the city. You see and drive the car before you buy it.</p>
+      <p data-reveal style="--i:3"><a class="btn btn--ghost" href="/importing">How importing works ${icon.arrow}</a></p>
+    </div>
+    <ol class="why__list">
+      <li data-reveal><span class="code">01</span><div><h3>Clear title, every car</h3><p>Guaranteed free from any ownership or finance issues.</p></div></li>
+      <li data-reveal style="--i:1"><span class="code">02</span><div><h3>An odometer you can check</h3><p>An original deregistration certificate for vehicles Tokyo Prestige sources, and a guaranteed reading on the ones it imports directly.</p></div></li>
+      <li data-reveal style="--i:2"><span class="code">03</span><div><h3>Workshop checked</h3><p>Fully serviced by the dealership's own mechanics, and complied ready for registration.</p></div></li>
+      <li data-reveal style="--i:3"><span class="code">04</span><div><h3>Inspect it your way</h3><p>Third-party inspections are welcome, and video inspections show you every detail from anywhere.</p></div></li>
+      <li data-reveal style="--i:4"><span class="code">05</span><div><h3>Warranty, 1 to 5 years</h3><p>Extended warranty options, on top of the statutory warranty where it applies.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec--tight" aria-labelledby="soon-h">
+  <div class="wrap">
+    <div class="sec__head sec__head--row">
+      <div class="sec__head-t"><p class="eyebrow" data-reveal>On the way from Japan</p>
+      <h2 class="h2" id="soon-h" data-reveal style="--i:1">${soon.length} more cars coming soon.</h2>
+      <p class="lede" data-reveal style="--i:2">Spotted one you want? Ask to be told when it lands.</p></div>
+      <a class="btn btn--ghost" href="/coming-soon" data-reveal style="--i:3">See what is coming ${icon.arrow}</a>
+    </div>
+    <div class="cards">
+      ${soonPick.map((c, i) => card(c).replace("<article", `<article data-reveal style="--i:${i % 4}"`)).join("\n")}
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="visit-h">
+  <div class="wrap visit">
+    <figure class="visit__pic shot" data-reveal><img src="/img/site/yard-dusk-800.avif" srcset="/img/site/yard-dusk-800.avif 800w, /img/site/yard-dusk-1600.avif 1600w" sizes="(min-width: 900px) 56vw, 100vw" width="2560" height="1707" alt="The Tokyo Prestige showroom on Kensington Road, Marryatville, at dusk" loading="lazy" decoding="async"></figure>
+    <div class="visit__txt">
+      <p class="eyebrow" data-reveal>Visit the showroom</p>
+      <h2 class="h2" id="visit-h" data-reveal style="--i:1">Five minutes east of the city.</h2>
+      <dl class="visit__dl" data-reveal style="--i:2">
+        <div><dt>Address</dt><dd>${dealer.street}<br>${dealer.suburb} ${dealer.state} ${dealer.postcode}</dd></div>
+        <div><dt>Hours</dt><dd>${dealer.hours.map(([d, h]) => `${d}: ${h}`).join("<br>")}</dd></div>
+        <div><dt>Licence</dt><dd>Licensed second-hand vehicle dealer ${dealer.licence}</dd></div>
+      </dl>
+      <p class="visit__acts" data-reveal style="--i:3"><a class="btn btn--shu" href="tel:${dealer.tel}">${icon.phone} Call ${dealer.phone}</a><a class="btn btn--ghost" href="${dealer.maps}" rel="noopener">${icon.pin} Directions</a></p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:32px">
+    <div class="ph" data-reveal>
+      <span class="ph__tag">Placeholder: reviews</span>
+      <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown because none could be read for this demo. See research/gaps.md.</p>
+    </div>
   </div>
 </section>
 `;
@@ -99,6 +197,6 @@ export function home() {
     solidHeader: false,
     css: ["/assets/css/home.css"],
     js: ["/assets/js/home.js"],
-    head: `<link rel="preload" as="image" href="/img/hero/gtr-1280.avif" imagesrcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" imagesizes="(min-width: 900px) 133vh, 88vh" fetchpriority="high">\n`,
+    head: `<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n`,
   });
 }

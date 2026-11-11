@@ -106,7 +106,7 @@ export function facts(c) {
 
 // The stock card. The first photo is in the HTML; the other angles are named in data-angles and
 // fetched by tp.js only when the card is hovered or scrolled past.
-export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw", lazy = true } = {}) {
+export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw", lazy = true, h = 3 } = {}) {
   const st = STATUS[c.status];
   const angles = c.photos.map((_, i) => i + 1).filter((n) => manifest[c.id]?.[String(n)]);
   const price = c.price
@@ -119,7 +119,7 @@ export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px)
   </div>
   <div class="card__body">
     <p class="code card__code"><span>${esc(c.modelCode || c.body)}</span><span class="num">${c.year}</span></p>
-    <h3 class="card__title"><a href="${carUrl(c)}">${esc(c.make)} ${esc(c.model)}</a></h3>
+    <h${h} class="card__title"><a href="${carUrl(c)}">${esc(c.make)} ${esc(c.model)}</a></h${h}>
     <p class="card__grade">${c.grade ? esc(c.grade) : "&nbsp;"}</p>
     <p class="card__facts num">${facts(c)
       .map((f) => `<span>${esc(f)}</span>`)

@@ -10,7 +10,7 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="/img/hero/gtr-1280.avif" imagesrcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" imagesizes="(min-width: 900px) 133vh, 88vh" fetchpriority="high">
+<link rel="preload" as="image" href="/img/hero/512-1280.avif" imagesrcset="/img/hero/512-800.avif 800w, /img/hero/512-1280.avif 1280w, /img/hero/512-1920.avif 1920w" imagesizes="(min-width: 900px) 133vh, 88vh" fetchpriority="high">
 <link rel="stylesheet" href="/assets/css/tp.css">
 <link rel="stylesheet" href="/assets/css/home.css">
 <script>document.documentElement.classList.add("js")</script>
@@ -47,34 +47,76 @@
 
 <section class="hero" data-hero aria-labelledby="hero-h">
   <div class="hero__stage" aria-hidden="true">
-    <div class="hero__frame">
-      <img class="hero__img hero__img--room" src="/img/hero/gtr-1280.avif" srcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" sizes="(min-width: 900px) 133vh, 88vh" width="2560" height="1920" alt="" fetchpriority="high" decoding="async">
-      <div class="hero__car">
-        <img class="hero__img hero__img--car" src="/img/hero/gtr-1280.avif" srcset="/img/hero/gtr-800.avif 800w, /img/hero/gtr-1280.avif 1280w, /img/hero/gtr-1920.avif 1920w, /img/hero/gtr-2560.avif 2560w" sizes="(min-width: 900px) 133vh, 88vh" width="2560" height="1920" alt="" decoding="async">
-        <div class="hero__beam"></div>
+    <div class="hero__frame" data-frame>
+      <div class="hs is-on" data-hs style="--lx:70%;--ly:49%">
+        <img class="hs__room" src="/img/hero/512-1280.avif" srcset="/img/hero/512-800.avif 800w, /img/hero/512-1280.avif 1280w, /img/hero/512-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" fetchpriority="high" decoding="async">
+        <p class="hs__code" style="--n:5"><span>BNR34</span></p>
+        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-512.svg);mask-image:url(/assets/img/mask-512.svg)">
+          <img class="hs__img" src="/img/hero/512-1280.avif" srcset="/img/hero/512-800.avif 800w, /img/hero/512-1280.avif 1280w, /img/hero/512-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+          <span class="hs__beam"></span>
+        </div>
+        <span class="hs__lamp"></span>
       </div>
-      <div class="hero__lamp"></div>
+      <div class="hs" data-hs style="--lx:77%;--ly:54%">
+        <img class="hs__room" data-src="/img/hero/1412-1280.avif" data-srcset="/img/hero/1412-800.avif 800w, /img/hero/1412-1280.avif 1280w, /img/hero/1412-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+        <p class="hs__code" style="--n:5"><span>GZG50</span></p>
+        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-1412.svg);mask-image:url(/assets/img/mask-1412.svg)">
+          <img class="hs__img" data-src="/img/hero/1412-1280.avif" data-srcset="/img/hero/1412-800.avif 800w, /img/hero/1412-1280.avif 1280w, /img/hero/1412-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+          <span class="hs__beam"></span>
+        </div>
+        <span class="hs__lamp"></span>
+      </div>
+      <div class="hs" data-hs style="--lx:64%;--ly:52%">
+        <img class="hs__room" data-src="/img/hero/1452-1280.avif" data-srcset="/img/hero/1452-800.avif 800w, /img/hero/1452-1280.avif 1280w, /img/hero/1452-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+        <p class="hs__code" style="--n:6"><span>GWS224</span></p>
+        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-1452.svg);mask-image:url(/assets/img/mask-1452.svg)">
+          <img class="hs__img" data-src="/img/hero/1452-1280.avif" data-srcset="/img/hero/1452-800.avif 800w, /img/hero/1452-1280.avif 1280w, /img/hero/1452-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+          <span class="hs__beam"></span>
+        </div>
+        <span class="hs__lamp"></span>
+      </div>
+      <div class="hs" data-hs style="--lx:72%;--ly:43%">
+        <img class="hs__room" data-src="/img/hero/9974441-1280.avif" data-srcset="/img/hero/9974441-800.avif 800w, /img/hero/9974441-1280.avif 1280w, /img/hero/9974441-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+        <p class="hs__code" style="--n:6"><span>AYH30W</span></p>
+        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-9974441.svg);mask-image:url(/assets/img/mask-9974441.svg)">
+          <img class="hs__img" data-src="/img/hero/9974441-1280.avif" data-srcset="/img/hero/9974441-800.avif 800w, /img/hero/9974441-1280.avif 1280w, /img/hero/9974441-1920.avif 1920w" sizes="(min-width: 900px) 133vh, 88vh" width="1920" height="1440" alt="" decoding="async">
+          <span class="hs__beam"></span>
+        </div>
+        <span class="hs__lamp"></span>
+      </div>
+      <span class="hero__torch" data-torch></span>
     </div>
     <div class="hero__shade"></div>
   </div>
 
   <div class="wrap hero__in">
-    <a class="hero__plate" href="/cars/2001-nissan-skyline-gt-r-bnr34-512" data-reveal style="--i:9">
-      <span class="jp" lang="ja">スカイライン GT-R</span>
-      <span class="hero__plate-row"><span class="code">BNR34</span><span class="num">2001</span><span class="num">204,322 km</span></span>
-      <span class="hero__plate-name">Nissan Skyline GT-R</span>
-      <span class="hero__plate-row"><b class="num">$229,888</b><small>plus on-road costs</small></span>
-      <span class="hero__plate-go">View this car <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
-    </a>
-
     <div class="hero__copy">
       <p class="jp hero__jp" lang="ja" data-hero-line style="--i:0">東京からアデレードへ</p>
       <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked in Japan.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
       <p class="lede hero__lede" data-hero-line style="--i:3"><span class="num">62</span> cars to see today at Marryatville, <span class="num">53</span> more on the way. Serviced, complied and ready to register.</p>
     </div>
 
-    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find data-hero-line style="--i:4">
-      <input type="hidden" name="status" value="available">
+    <div class="feat" data-feat data-hero-line style="--i:4" role="group" aria-roledescription="carousel" aria-label="Featured cars">
+      <div class="feat__nav">
+        <span class="feat__idx code num"><b data-f="idx">01</b> / 04</span>
+        <div class="feat__bars">
+          <button class="feat__bar is-on" type="button" data-feat-go="0" aria-label="Show the Nissan Skyline GT-R" aria-current="true"><i></i></button><button class="feat__bar" type="button" data-feat-go="1" aria-label="Show the Toyota Century"><i></i></button><button class="feat__bar" type="button" data-feat-go="2" aria-label="Show the Toyota Crown Hybrid"><i></i></button><button class="feat__bar" type="button" data-feat-go="3" aria-label="Show the Toyota Alphard Hybrid"><i></i></button>
+        </div>
+        <button class="feat__ctl feat__ctl--prev" type="button" data-feat-prev aria-label="Previous car"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 4 5 5-5 5"/></svg></button>
+        <button class="feat__ctl" type="button" data-feat-next aria-label="Next car"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 4 5 5-5 5"/></svg></button>
+        <button class="feat__ctl feat__ctl--play" type="button" data-feat-toggle aria-label="Pause the featured cars" hidden><span></span></button>
+      </div>
+      <a class="feat__car" href="/cars/2001-nissan-skyline-gt-r-bnr34-512" data-feat-link>
+        <span class="feat__name"><span class="jp" lang="ja" data-f="jp">スカイライン GT-R</span><span class="feat__title" data-f="title">2001 Nissan Skyline GT-R</span></span>
+        <span class="feat__fact"><small>Model code</small><b class="feat__codev" data-f="code">BNR34</b></span>
+        <span class="feat__fact"><small>Kilometres</small><b class="num" data-f="km">204,322</b></span>
+        <span class="feat__fact feat__fact--price"><small data-f="note">plus on-road costs</small><b class="num" data-f="price">$229,888</b></span>
+        <span class="feat__go"><span>View this car</span><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+      </a>
+    </div>
+    <script type="application/json" id="feat-data">[{"url":"/cars/2001-nissan-skyline-gt-r-bnr34-512","jp":"スカイライン GT-R","title":"2001 Nissan Skyline GT-R","code":"BNR34","km":"204,322","price":"$229,888","note":"plus on-road costs"},{"url":"/cars/2010-toyota-century-gzg50-1412","jp":"センチュリー","title":"2010 Toyota Century","code":"GZG50","km":"97,864","price":"$48,888","note":"plus on-road costs"},{"url":"/cars/2020-toyota-crown-hybrid-gws224-g-executive-1452","jp":"クラウン ハイブリッド","title":"2020 Toyota Crown Hybrid","code":"GWS224","km":"24,710","price":"$48,888","note":"plus on-road costs"},{"url":"/cars/2018-toyota-alphard-hybrid-ayh30w-9974441","jp":"アルファード ハイブリッド","title":"2018 Toyota Alphard Hybrid","code":"AYH30W","km":"73,119","price":"$54,888","note":"plus on-road costs"}]</script>
+
+    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find data-hero-line style="--i:5">
       <div class="find__q">
         <label class="vh" for="q">Model, grade or model code</label>
         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="5"/><path d="m12 12 4 4"/></svg>
@@ -109,9 +151,10 @@
 
 <section class="sec" aria-labelledby="fresh-h">
   <div class="wrap">
-    <div class="sec__head">
-      <p class="eyebrow" data-reveal>In the showroom now</p>
-      <h2 class="h2" id="fresh-h" data-reveal style="--i:1">Just arrived, and worth a look.</h2>
+    <div class="sec__head sec__head--row">
+      <div class="sec__head-t"><p class="eyebrow" data-reveal>In the showroom now</p>
+      <h2 class="h2" id="fresh-h" data-reveal style="--i:1">Just arrived, and worth a look.</h2></div>
+      <a class="btn btn--ghost" href="/stock" data-reveal style="--i:2">See all 62 cars <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a>
     </div>
     <div class="cards" data-cards>
       <article data-reveal style="--i:0" class="card" data-card data-id="1461" data-make="Toyota" data-model="Corolla Touring" data-body="Wagon" data-year="2021" data-price="29888" data-km="51224" data-trans="Automatic" data-status="available" data-q="toyota corolla touring zwe211w w×b hybrid 2021 wagon black 2021 toyota corolla zwe211w touring wxb hybrid touring 5dr cvt 1sp 1.8i/53kw hybrid" data-angles="1,2,3,4,5">
@@ -170,7 +213,21 @@
   </div>
   <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
-<article data-reveal style="--i:0" class="card" data-card data-id="1442" data-make="Toyota" data-model="Voxy Hybrid" data-body="People mover" data-year="2023" data-price="49888" data-km="25865" data-trans="Automatic" data-status="available" data-q="toyota voxy hybrid zwr90w s-z 2023 people mover black 2023 toyota voxy zwr90w hybrid s-z wagon 7st 5dr cvt 1sp 1.8i/60kw hybrid" data-angles="1,2,3,4,5">
+<article data-reveal style="--i:0" class="card" data-card data-id="1448" data-make="Lexus" data-model="LBX" data-body="Hatch" data-year="2025" data-price="74888" data-km="4156" data-trans="Manual" data-status="available" data-q="lexus lbx gaya16 morizo rr 2025 hatch white 2025 lexus lbx gaya16 morizo rr wagon 5dr man 6sp awd 1.6t" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1448/1-960.avif" srcset="/img/cars/1448/1-480.avif 480w, /img/cars/1448/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2025 Lexus LBX Morizo RR, white: front three-quarter" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status">Available</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>GAYA16</span><span class="num">2025</span></p>
+    <h3 class="card__title"><a href="/cars/2025-lexus-lbx-gaya16-morizo-rr-1448">Lexus LBX</a></h3>
+    <p class="card__grade">Morizo RR</p>
+    <p class="card__facts num"><span>4,156 km</span><span>6-speed manual</span><span>AWD</span></p>
+    <p class="card__price"><b class="num">$74,888</b><small>plus on-road costs</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:1" class="card" data-card data-id="1442" data-make="Toyota" data-model="Voxy Hybrid" data-body="People mover" data-year="2023" data-price="49888" data-km="25865" data-trans="Automatic" data-status="available" data-q="toyota voxy hybrid zwr90w s-z 2023 people mover black 2023 toyota voxy zwr90w hybrid s-z wagon 7st 5dr cvt 1sp 1.8i/60kw hybrid" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1442/1-960.avif" srcset="/img/cars/1442/1-480.avif 480w, /img/cars/1442/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2023 Toyota Voxy Hybrid S-Z, black: front three-quarter" loading="lazy" decoding="async">
     <div class="card__top"><span class="status">Available</span></div>
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
@@ -181,20 +238,6 @@
     <p class="card__grade">S-Z</p>
     <p class="card__facts num"><span>25,865 km</span><span>CVT</span><span>FWD</span></p>
     <p class="card__price"><b class="num">$49,888</b><small>plus on-road costs</small></p>
-  </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
-</article>
-<article data-reveal style="--i:1" class="card" data-card data-id="1452" data-make="Toyota" data-model="Crown Hybrid" data-body="Sedan" data-year="2020" data-price="48888" data-km="24710" data-trans="Automatic" data-status="available" data-q="toyota crown hybrid gws224 g-executive 2020 sedan silver 2020 toyota crown gws224 hybrid g executive sedan 4dr cvt 1sp 3.5/132kw hybrid" data-angles="1,2,3,4,5">
-  <div class="shot card__shot"><img src="/img/cars/1452/1-960.avif" srcset="/img/cars/1452/1-480.avif 480w, /img/cars/1452/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2020 Toyota Crown Hybrid G-Executive, silver: front three-quarter" loading="lazy" decoding="async">
-    <div class="card__top"><span class="status">Available</span></div>
-    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
-  </div>
-  <div class="card__body">
-    <p class="code card__code"><span>GWS224</span><span class="num">2020</span></p>
-    <h3 class="card__title"><a href="/cars/2020-toyota-crown-hybrid-gws224-g-executive-1452">Toyota Crown Hybrid</a></h3>
-    <p class="card__grade">G-Executive</p>
-    <p class="card__facts num"><span>24,710 km</span><span>e-CVT</span><span>RWD</span></p>
-    <p class="card__price"><b class="num">$48,888</b><small>plus on-road costs</small></p>
   </div>
   <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
@@ -212,22 +255,202 @@
   </div>
   <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
-<article data-reveal style="--i:3" class="card" data-card data-id="1365" data-make="Lexus" data-model="GS F" data-body="Sedan" data-year="2015" data-price="73888" data-km="65563" data-trans="Automatic" data-status="available" data-q="lexus gs f url10r 2015 sedan black 2015 lexus gs url10r gs f sedan 4dr sports auto 8sp 5.0i" data-angles="1,2,3,4,5">
-  <div class="shot card__shot"><img src="/img/cars/1365/1-960.avif" srcset="/img/cars/1365/1-480.avif 480w, /img/cars/1365/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2015 Lexus GS F, black: front three-quarter" loading="lazy" decoding="async">
+<article data-reveal style="--i:3" class="card" data-card data-id="1355" data-make="Toyota" data-model="Mark X" data-body="Sedan" data-year="2019" data-price="36888" data-km="54228" data-trans="Automatic" data-status="available" data-q="toyota mark x grx133 350rds 2019 sedan silver 2019 toyota mark x grx133 350rds sedan 4dr auto 6sp 3.5i" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1355/1-960.avif" srcset="/img/cars/1355/1-480.avif 480w, /img/cars/1355/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2019 Toyota Mark X 350RDS, silver: front three-quarter" loading="lazy" decoding="async">
     <div class="card__top"><span class="status">Available</span></div>
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>URL10R</span><span class="num">2015</span></p>
-    <h3 class="card__title"><a href="/cars/2015-lexus-gs-f-url10r-1365">Lexus GS F</a></h3>
-    <p class="card__grade">&nbsp;</p>
-    <p class="card__facts num"><span>65,563 km</span><span>8-speed automatic</span><span>RWD</span></p>
-    <p class="card__price"><b class="num">$73,888</b><small>plus on-road costs</small></p>
+    <p class="code card__code"><span>GRX133</span><span class="num">2019</span></p>
+    <h3 class="card__title"><a href="/cars/2019-toyota-mark-x-grx133-350rds-1355">Toyota Mark X</a></h3>
+    <p class="card__grade">350RDS</p>
+    <p class="card__facts num"><span>54,228 km</span><span>6-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$36,888</b><small>plus on-road costs</small></p>
   </div>
   <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
     </div>
-    <p style="margin-top:32px" data-reveal><a class="btn btn--ghost" href="/stock">See all 62 cars <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a></p>
+  </div>
+</section>
+
+<section class="sec sec--tight" aria-labelledby="body-h">
+  <div class="wrap">
+    <div class="sec__head"><p class="eyebrow" data-reveal>Start with a shape</p><h2 class="h2" id="body-h" data-reveal style="--i:1">What are you after?</h2></div>
+    <ul class="tiles">
+      <li data-reveal style="--i:0"><a class="tile" href="/stock?body=Sedan"><span class="tile__pic shot"><img src="/img/cars/1356/1-960.avif" srcset="/img/cars/1356/1-480.avif 480w, /img/cars/1356/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Sedan</b><span class="num">32 cars, from $15,888</span></span></a></li>
+      <li data-reveal style="--i:1"><a class="tile" href="/stock?body=SUV%20%26%204WD"><span class="tile__pic shot"><img src="/img/cars/1292/1-960.avif" srcset="/img/cars/1292/1-480.avif 480w, /img/cars/1292/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="1600" height="1200" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>SUV &amp; 4WD</b><span class="num">6 cars, from $17,888</span></span></a></li>
+      <li data-reveal style="--i:2"><a class="tile" href="/stock?body=Wagon"><span class="tile__pic shot"><img src="/img/cars/1437/1-960.avif" srcset="/img/cars/1437/1-480.avif 480w, /img/cars/1437/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Wagon</b><span class="num">5 cars, from $21,888</span></span></a></li>
+      <li data-reveal style="--i:3"><a class="tile" href="/stock?body=People%20mover"><span class="tile__pic shot"><img src="/img/cars/1442/1-960.avif" srcset="/img/cars/1442/1-480.avif 480w, /img/cars/1442/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>People mover</b><span class="num">5 cars, from $31,888</span></span></a></li>
+      <li data-reveal style="--i:0"><a class="tile" href="/stock?body=Coupe"><span class="tile__pic shot"><img src="/img/cars/1393/1-960.avif" srcset="/img/cars/1393/1-480.avif 480w, /img/cars/1393/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Coupe</b><span class="num">6 cars, from $18,888</span></span></a></li>
+      <li data-reveal style="--i:1"><a class="tile" href="/stock?body=Hatch"><span class="tile__pic shot"><img src="/img/cars/1448/1-960.avif" srcset="/img/cars/1448/1-480.avif 480w, /img/cars/1448/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Hatch</b><span class="num">4 cars, from $10,888</span></span></a></li>
+      <li data-reveal style="--i:2"><a class="tile" href="/stock?body=Kei%20truck"><span class="tile__pic shot"><img src="/img/cars/1411/1-960.avif" srcset="/img/cars/1411/1-480.avif 480w, /img/cars/1411/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1921" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Kei truck</b><span class="num">3 cars, from $28,888</span></span></a></li>
+      <li data-reveal style="--i:3"><a class="tile" href="/stock?body=Convertible"><span class="tile__pic shot"><img src="/img/cars/1438/1-960.avif" srcset="/img/cars/1438/1-480.avif 480w, /img/cars/1438/1-960.avif 960w" sizes="(min-width: 900px) 24vw, 46vw" width="2560" height="1920" alt="" loading="lazy" decoding="async"></span><span class="tile__txt"><b>Convertible</b><span class="num">1 car, from $30,888</span></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="why-h">
+  <div class="wrap why">
+    <div class="why__head">
+      <p class="eyebrow" data-reveal>Why buy here</p>
+      <h2 class="h2" id="why-h" data-reveal style="--i:1">Skip the import process. The car is already here.</h2>
+      <p class="lede" data-reveal style="--i:2">Tokyo Prestige sources, imports and complies the cars, then puts them on a showroom floor five minutes from the city. You see and drive the car before you buy it.</p>
+      <p data-reveal style="--i:3"><a class="btn btn--ghost" href="/importing">How importing works <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a></p>
+    </div>
+    <ol class="why__list">
+      <li data-reveal><span class="code">01</span><div><h3>Clear title, every car</h3><p>Guaranteed free from any ownership or finance issues.</p></div></li>
+      <li data-reveal style="--i:1"><span class="code">02</span><div><h3>An odometer you can check</h3><p>An original deregistration certificate for vehicles Tokyo Prestige sources, and a guaranteed reading on the ones it imports directly.</p></div></li>
+      <li data-reveal style="--i:2"><span class="code">03</span><div><h3>Workshop checked</h3><p>Fully serviced by the dealership's own mechanics, and complied ready for registration.</p></div></li>
+      <li data-reveal style="--i:3"><span class="code">04</span><div><h3>Inspect it your way</h3><p>Third-party inspections are welcome, and video inspections show you every detail from anywhere.</p></div></li>
+      <li data-reveal style="--i:4"><span class="code">05</span><div><h3>Warranty, 1 to 5 years</h3><p>Extended warranty options, on top of the statutory warranty where it applies.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec sec--tight" aria-labelledby="soon-h">
+  <div class="wrap">
+    <div class="sec__head sec__head--row">
+      <div class="sec__head-t"><p class="eyebrow" data-reveal>On the way from Japan</p>
+      <h2 class="h2" id="soon-h" data-reveal style="--i:1">53 more cars coming soon.</h2>
+      <p class="lede" data-reveal style="--i:2">Spotted one you want? Ask to be told when it lands.</p></div>
+      <a class="btn btn--ghost" href="/coming-soon" data-reveal style="--i:3">See what is coming <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a>
+    </div>
+    <div class="cards">
+      <article data-reveal style="--i:0" class="card" data-card data-id="1463" data-make="Nissan" data-model="Skyline" data-body="Sedan" data-year="2024" data-price="" data-km="47" data-trans="Automatic" data-status="coming-soon" data-q="nissan skyline rv37 2024 sedan grey blue 2024 nissan skyline 400r nismo edition" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1463/1-960.avif" srcset="/img/cars/1463/1-480.avif 480w, /img/cars/1463/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2024 Nissan Skyline, grey blue" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>RV37</span><span class="num">2024</span></p>
+    <h3 class="card__title"><a href="/cars/2024-nissan-skyline-rv37-1463">Nissan Skyline</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>47 km</span><span>Automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:1" class="card" data-card data-id="1482" data-make="Nissan" data-model="GT-R" data-body="Coupe" data-year="2008" data-price="" data-km="163900" data-trans="Automatic" data-status="coming-soon" data-q="nissan gt-r r35 premium edition 2008 coupe silver 2008 nissan r35 gtr premium edition" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1482/1-960.avif" srcset="/img/cars/1482/1-480.avif 480w, /img/cars/1482/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2008 Nissan GT-R Premium Edition, silver: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>R35</span><span class="num">2008</span></p>
+    <h3 class="card__title"><a href="/cars/2008-nissan-gt-r-r35-premium-edition-1482">Nissan GT-R</a></h3>
+    <p class="card__grade">Premium Edition</p>
+    <p class="card__facts num"><span>163,900 km</span><span>Automatic</span><span>AWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:2" class="card" data-card data-id="1406" data-make="Mitsubishi" data-model="Pajero Evolution" data-body="SUV &amp; 4WD" data-year="1998" data-price="" data-km="192265" data-trans="Automatic" data-status="coming-soon" data-q="mitsubishi pajero evolution 1998 suv &amp; 4wd silver 1998 mitsubishi pajero evolution v6 3.5i automatic" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1406/1-960.avif" srcset="/img/cars/1406/1-480.avif 480w, /img/cars/1406/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="1998 Mitsubishi Pajero Evolution, silver: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>SUV &amp; 4WD</span><span class="num">1998</span></p>
+    <h3 class="card__title"><a href="/cars/1998-mitsubishi-pajero-evolution-1406">Mitsubishi Pajero Evolution</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>192,265 km</span><span>5-speed automatic</span><span>4WD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:3" class="card" data-card data-id="1476" data-make="Toyota" data-model="Crown Sport" data-body="SUV &amp; 4WD" data-year="2025" data-price="" data-km="1324" data-trans="Automatic" data-status="coming-soon" data-q="toyota crown sport azsh37 sport rs (phev) 2025 suv &amp; 4wd grey blue 2025 toyota crown sport rs phev" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1476/1-960.avif" srcset="/img/cars/1476/1-480.avif 480w, /img/cars/1476/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2025 Toyota Crown Sport Sport RS (PHEV), grey blue: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>AZSH37</span><span class="num">2025</span></p>
+    <h3 class="card__title"><a href="/cars/2025-toyota-crown-sport-azsh37-sport-rs-phev-1476">Toyota Crown Sport</a></h3>
+    <p class="card__grade">Sport RS (PHEV)</p>
+    <p class="card__facts num"><span>1,324 km</span><span>e-CVT</span><span>AWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:0" class="card" data-card data-id="1493" data-make="Lexus" data-model="IS 350" data-body="Sedan" data-year="2023" data-price="" data-km="11308" data-trans="Automatic" data-status="coming-soon" data-q="lexus is 350 gse31 2023 sedan black 2023 lexus is350" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1493/1-960.avif" srcset="/img/cars/1493/1-480.avif 480w, /img/cars/1493/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2023 Lexus IS 350, black: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>GSE31</span><span class="num">2023</span></p>
+    <h3 class="card__title"><a href="/cars/2023-lexus-is-350-gse31-1493">Lexus IS 350</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>11,308 km</span><span>Automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:1" class="card" data-card data-id="1334" data-make="Suzuki" data-model="Alto Works" data-body="Hatch" data-year="1998" data-price="" data-km="83641" data-trans="Automatic" data-status="coming-soon" data-q="suzuki alto works ha12s 1998 hatch white 1998 suzuki alto works 660cc turbo auto" data-angles="1,2,3,4,5,6,7">
+  <div class="shot card__shot"><img src="/img/cars/1334/1-960.avif" srcset="/img/cars/1334/1-480.avif 480w, /img/cars/1334/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="1998 Suzuki Alto Works, white: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>HA12S</span><span class="num">1998</span></p>
+    <h3 class="card__title"><a href="/cars/1998-suzuki-alto-works-ha12s-1334">Suzuki Alto Works</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>83,641 km</span><span>Automatic</span><span>FWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:2" class="card" data-card data-id="1509" data-make="Toyota" data-model="Soarer" data-body="Convertible" data-year="2001" data-price="" data-km="79975" data-trans="Automatic" data-status="coming-soon" data-q="toyota soarer uzz40 2001 convertible green 2001 toyota soarer 4.3 v8 convertible" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1509/1-960.avif" srcset="/img/cars/1509/1-480.avif 480w, /img/cars/1509/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2001 Toyota Soarer, green: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>UZZ40</span><span class="num">2001</span></p>
+    <h3 class="card__title"><a href="/cars/2001-toyota-soarer-uzz40-1509">Toyota Soarer</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>79,975 km</span><span>5-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+<article data-reveal style="--i:3" class="card" data-card data-id="1497" data-make="Subaru" data-model="Forester" data-body="SUV &amp; 4WD" data-year="2007" data-price="" data-km="134113" data-trans="Automatic" data-status="coming-soon" data-q="subaru forester sg5 cross sports 2007 suv &amp; 4wd blue 2007 subaru forester cross sports" data-angles="1,2,3,4,5">
+  <div class="shot card__shot"><img src="/img/cars/1497/1-960.avif" srcset="/img/cars/1497/1-480.avif 480w, /img/cars/1497/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2007 Subaru Forester Cross Sports, blue: front three-quarter, right side" loading="lazy" decoding="async">
+    <div class="card__top"><span class="status status--soon">Coming soon</span></div>
+    <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="card__body">
+    <p class="code card__code"><span>SG5</span><span class="num">2007</span></p>
+    <h3 class="card__title"><a href="/cars/2007-subaru-forester-sg5-cross-sports-1497">Subaru Forester</a></h3>
+    <p class="card__grade">Cross Sports</p>
+    <p class="card__facts num"><span>134,113 km</span><span>Automatic</span><span>AWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
+  </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+</article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="visit-h">
+  <div class="wrap visit">
+    <figure class="visit__pic shot" data-reveal><img src="/img/site/yard-dusk-800.avif" srcset="/img/site/yard-dusk-800.avif 800w, /img/site/yard-dusk-1600.avif 1600w" sizes="(min-width: 900px) 56vw, 100vw" width="2560" height="1707" alt="The Tokyo Prestige showroom on Kensington Road, Marryatville, at dusk" loading="lazy" decoding="async"></figure>
+    <div class="visit__txt">
+      <p class="eyebrow" data-reveal>Visit the showroom</p>
+      <h2 class="h2" id="visit-h" data-reveal style="--i:1">Five minutes east of the city.</h2>
+      <dl class="visit__dl" data-reveal style="--i:2">
+        <div><dt>Address</dt><dd>216-218 Kensington Road<br>Marryatville SA 5068</dd></div>
+        <div><dt>Hours</dt><dd>Monday to Friday: 9am to 5pm<br>Saturday: 9am to 3pm<br>Sunday: Closed</dd></div>
+        <div><dt>Licence</dt><dd>Licensed second-hand vehicle dealer MVD 287394</dd></div>
+      </dl>
+      <p class="visit__acts" data-reveal style="--i:3"><a class="btn btn--shu" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a><a class="btn btn--ghost" href="https://maps.app.goo.gl/vRRyn1NrmRzM95qD7" rel="noopener"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 16s5-4.600 5-8.500a5 5 0 0 0-10 0C4 11.400 9 16 9 16Z"/><circle cx="9" cy="7.500" r="1.800"/></svg> Directions</a></p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:32px">
+    <div class="ph" data-reveal>
+      <span class="ph__tag">Placeholder: reviews</span>
+      <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown because none could be read for this demo. See research/gaps.md.</p>
+    </div>
   </div>
 </section>
 
