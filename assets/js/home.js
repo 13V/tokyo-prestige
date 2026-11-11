@@ -39,61 +39,61 @@
   // ---------- hero: the featured cars ----------
   const hero = $("[data-hero]");
   const feat = $("[data-feat]");
-  const slides = $$("[data-hs]");
+  const pics = $$("[data-hs]");
   const fd = $("#feat-data");
-  if (!hero || !feat || slides.length < 2 || !fd) return;
+  if (!hero || !feat || pics.length < 2 || !fd) return;
   const cars = JSON.parse(fd.textContent);
-  const bars = $$("[data-feat-go]", feat);
-  const link = $("[data-feat-link]", feat);
+  const tabs = $$("[data-feat-go]", feat);
+  const links = $$("[data-feat-link]", hero);
+  const book = $("[data-feat-book]", hero);
   const toggle = $("[data-feat-toggle]", feat);
-  const f = (k) => $(`[data-f="${k}"]`, feat);
+  const f = (k) => $(`[data-f="${k}"]`, hero);
   const HOLD = 7000;
   let at = 0;
   let busy = false;
   let paused = calm;
   let userPaused = false;
-  let run = null; // the progress animation on the active bar
+  let run = null; // the fill on the active car's pill
 
   // the other cars' photos load once the page is idle, never before the first paint is done
   const loaded = new Set([0]);
   const load = (i) => {
     if (loaded.has(i)) return;
     loaded.add(i);
-    $$("img[data-src]", slides[i]).forEach((im) => {
-      im.srcset = im.dataset.srcset;
-      im.src = im.dataset.src;
-    });
+    pics[i].srcset = pics[i].dataset.srcset;
+    pics[i].src = pics[i].dataset.src;
   };
   const ready = (i) => {
     load(i);
-    const im = $(".hs__img", slides[i]);
-    return im.complete && im.naturalWidth ? Promise.resolve() : (im.decode ? im.decode().catch(() => {}) : new Promise((r) => im.addEventListener("load", r, { once: true })));
+    const im = pics[i];
+    return im.complete && im.naturalWidth ? Promise.resolve() : im.decode ? im.decode().catch(() => {}) : new Promise((r) => im.addEventListener("load", r, { once: true }));
   };
   const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1200));
   addEventListener("load", () => idle(() => load(1)), { once: true });
 
-  // text rolls to its next value, character by character, like an odometer
+  // a figure rolls to its next value, character by character, like an odometer
   const roll = (el, text, { stagger = 26, dur = 620, delay = 0 } = {}) => {
     if (!el || el.textContent === text) return;
     if (calm) return void (el.textContent = text);
-    const old = el.textContent;
     const box = document.createElement("span");
     box.className = "roll";
     const o = document.createElement("span");
     o.className = "roll__old";
-    o.textContent = old;
-    box.append(o);
+    o.textContent = el.textContent;
+    const nw = document.createElement("span");
+    nw.className = "roll__new";
     const chars = [...text].map((ch) => {
-      const s = document.createElement("span");
-      s.className = "roll__ch";
-      s.textContent = ch;
-      box.append(s);
-      return s;
+      const c = document.createElement("span");
+      c.className = "roll__ch";
+      c.textContent = ch;
+      nw.append(c);
+      return c;
     });
+    box.append(o, nw);
     el.textContent = "";
     el.append(box);
     o.animate([{ transform: "translateY(0)", opacity: 1 }, { transform: "translateY(-70%)", opacity: 0 }], { duration: 300, delay, easing: "cubic-bezier(.65,0,.35,1)", fill: "both" });
-    const anims = chars.map((s, i) => s.animate([{ transform: "translateY(105%)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: dur, delay: delay + 140 + i * stagger, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }));
+    const anims = chars.map((c, i) => c.animate([{ transform: "translateY(105%)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: dur, delay: delay + 140 + i * stagger, easing: "cubic-bezier(.16,1,.3,1)", fill: "both" }));
     Promise.all(anims.map((a) => a.finished))
       .then(() => el.contains(box) && (el.textContent = text))
       .catch(() => {});
@@ -102,74 +102,59 @@
   const progress = () => {
     run?.cancel();
     run = null;
-    bars.forEach((b, i) => {
+    tabs.forEach((b, i) => {
       b.classList.toggle("is-on", i === at);
-      b.classList.toggle("is-done", i < at);
       i === at ? b.setAttribute("aria-current", "true") : b.removeAttribute("aria-current");
     });
     if (calm) return;
-    const bar = bars[at].firstElementChild;
-    run = bar.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: HOLD, easing: "linear", fill: "both" });
+    run = tabs[at].firstElementChild.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], { duration: HOLD, easing: "linear", fill: "both" });
     run.onfinish = () => go(at + 1);
     if (paused) run.pause();
   };
 
   const go = async (n) => {
-    n = (n + slides.length) % slides.length;
+    n = (n + pics.length) % pics.length;
     if (busy || n === at) return;
     busy = true;
     run?.pause();
     await ready(n);
-    const from = slides[at];
-    const to = slides[n];
     const c = cars[n];
-    // 1. lights out on the car that is leaving
-    from.classList.add("is-out");
-    // 2. the plate rolls over to the next car
-    roll(f("idx"), String(n + 1).padStart(2, "0"));
-    roll(f("jp"), c.jp, { stagger: 18, delay: 60 });
-    roll(f("title"), c.title, { stagger: 14, delay: 100 });
-    roll(f("code"), c.code, { stagger: 40, delay: 180 });
-    roll(f("km"), c.km, { stagger: 34, delay: 240 });
-    roll(f("note"), c.note, { stagger: 6, delay: 280 });
-    roll(f("price"), c.price, { stagger: 34, delay: 300 });
-    link.href = c.url;
-    await new Promise((r) => setTimeout(r, calm ? 0 : 430));
-    // 3. the next car: the room fades up, one band of light crosses it, its lamp comes on
-    slides.forEach((s) => s.classList.remove("is-prev"));
-    from.classList.remove("is-on");
-    from.classList.add("is-prev");
-    to.classList.add("is-on");
+    pics[at].classList.remove("is-on");
+    pics[n].classList.add("is-on");
+    roll(f("kick"), c.kick, { stagger: 5, dur: 420 });
+    roll(f("title"), c.title, { stagger: 16, delay: 40 });
+    roll(f("sub"), c.sub, { stagger: 6, dur: 460, delay: 90 });
+    roll(f("year"), c.year, { stagger: 40, delay: 140 });
+    roll(f("km"), c.km, { stagger: 34, delay: 200 });
+    roll(f("gear"), c.gear, { stagger: 30, delay: 260 });
+    roll(f("gearu"), c.gearu, { stagger: 8, dur: 460, delay: 300 });
+    roll(f("price"), c.price, { stagger: 34, delay: 320 });
+    const nEl = f("n");
+    if (nEl) nEl.textContent = `1 of ${c.n} photos`;
+    links.forEach((a) => (a.href = c.url));
+    if (book) book.href = c.url + "#enquire";
     at = n;
     progress();
-    load((n + 1) % slides.length);
-    setTimeout(
-      () => {
-        from.classList.remove("is-prev", "is-out");
-        busy = false;
-      },
-      calm ? 0 : 1150,
-    );
+    load((n + 1) % pics.length);
+    setTimeout(() => (busy = false), calm ? 0 : 900);
   };
 
-  bars.forEach((b) => b.addEventListener("click", () => go(Number(b.dataset.featGo))));
-  $("[data-feat-prev]", feat).addEventListener("click", () => go(at - 1));
-  $("[data-feat-next]", feat).addEventListener("click", () => go(at + 1));
+  tabs.forEach((b) => b.addEventListener("click", () => go(Number(b.dataset.featGo))));
   feat.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") go(at + 1);
     if (e.key === "ArrowLeft") go(at - 1);
   });
 
   // it rests while it is hovered, focused, off screen or in a hidden tab, and there is a pause button
+  let hovering = false;
+  let focused = false;
+  let visible = true;
   const setPaused = () => {
     const p = calm || userPaused || hovering || focused || !visible || document.hidden;
     if (p === paused) return;
     paused = p;
     if (run) paused ? run.pause() : run.play();
   };
-  let hovering = false;
-  let focused = false;
-  let visible = true;
   if (!calm) {
     toggle.hidden = false;
     toggle.addEventListener("click", () => {
@@ -179,20 +164,19 @@
       setPaused();
     });
     // a mouse resting on it or keyboard focus inside it; a tap on a phone must not leave it stopped
-    feat.addEventListener("pointerenter", (e) => e.pointerType === "mouse" && ((hovering = true), setPaused()));
-    feat.addEventListener("pointerleave", () => ((hovering = false), setPaused()));
-    feat.addEventListener("focusin", (e) => ((focused = e.target.matches(":focus-visible")), setPaused()));
-    feat.addEventListener("focusout", () => ((focused = false), setPaused()));
+    hero.addEventListener("pointerenter", (e) => e.pointerType === "mouse" && ((hovering = true), setPaused()));
+    hero.addEventListener("pointerleave", () => ((hovering = false), setPaused()));
+    hero.addEventListener("focusin", (e) => ((focused = e.target.matches(":focus-visible")), setPaused()));
+    hero.addEventListener("focusout", () => ((focused = false), setPaused()));
     document.addEventListener("visibilitychange", setPaused);
-    new IntersectionObserver((es) => es.forEach((e) => ((visible = e.isIntersecting), setPaused())), { threshold: 0.35 }).observe(hero);
-    // start the clock once the first reveal has played
-    setTimeout(progress, 2600);
+    new IntersectionObserver((es) => es.forEach((e) => ((visible = e.isIntersecting), setPaused())), { threshold: 0.35 }).observe(feat);
+    setTimeout(progress, 1200);
   }
 
   // on a phone, a swipe across the photo changes the car
   let sx = null;
-  hero.addEventListener("touchstart", (e) => (sx = e.touches[0].clientY < hero.clientHeight * 0.5 && !e.target.closest("a,button,input,select") ? e.touches[0].clientX : null), { passive: true });
-  hero.addEventListener(
+  feat.addEventListener("touchstart", (e) => (sx = e.target.closest("button") ? null : e.touches[0].clientX), { passive: true });
+  feat.addEventListener(
     "touchend",
     (e) => {
       if (sx == null) return;
@@ -202,42 +186,4 @@
     },
     { passive: true },
   );
-
-  // with a mouse: the photo leans a little toward the pointer and a torch follows it through the dark
-  const frame = $("[data-frame]", hero);
-  const torch = $("[data-torch]", hero);
-  if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches && frame && torch) {
-    let raf = 0;
-    let tx = 0;
-    let ty = 0;
-    let x = 0;
-    let y = 0;
-    let live = false;
-    const tick = () => {
-      x += (tx - x) * 0.09;
-      y += (ty - y) * 0.09;
-      const r = frame.getBoundingClientRect();
-      torch.style.transform = `translate3d(${(x - r.left).toFixed(1)}px, ${(y - r.top).toFixed(1)}px, 0)`;
-      const hr = hero.getBoundingClientRect();
-      frame.style.setProperty("--px", (((x - hr.left) / hr.width) * 2 - 1).toFixed(3));
-      frame.style.setProperty("--py", (((y - hr.top) / hr.height) * 2 - 1).toFixed(3));
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(tick) : 0;
-    };
-    hero.addEventListener("pointermove", (e) => {
-      if (e.pointerType !== "mouse") return;
-      tx = e.clientX;
-      ty = e.clientY;
-      if (!live) {
-        live = true;
-        x = tx;
-        y = ty;
-        torch.classList.add("is-on");
-      }
-      if (!raf) raf = requestAnimationFrame(tick);
-    });
-    hero.addEventListener("pointerleave", () => {
-      live = false;
-      torch.classList.remove("is-on");
-    });
-  }
 })();

@@ -152,7 +152,7 @@
   height: 12px;
   border-radius: 50%;
   background: var(--shu);
-  box-shadow: 0 0 0 5px rgba(255, 74, 34, 0.2);
+  box-shadow: 0 0 0 5px rgba(200, 40, 28, 0.2);
   display: none;
 }
 .route.is-live .route__ship {
@@ -381,7 +381,11 @@
   display: grid;
   align-items: end;
   min-height: min(88svh, 760px);
-  margin-top: calc(-1 * var(--bar-h));
+  /* text over their night photo: this block keeps light text */
+  --text: #f3f2ee;
+  --text-2: #d6d5cf;
+  --text-3: #b5b4ae;
+  color: var(--text);
   isolation: isolate;
   overflow: clip;
 }
@@ -400,7 +404,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(6, 6, 7, 0.7) 0%, transparent 22%, transparent 45%, var(--night) 96%);
+  background: linear-gradient(180deg, rgba(6, 6, 7, 0.35) 0%, transparent 22%, transparent 40%, rgba(6, 6, 7, 0.88) 96%);
 }
 /* the sign and the forecourt lights come up: a warm bloom over the lit part of their night photo */
 .abt__glow {
@@ -416,7 +420,7 @@
 .abt__txt {
   display: grid;
   gap: var(--s-4);
-  padding-top: calc(var(--bar-h) + var(--s-9));
+  padding-top: var(--s-9);
   padding-bottom: var(--s-7);
 }
 .abt__txt .display {

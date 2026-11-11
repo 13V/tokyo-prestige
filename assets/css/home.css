@@ -1,367 +1,191 @@
-/* Home. The hero is a showcase of four cars from the stock file. Each slide is their own photo twice:
-   once dimmed (the showroom at night) and once masked to the car's outline, so the car can be lit on
-   its own and its model code can sit behind it. Light is built from gradients; nothing is video. */
+/* Home. The first screen is one car and its four figures, the photo beside them, and the stock search.
+   Four featured cars take turns; the figures roll over like an odometer when the car changes. */
+
 .hero {
-  position: relative;
-  display: grid;
-  min-height: max(100svh, 660px);
-  isolation: isolate;
-  overflow: clip;
-}
-.hero__stage {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  background: var(--night);
-}
-.hero__frame {
-  --px: 0;
-  --py: 0;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: min(58svh, 520px);
-  aspect-ratio: 4 / 3;
-  margin-left: calc(min(58svh, 520px) * -0.94);
-  container-type: size;
-}
-.hs {
-  position: absolute;
-  inset: 0;
-  visibility: hidden;
-}
-.hs.is-on,
-.hs.is-prev {
-  visibility: visible;
-}
-.hs.is-on {
-  z-index: 2;
-}
-.hs__room,
-.hs__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hs__room {
-  filter: brightness(0.17) saturate(0.45) contrast(1.1);
-}
-/* the model code, set large behind the car */
-.hs__code {
-  position: absolute;
-  left: 47%;
-  right: 0;
-  top: 12%;
-  font-size: min(21cqw, calc(64cqw / var(--n, 5)));
-  font-weight: 600;
-  font-stretch: 125%;
-  line-height: 0.8;
-  letter-spacing: -0.04em;
-  white-space: nowrap;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.36);
-  transform: translate3d(calc(var(--px) * -10px), calc(var(--py) * -6px), 0);
-}
-.hs__code span {
-  display: block;
-}
-.hs__car {
-  position: absolute;
-  inset: 0;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  transition:
-    opacity 480ms var(--ease-io),
-    filter 480ms var(--ease-io);
-}
-.hs__img {
-  filter: contrast(1.05) saturate(0.94);
-}
-.hs__beam {
-  position: absolute;
-  top: -10%;
-  bottom: -10%;
-  left: 0;
-  width: 40%;
-  background: linear-gradient(90deg, transparent 0%, rgba(228, 236, 255, 0.03) 30%, rgba(228, 236, 255, 0.34) 84%, rgba(255, 255, 255, 0.92) 98.5%, transparent 100%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: translateX(-100%) skewX(-12deg);
-  pointer-events: none;
-}
-/* the headlamp comes on: a soft bloom where this car's lamp is */
-.hs__lamp {
-  position: absolute;
-  left: var(--lx);
-  top: var(--ly);
-  width: 34%;
-  aspect-ratio: 1.7;
-  margin: -10% 0 0 -17%;
-  background:
-    radial-gradient(closest-side, rgba(228, 236, 255, 0.5), rgba(228, 236, 255, 0.12) 38%, transparent 70%),
-    linear-gradient(90deg, transparent 8%, rgba(228, 236, 255, 0.22) 50%, transparent 92%) center / 100% 2px no-repeat;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  transition: opacity 400ms var(--ease);
-}
-/* a torch that follows the pointer across the dark showroom (desktop, set by home.js) */
-.hero__torch {
-  position: absolute;
-  z-index: 3;
-  left: 0;
-  top: 0;
-  width: 44%;
-  aspect-ratio: 1;
-  margin: -22% 0 0 -22%;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 244, 228, 0.62), rgba(255, 244, 228, 0.2) 45%, transparent 72%);
-  mix-blend-mode: color-dodge;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 900ms var(--ease);
-  will-change: transform;
-}
-.hero__torch.is-on {
-  opacity: 1;
-}
-.hero__shade {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  background:
-    linear-gradient(180deg, rgba(6, 6, 7, 0.78) 0%, transparent 15%),
-    linear-gradient(180deg, transparent 0, transparent calc(min(58svh, 520px) - 230px), var(--night) calc(min(58svh, 520px) - 8px));
+  padding: calc(var(--bar-h) + var(--s-5)) 0 var(--s-7);
 }
 .hero__in {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: var(--s-4);
-  padding-top: calc(var(--bar-h) + var(--s-4));
-  padding-bottom: calc(var(--s-4) + env(safe-area-inset-bottom));
-}
-.hero__copy {
   display: grid;
-  gap: var(--s-2);
+  gap: var(--s-5);
 }
-.hero__jp {
+.hero__txt {
+  display: grid;
+  align-content: start;
+  min-width: 0;
+}
+.hero__h {
+  margin: 0;
+  font-size: var(--t-14);
+  font-weight: 400;
   color: var(--text-2);
 }
-.hero .display {
-  font-size: clamp(1.875rem, 0.95rem + 4.1vw, 4.25rem);
-}
-.hero__l {
-  display: block;
-  overflow: clip;
-  overflow-clip-margin: 0.12em;
-  padding-bottom: 0.06em;
-}
-.hero__l > span {
-  display: block;
-}
-.hero__lede {
-  display: none;
-  max-width: 46ch;
-}
-.hero__lede .num {
-  color: var(--text);
-  font-weight: 600;
-}
-
-/* ---------- the featured car: a strip that reads like a plate ---------- */
-.feat {
-  display: grid;
-  min-width: 0;
-  gap: 10px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line-2);
-}
-.feat__nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.feat__idx {
-  color: var(--text-3);
-  white-space: nowrap;
-}
-.feat__idx b {
-  display: inline-block;
-  color: var(--text);
-  font-weight: 500;
-}
-.feat__bars {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  gap: 6px;
-}
-.feat__bar {
-  flex: 1;
-  min-width: 0;
-  height: 44px;
-  margin: -14px 0;
-  padding: 0;
-  background: none;
-  border: 0;
-  display: grid;
-  align-items: center;
-}
-.feat__bar::before,
-.feat__bar i {
-  grid-area: 1 / 1;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  content: "";
-  display: block;
-  transition: background-color var(--d-state) var(--ease);
-}
-.feat__bar i {
-  background: var(--shu);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.feat__bar.is-on i {
-  transform: scaleX(1);
-}
-.feat__bar.is-done::before {
-  background: rgba(255, 255, 255, 0.55);
-}
-.feat__ctl {
-  display: none;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  margin: -6px 0;
-  background: transparent;
-  border: 1px solid var(--line-2);
-  border-radius: var(--r);
-  color: var(--text);
-  transition:
-    background-color var(--d-state) var(--ease),
-    transform var(--d-press) var(--ease);
-}
-.feat__ctl svg {
-  width: 16px;
-  height: 16px;
-}
-.feat__ctl--prev svg {
-  transform: rotate(180deg);
-}
-.feat__ctl:active {
-  transform: scale(0.94);
-}
-.feat__ctl--play:not([hidden]) {
-  display: grid;
-  flex: none;
-}
-.feat__ctl--play span {
-  width: 10px;
-  height: 12px;
-  border-inline: 3px solid currentColor;
-}
-.feat__ctl--play.is-paused span {
-  width: 0;
-  height: 0;
-  border-block: 6px solid transparent;
-  border-left: 10px solid currentColor;
-  border-right: 0;
-  margin-left: 3px;
-}
-.feat__car {
-  position: relative;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  gap: 8px 18px;
-  align-items: end;
-  text-decoration: none;
-  min-height: 44px;
-  min-width: 0;
-}
-.feat__name {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 2px;
-  padding-right: 52px;
-}
-.feat__name .jp {
-  min-height: 1.4em;
-}
-.feat__title {
-  font-size: var(--t-22);
-  font-weight: 500;
-  font-stretch: 110%;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-}
-.feat__fact {
-  display: grid;
-  gap: 2px;
-}
-.feat__fact small {
-  font-family: var(--mono);
-  font-size: 11px;
+.hero__kick {
+  margin-top: var(--s-4);
+  font-size: var(--t-12);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-3);
-  white-space: nowrap;
 }
-.feat__fact b {
-  font-size: var(--t-18);
+.hero__name {
+  margin-top: 6px;
+  font-size: clamp(1.875rem, 1.3rem + 2.6vw, 2.875rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.hero__name a {
+  text-decoration: none;
+}
+.hero__name small {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.6em;
   font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.1;
-  white-space: nowrap;
+  color: var(--text-3);
 }
-.feat__codev {
-  font-family: var(--mono);
-  color: var(--shu);
-  letter-spacing: 0.04em !important;
+.hero__figs {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 16px;
+  margin-top: var(--s-5);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--text);
 }
-.feat__go {
+.hero__figs .fig b {
+  font-size: clamp(2.5rem, 1.5rem + 4.4vw, 3.75rem);
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.hero__acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: var(--s-6);
+}
+
+/* the photo, tall enough to hold the whole car */
+.stage {
+  position: relative;
+  order: -1;
+  margin: calc(var(--s-5) * -1) calc(var(--gutter) * -1) 0;
+}
+.stage__pics {
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+}
+.stage__img {
   position: absolute;
-  right: 0;
-  top: 0;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--line-2);
-  border-radius: var(--r);
+  inset: 0;
+  opacity: 0;
+  object-position: 50% 50%;
   transition:
-    background-color var(--d-state) var(--ease),
-    color var(--d-state) var(--ease),
-    border-color var(--d-state) var(--ease);
+    opacity 700ms var(--ease-io),
+    transform 1400ms var(--ease);
+  transform: scale(1.04);
 }
-.feat__go span {
+.stage__img.is-on {
+  opacity: 1;
+  transform: none;
+  z-index: 1;
+}
+.stage__n {
   display: none;
 }
-.feat__go svg {
-  width: 16px;
-  height: 16px;
+.switch {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  max-width: calc(100% - 24px);
 }
-/* text that rolls to its next value, like an odometer (home.js builds the spans) */
-[data-f] {
-  display: inline-block;
+.switch button {
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+.switch__b {
+  position: relative;
+  overflow: hidden;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: var(--t-13);
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text);
+  transition:
+    background-color var(--d-state) var(--ease),
+    color var(--d-state) var(--ease);
+}
+.switch__b span {
+  position: relative;
+}
+.switch__b em {
+  font-style: normal;
+}
+@media (max-width: 479px) {
+  .switch__b {
+    padding: 0 10px;
+  }
+  .switch__b em {
+    display: none;
+  }
+}
+/* the active car's pill fills as its turn runs */
+.switch__b i {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.22);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.switch__b.is-on {
+  background: var(--text);
+  color: #fff;
+}
+.switch__p {
+  width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+}
+.switch__p[hidden] {
+  display: none;
+}
+.switch__p span {
+  width: 10px;
+  height: 12px;
+  border-left: 3px solid currentColor;
+  border-right: 3px solid currentColor;
+}
+.switch__p.is-paused span {
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+  border-left: 11px solid currentColor;
+  border-right: 0;
 }
 .roll {
-  position: relative;
-  display: inline-block;
-  overflow: clip;
-  overflow-clip-margin: 0.1em;
+  display: inline-grid;
   vertical-align: bottom;
-  white-space: pre;
+  overflow: hidden;
 }
 .roll__old {
-  position: absolute;
-  left: 0;
-  top: 0;
-  white-space: pre;
+  grid-area: 1 / 1;
+}
+.roll__new {
+  grid-area: 1 / 1;
+  display: inline-flex;
 }
 .roll__ch {
   display: inline-block;
@@ -373,6 +197,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  padding: 8px;
+  border-radius: 16px;
+  background: var(--ink-3);
 }
 .find__q {
   grid-column: 1 / -1;
@@ -380,7 +207,7 @@
 }
 .find__q svg {
   position: absolute;
-  left: 14px;
+  left: 16px;
   top: 50%;
   width: 18px;
   height: 18px;
@@ -391,10 +218,10 @@
 .find__input {
   width: 100%;
   min-height: 52px;
-  padding: 0 14px 0 42px;
-  background: rgba(19, 19, 22, 0.92);
-  border: 1px solid var(--line);
-  border-radius: var(--r);
+  padding: 0 14px 0 44px;
+  background: var(--ink-1);
+  border: 1px solid transparent;
+  border-radius: 10px;
   font-size: var(--t-16);
   transition:
     border-color var(--d-state) var(--ease),
@@ -405,15 +232,19 @@
 }
 .find__input:focus-visible {
   outline: none;
-  border-color: var(--shu);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.28);
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px rgba(17, 17, 16, 0.12);
 }
 .find .select {
-  background-color: rgba(19, 19, 22, 0.92);
+  background-color: var(--ink-1);
+  border-color: transparent;
+  border-radius: 10px;
 }
 .find__go {
+  grid-column: 1 / -1;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 18px;
+  border-radius: 10px;
 }
 .find__go .num {
   display: inline-block;
@@ -429,304 +260,66 @@
     transform: translateY(40%);
   }
 }
-@media (max-height: 760px) and (max-width: 599px) {
-  .hero__jp {
-    display: none;
-  }
-}
 @media (min-width: 600px) {
   .find {
     grid-template-columns: repeat(3, 1fr);
   }
-  .find__go {
-    grid-column: 1 / -1;
-  }
-  .hero__lede {
-    display: block;
-  }
 }
 @media (min-width: 900px) {
-  .hero {
-    min-height: max(100svh, 720px);
-  }
-  .hero__frame {
-    left: auto;
-    right: -3vw;
-    margin-left: 0;
-    height: 100%;
-    transform: translate3d(calc(var(--px) * 10px), calc(var(--py) * 6px), 0);
-  }
-  .hs__code {
-    top: 9.500%;
-    left: -2%;
-    font-size: min(21cqw, calc(118cqw / var(--n, 5)));
-    -webkit-text-stroke-width: 1.500px;
-  }
-  .hero__shade {
-    background:
-      linear-gradient(180deg, rgba(6, 6, 7, 0.74) 0%, transparent 18%),
-      linear-gradient(90deg, var(--night) 0%, var(--night) calc(100vw - 133svh + 3vw), rgba(6, 6, 7, 0.5) calc(100vw - 133svh + 3vw + 20vw), transparent 76%),
-      linear-gradient(0deg, var(--night) 0%, rgba(6, 6, 7, 0.9) 22%, transparent 52%);
-  }
   .hero__in {
-    gap: var(--s-5);
-    padding-bottom: var(--s-5);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    column-gap: var(--s-7);
+    row-gap: var(--s-6);
   }
-  .hero__copy {
-    gap: var(--s-3);
-    max-width: 1100px;
-    margin-bottom: var(--s-3);
+  .hero__txt {
+    grid-template-rows: auto auto auto auto 1fr;
   }
-  .hero__lede {
-    font-size: var(--t-18);
+  .hero__acts {
+    align-self: end;
   }
-  .feat {
-    grid-template-columns: clamp(190px, 17vw, 250px) minmax(0, 1fr);
-    gap: clamp(20px, 2.4vw, 32px);
-    align-items: center;
-    padding-top: var(--s-4);
+  .stage {
+    order: 0;
+    margin: 0;
   }
-  .feat__ctl {
-    display: grid;
+  .stage__pics {
+    aspect-ratio: 3 / 2;
+    border-radius: var(--r);
   }
-  .feat__nav {
-    flex-wrap: wrap;
-    gap: 8px;
+  .stage__n {
+    display: block;
+    position: absolute;
+    z-index: 3;
+    left: 16px;
+    bottom: 16px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    font-size: var(--t-13);
+    font-weight: 500;
   }
-  .feat__idx {
-    width: 100%;
-    margin-bottom: 2px;
+  .switch {
+    bottom: 16px;
   }
-  .feat__bars {
-    flex: 1 1 100%;
-    margin-bottom: 10px;
-  }
-  .feat__car {
-    grid-template-columns: minmax(0, 1fr) auto auto auto auto;
-    gap: clamp(16px, 2.2vw, 32px);
-    align-items: center;
-  }
-  .feat__name {
-    grid-column: auto;
-    padding-right: 0;
-    min-width: 0;
-  }
-  .feat__title {
-    font-size: clamp(1.25rem, 0.4rem + 1.5vw, 1.75rem);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .feat__title .roll {
-    vertical-align: top;
-  }
-  .feat__fact b {
-    font-size: clamp(1.25rem, 0.4rem + 1.5vw, 1.75rem);
-    font-weight: 300;
-  }
-  .feat__fact--price b {
-    font-weight: 400;
-  }
-  .feat__go {
-    position: static;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    width: auto;
+  .switch__b {
     padding: 0 18px;
-    min-height: 52px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .feat__go span {
-    display: inline;
+    font-size: var(--t-14);
   }
   .find {
+    grid-column: 1 / -1;
     grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)) auto;
-    gap: 0;
-    padding: 6px;
-    background: rgba(12, 12, 14, 0.78);
-    -webkit-backdrop-filter: blur(18px) saturate(1.3);
-    backdrop-filter: blur(18px) saturate(1.3);
-    border: 1px solid var(--line-2);
-    border-radius: var(--r-2);
   }
   .find__q,
   .find__go {
     grid-column: auto;
   }
-  .find__input,
-  .find .select {
-    min-height: 56px;
-    background-color: transparent;
-    border-color: transparent;
-    border-radius: var(--r);
-  }
-  .find__sel {
-    border-left: 1px solid var(--line);
-  }
   .find__go {
-    min-height: 56px;
-    min-width: 200px;
-    margin-left: 6px;
-    padding: 0 22px;
+    gap: var(--s-5);
   }
 }
-@media (min-width: 900px) and (max-width: 1239px) {
-  .feat__go {
-    width: 52px;
-    padding: 0;
-    justify-content: center;
-  }
-  .feat__go span {
-    display: none;
-  }
-}
-@media (hover: hover) {
-  .feat__ctl:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
-  .feat__bar:hover::before {
-    background: rgba(255, 255, 255, 0.5);
-  }
-  .feat__car:hover .feat__go {
-    background: var(--text);
-    border-color: var(--text);
-    color: var(--night);
-  }
-  .feat__car:hover .arr {
-    transform: translateX(4px);
-  }
-}
-
-/* ---------- the reveal: lights out, one pass of light, lamp on ---------- */
-.hs.is-out .hs__car {
-  opacity: 0;
-  filter: brightness(0.15);
-}
-.hs.is-out .hs__lamp,
-.hs.is-out .hs__code {
-  animation: none;
-  opacity: 0;
-}
-.hs.is-out .hs__code {
-  transition: opacity 400ms var(--ease);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hs.is-on .hs__room {
-    animation: room-in 1100ms var(--ease) both;
-  }
-  .hs.is-on .hs__img {
-    animation: car-in var(--d-sweep) var(--ease-io) 200ms both;
-  }
-  .hs.is-on .hs__beam {
-    animation: beam var(--d-sweep) var(--ease-io) 200ms both;
-  }
-  .hs.is-on .hs__lamp {
-    animation: lamp 1500ms var(--ease) 1250ms both;
-  }
-  .hs.is-on .hs__code span {
-    animation: code-in 1700ms var(--ease) 150ms both;
-  }
-  .hs.is-on {
-    animation: breathe 9s linear both;
-  }
-  [data-hero-line] {
-    animation: line-in 900ms var(--ease) both;
-    animation-delay: calc(650ms + var(--i) * 100ms);
-  }
-  .hero__l[data-hero-line] {
-    animation: none;
-  }
-  .hero__l[data-hero-line] > span {
-    animation: line-up 1000ms var(--ease) both;
-    animation-delay: calc(650ms + var(--i) * 100ms);
-  }
-  @keyframes room-in {
-    from {
-      opacity: 0;
-    }
-  }
-  @keyframes car-in {
-    from {
-      clip-path: polygon(0 0, 8% 0, -8% 100%, 0 100%);
-      filter: brightness(1.75) contrast(1.05) saturate(0.55);
-    }
-    72% {
-      filter: brightness(1.22) contrast(1.05) saturate(0.86);
-    }
-    to {
-      clip-path: polygon(0 0, 164% 0, 148% 100%, 0 100%);
-    }
-  }
-  @keyframes beam {
-    0% {
-      opacity: 1;
-      transform: translateX(-100%) skewX(-12deg);
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(290%) skewX(-12deg);
-    }
-  }
-  @keyframes lamp {
-    0% {
-      opacity: 0;
-      transform: scale(0.6);
-    }
-    14% {
-      opacity: 1;
-      transform: scale(1.12);
-    }
-    26% {
-      opacity: 0.45;
-    }
-    42% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0.85;
-      transform: scale(1);
-    }
-  }
-  @keyframes code-in {
-    from {
-      opacity: 0;
-      transform: translateX(7%);
-      filter: blur(6px);
-    }
-  }
-  @keyframes breathe {
-    from {
-      transform: scale(1.035);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-  @keyframes line-in {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-  }
-  @keyframes line-up {
-    from {
-      transform: translateY(108%);
-    }
-  }
-  @supports (animation-timeline: scroll()) {
-    .hero__stage {
-      animation: drift linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0 100svh;
-    }
-    @keyframes drift {
-      to {
-        transform: translateY(7%);
-        opacity: 0.5;
-      }
-    }
+@media (prefers-reduced-motion: reduce) {
+  .stage__img {
+    transition: none;
+    transform: none;
   }
 }
 
@@ -781,9 +374,10 @@
   padding: 36px 14px 12px;
   background: linear-gradient(0deg, rgba(6, 6, 7, 0.92) 30%, transparent);
   font-size: var(--t-13);
-  color: var(--text-2);
+  color: #dddcd6;
 }
 .tile__txt b {
+  color: #fff;
   font-size: var(--t-22);
   font-weight: 500;
   font-stretch: 108%;

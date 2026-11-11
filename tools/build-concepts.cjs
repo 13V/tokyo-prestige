@@ -15,10 +15,12 @@ const B = "http://localhost:4173";
     await p.screenshot({ path: path.join(ROOT, "concepts/shots", file), type: "jpeg", quality: 82 });
     await ctx.close();
   };
-  await shot("/", "a-desktop.jpg", false, 4200);
-  await shot("/", "a-phone-home.jpg", true, 4200);
-  await shot("/cars/2001-nissan-skyline-gt-r-bnr34-512", "a-phone-car.jpg", true, 2500);
-  for (const k of ["b", "c", "d"]) {
+  // A (the showroom at night) was the first build; its shots are kept as they were (git tag direction-a-showroom-at-night).
+  // J (the figures) is the live site now, so its shots come from the site itself.
+  await shot("/", "j-desktop.jpg", false, 2500, async (p) => { await p.setViewportSize({ width: 1440, height: 1200 }); await p.addStyleTag({ content: "[data-reveal],[data-reveal]>*{opacity:1!important;transform:none!important;clip-path:none!important}" }); await p.waitForTimeout(900); });
+  await shot("/", "j-phone-home.jpg", true, 2500);
+  await shot("/cars/2001-nissan-skyline-gt-r-bnr34-512", "j-phone-car.jpg", true, 2500);
+  for (const k of ["c", "d"]) {
     await shot(`/concepts/${k}`, `${k}-desktop.jpg`, false);
     await shot(`/concepts/${k}?s=home`, `${k}-phone-home.jpg`, true);
     await shot(`/concepts/${k}?s=car`, `${k}-phone-car.jpg`, true);
@@ -27,7 +29,7 @@ const B = "http://localhost:4173";
   await shot("/concepts/e?mode=dark", "e-desktop-dark.jpg", false);
   await shot("/concepts/e?s=home", "e-phone-home.jpg", true);
   await shot("/concepts/e?s=car&mode=dark", "e-phone-car.jpg", true);
-  for (const k of ["j", "k", "l"]) {
+  for (const k of ["k", "l"]) {
     await shot(`/concepts/${k}`, `${k}-desktop.jpg`, false, 900, (p) => p.setViewportSize({ width: 1440, height: 1200 }));
     await shot(`/concepts/${k}?s=home`, `${k}-phone-home.jpg`, true);
     await shot(`/concepts/${k}?s=car`, `${k}-phone-car.jpg`, true);

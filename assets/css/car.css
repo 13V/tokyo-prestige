@@ -78,7 +78,7 @@
 }
 .gal__hud .code {
   padding: 6px 10px;
-  background: rgba(6, 6, 7, 0.72);
+  background: rgba(255, 255, 255, 0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-radius: var(--r);
@@ -127,7 +127,7 @@
     bottom: 14px;
     min-height: 44px;
     font-size: var(--t-14);
-    background: rgba(6, 6, 7, 0.78);
+    background: rgba(255, 255, 255, 0.92);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-color: var(--line-2);
@@ -452,7 +452,7 @@
 }
 .gap {
   padding: 2px 8px;
-  border: 1px dashed rgba(255, 74, 34, 0.6);
+  border: 1px dashed rgba(200, 40, 28, 0.6);
   border-radius: var(--r);
   color: var(--text-2);
   font-size: var(--t-14);
@@ -498,7 +498,7 @@
   height: 14px;
 }
 .rec__row--ask .rec__mark {
-  background: rgba(255, 74, 34, 0.14);
+  background: rgba(200, 40, 28, 0.14);
   color: var(--shu);
 }
 .rec__k {
@@ -706,7 +706,7 @@
   border-radius: 50%;
   background: var(--text);
   border: 0;
-  box-shadow: 0 0 0 0 rgba(255, 74, 34, 0.3);
+  box-shadow: 0 0 0 0 rgba(200, 40, 28, 0.3);
   transition:
     box-shadow var(--d-state) var(--ease),
     transform var(--d-press) var(--ease);
@@ -720,13 +720,13 @@
 }
 .range:active::-webkit-slider-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 8px rgba(255, 74, 34, 0.22);
+  box-shadow: 0 0 0 8px rgba(200, 40, 28, 0.22);
 }
 .range:focus-visible {
   outline: none;
 }
 .range:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgba(255, 74, 34, 0.5);
+  box-shadow: 0 0 0 4px rgba(200, 40, 28, 0.5);
 }
 .est__out {
   display: grid;
@@ -971,7 +971,7 @@
   grid-template-columns: 64px 64px 1fr;
   gap: 8px;
   padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
-  background: rgba(6, 6, 7, 0.86);
+  background: rgba(238, 237, 233, 0.9);
   -webkit-backdrop-filter: blur(18px) saturate(1.3);
   backdrop-filter: blur(18px) saturate(1.3);
   border-top: 1px solid var(--line);
@@ -1006,8 +1006,9 @@
   background: rgba(255, 255, 255, 0.08);
 }
 .dock__btn--main {
-  background: var(--shu);
-  border-color: var(--shu);
+  background: var(--text);
+  border-color: var(--text);
+  color: #fff;
   color: var(--shu-ink);
   font-size: var(--t-16);
   font-stretch: 105%;
@@ -1033,6 +1034,15 @@
   margin: 0;
   padding: 0;
   border: 0;
+  /* the full-screen viewer stays dark, so the photo is all there is to look at */
+  --text: #f3f2ee;
+  --text-2: #c9c8c2;
+  --text-3: #a3a29c;
+  --line: rgba(255, 255, 255, 0.14);
+  --line-2: rgba(255, 255, 255, 0.28);
+  --ink-2: #131316;
+  --ink-3: #1b1b1f;
+  --ink-4: #26262b;
   background: #000;
   color: var(--text);
   overflow: hidden;
@@ -1143,5 +1153,24 @@
       opacity: 0;
       transform: scale(0.985);
     }
+  }
+}
+
+
+/* The figures: year, kilometres, gearbox, stock number, in that order on every car */
+.figs--car {
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 20px;
+  padding: var(--s-5) 0;
+  border-top: 1px solid var(--text);
+  border-bottom: 1px solid var(--line);
+}
+.figs--car .fig b {
+  font-size: clamp(2.5rem, 1.6rem + 4vw, 4.25rem);
+}
+@media (min-width: 900px) {
+  .figs--car {
+    grid-template-columns: repeat(4, auto);
+    justify-content: space-between;
   }
 }

@@ -2,10 +2,9 @@
    The spec is research/direction.md. Motion animates transform, opacity, clip-path, filter and colour only. */
 
 @font-face {
-  font-family: "Archivo";
-  src: url("/fonts/archivo-var.woff2") format("woff2");
+  font-family: "Geist";
+  src: url("/fonts/geist-var.woff2") format("woff2");
   font-weight: 100 900;
-  font-stretch: 62% 125%;
   font-display: swap;
 }
 @font-face {
@@ -23,35 +22,36 @@
 }
 /* a fallback sized like Archivo, so text does not jump when the font arrives */
 @font-face {
-  font-family: "Archivo Fallback";
+  font-family: "Geist Fallback";
   src: local("Arial"), local("Helvetica Neue"), local("Roboto");
-  size-adjust: 98%;
+  size-adjust: 104%;
   ascent-override: 92%;
   descent-override: 24%;
   line-gap-override: 0%;
 }
 
 :root {
-  /* colour: night, graphite, one accent */
-  --night: #060607;
-  --ink-1: #0c0c0e;
-  --ink-2: #131316;
-  --ink-3: #1b1b1f;
-  --ink-4: #26262b;
-  --line: rgba(255, 255, 255, 0.1);
-  --line-2: rgba(255, 255, 255, 0.2);
-  --text: #f3f2ee;
-  --text-2: #b9b8b2;
-  --text-3: #8f8e88;
-  --shu: #ff4a22; /* 朱, the vermilion of an inspector's seal */
-  --shu-press: #e03a14;
-  --shu-ink: #0b0b0c; /* text on the accent */
-  --beam: #e4ecff; /* headlight white, for light effects only */
-  --ok: #7fd4a0;
-  --bad: #ff8a73;
+  /* colour: "The figures". A warm light ground, ink, and one red used sparingly.
+     The names are kept from the first, dark version of the site: --night is the page ground. */
+  --night: #eeede9;
+  --ink-1: #f2f1ee;
+  --ink-2: #f7f6f3;
+  --ink-3: #ffffff;
+  --ink-4: #e3e1db;
+  --line: rgba(17, 17, 16, 0.12);
+  --line-2: rgba(17, 17, 16, 0.26);
+  --text: #111110;
+  --text-2: #4d4c47;
+  --text-3: #6b6a64;
+  --shu: #c8281c; /* 朱, the vermilion of an inspector's seal */
+  --shu-press: #a81f15;
+  --shu-ink: #ffffff; /* text on the accent */
+  --beam: #ffffff;
+  --ok: #1c7447;
+  --bad: #b3261e;
 
   /* type */
-  --font: "Archivo", "Archivo Fallback", system-ui, sans-serif;
+  --font: "Geist", "Geist Fallback", system-ui, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --jp: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
   --t-12: 0.75rem;
@@ -79,9 +79,9 @@
   --gutter: clamp(16px, 4vw, 56px);
   --wrap: 1360px;
 
-  /* shape: machined, nearly square */
-  --r: 2px;
-  --r-2: 4px;
+  /* shape: soft corners, pills for actions */
+  --r: 6px;
+  --r-2: 10px;
 
   /* motion: weighted, never busy */
   --ease: cubic-bezier(0.16, 1, 0.3, 1); /* settle */
@@ -94,7 +94,7 @@
   --stagger: 60ms;
 
   --bar-h: 64px;
-  color-scheme: dark;
+  color-scheme: light;
 }
 @supports (animation-timing-function: linear(0, 1)) {
   :root {
@@ -289,10 +289,10 @@ button {
   min-height: 52px;
   padding: 0 22px;
   border: 1px solid transparent;
-  border-radius: var(--r);
+  border-radius: 999px;
   background: var(--bg);
   color: var(--fg);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--t-16);
   font-stretch: 105%;
   letter-spacing: -0.005em;
@@ -309,8 +309,8 @@ button {
   transform: scale(0.975);
 }
 .btn--shu {
-  --bg: var(--shu);
-  --fg: var(--shu-ink);
+  --bg: var(--text);
+  --fg: #fff;
 }
 .btn--ghost {
   --bg: transparent;
@@ -331,13 +331,13 @@ button {
 }
 @media (hover: hover) {
   .btn:hover {
-    --bg: #fff;
+    --bg: #2c2c2a;
   }
   .btn--shu:hover {
-    --bg: #ff5f3b;
+    --bg: #2c2c2a;
   }
   .btn--ghost:hover {
-    --bg: rgba(255, 255, 255, 0.06);
+    --bg: rgba(17, 17, 16, 0.05);
     border-color: var(--text-2);
   }
   .btn--quiet:hover {
@@ -387,7 +387,7 @@ button {
   height: 8px;
   border-radius: 50%;
   background: var(--shu);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.18);
+  box-shadow: 0 0 0 3px rgba(200, 40, 28, 0.18);
 }
 .status--contract::before {
   background: transparent;
@@ -419,7 +419,7 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(6, 6, 7, 0.82);
+  background: rgba(238, 237, 233, 0.86);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   backdrop-filter: blur(16px) saturate(1.2);
   opacity: 0;
@@ -723,7 +723,7 @@ button {
 }
 .card__top .status {
   padding: 6px 10px;
-  background: rgba(6, 6, 7, 0.72);
+  background: rgba(255, 255, 255, 0.92);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-radius: var(--r);
@@ -739,7 +739,7 @@ button {
   border-radius: var(--r);
 }
 .card__tag--quiet {
-  background: rgba(6, 6, 7, 0.72);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--text-2);
   box-shadow: inset 0 0 0 1px var(--line-2);
 }
@@ -856,7 +856,7 @@ button {
     opacity: 0.55;
   }
   .card:hover .card__tag--quiet {
-  background: rgba(6, 6, 7, 0.72);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--text-2);
   box-shadow: inset 0 0 0 1px var(--line-2);
 }
@@ -948,7 +948,7 @@ textarea.input {
   outline: none;
   border-color: var(--shu);
   background-color: var(--ink-3);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.28);
+  box-shadow: 0 0 0 3px rgba(200, 40, 28, 0.28);
 }
 .input[aria-invalid="true"] {
   border-color: var(--bad);
@@ -1129,9 +1129,9 @@ textarea.input {
 .ph {
   position: relative;
   padding: var(--s-5);
-  border: 1px dashed rgba(255, 74, 34, 0.55);
+  border: 1px dashed rgba(200, 40, 28, 0.55);
   border-radius: var(--r);
-  background: repeating-linear-gradient(135deg, rgba(255, 74, 34, 0.05) 0 10px, transparent 10px 20px);
+  background: repeating-linear-gradient(135deg, rgba(200, 40, 28, 0.05) 0 10px, transparent 10px 20px);
 }
 .ph__tag {
   display: inline-block;
@@ -1283,4 +1283,131 @@ textarea.input {
     transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+/* ==========================================================================
+   The figures. Every car is introduced by the same figures in the same order,
+   set large and light with small units. This layer sits on the base above.
+   ========================================================================== */
+.figs {
+  display: grid;
+  gap: var(--s-5);
+}
+.fig {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  min-width: 0;
+}
+.fig b {
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+.fig b small {
+  margin-left: 0.3em;
+  font-size: 0.26em;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--text-2);
+}
+.fig__l {
+  font-size: var(--t-12);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.fig--word b {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* photos are shown as they were taken: no vignette over them */
+.shot::after {
+  background: none;
+}
+.shot,
+.card {
+  border-radius: var(--r);
+}
+.card {
+  overflow: hidden;
+  background: var(--ink-2);
+}
+.card__top .status,
+.card__tag--quiet {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  border-radius: 999px;
+  box-shadow: none;
+}
+.card__tag {
+  border-radius: 999px;
+}
+.card__body {
+  padding: 16px 16px 18px;
+}
+.card__title {
+  font-size: var(--t-18);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+.card__sub {
+  margin-top: 2px;
+  color: var(--text-3);
+  font-size: var(--t-13);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card__figs {
+  grid-template-columns: auto auto 1fr;
+  gap: 18px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.card__figs .fig {
+  gap: 3px;
+}
+.card__figs .fig b {
+  font-size: 1.625rem;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.card__figs .fig b small {
+  display: none;
+}
+.card__figs .fig__l {
+  font-size: 11px;
+}
+.card__figs .fig:last-child {
+  justify-self: end;
+  text-align: right;
+}
+.card__figs .fig:last-child .fig__l {
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+/* the bar is always solid on a light ground */
+.hdr::before {
+  opacity: 1;
+}
+.hdr {
+  border-bottom-color: var(--line);
+}
+.card__figs .fig--word b {
+  font-size: var(--t-16);
+  line-height: 1.7;
+  color: var(--text-2);
+}
+.display,
+.h2 {
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }

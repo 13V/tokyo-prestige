@@ -3,9 +3,19 @@
 11 November 2026. Live at **https://tokyo-prestige.vercel.app/** (public address, `noindex`, not connected
 to GitHub: it was deployed from the build session). Code is on branch `claude/ecstatic-cray-bwl9f8`.
 
+## The look: rebuilt in "The figures" (11 November 2026, later the same day)
+
+The live demo was first built dark ("The showroom at night"). At Troy's request it was rebuilt in direction J,
+"The figures": a light ground, Geist, and the same four figures (year, kilometres, gearbox, price) on the
+homepage, every card and every car page. Structure, pages, search, forms and wording are unchanged. The dark
+version is kept at the git tag `direction-a-showroom-at-night`. The screenshots and clips in this folder show
+the new look. Lighthouse on the rebuilt pages, local build, phone profile, one run each: home 97, stock 95,
+car page 96 for performance; accessibility 100 on all three. The live figures in the table below were
+measured on the dark build and have not been re-run against the live address.
+
 ## What is in this folder
 
-- `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page
+- `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (48 s): homepage, stock search, a car page
   and a sent test-drive request, with the motion playing.
 - `screens/`: every page type on desktop and phone, the first screen and the whole page (52 images).
 - `design-directions.pdf`: five directions (the built one, the gallery, find it fast, Astryx, the figures),
@@ -94,5 +104,5 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
 - **The map** on Contact is a Google Maps embed and was not visible from the build machine.
 - **The dealer's data.** About 25 listings contradict themselves; the demo shows the safe reading and
   `gaps.md` lists each one.
-- **Photos.** All are the dealer's own. The four hero cars have hand-traced outlines; a new hero car
-  needs one drawn (about ten minutes each).
+- **Photos.** All are the dealer's own, shown as taken. The four hero cars are chosen by stock number in
+  `tools/templates/home.mjs`.

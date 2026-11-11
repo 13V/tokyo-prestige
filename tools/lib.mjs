@@ -106,27 +106,32 @@ export function facts(c) {
 
 // The stock card. The first photo is in the HTML; the other angles are named in data-angles and
 // fetched by tp.js only when the card is hovered or scrolled past.
+// "6-speed manual" reads as a large 6 with "speed manual" beside it; anything else as a word and its rest
+export function gear(c) {
+  const t = c.transmission;
+  if (!t) return null;
+  const m = /^(\d+)-speed (.+)$/.exec(t);
+  if (m) return [m[1], "speed " + m[2]];
+  const i = t.indexOf(" ");
+  return i < 0 ? [t, ""] : [t.slice(0, i), t.slice(i + 1)];
+}
+// One figure: the label comes first for a screen reader and sits under the value on screen
+export const fig = (label, value, unit = "", attrs = "") => `<div class="fig"><span class="fig__l">${label}</span><b class="num"${attrs}>${value}${unit ? `<small>${unit}</small>` : ""}</b></div>`;
+
 export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw", lazy = true, h = 3 } = {}) {
   const st = STATUS[c.status];
   const angles = c.photos.map((_, i) => i + 1).filter((n) => manifest[c.id]?.[String(n)]);
-  const price = c.price
-    ? `<p class="card__price"><b class="num">${money(c.price)}</b><small>${esc((c.priceNote || "").toLowerCase())}</small></p>`
-    : `<p class="card__price"><small>${c.status === "coming-soon" ? "Price on arrival" : "Under contract"}</small></p>`;
+  const price = c.price ? fig(esc(c.priceNote || "Price"), money(c.price)) : `<div class="fig fig--word"><span class="fig__l">Price</span><b>${c.status === "coming-soon" ? "On arrival" : "Under contract"}</b></div>`;
   return `<article class="card" data-card data-id="${c.id}" data-make="${esc(c.make)}" data-model="${esc(c.model)}" data-body="${esc(c.body)}" data-year="${c.year}" data-price="${c.price ?? ""}" data-km="${c.km ?? ""}" data-trans="${esc(c.transmissionType ?? "")}" data-status="${c.status}" data-q="${esc([c.make, c.model, c.modelCode, c.grade, c.year, c.body, c.colour, c.titleAsListed].filter(Boolean).join(" ").toLowerCase())}" data-angles="${angles.join(",")}">
   <div class="shot card__shot">${photo(c, 1, { sizes, lazy, max: 960 })}
     <div class="card__top"><span class="status${st.cls}">${st.label}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : c.reserved ? `<span class="card__tag card__tag--quiet">Under contract</span>` : ""}</div>
     <div class="card__ticks" aria-hidden="true">${angles.map((_, i) => `<i${i === 0 ? ' class="is-on"' : ""}></i>`).join("")}</div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>${esc(c.modelCode || c.body)}</span><span class="num">${c.year}</span></p>
     <h${h} class="card__title"><a href="${carUrl(c)}">${esc(c.make)} ${esc(c.model)}</a></h${h}>
-    <p class="card__grade">${c.grade ? esc(c.grade) : "&nbsp;"}</p>
-    <p class="card__facts num">${facts(c)
-      .map((f) => `<span>${esc(f)}</span>`)
-      .join("")}</p>
-    ${price}
+    <p class="card__sub">${[c.modelCode, c.grade, c.transmission].filter(Boolean).map(esc).join(" · ") || esc(c.body)}</p>
+    <div class="figs card__figs">${fig("Year", c.year)}${fig("Kilometres", c.km != null ? km(c.km) : "&ndash;", c.km != null ? "km" : "")}${price}</div>
   </div>
-  <span class="card__go" aria-hidden="true">${icon.arrow}</span>
 </article>`;
 }
 
@@ -154,7 +159,7 @@ export function layout({ title, description, path: p, body, css = [], js = [], h
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
 ${head}<link rel="stylesheet" href="/assets/css/tp.css">
 ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
 <script>document.documentElement.classList.add("js")</script>

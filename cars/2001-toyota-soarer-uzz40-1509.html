@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="/img/cars/1509/1-960.avif" imagesrcset="/img/cars/1509/1-480.avif 480w, /img/cars/1509/1-960.avif 960w, /img/cars/1509/1-1024.avif 1024w" imagesizes="(min-width: 1000px) 62vw, 100vw" fetchpriority="high">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Car","name":"2001 Toyota Soarer","brand":{"@type":"Brand","name":"Toyota"},"model":"Soarer","vehicleModelDate":"2001","itemCondition":"https://schema.org/UsedCondition","image":["https://www.tokyoprestige.com.au/img/cars/1509/1-1024.avif","https://www.tokyoprestige.com.au/img/cars/1509/2-1024.avif","https://www.tokyoprestige.com.au/img/cars/1509/3-1024.avif","https://www.tokyoprestige.com.au/img/cars/1509/4-1024.avif","https://www.tokyoprestige.com.au/img/cars/1509/5-1024.avif"],"sku":"1509","seller":{"@id":"https://www.tokyoprestige.com.au/#dealer"},"mileageFromOdometer":{"@type":"QuantitativeValue","value":79975,"unitCode":"KMT"},"color":"Green","vehicleInteriorColor":"Black","vehicleTransmission":"5-speed automatic","driveWheelConfiguration":"RWD","vehicleEngine":{"@type":"EngineSpecification","name":"4.3L V8"}},{"@context":"https://schema.org","@type":"AutoDealer","@id":"https://www.tokyoprestige.com.au/#dealer","name":"Tokyo Prestige","telephone":"+61883364674","email":"sales@tokyoprestige.com.au","address":{"@type":"PostalAddress","streetAddress":"216-218 Kensington Road","addressLocality":"Marryatville","addressRegion":"SA","postalCode":"5068","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]}]</script>
 <link rel="stylesheet" href="/assets/css/tp.css">
@@ -84,11 +84,12 @@
       </div>
       </div>
 
-      <dl class="nums" aria-label="Key facts">
-        <div><dt>Year</dt><dd class="num" data-count="2001" data-plain>2001</dd></div>
-        <div><dt>Kilometres</dt><dd class="num" data-count="79975">79,975</dd></div>
-        <div><dt>Stock number</dt><dd class="num">1509</dd></div>
-      </dl>
+      <div class="figs figs--car" role="group" aria-label="Key facts">
+        <div class="fig"><span class="fig__l">Year</span><b class="num"><span data-count="2001" data-plain>2001</span></b></div>
+        <div class="fig"><span class="fig__l">Kilometres</span><b class="num"><span data-count="79975">79,975</span><small>km</small></b></div>
+        <div class="fig"><span class="fig__l">Gearbox</span><b class="num">5<small>speed automatic</small></b></div>
+        <div class="fig"><span class="fig__l">Stock number</span><b class="num">1509</b></div>
+      </div>
 
       
 
@@ -261,13 +262,10 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>ZZW30</span><span class="num">2001</span></p>
     <h3 class="card__title"><a href="/cars/2001-toyota-mr-s-zzw30-1438">Toyota MR-S</a></h3>
-    <p class="card__grade">&nbsp;</p>
-    <p class="card__facts num"><span>19,941 km</span><span>6-speed manual (listed as upgraded)</span><span>RWD</span></p>
-    <p class="card__price"><b class="num">$30,888</b><small>plus on-road costs</small></p>
+    <p class="card__sub">ZZW30 · 6-speed manual (listed as upgraded)</p>
+    <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2001</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">19,941<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$30,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1459" data-make="Toyota" data-model="Soarer" data-body="Coupe" data-year="1996" data-price="44888" data-km="38523" data-trans="Automatic" data-status="available" data-q="toyota soarer uzz31 gt limited 1996 coupe black 1996 lexus sc uzz31 sc400 gt limited coupe 2dr auto 4sp 4.0i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1459/1-960.avif" srcset="/img/cars/1459/1-480.avif 480w, /img/cars/1459/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="1996 Toyota Soarer GT Limited, black: front three-quarter" loading="lazy" decoding="async">
@@ -275,13 +273,10 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>UZZ31</span><span class="num">1996</span></p>
     <h3 class="card__title"><a href="/cars/1996-toyota-soarer-uzz31-gt-limited-1459">Toyota Soarer</a></h3>
-    <p class="card__grade">GT Limited</p>
-    <p class="card__facts num"><span>38,523 km</span><span>4-speed automatic</span><span>RWD</span></p>
-    <p class="card__price"><b class="num">$44,888</b><small>plus on-road costs</small></p>
+    <p class="card__sub">UZZ31 · GT Limited · 4-speed automatic</p>
+    <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">1996</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">38,523<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$44,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1491" data-make="Toyota" data-model="Celsior" data-body="Sedan" data-year="2001" data-price="" data-km="52191" data-trans="Automatic" data-status="coming-soon" data-q="toyota celsior ucf31 version c 2001 sedan white 2001 toyota celcior version c" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1491/1-960.avif" srcset="/img/cars/1491/1-480.avif 480w, /img/cars/1491/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2001 Toyota Celsior Version C, white" loading="lazy" decoding="async">
@@ -289,13 +284,10 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>UCF31</span><span class="num">2001</span></p>
     <h3 class="card__title"><a href="/cars/2001-toyota-celsior-ucf31-version-c-1491">Toyota Celsior</a></h3>
-    <p class="card__grade">Version C</p>
-    <p class="card__facts num"><span>52,191 km</span><span>Automatic</span><span>RWD</span></p>
-    <p class="card__price"><small>Price on arrival</small></p>
+    <p class="card__sub">UCF31 · Version C · Automatic</p>
+    <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2001</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">52,191<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1462" data-make="Toyota" data-model="Land Cruiser 100" data-body="SUV &amp; 4WD" data-year="1999" data-price="" data-km="" data-trans="Automatic" data-status="coming-soon" data-q="toyota land cruiser 100 hdj101 vx limited g selection 1999 suv &amp; 4wd white 1999 toyota landcruiser 100 4x4 vx limited g selection" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1462/1-960.avif" srcset="/img/cars/1462/1-480.avif 480w, /img/cars/1462/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="1999 Toyota Land Cruiser 100 VX Limited G Selection, white: front three-quarter, right side" loading="lazy" decoding="async">
@@ -303,13 +295,10 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
-    <p class="code card__code"><span>HDJ101</span><span class="num">1999</span></p>
     <h3 class="card__title"><a href="/cars/1999-toyota-land-cruiser-100-hdj101-vx-limited-g-selection-1462">Toyota Land Cruiser 100</a></h3>
-    <p class="card__grade">VX Limited G Selection</p>
-    <p class="card__facts num"><span>4-speed automatic</span><span>4WD</span></p>
-    <p class="card__price"><small>Price on arrival</small></p>
+    <p class="card__sub">HDJ101 · VX Limited G Selection · 4-speed automatic</p>
+    <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">1999</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">&ndash;</b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article></div>
     </div>
   </section>

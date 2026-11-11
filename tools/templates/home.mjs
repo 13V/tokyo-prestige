@@ -1,18 +1,13 @@
-import { cars, card, dealer, dealerLd, esc, icon, km, layout, money, carUrl, photo, KATAKANA } from "../lib.mjs";
+import { cars, card, dealer, dealerLd, esc, gear, icon, km, layout, manifest, money, carUrl, photo, STATUS } from "../lib.mjs";
 
-// The four cars in the hero: one for each kind of buyer. Each has a hand-traced outline in assets/img/
-// (mask-<stock no>.svg) and the position of its headlight, so the light lands where the lamp is.
-const FEATURED = [
-  { id: "512", lamp: [70, 49] }, // Skyline GT-R BNR34
-  { id: "1412", lamp: [77, 54] }, // Century GZG50
-  { id: "1452", lamp: [64, 52] }, // Crown Hybrid G-Executive
-  { id: "9974441", lamp: [72, 43] }, // Alphard Hybrid
-];
-const SIZES = "(min-width: 900px) 133vh, 88vh";
-const srcset = (id) => [800, 1280, 1920].map((w) => `/img/hero/${id}-${w}.avif ${w}w`).join(", ");
+// The four cars in the hero, one for each kind of buyer. Each is introduced by the same four figures.
+const FEATURED = ["512", "1412", "1452", "9974441"]; // Skyline GT-R, Century, Crown Hybrid, Alphard Hybrid
+const SIZES = "(min-width: 900px) 56vw, 100vw";
+const srcset = (c) => manifest[c.id]["1"].sizes.map((w) => `/img/cars/${c.id}/1-${w}.avif ${w}w`).join(", ");
+const SHORT = { "512": "Skyline GT-R", "1412": "Century", "1452": "Crown<em> Hybrid</em>", "9974441": "Alphard" };
 
 export function home() {
-  const feats = FEATURED.map((f) => ({ ...f, car: cars.find((c) => c.id === f.id) }));
+  const feats = FEATURED.map((id) => cars.find((c) => c.id === id));
   const available = cars.filter((c) => c.status === "available");
   const soon = cars.filter((c) => c.status === "coming-soon");
   const makes = [...new Set(available.map((c) => c.make))].sort();
@@ -20,61 +15,43 @@ export function home() {
   const count = (fn) => available.filter(fn).length;
   const index = available.map((c) => [c.make, c.body, c.price || 0, 1, [c.make, c.model, c.modelCode, c.grade, c.year, c.body].filter(Boolean).join(" ").toLowerCase()]);
   const fresh = [...available.filter((c) => c.badge === "Just Arrived"), ...available.filter((c) => ["9942778", "1453", "1365", "1442", "1448", "1355"].includes(c.id))].slice(0, 8);
-  const first = feats[0].car;
-  const featData = feats.map(({ car: c }) => ({ url: carUrl(c), jp: KATAKANA[c.model] || "", title: `${c.year} ${c.make} ${c.model}`, code: c.modelCode, km: km(c.km), price: money(c.price), note: c.priceNote.toLowerCase() }));
+  const first = feats[0];
+  const sub = (c) => [c.engine, c.drivetrain, c.colour && c.colour.toLowerCase()].filter(Boolean).join(", ");
+  const kick = (c) => `Stock no. ${c.id} · ${c.modelCode} · ${STATUS[c.status].label}`;
+  const featData = feats.map((c) => ({ url: carUrl(c), kick: kick(c), title: `${c.make} ${c.model}`, sub: sub(c), year: String(c.year), km: km(c.km), gear: gear(c)?.[0] ?? "", gearu: gear(c)?.[1] ?? "", price: money(c.price), n: c.photos.length }));
   const BODY_ORDER = ["Sedan", "SUV & 4WD", "Wagon", "People mover", "Coupe", "Hatch", "Kei truck", "Convertible"];
   const bodyTiles = BODY_ORDER.map((b) => ({ b, list: available.filter((c) => c.body === b) })).filter((x) => x.list.length);
   const soonPick = ["1463", "1482", "1406", "1476", "1493", "1334", "1509", "1497"].map((id) => soon.find((c) => c.id === id)).filter(Boolean);
 
-  const imgAttrs = (id, i) => (i === 0 ? `src="/img/hero/${id}-1280.avif" srcset="${srcset(id)}"` : `data-src="/img/hero/${id}-1280.avif" data-srcset="${srcset(id)}"`);
-  const slide = ({ id, lamp, car: c }, i) => `
-      <div class="hs${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
-        <img class="hs__room" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">
-        <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
-        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-${id}.svg);mask-image:url(/assets/img/mask-${id}.svg)">
-          <img class="hs__img" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt="" decoding="async">
-          <span class="hs__beam"></span>
-        </div>
-        <span class="hs__lamp"></span>
-      </div>`;
-
   const body = `
 <section class="hero" data-hero aria-labelledby="hero-h">
-  <div class="hero__stage" aria-hidden="true">
-    <div class="hero__frame" data-frame>${feats.map(slide).join("")}
-      <span class="hero__torch" data-torch></span>
-    </div>
-    <div class="hero__shade"></div>
-  </div>
-
   <div class="wrap hero__in">
-    <div class="hero__copy">
-      <p class="jp hero__jp" lang="ja" data-hero-line style="--i:0">東京からアデレードへ</p>
-      <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked Japanese imports.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
-      <p class="lede hero__lede" data-hero-line style="--i:3"><span class="num">${available.length}</span> cars to see today at Marryatville, <span class="num">${soon.length}</span> more on the way. Serviced, complied and ready to register.</p>
+    <div class="hero__txt">
+      <h1 class="hero__h" id="hero-h">Hand-picked Japanese imports, here to drive in Adelaide.</h1>
+      <p class="hero__kick" data-f="kick">${esc(kick(first))}</p>
+      <p class="hero__name"><a href="${carUrl(first)}" data-feat-link><span data-f="title">${esc(first.make)} ${esc(first.model)}</span></a><small data-f="sub">${esc(sub(first))}</small></p>
+      <div class="figs hero__figs">
+        <div class="fig"><span class="fig__l">Year</span><b class="num"><span data-f="year">${first.year}</span></b></div>
+        <div class="fig"><span class="fig__l">Kilometres</span><b class="num"><span data-f="km">${km(first.km)}</span><small>km</small></b></div>
+        <div class="fig"><span class="fig__l">Gearbox</span><b class="num"><span data-f="gear">${esc(gear(first)[0])}</span><small data-f="gearu">${esc(gear(first)[1])}</small></b></div>
+        <div class="fig"><span class="fig__l">${esc(first.priceNote)}</span><b class="num"><span data-f="price">${money(first.price)}</span></b></div>
+      </div>
+      <p class="hero__acts"><a class="btn btn--shu" href="${carUrl(first)}#enquire" data-feat-book>Book a test drive</a><a class="btn btn--ghost" href="${carUrl(first)}" data-feat-link>See this car ${icon.arrow}</a></p>
     </div>
 
-    <div class="feat" data-feat data-hero-line style="--i:4" role="group" aria-roledescription="carousel" aria-label="Featured cars">
-      <div class="feat__nav">
-        <span class="feat__idx code num"><b data-f="idx">01</b> / 0${feats.length}</span>
-        <div class="feat__bars">
-          ${feats.map(({ car: c }, i) => `<button class="feat__bar${i === 0 ? " is-on" : ""}" type="button" data-feat-go="${i}" aria-label="Show the ${esc(c.make)} ${esc(c.model)}"${i === 0 ? ' aria-current="true"' : ""}><i></i></button>`).join("")}
-        </div>
-        <button class="feat__ctl feat__ctl--prev" type="button" data-feat-prev aria-label="Previous car">${icon.chev}</button>
-        <button class="feat__ctl" type="button" data-feat-next aria-label="Next car">${icon.chev}</button>
-        <button class="feat__ctl feat__ctl--play" type="button" data-feat-toggle aria-label="Pause the featured cars" hidden><span></span></button>
+    <div class="stage" data-feat role="group" aria-roledescription="carousel" aria-label="Featured cars">
+      <div class="stage__pics shot">
+        ${feats.map((c, i) => `<img class="stage__img${i === 0 ? " is-on" : ""}" data-hs ${i === 0 ? `src="/img/cars/${c.id}/1-960.avif" srcset="${srcset(c)}"` : `data-src="/img/cars/${c.id}/1-960.avif" data-srcset="${srcset(c)}"`} sizes="${SIZES}" width="2560" height="1920" alt="${i === 0 ? `${c.year} ${esc(c.make)} ${esc(c.model)} in the Tokyo Prestige showroom` : ""}"${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">`).join("\n        ")}
       </div>
-      <a class="feat__car" href="${carUrl(first)}" data-feat-link>
-        <span class="feat__name"><span class="jp" lang="ja" data-f="jp">${KATAKANA[first.model] || ""}</span><span class="feat__title" data-f="title">${first.year} ${esc(first.make)} ${esc(first.model)}</span></span>
-        <span class="feat__fact"><small>Model code</small><b class="feat__codev" data-f="code">${esc(first.modelCode)}</b></span>
-        <span class="feat__fact"><small>Kilometres</small><b class="num" data-f="km">${km(first.km)}</b></span>
-        <span class="feat__fact feat__fact--price"><small data-f="note">${esc(first.priceNote.toLowerCase())}</small><b class="num" data-f="price">${money(first.price)}</b></span>
-        <span class="feat__go"><span>View this car</span>${icon.arrow}</span>
-      </a>
+      <span class="stage__n"><span data-f="n">1 of ${first.photos.length} photos</span></span>
+      <div class="switch">
+        ${feats.map((c, i) => `<button class="switch__b${i === 0 ? " is-on" : ""}" type="button" data-feat-go="${i}" aria-label="Show the ${esc(c.make)} ${esc(c.model)}"${i === 0 ? ' aria-current="true"' : ""}><i></i><span>${SHORT[c.id]}</span></button>`).join("")}
+        <button class="switch__p" type="button" data-feat-toggle aria-label="Pause the featured cars" hidden><span></span></button>
+      </div>
     </div>
     <script type="application/json" id="feat-data">${JSON.stringify(featData)}</script>
 
-    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find data-hero-line style="--i:5">
+    <form class="find" action="/stock" method="get" role="search" aria-label="Search the stock" data-find>
       <div class="find__q">
         <label class="vh" for="q">Model, grade or model code</label>
         ${icon.search}
@@ -194,9 +171,8 @@ export function home() {
     description: `Japanese import cars, hand-picked and ready to drive in Adelaide. ${available.length} cars available at ${dealer.street}, ${dealer.suburb}. Licensed dealer ${dealer.licence}.`,
     path: "/",
     body,
-    solidHeader: false,
     css: ["/assets/css/home.css"],
     js: ["/assets/js/home.js"],
-    head: `<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
+    head: `<link rel="preload" as="image" href="/img/cars/${first.id}/1-960.avif" imagesrcset="${srcset(first)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
   });
 }
