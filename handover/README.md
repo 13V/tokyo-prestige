@@ -106,11 +106,13 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
   `gaps.md` lists each one.
 - **Photos.** All are the dealer's own. In the dark look the four hero cars have hand-traced outlines; a new
   hero car needs one drawn (about ten minutes each).
-- **The intro on the dark homepage** is two clips made with Higgsfield, played once per visit: a night run
-  down a Tokyo expressway (Seedance 2.5, no car in it), then the GT-R waking in the dark showroom (MiniMax H3,
-  animated between two frames made from the dealer's own photo; its last frame is that photo as the hero
-  shows it). They are the only generated assets on the site: `img/hero/run.mp4` (1.8 MB) and `wake.mp4`
-  (0.4 MB). They are fetched after the page starts, skipped with reduced motion or data saving, skipped if
-  not ready within four seconds, and there is a Skip button. Get the dealer's OK on the clips before a real
-  launch.
+- **The intro on the dark homepage** is one eight-second clip made with Higgsfield (MiniMax H3), played once
+  per visit: a black R34 GT-R slides in along a wet Tokyo expressway, rolls up to the camera, and the clip
+  ends on the dealer's own photo as the hero shows it. It was generated between two frames: a still of a
+  generated empty road, and that photo. The car in motion is an illustration, not their car: details such
+  as the intercooler and wing differ. It is the only generated asset on the site (`img/hero/drift.mp4`,
+  see its size on disk). It is fetched after the page starts, skipped with reduced motion or data saving,
+  skipped if not ready within four seconds, and there is a Skip button. **Before a real launch the dealer
+  must approve it**: it shows drifting on a public road, which a licensed dealer may not want to be seen
+  to promote.
 - **The figures look** was checked in Chromium at 1440 and 390 wide; it has had less testing than the dark look.

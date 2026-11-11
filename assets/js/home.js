@@ -196,7 +196,7 @@
   const runV = $("[data-intro-run]", hero);
   const wakeV = $("[data-intro-wake]", hero);
   const skip = $("[data-intro-skip]", hero);
-  if (root.classList.contains("intro") && runV && wakeV) {
+  if (root.classList.contains("intro") && wakeV) {
     let over = false;
     const end = (played) => {
       if (over) return;
@@ -207,11 +207,11 @@
       skip.hidden = true;
       if (played) root.classList.add("intro-done");
       root.classList.remove("intro");
-      runV.classList.remove("is-on");
+      runV?.classList.remove("is-on");
       wakeV.classList.remove("is-on");
       setTimeout(() => {
         root.classList.remove("intro-done");
-        runV.remove();
+        runV?.remove();
         wakeV.remove();
       }, 1100);
       removeEventListener("scroll", onScroll);
@@ -226,17 +226,20 @@
         v.src = v.dataset.src;
         v.load();
       });
-    Promise.race([Promise.all([can(runV), can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 4000))]).then((ok) => {
+    Promise.race([Promise.all([runV ? can(runV) : true, can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 4000))]).then((ok) => {
       if (over) return;
       if (!ok || ok.includes(false)) return end(false);
       skip.hidden = false;
-      runV.classList.add("is-on");
-      runV.play().catch(() => end(false));
-      runV.addEventListener("ended", () => {
+      const wake = () => {
         wakeV.classList.add("is-on");
-        runV.classList.remove("is-on");
+        runV?.classList.remove("is-on");
         wakeV.play().catch(() => end(true));
-      });
+      };
+      if (runV) {
+        runV.classList.add("is-on");
+        runV.play().catch(() => end(false));
+        runV.addEventListener("ended", wake);
+      } else wake();
       wakeV.addEventListener("ended", () => end(true));
     });
     skip.addEventListener("click", () => end(true));

@@ -79,10 +79,9 @@ export function home() {
 <section class="hero" data-hero aria-labelledby="hero-h">
   <div class="hero__stage" aria-hidden="true">
     <div class="hero__frame" data-frame>${feats.map(slide).join("")}
-      <video class="intro__wake" data-intro-wake muted playsinline preload="none" data-src="/img/hero/wake.mp4" tabindex="-1"></video>
+      <video class="intro__wake" data-intro-wake muted playsinline preload="none" data-src="/img/hero/drift.mp4" tabindex="-1"></video>
       <span class="hero__torch" data-torch></span>
     </div>
-    <video class="intro__run" data-intro-run muted playsinline preload="none" data-src="/img/hero/run.mp4" tabindex="-1"></video>
     <div class="hero__shade"></div>
   </div>
 

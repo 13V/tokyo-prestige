@@ -110,10 +110,10 @@
   transition: opacity 400ms var(--ease);
 }
 /* a torch that follows the pointer across the dark showroom (desktop, set by home.js) */
-/* The intro, once per visit: a night run down a Tokyo expressway falls to black, then the car wakes in the
-   dark showroom and the clip hands over to the page on its last frame, which is the dealer's own photo as
-   the hero shows it. Both clips are generated (Higgsfield); every other image on the site is as taken.
-   If the clips are not ready within a few seconds the hero simply opens as it always has. */
+/* The intro, once per visit: a black R34 slides in along a wet Tokyo expressway, rolls up to the camera,
+   and the clip lands on the dealer's own photo as the hero shows it, where the page takes over. The clip
+   is generated (Higgsfield); the car in motion is an illustration, and every other image on the site is
+   as taken. If the clip is not ready within a few seconds the hero simply opens as it always has. */
 .intro__run,
 .intro__wake {
   position: absolute;
