@@ -8,7 +8,7 @@ to GitHub: it was deployed from the build session). Code is on branch `claude/ec
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page
   and a sent test-drive request, with the motion playing.
 - `screens/`: every page type on desktop and phone, the first screen and the whole page (52 images).
-- `design-directions.pdf`: the built direction and three alternatives, compared.
+- `design-directions.pdf`: the built direction and four alternatives (one built on Astryx), compared.
 - The research is in `../research/`; what to ask the owner is in `../research/gaps.md`.
 
 ## Pages built

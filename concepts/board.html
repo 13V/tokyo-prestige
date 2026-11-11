@@ -2,7 +2,7 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<title>Tokyo Prestige: four design directions</title>
+<title>Tokyo Prestige: five design directions</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 @page { size: A4 landscape; margin: 0; }
@@ -19,14 +19,15 @@ p + p { margin-top: 2mm; }
 /* cover */
 .cover { background: #0a0a0b; color: #f3f2ee; display: grid; grid-template-columns: 1fr 1.25fr; gap: 12mm; }
 .cover .mono { color: #9a9993; }
-.cover h1 { font-size: 46pt; margin-top: 5mm; }
+.cover h1 { font-size: 38pt; margin-top: 4mm; }
 .cover p { color: #c4c3bd; max-width: 92mm; font-size: 11.5pt; }
-.cover ol { margin-top: 9mm; padding: 0; list-style: none; border-top: 0.3mm solid #3a3a3d; }
-.cover li { display: grid; grid-template-columns: 9mm 1fr; padding: 2.6mm 0; border-bottom: 0.3mm solid #2a2a2d; }
+.cover ol { margin-top: 5mm; padding: 0; list-style: none; border-top: 0.3mm solid #3a3a3d; }
+.cover li { display: grid; grid-template-columns: 9mm 1fr; padding: 1.5mm 0; border-bottom: 0.3mm solid #2a2a2d; }
 .cover li b { font-size: 12.5pt; font-weight: 500; font-stretch: 108%; }
 .cover li span { color: #9a9993; font-size: 9.5pt; display: block; }
 .cover li i { font-style: normal; color: #ff4a22; font: 500 8pt "Geist Mono"; padding-top: 1mm; }
-.grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; align-content: center; }
+.grid4 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4mm; align-content: center; }
+.grid4 figure { grid-column: span 3; } .grid4 figure:nth-child(n+3) { grid-column: span 2; }
 .grid4 figure { position: relative; border-radius: 1mm; overflow: hidden; aspect-ratio: 16/10; background: #222; }
 .grid4 img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .grid4 figcaption { position: absolute; left: 2.5mm; top: 2.5mm; background: #ff4a22; color: #0b0b0c; font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; padding: 1mm 2mm; border-radius: .6mm; }
@@ -36,6 +37,7 @@ p + p { margin-top: 2mm; }
 .txt { display: grid; align-content: start; gap: 3.2mm; }
 .tag { display: inline-block; background: #15140f; color: #f7f5f0; font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; padding: 1mm 2.2mm; border-radius: .6mm; }
 .idea { font-size: 11.5pt; line-height: 1.4; }
+.code { font: 500 7.6pt/1.5 "Geist Mono", monospace; background: #15140f; color: #f7f5f0; padding: 2.2mm 2.6mm; border-radius: 1mm; }
 .sw { display: flex; gap: 1.5mm; margin-top: .5mm; }
 .sw i { width: 9mm; height: 9mm; border-radius: .8mm; border: 0.2mm solid rgba(0,0,0,.18); }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
@@ -50,8 +52,9 @@ ul { padding-left: 3.6mm; } li { margin-bottom: .7mm; }
 table { width: 100%; border-collapse: collapse; margin-top: 6mm; font-size: 9.5pt; }
 th, td { text-align: left; padding: 2.4mm 3mm 2.4mm 0; border-bottom: 0.25mm solid #cfc8b6; vertical-align: top; }
 thead th { font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; text-transform: uppercase; color: #6d685c; border-bottom: 0.4mm solid #15140f; }
-tbody th { font-weight: 600; width: 34mm; }
-.rec { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+tbody th { font-weight: 600; width: 30mm; }
+table { font-size: 9pt; }
+.rec { margin-top: 5mm; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8mm; font-size: 9.5pt; }
 .rec div { border-top: 0.6mm solid #ff4a22; padding-top: 3mm; }
 .rec b { font-size: 12pt; font-weight: 600; display: block; margin-bottom: 1.5mm; }
 </style>
@@ -61,21 +64,23 @@ tbody th { font-weight: 600; width: 34mm; }
 <section class="pg cover">
   <div>
     <p class="mono">Lumen adl for Tokyo Prestige · November 2026</p>
-    <h1>Four design directions</h1>
-    <p style="margin-top:6mm">The same cars, prices and facts, shown four ways. Each direction answers a different finding from the research, so the choice is about which buyer the site should put first.</p>
+    <h1>Five design directions</h1>
+    <p style="margin-top:4mm">The same cars, prices and facts, shown five ways. Each direction answers a different finding from the research, so the choice is about which buyer the site should put first.</p>
     <ol>
       <li><i>A</i><div><b>The showroom at night</b><span>Dark and cinematic. The car lit, everything else quiet. Built and live.</span></div></li>
       <li><i>B</i><div><b>The record</b><span>The site as an inspection sheet. Paper, ruled boxes, data first.</span></div></li>
       <li><i>C</i><div><b>The gallery</b><span>Light and editorial. One car at a time, labelled like an exhibit.</span></div></li>
       <li><i>D</i><div><b>Find it fast</b><span>A marketplace layout. Search and results on the first screen.</span></div></li>
+      <li><i>E</i><div><b>Built on Astryx</b><span>Assembled from Meta's open design system, with a Tokyo Prestige theme. Light and dark.</span></div></li>
     </ol>
-    <p class="mono" style="margin-top:7mm">Every car, price and figure shown is from tokyoprestige.com.au, read 11 Nov 2026. B, C and D are static mock-ups of two screens; A is the working site.</p>
+    <p class="mono" style="margin-top:5mm">All cars, prices and figures are from tokyoprestige.com.au, 11 Nov 2026. A is the working site; B to E are mock-ups of two screens.</p>
   </div>
   <div class="grid4">
     <figure><img src="shots/a-desktop.jpg"><figcaption>A</figcaption></figure>
     <figure><img src="shots/b-desktop.jpg"><figcaption>B</figcaption></figure>
     <figure><img src="shots/c-desktop.jpg"><figcaption>C</figcaption></figure>
     <figure><img src="shots/d-desktop.jpg"><figcaption>D</figcaption></figure>
+    <figure><img src="shots/e-desktop.jpg"><figcaption>E</figcaption></figure>
   </div>
 </section>
 
@@ -101,7 +106,7 @@ tbody th { font-weight: 600; width: 34mm; }
     <div><figure class="ph"><img src="shots/a-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
     <div><figure class="ph"><img src="shots/a-phone-car.jpg"></figure><p class="cap">Car page</p></div>
   </div>
-  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>A · 2 of 6</span></div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>A · 2 of 7</span></div>
 </section>
 
 <section class="pg con">
@@ -126,7 +131,7 @@ tbody th { font-weight: 600; width: 34mm; }
     <div><figure class="ph"><img src="shots/b-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
     <div><figure class="ph"><img src="shots/b-phone-car.jpg"></figure><p class="cap">Car page</p></div>
   </div>
-  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>B · 3 of 6</span></div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>B · 3 of 7</span></div>
 </section>
 
 <section class="pg con">
@@ -151,7 +156,7 @@ tbody th { font-weight: 600; width: 34mm; }
     <div><figure class="ph"><img src="shots/c-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
     <div><figure class="ph"><img src="shots/c-phone-car.jpg"></figure><p class="cap">Car page</p></div>
   </div>
-  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>C · 4 of 6</span></div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>C · 4 of 7</span></div>
 </section>
 
 <section class="pg con">
@@ -176,29 +181,55 @@ tbody th { font-weight: 600; width: 34mm; }
     <div><figure class="ph"><img src="shots/d-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
     <div><figure class="ph"><img src="shots/d-phone-car.jpg"></figure><p class="cap">Car page</p></div>
   </div>
-  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>D · 5 of 6</span></div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>D · 5 of 7</span></div>
+</section>
+
+<section class="pg con">
+  <div class="txt">
+    <div><span class="tag">Direction E · mock-up</span></div>
+    <h2>Built on Astryx</h2>
+    <p class="idea">The site assembled from Astryx, the open design system from Meta that Lumen already works with: rounded page panels on a cool grey ground, white cards, pill badges, segmented controls and filled inputs. Tokyo Prestige gets its own theme; the red is the only colour changed.</p>
+    <div><h3>Who it puts first</h3><p>Every buyer equally. It reads as a well-made product, like a good banking or booking app, more than as a car advertisement.</p></div>
+    <div><h3>From the research</h3><p>Buyers arrive suspicious and choose the dealer who looks organised and open. Mobbin's best listing pages (Turo, Airbnb) are built from exactly these parts. Astryx brings tested focus states, 44px touch sizes and dark mode with it.</p></div>
+    <div class="two">
+      <div><h3>Colour</h3><div class="sw"><i style="background:#F1F4F7"></i><i style="background:#ffffff"></i><i style="background:#0A1317"></i><i style="background:#D7281B"></i></div></div>
+      <div><h3>Type</h3><p>Figtree, as in Astryx's Neutral theme.</p></div>
+    </div>
+  </div>
+  <div class="vis">
+    <div><figure><img src="shots/e-desktop.jpg"></figure><p class="cap">Homepage, desktop, light</p>
+    <div class="two sr">
+      <div><h3>Strengths</h3><ul><li>Light and dark from one set of tokens</li><li>Accessible parts, already tested</li><li>Quickest to extend: every new page is made of the same components</li><li>Uses their red</li></ul></div>
+      <div><h3>Risks</h3><ul><li>Friendly and neutral; less drama than A for a GT-R</li><li>Shows the showroom backgrounds as they are</li><li>Could read as an app more than a showroom</li></ul></div>
+    </div>
+    <div style="margin-top:5mm"><h3>The theme, in Astryx's own terms</h3><p class="code">defineTheme({ name: 'tokyo-prestige', tokens: { '--color-accent': ['#D7281B', '#F4553F'] } })</p><p class="mono" style="margin-top:1.5mm">Everything else is an Astryx default: radius 4 / 8 / 12 / 28, focus ring 2px, ease (.24, 1, .4, 1)</p></div></div>
+    <div><figure class="ph"><img src="shots/e-phone-home.jpg"></figure><p class="cap">Homepage, light</p></div>
+    <div><figure class="ph"><img src="shots/e-phone-car.jpg"></figure><p class="cap">Car page, dark</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>E · 6 of 7</span></div>
 </section>
 
 <section class="pg">
   <p class="mono">Side by side</p>
   <h2 style="margin-top:3mm">Which one, and why</h2>
   <table>
-    <thead><tr><th></th><th>A · Showroom at night</th><th>B · The record</th><th>C · The gallery</th><th>D · Find it fast</th></tr></thead>
+    <thead><tr><th></th><th>A · Showroom at night</th><th>B · The record</th><th>C · The gallery</th><th>D · Find it fast</th><th>E · Astryx</th></tr></thead>
     <tbody>
-      <tr><th>First impression</th><td>Cinematic, expensive</td><td>Exact, trustworthy</td><td>Calm, refined</td><td>Practical, familiar</td></tr>
-      <tr><th>Buyer it favours</th><td>Enthusiast, luxury</td><td>Wary buyer, enthusiast</td><td>Luxury-for-less, family</td><td>Family, budget</td></tr>
-      <tr><th>Layout</th><td>Full-screen showcase, search docked below</td><td>Split sheet: stock table and one car's record</td><td>Headline beside one framed car</td><td>Search bar, filter rail, card grid</td></tr>
-      <tr><th>Taps to a car with a price</th><td>0 (featured car), 1 to the list</td><td>0 (eight in the table)</td><td>0 (five shown)</td><td>0 (eight cards)</td></tr>
-      <tr><th>Works with today's photos</th><td>Yes: the room is darkened</td><td>Yes: photos are small</td><td>Partly: backgrounds show</td><td>Yes: photos are small</td></tr>
-      <tr><th>Needs from the dealer</th><td>Nothing new</td><td>Auction sheets, to deliver on its promise</td><td>Cleaner photography</td><td>Nothing new</td></tr>
-      <tr><th>Stands apart from competitors</th><td>Most</td><td>Strongly</td><td>Moderately</td><td>Least</td></tr>
+      <tr><th>First impression</th><td>Cinematic, expensive</td><td>Exact, trustworthy</td><td>Calm, refined</td><td>Practical, familiar</td><td>Organised, modern</td></tr>
+      <tr><th>Buyer it favours</th><td>Enthusiast, luxury</td><td>Wary buyer, enthusiast</td><td>Luxury-for-less, family</td><td>Family, budget</td><td>All, evenly</td></tr>
+      <tr><th>Layout</th><td>Full-screen showcase, search docked below</td><td>Split sheet: stock table and one car's record</td><td>Headline beside one framed car</td><td>Search bar, filter rail, card grid</td><td>Rounded panels: search beside a featured car</td></tr>
+      <tr><th>Taps to a car with a price</th><td>0 (featured car), 1 to the list</td><td>0 (eight in the table)</td><td>0 (five shown)</td><td>0 (eight cards)</td><td>0 (five shown)</td></tr>
+      <tr><th>Works with today's photos</th><td>Yes: the room is darkened</td><td>Yes: photos are small</td><td>Partly: backgrounds show</td><td>Yes: photos are small</td><td>Partly: backgrounds show</td></tr>
+      <tr><th>Needs from the dealer</th><td>Nothing new</td><td>Auction sheets, to deliver on its promise</td><td>Cleaner photography</td><td>Nothing new</td><td>Nothing new</td></tr>
+      <tr><th>Stands apart from competitors</th><td>Most</td><td>Strongly</td><td>Moderately</td><td>Least</td><td>Moderately</td></tr>
     </tbody>
   </table>
-  <div class="rec">
+  <div class="rec rec3">
     <div><b>My recommendation: A, with B's discipline inside it.</b><p>A is the one the owner will remember and it flatters the stock they have photographed today. Its car page already carries B's idea (the “what is on record” panel with a source for each line). If the dealer starts publishing auction sheets, that panel can grow toward B without a redesign.</p></div>
-    <div><b>If the owner wants lighter or simpler.</b><p>C is the safer choice for a buyer base that is mostly Crowns, Lexus and people movers, but it should wait for better photos. D would be the quickest to build and the easiest to use, and the least likely to win the project on looks. A light theme of A is also possible: the layout and motion stay, the palette changes.</p></div>
+    <div><b>E is the strongest alternative.</b><p>It is the easiest to build on and to keep consistent, it has light and dark built in, and it uses their red. If the owner finds A too dark or too dramatic, E is where I would go. The two also combine: A's hero and car photography over E's components, which is close to how A's forms and filters are already built.</p></div>
+    <div><b>If the owner wants lighter or simpler.</b><p>C is the safer choice for a buyer base that is mostly Crowns, Lexus and people movers, but it should wait for better photos. D would be the quickest to build and the easiest to use, and the least likely to win the project on looks. A light theme of A is also possible.</p></div>
   </div>
-  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>6 of 6</span></div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>7 of 7</span></div>
 </section>
 </body>
 </html>

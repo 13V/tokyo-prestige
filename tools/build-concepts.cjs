@@ -23,6 +23,10 @@ const B = "http://localhost:4173";
     await shot(`/concepts/${k}?s=home`, `${k}-phone-home.jpg`, true);
     await shot(`/concepts/${k}?s=car`, `${k}-phone-car.jpg`, true);
   }
+  await shot("/concepts/e", "e-desktop.jpg", false);
+  await shot("/concepts/e?mode=dark", "e-desktop-dark.jpg", false);
+  await shot("/concepts/e?s=home", "e-phone-home.jpg", true);
+  await shot("/concepts/e?s=car&mode=dark", "e-phone-car.jpg", true);
   const p = await br.newPage();
   await p.goto(B + "/concepts/board", { waitUntil: "networkidle" });
   await p.waitForTimeout(800);

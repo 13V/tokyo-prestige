@@ -17,7 +17,7 @@ Static HTML, CSS and JavaScript. No framework, and no build step on Vercel.
 - `assets/css/tp.css` holds the design tokens; `home.css`, `stock.css`, `car.css` and `pages.css` are the
   page styles. Scripts are in `assets/js/`, one per page type, and every page works without them.
 - `handover/` has the walkthrough clips, screenshots of every page, the numbers and what was not tested.
-- `concepts/` has three alternative design directions; `node tools/build-concepts.cjs` writes the PDF.
+- `concepts/` has four alternative design directions (the last built on Astryx); `node tools/build-concepts.cjs` writes the PDF.
 - `img/cars/<stock no>/`: their photos as responsive AVIF. `tools/build-images.py` makes them from the
   originals; `tools/build-stock.py` makes the stock file from the crawl in `data/source-listings.json`.
 
