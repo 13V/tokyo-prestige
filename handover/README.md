@@ -107,7 +107,8 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
 - **Photos.** All are the dealer's own. In the dark look the four hero cars have hand-traced outlines; a new
   hero car needs one drawn (about ten minutes each).
 - **Generated and retouched imagery (dark homepage only).** Made with Higgsfield at Troy's direction:
-  1. *The GT-R hero image* (`img/hero/512-*.avif`) is a retouch of the dealer's photo (GPT Image 2.6, then
+  1. *The four hero images* (`img/hero/<stock no>-*.avif`: GT-R, Century, Crown Hybrid, Alphard) are each a
+     retouch of the dealer's photo (GPT Image 2.6, then
      upscaled): the same car, angle and framing, relit in a dark showroom with neon Tokyo behind the glass.
      The room in it is invented. Small details of the car may differ from the real one.
   2. *The intro clip* (`img/hero/drift.mp4`, MiniMax H3, 7 s, once per visit): a black R34 drifts through a
