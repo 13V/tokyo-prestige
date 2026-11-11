@@ -85,15 +85,6 @@
         <div class="deal__acts"><a class="btn btn--shu" href="#enquire" data-intent="testdrive">Book a test drive <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a>
        <a class="btn btn--ghost" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a></div>
       </div>
-      <div class="quick-wrap quick-wrap--inline" id="quick"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="The sales team will reply during opening hours." aria-label="Enquire about this car">
-          <input type="hidden" name="car" value="2007 Lexus LS 460"><input type="hidden" name="stock" value="1446"><input type="hidden" name="source" value="car-page-instant">
-          <p class="quick__h">Enquire about this car</p>
-          <div class="field"><label for="qi-name">Name</label><input class="input" id="qi-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
-          <div class="field"><label for="qi-contact">Mobile or email</label><input class="input" id="qi-contact" name="contact" autocomplete="tel" inputmode="email" required><p class="field__err" hidden>Add a mobile number or an email so we can reply.</p></div>
-          <div class="field"><label for="qi-msg">Message</label><textarea class="input" id="qi-msg" name="message" rows="3">Hi, I'm interested in the 2007 Lexus LS 460 (stock 1446). Is it still available?</textarea></div>
-          <button class="btn btn--shu" type="submit">Send enquiry <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
-          <p class="quick__alt">Or call <a class="num" href="tel:+61883364674">08 8336 4674</a> · <a href="#enquire" data-intent="testdrive">Book a test drive</a></p>
-        </form></div>
       </div>
 
       <dl class="nums" aria-label="Key facts">
@@ -107,6 +98,15 @@
         <div class="fig"><span class="fig__l">Gearbox</span><b class="num">8<small>speed automatic</small></b></div>
         <div class="fig"><span class="fig__l">Stock number</span><b class="num">1446</b></div>
       </div>
+      <div class="quick-wrap quick-wrap--inline" id="quick"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="The sales team will reply during opening hours." aria-label="Enquire about this car">
+          <input type="hidden" name="car" value="2007 Lexus LS 460"><input type="hidden" name="stock" value="1446"><input type="hidden" name="source" value="car-page-instant">
+          <p class="quick__h">Enquire about this car</p>
+          <div class="field"><label for="qi-name">Name</label><input class="input" id="qi-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
+          <div class="field"><label for="qi-contact">Mobile or email</label><input class="input" id="qi-contact" name="contact" autocomplete="tel" inputmode="email" required><p class="field__err" hidden>Add a mobile number or an email so we can reply.</p></div>
+          <div class="field"><label for="qi-msg">Message</label><textarea class="input" id="qi-msg" name="message" rows="3">Hi, I'm interested in the 2007 Lexus LS 460 (stock 1446). Is it still available?</textarea></div>
+          <button class="btn btn--shu" type="submit">Send enquiry <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
+          <p class="quick__alt">Or call <a class="num" href="tel:+61883364674">08 8336 4674</a> · <a href="#enquire" data-intent="testdrive">Book a test drive</a></p>
+        </form></div>
 
       
 
@@ -235,7 +235,9 @@
       </section>
 
       <section class="blk" aria-labelledby="enq-h" id="enquire">
-        <div class="blk__top"><h2 class="blk__h" id="enq-h">Ask about this car</h2></div>
+        <div class="blk__top"><h2 class="blk__h" id="enq-h">More ways to enquire</h2></div>
+        <details class="more" data-more>
+        <summary class="more__sum"><span>Book a test drive, hold the car, ask for a video or the drive-away price</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 4 5 5-5 5"/></svg></summary>
         <form class="enq" data-enq novalidate action="#enquire" method="post" data-endpoint="">
           <!-- HOOK: set data-endpoint to the real lead endpoint (for example /api/lead). Until then the form validates and shows its thank-you state, and sends nothing. -->
           <input type="hidden" name="car" value="2007 Lexus LS 460 USF40, stock 1446">
@@ -269,6 +271,7 @@
           <p class="blk__lede" data-enq-next></p>
           <p class="ph__tag" style="margin-top:16px">Demo: nothing was sent</p>
         </div>
+        </details>
       </section>
 
       <section class="blk" aria-labelledby="del-h" id="delivery">
@@ -307,7 +310,7 @@
         <p class="deal__name">2007 Lexus LS 460</p>
         <p class="deal__price"><b class="num" data-count="18888" data-pre="$">$18,888</b></p>
        <p class="deal__note">Plus on-road costs. <a href="#price">What that means</a></p>
-        <div class="quick-wrap"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="The sales team will reply during opening hours." aria-label="Enquire about this car">
+        <div class="quick-wrap" id="quick-side"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="The sales team will reply during opening hours." aria-label="Enquire about this car">
           <input type="hidden" name="car" value="2007 Lexus LS 460"><input type="hidden" name="stock" value="1446"><input type="hidden" name="source" value="car-page-instant">
           <p class="quick__h">Enquire about this car</p>
           <div class="field"><label for="qs-name">Name</label><input class="input" id="qs-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
@@ -343,7 +346,7 @@
     <p class="card__sub">USF40 · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2006</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">64,658<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$17,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2006-lexus-ls-460-usf40-1277#quick" aria-label="Enquire about the 2006 Lexus LS 460">Enquire</a>
 </article>
 <article class="card" data-card data-id="1363" data-make="Lexus" data-model="IS 350" data-body="Sedan" data-year="2007" data-price="18888" data-km="88600" data-trans="Automatic" data-status="available" data-q="lexus is 350 gse21 version l 2007 sedan red 2007 lexus is gse21 is350 version l sedan 4dr sports auto 6sp 3.5i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1363/1-960.avif" srcset="/img/cars/1363/1-480.avif 480w, /img/cars/1363/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2007 Lexus IS 350 Version L, red: front three-quarter" loading="lazy" decoding="async">
@@ -359,7 +362,7 @@
     <p class="card__sub">GSE21 · Version L · 6-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2007</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">88,600<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$18,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2007-lexus-is-350-gse21-version-l-1363#quick" aria-label="Enquire about the 2007 Lexus IS 350">Enquire</a>
 </article>
 <article class="card" data-card data-id="1336" data-make="Lexus" data-model="IS 350" data-body="Sedan" data-year="2006" data-price="20888" data-km="77163" data-trans="Automatic" data-status="available" data-q="lexus is 350 gse21 version l 2006 sedan silver 2006 lexus is gse21 is350 version l sedan 4dr sports auto 6sp 3.5i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1336/1-960.avif" srcset="/img/cars/1336/1-480.avif 480w, /img/cars/1336/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2006 Lexus IS 350 Version L, silver: front three-quarter" loading="lazy" decoding="async">
@@ -375,7 +378,7 @@
     <p class="card__sub">GSE21 · Version L · 6-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2006</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">77,163<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$20,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2006-lexus-is-350-gse21-version-l-1336#quick" aria-label="Enquire about the 2006 Lexus IS 350">Enquire</a>
 </article>
 <article class="card" data-card data-id="1386" data-make="Lexus" data-model="LS 460" data-body="Sedan" data-year="2013" data-price="29888" data-km="113003" data-trans="Automatic" data-status="available" data-q="lexus ls 460 usf45 version c 2013 sedan black 2013 lexus ls usf45 ls460 version c sedan 4dr spts auto 8sp awd 4.6" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1386/1-960.avif" srcset="/img/cars/1386/1-480.avif 480w, /img/cars/1386/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2013 Lexus LS 460 Version C, black: front three-quarter" loading="lazy" decoding="async">
@@ -391,7 +394,7 @@
     <p class="card__sub">USF45 · Version C · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2013</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">113,003<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$29,888</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2013-lexus-ls-460-usf45-version-c-1386#quick" aria-label="Enquire about the 2013 Lexus LS 460">Enquire</a>
 </article></div>
     </div>
   </section>

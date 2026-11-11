@@ -1576,3 +1576,139 @@ html:not([data-look="figures"]) .flt {
     background-color: var(--ink-3);
   }
 }
+
+
+/* ==========================================================================
+   Cards: a direct action on each, and two across on a phone so a list is half as long.
+   ========================================================================== */
+.card__go {
+  display: none;
+}
+.card__ask {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--ink-3);
+  color: var(--text);
+  font-size: var(--t-14);
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color var(--d-state) var(--ease),
+    color var(--d-state) var(--ease);
+}
+@media (hover: hover) {
+  .card__ask:hover {
+    background: var(--text);
+    color: var(--night);
+  }
+}
+html[data-look="figures"] .card__ask {
+  position: static;
+  justify-content: center;
+  margin: 0 16px 16px;
+  background: var(--ink-1);
+}
+@media (max-width: 599px) {
+  .cards,
+  .cards.cards--list {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .card__body {
+    padding: 10px 10px 12px;
+    gap: 2px;
+  }
+  .card__title {
+    font-size: 0.9375rem;
+    line-height: 1.2;
+  }
+  .card__grade,
+  .card__sub {
+    font-size: var(--t-12);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card__facts {
+    margin-top: 4px;
+    padding-top: 8px;
+    font-size: var(--t-12);
+  }
+  .card__facts span:nth-child(n + 2) {
+    display: none;
+  }
+  .card__price {
+    margin-top: 4px;
+    gap: 0 6px;
+  }
+  .card__price b {
+    font-size: 1.1875rem;
+  }
+  .card__price small {
+    font-size: var(--t-12);
+    flex-basis: 100%;
+  }
+  .card__top {
+    inset: 8px 8px auto 8px;
+  }
+  .card__top .status {
+    padding: 4px 8px;
+    font-size: 10.5px;
+  }
+  .card__top .card__tag {
+    display: none;
+  }
+  .card__ask {
+    position: static;
+    justify-content: center;
+    margin: 0 10px 10px;
+    min-height: 44px;
+  }
+  .card__body {
+    flex: 1;
+  }
+  html[data-look="figures"] .card__figs {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  html[data-look="figures"] .card__figs .fig:last-child {
+    grid-column: 1 / -1;
+    justify-self: start;
+    text-align: left;
+  }
+  html[data-look="figures"] .card__figs .fig b {
+    font-size: 1.1875rem;
+  }
+  html[data-look="figures"] .card__ask {
+    margin: 0 10px 10px;
+  }
+}
+
+/* the price note sits under the price, clear of the Enquire button */
+.card__price small {
+  flex-basis: 100%;
+}
+@media (max-width: 599px) {
+  html[data-look="figures"] .card__figs .fig b {
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+  html[data-look="figures"] .card__figs .fig:last-child b {
+    font-size: 1.1875rem;
+  }
+  html[data-look="figures"] .card__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

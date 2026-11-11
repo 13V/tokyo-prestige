@@ -149,6 +149,8 @@
     // every "book a test drive", "ask for it" or "request a video" link sets the form up first
     $$("[data-intent]").forEach((a) =>
       a.addEventListener("click", () => {
+        const more = $("[data-more]");
+        if (more) more.open = true;
         setIntent(a.dataset.intent);
         if (a.dataset.opt) {
           const o = form.querySelector(`input[name='opt'][value='${a.dataset.opt}']`);
@@ -186,6 +188,21 @@
       done.focus({ preventScroll: true });
       done.scrollIntoView({ block: "center", behavior: calm ? "auto" : "smooth" });
     });
+  }
+
+  // a link that ends in #quick (the Enquire button on a stock card) lands on the instant form, ready to type
+  const toQuick = () => {
+    if (location.hash !== "#quick") return;
+    const el = [...document.querySelectorAll(".quick input[name='name']")].find((i) => i.offsetParent);
+    if (!el) return;
+    el.closest(".quick-wrap").scrollIntoView({ block: "center" });
+    el.focus({ preventScroll: true });
+  };
+  addEventListener("hashchange", toQuick);
+  addEventListener("load", () => setTimeout(toQuick, 250));
+  if (location.hash === "#enquire") {
+    const more = $("[data-more]");
+    if (more) more.open = true;
   }
 
   // ---------- sticky bar: steps aside while the form is on screen ----------

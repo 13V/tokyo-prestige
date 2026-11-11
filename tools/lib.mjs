@@ -140,7 +140,7 @@ export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px)
     <p class="card__sub">${[c.modelCode, c.grade, c.transmission].filter(Boolean).map(esc).join(" · ") || esc(c.body)}</p>
     <div class="figs card__figs">${fig("Year", c.year)}${fig("Kilometres", c.km != null ? km(c.km) : "&ndash;", c.km != null ? "km" : "")}${c.price ? fig(esc(c.priceNote || "Price"), money(c.price)) : `<div class="fig fig--word"><span class="fig__l">Price</span><b>${c.status === "coming-soon" ? "On arrival" : "Under contract"}</b></div>`}</div>
   </div>
-  <span class="card__go" aria-hidden="true">${icon.arrow}</span>
+  <a class="card__ask" href="${carUrl(c)}#quick" aria-label="${c.status === "coming-soon" ? "Tell me when the" : "Enquire about the"} ${c.year} ${esc(c.make)} ${esc(c.model)}${c.status === "coming-soon" ? " lands" : ""}">${c.status === "coming-soon" ? "Notify me" : "Enquire"}</a>
 </article>`;
 }
 

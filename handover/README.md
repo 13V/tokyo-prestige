@@ -21,6 +21,14 @@ car and stock number. Coming-soon cars get "tell me when it lands". Like the oth
 and sends nowhere; the hook is `data-endpoint`. The fuller form (test drive, hold, video, trade-in) is still
 further down the page.
 
+## After the audit (phone length, one form, card action)
+
+On a phone, cards sit two across, which cut the stock list from about 16 screens to 9 and the homepage from
+16 to 11. Every card has an Enquire button (Notify me on coming-soon cars) that lands on that car's instant
+form with the cursor in it. On the car page the year and kilometres now come before the form on a phone, and
+the longer form is folded under "More ways to enquire"; it opens by itself from Book a test drive, Hold and
+Video. `secondary-colour-options.png` shows six candidates for the secondary colour.
+
 ## What is in this folder
 
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page

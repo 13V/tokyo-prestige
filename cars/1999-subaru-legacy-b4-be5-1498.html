@@ -85,15 +85,6 @@
         <div class="deal__acts"><a class="btn btn--shu" href="#enquire" data-intent="notify">Tell me when it lands <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a>
        <a class="btn btn--ghost" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a></div>
       </div>
-      <div class="quick-wrap quick-wrap--inline" id="quick"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="We will tell you when it lands." aria-label="Enquire about this car">
-          <input type="hidden" name="car" value="1999 Subaru Legacy B4"><input type="hidden" name="stock" value="1498"><input type="hidden" name="source" value="car-page-instant">
-          <p class="quick__h">Get told when it lands</p>
-          <div class="field"><label for="qi-name">Name</label><input class="input" id="qi-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
-          <div class="field"><label for="qi-contact">Mobile or email</label><input class="input" id="qi-contact" name="contact" autocomplete="tel" inputmode="email" required><p class="field__err" hidden>Add a mobile number or an email so we can reply.</p></div>
-          <div class="field"><label for="qi-msg">Message</label><textarea class="input" id="qi-msg" name="message" rows="3">Hi, please tell me when the 1999 Subaru Legacy B4 (stock 1498) lands.</textarea></div>
-          <button class="btn btn--shu" type="submit">Tell me when it lands <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
-          <p class="quick__alt">Or call <a class="num" href="tel:+61883364674">08 8336 4674</a></p>
-        </form></div>
       </div>
 
       <dl class="nums" aria-label="Key facts">
@@ -107,6 +98,15 @@
         <div class="fig"><span class="fig__l">Gearbox</span><b class="num">Automatic</b></div>
         <div class="fig"><span class="fig__l">Stock number</span><b class="num">1498</b></div>
       </div>
+      <div class="quick-wrap quick-wrap--inline" id="quick"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="We will tell you when it lands." aria-label="Enquire about this car">
+          <input type="hidden" name="car" value="1999 Subaru Legacy B4"><input type="hidden" name="stock" value="1498"><input type="hidden" name="source" value="car-page-instant">
+          <p class="quick__h">Get told when it lands</p>
+          <div class="field"><label for="qi-name">Name</label><input class="input" id="qi-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
+          <div class="field"><label for="qi-contact">Mobile or email</label><input class="input" id="qi-contact" name="contact" autocomplete="tel" inputmode="email" required><p class="field__err" hidden>Add a mobile number or an email so we can reply.</p></div>
+          <div class="field"><label for="qi-msg">Message</label><textarea class="input" id="qi-msg" name="message" rows="3">Hi, please tell me when the 1999 Subaru Legacy B4 (stock 1498) lands.</textarea></div>
+          <button class="btn btn--shu" type="submit">Tell me when it lands <svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></button>
+          <p class="quick__alt">Or call <a class="num" href="tel:+61883364674">08 8336 4674</a></p>
+        </form></div>
 
       
 
@@ -183,7 +183,9 @@
       
 
       <section class="blk" aria-labelledby="enq-h" id="enquire">
-        <div class="blk__top"><h2 class="blk__h" id="enq-h">Be first to know when it lands</h2></div>
+        <div class="blk__top"><h2 class="blk__h" id="enq-h">More ways to follow this car</h2></div>
+        <details class="more" data-more>
+        <summary class="more__sum"><span>More options: hold it, or ask a question</span><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m7 4 5 5-5 5"/></svg></summary>
         <form class="enq" data-enq novalidate action="#enquire" method="post" data-endpoint="">
           <!-- HOOK: set data-endpoint to the real lead endpoint (for example /api/lead). Until then the form validates and shows its thank-you state, and sends nothing. -->
           <input type="hidden" name="car" value="1999 Subaru Legacy B4 BE5, stock 1498">
@@ -217,6 +219,7 @@
           <p class="blk__lede" data-enq-next></p>
           <p class="ph__tag" style="margin-top:16px">Demo: nothing was sent</p>
         </div>
+        </details>
       </section>
 
       <section class="blk" aria-labelledby="del-h" id="delivery">
@@ -255,7 +258,7 @@
         <p class="deal__name">1999 Subaru Legacy B4</p>
         <p class="deal__price deal__price--none">Price on arrival</p>
        <p class="deal__note">Tokyo Prestige has not priced this car yet. Ask to be told when it lands.</p>
-        <div class="quick-wrap"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="We will tell you when it lands." aria-label="Enquire about this car">
+        <div class="quick-wrap" id="quick-side"><form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="We will tell you when it lands." aria-label="Enquire about this car">
           <input type="hidden" name="car" value="1999 Subaru Legacy B4"><input type="hidden" name="stock" value="1498"><input type="hidden" name="source" value="car-page-instant">
           <p class="quick__h">Get told when it lands</p>
           <div class="field"><label for="qs-name">Name</label><input class="input" id="qs-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
@@ -291,7 +294,7 @@
     <p class="card__sub">6-speed manual</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2002</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">117,668<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2002-subaru-legacy-b4-1469#quick" aria-label="Tell me when the 2002 Subaru Legacy B4 lands">Notify me</a>
 </article>
 <article class="card" data-card data-id="1494" data-make="Jaguar" data-model="XJ" data-body="Sedan" data-year="2000" data-price="" data-km="46562" data-trans="Automatic" data-status="coming-soon" data-q="jaguar xj executive 3.2 v8 2000 sedan green 2000 jaguar xj executive 3.2ltr v8" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1494/1-960.avif" srcset="/img/cars/1494/1-480.avif 480w, /img/cars/1494/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2000 Jaguar XJ Executive 3.2 V8, green: front three-quarter, right side" loading="lazy" decoding="async">
@@ -307,7 +310,7 @@
     <p class="card__sub">Executive 3.2 V8 · Automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2000</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">46,562<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2000-jaguar-xj-executive-3-2-v8-1494#quick" aria-label="Tell me when the 2000 Jaguar XJ lands">Notify me</a>
 </article>
 <article class="card" data-card data-id="1439" data-make="Jaguar" data-model="XJ" data-body="Sedan" data-year="2000" data-price="" data-km="62102" data-trans="" data-status="coming-soon" data-q="jaguar xj executive 4.0 v8 2000 sedan red 2000 jaguar xj executive 4.0ltr v8" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1439/1-960.avif" srcset="/img/cars/1439/1-480.avif 480w, /img/cars/1439/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2000 Jaguar XJ Executive 4.0 V8, red: front three-quarter, right side" loading="lazy" decoding="async">
@@ -323,7 +326,7 @@
     <p class="card__sub">Executive 4.0 V8</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2000</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">62,102<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/2000-jaguar-xj-executive-4-0-v8-1439#quick" aria-label="Tell me when the 2000 Jaguar XJ lands">Notify me</a>
 </article>
 <article class="card" data-card data-id="1434" data-make="Jaguar" data-model="XJ" data-body="Sedan" data-year="1998" data-price="" data-km="52501" data-trans="" data-status="coming-soon" data-q="jaguar xj 3.2 v8 1998 sedan blue 1998 jaguar xj 3.2 v8" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1434/1-960.avif" srcset="/img/cars/1434/1-480.avif 480w, /img/cars/1434/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="1998 Jaguar XJ 3.2 V8, blue: front three-quarter, right side" loading="lazy" decoding="async">
@@ -339,7 +342,7 @@
     <p class="card__sub">3.2 V8</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">1998</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">52,501<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
-  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+  <a class="card__ask" href="/cars/1998-jaguar-xj-3-2-v8-1434#quick" aria-label="Tell me when the 1998 Jaguar XJ lands">Notify me</a>
 </article></div>
     </div>
   </section>

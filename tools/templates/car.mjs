@@ -206,7 +206,6 @@ export function carPage(c) {
         ${priceBlock}
         <div class="deal__acts">${actions}</div>
       </div>
-      <div class="quick-wrap quick-wrap--inline" id="quick">${quick("qi")}</div>
       </div>
 
       <dl class="nums" aria-label="Key facts">
@@ -220,6 +219,7 @@ export function carPage(c) {
         ${gear(c) ? fig("Gearbox", esc(gear(c)[0]), esc(gear(c)[1])) : ""}
         ${fig("Stock number", c.id)}
       </div>
+      <div class="quick-wrap quick-wrap--inline" id="quick">${quick("qi")}</div>
 
       ${
         c.highlights?.length
@@ -331,7 +331,9 @@ export function carPage(c) {
       }
 
       <section class="blk" aria-labelledby="enq-h" id="enquire">
-        <div class="blk__top"><h2 class="blk__h" id="enq-h">${soon ? "Be first to know when it lands" : "Ask about this car"}</h2></div>
+        <div class="blk__top"><h2 class="blk__h" id="enq-h">${soon ? "More ways to follow this car" : "More ways to enquire"}</h2></div>
+        <details class="more" data-more>
+        <summary class="more__sum"><span>${soon ? "More options: hold it, or ask a question" : "Book a test drive, hold the car, ask for a video or the drive-away price"}</span>${icon.chev}</summary>
         <form class="enq" data-enq novalidate action="#enquire" method="post" data-endpoint="">
           <!-- HOOK: set data-endpoint to the real lead endpoint (for example /api/lead). Until then the form validates and shows its thank-you state, and sends nothing. -->
           <input type="hidden" name="car" value="${esc(name)}${c.modelCode ? " " + esc(c.modelCode) : ""}, stock ${c.id}">
@@ -365,6 +367,7 @@ export function carPage(c) {
           <p class="blk__lede" data-enq-next></p>
           <p class="ph__tag" style="margin-top:16px">Demo: nothing was sent</p>
         </div>
+        </details>
       </section>
 
       <section class="blk" aria-labelledby="del-h" id="delivery">
@@ -402,7 +405,7 @@ export function carPage(c) {
         <p class="deal__top"><span class="status${st.cls}">${st.label}</span><span class="plate">Stock ${c.id}</span></p>
         <p class="deal__name">${esc(name)}</p>
         ${priceBlock}
-        <div class="quick-wrap">${quick("qs")}</div>
+        <div class="quick-wrap" id="quick-side">${quick("qs")}</div>
         <ul class="deal__mini">
           <li><a href="#enquire" data-intent="${soon ? "hold" : "hold"}">${icon.key}<span>${soon ? "Hold it for me" : "Hold this car"}</span></a></li>
           <li><a href="#enquire" data-intent="video">${icon.video}<span>Walk-around video</span></a></li>
