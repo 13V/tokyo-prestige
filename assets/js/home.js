@@ -282,44 +282,6 @@
     },
     { passive: true },
   );
-
-  // with a mouse: the photo leans a little toward the pointer and a torch follows it through the dark
-  const frame = $("[data-frame]", hero);
-  const torch = $("[data-torch]", hero);
-  if (!calm && matchMedia("(hover: hover) and (pointer: fine)").matches && frame && torch) {
-    let raf = 0;
-    let tx = 0;
-    let ty = 0;
-    let x = 0;
-    let y = 0;
-    let live = false;
-    const tick = () => {
-      x += (tx - x) * 0.09;
-      y += (ty - y) * 0.09;
-      const r = frame.getBoundingClientRect();
-      torch.style.transform = `translate3d(${(x - r.left).toFixed(1)}px, ${(y - r.top).toFixed(1)}px, 0)`;
-      const hr = hero.getBoundingClientRect();
-      frame.style.setProperty("--px", (((x - hr.left) / hr.width) * 2 - 1).toFixed(3));
-      frame.style.setProperty("--py", (((y - hr.top) / hr.height) * 2 - 1).toFixed(3));
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(tick) : 0;
-    };
-    hero.addEventListener("pointermove", (e) => {
-      if (e.pointerType !== "mouse") return;
-      tx = e.clientX;
-      ty = e.clientY;
-      if (!live) {
-        live = true;
-        x = tx;
-        y = ty;
-        torch.classList.add("is-on");
-      }
-      if (!raf) raf = requestAnimationFrame(tick);
-    });
-    hero.addEventListener("pointerleave", () => {
-      live = false;
-      torch.classList.remove("is-on");
-    });
-  }
 })();
 
 (() => {

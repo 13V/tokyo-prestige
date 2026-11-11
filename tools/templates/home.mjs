@@ -78,7 +78,6 @@ ${id === "512" ? `        <video class="hs__alive" data-alive muted loop playsin
   <div class="hero__stage" aria-hidden="true">
     <div class="hero__frame" data-frame>${feats.map(slide).join("")}
       <video class="intro__wake" data-intro-wake muted playsinline preload="none" data-src="/img/hero/drift.mp4" tabindex="-1"></video>
-      <span class="hero__torch" data-torch></span>
     </div>
     <div class="hero__shade"></div>
   </div>
