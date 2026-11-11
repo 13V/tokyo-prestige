@@ -1779,8 +1779,8 @@ html:not([data-look="figures"]) .eyebrow {
   color: var(--shu-t);
 }
 html:not([data-look="figures"]) .card__top .card__tag:not(.card__tag--quiet) {
-  background: var(--shu);
-  color: #fff;
+  background: #fff;
+  color: #111110;
 }
 html:not([data-look="figures"]) .chip input:checked + span {
   background: var(--shu);
