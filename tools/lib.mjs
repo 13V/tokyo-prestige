@@ -121,17 +121,26 @@ export const fig = (label, value, unit = "", attrs = "") => `<div class="fig"><s
 export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw", lazy = true, h = 3 } = {}) {
   const st = STATUS[c.status];
   const angles = c.photos.map((_, i) => i + 1).filter((n) => manifest[c.id]?.[String(n)]);
-  const price = c.price ? fig(esc(c.priceNote || "Price"), money(c.price)) : `<div class="fig fig--word"><span class="fig__l">Price</span><b>${c.status === "coming-soon" ? "On arrival" : "Under contract"}</b></div>`;
+  const price = c.price
+    ? `<p class="card__price"><b class="num">${money(c.price)}</b><small>${esc((c.priceNote || "").toLowerCase())}</small></p>`
+    : `<p class="card__price"><small>${c.status === "coming-soon" ? "Price on arrival" : "Under contract"}</small></p>`;
   return `<article class="card" data-card data-id="${c.id}" data-make="${esc(c.make)}" data-model="${esc(c.model)}" data-body="${esc(c.body)}" data-year="${c.year}" data-price="${c.price ?? ""}" data-km="${c.km ?? ""}" data-trans="${esc(c.transmissionType ?? "")}" data-status="${c.status}" data-q="${esc([c.make, c.model, c.modelCode, c.grade, c.year, c.body, c.colour, c.titleAsListed].filter(Boolean).join(" ").toLowerCase())}" data-angles="${angles.join(",")}">
   <div class="shot card__shot">${photo(c, 1, { sizes, lazy, max: 960 })}
     <div class="card__top"><span class="status${st.cls}">${st.label}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : c.reserved ? `<span class="card__tag card__tag--quiet">Under contract</span>` : ""}</div>
     <div class="card__ticks" aria-hidden="true">${angles.map((_, i) => `<i${i === 0 ? ' class="is-on"' : ""}></i>`).join("")}</div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>${esc(c.modelCode || c.body)}</span><span class="num">${c.year}</span></p>
     <h${h} class="card__title"><a href="${carUrl(c)}">${esc(c.make)} ${esc(c.model)}</a></h${h}>
+    <p class="card__grade">${c.grade ? esc(c.grade) : "&nbsp;"}</p>
+    <p class="card__facts num">${facts(c)
+      .map((f) => `<span>${esc(f)}</span>`)
+      .join("")}</p>
+    ${price}
     <p class="card__sub">${[c.modelCode, c.grade, c.transmission].filter(Boolean).map(esc).join(" · ") || esc(c.body)}</p>
-    <div class="figs card__figs">${fig("Year", c.year)}${fig("Kilometres", c.km != null ? km(c.km) : "&ndash;", c.km != null ? "km" : "")}${price}</div>
+    <div class="figs card__figs">${fig("Year", c.year)}${fig("Kilometres", c.km != null ? km(c.km) : "&ndash;", c.km != null ? "km" : "")}${c.price ? fig(esc(c.priceNote || "Price"), money(c.price)) : `<div class="fig fig--word"><span class="fig__l">Price</span><b>${c.status === "coming-soon" ? "On arrival" : "Under contract"}</b></div>`}</div>
   </div>
+  <span class="card__go" aria-hidden="true">${icon.arrow}</span>
 </article>`;
 }
 
@@ -159,10 +168,11 @@ export function layout({ title, description, path: p, body, css = [], js = [], h
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 ${head}<link rel="stylesheet" href="/assets/css/tp.css">
 ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
 </head>
 <body class="${[dock ? "has-dock" : "", bodyClass].filter(Boolean).join(" ")}">
 <a class="skip" href="#main">Skip to content</a>
@@ -170,6 +180,7 @@ ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
   <div class="wrap hdr__in">
     <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main">${nav}</nav>
+    <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">${dealer.licence}</span>
     <a class="hdr__call" href="tel:${dealer.tel}" aria-label="Call Tokyo Prestige on ${dealer.phone}">${icon.phone}<span class="num">${dealer.phone}</span></a>
     <details class="menu" data-menu>
@@ -178,6 +189,7 @@ ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
         ${NAV.map(([h, l]) => `<a class="menu__link" href="${h}"${p === h ? ' aria-current="page"' : ""}>${l}${h === "/stock" ? `<span class="plate num">${counts.a} available</span>` : h === "/coming-soon" ? `<span class="plate num">${counts.s} on the way</span>` : ""}</a>`).join("\n        ")}
         <a class="menu__link" href="/faq">Questions</a>
         <div class="menu__meta">
+          <div class="look look--menu" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
           <a class="btn btn--shu" href="tel:${dealer.tel}">${icon.phone} Call ${dealer.phone}</a>
           <p>${dealer.street}, ${dealer.suburb} ${dealer.state} ${dealer.postcode}</p>
           <p class="plate">Licensed dealer ${dealer.licence}</p>

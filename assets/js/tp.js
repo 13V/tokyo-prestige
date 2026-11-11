@@ -191,6 +191,40 @@
     });
   });
 
+  // the switch between the two looks: "night" (the default) and "figures". Remembered on this device.
+  const root = document.documentElement;
+  const looks = $$("[data-look-set]");
+  const paint = () => looks.forEach((b) => b.setAttribute("aria-pressed", String((root.dataset.look || "night") === b.dataset.lookSet)));
+  // the second look's stylesheet: fetched when the page is idle, so the switch is instant, and never in the way of the first paint
+  let sheet = null;
+  const figuresCss = () =>
+    (sheet ||= new Promise((done) => {
+      if (document.querySelector("link[data-figures]")) return done();
+      const l = document.createElement("link");
+      l.rel = "stylesheet";
+      l.href = "/assets/css/figures.css";
+      l.dataset.figures = "";
+      l.onload = l.onerror = () => done();
+      document.head.append(l);
+    }));
+  addEventListener("load", () => (window.requestIdleCallback || setTimeout)(figuresCss), { once: true });
+  const setLook = async (name) => {
+    if (name === "figures") await figuresCss();
+    const apply = () => {
+      if (name === "figures") root.dataset.look = "figures";
+      else delete root.dataset.look;
+      paint();
+      document.dispatchEvent(new CustomEvent("tp:look"));
+    };
+    try {
+      localStorage.setItem("tp-look", name);
+    } catch (e) {}
+    if (!calm && document.startViewTransition) document.startViewTransition(apply);
+    else apply();
+  };
+  looks.forEach((b) => b.addEventListener("click", () => (root.dataset.look || "night") !== b.dataset.lookSet && setLook(b.dataset.lookSet)));
+  paint();
+
   // a car's photo travels from its card to its page (where the browser supports it)
   if (!calm && "startViewTransition" in document) {
     addEventListener("click", (e) => {

@@ -9,11 +9,12 @@
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AutoDealer","@id":"https://www.tokyoprestige.com.au/#dealer","name":"Tokyo Prestige","url":"https://www.tokyoprestige.com.au/","telephone":"+61883364674","email":"sales@tokyoprestige.com.au","address":{"@type":"PostalAddress","streetAddress":"216-218 Kensington Road","addressLocality":"Marryatville","addressRegion":"SA","postalCode":"5068","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}],"sameAs":["https://www.facebook.com/Tokyoprestige/"]}</script>
 <link rel="stylesheet" href="/assets/css/tp.css">
 <link rel="stylesheet" href="/assets/css/pages.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
 </head>
 <body class="">
 <a class="skip" href="#main">Skip to content</a>
@@ -21,6 +22,7 @@
   <div class="wrap hdr__in">
     <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main"><a href="/stock">Stock</a><a href="/coming-soon">Coming soon</a><a href="/importing">How importing works</a><a href="/finance">Finance</a><a href="/servicing">Servicing</a><a href="/about">About</a><a href="/contact" aria-current="page">Contact</a></nav>
+    <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">MVD 287394</span>
     <a class="hdr__call" href="tel:+61883364674" aria-label="Call Tokyo Prestige on 08 8336 4674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg><span class="num">08 8336 4674</span></a>
     <details class="menu" data-menu>
@@ -35,6 +37,7 @@
         <a class="menu__link" href="/contact" aria-current="page">Contact</a>
         <a class="menu__link" href="/faq">Questions</a>
         <div class="menu__meta">
+          <div class="look look--menu" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
           <a class="btn btn--shu" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a>
           <p>216-218 Kensington Road, Marryatville SA 5068</p>
           <p class="plate">Licensed dealer MVD 287394</p>

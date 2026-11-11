@@ -9,12 +9,13 @@
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 <link rel="preload" as="image" href="/img/cars/1503/1-960.avif" imagesrcset="/img/cars/1503/1-480.avif 480w, /img/cars/1503/1-960.avif 960w, /img/cars/1503/1-1024.avif 1024w" imagesizes="(min-width: 1000px) 62vw, 100vw" fetchpriority="high">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Car","name":"2026 Suzuki Super Carry","brand":{"@type":"Brand","name":"Suzuki"},"model":"Super Carry","vehicleModelDate":"2026","itemCondition":"https://schema.org/UsedCondition","image":["https://www.tokyoprestige.com.au/img/cars/1503/1-1024.avif","https://www.tokyoprestige.com.au/img/cars/1503/2-1024.avif","https://www.tokyoprestige.com.au/img/cars/1503/3-1024.avif","https://www.tokyoprestige.com.au/img/cars/1503/4-1024.avif","https://www.tokyoprestige.com.au/img/cars/1503/5-1024.avif"],"sku":"1503","seller":{"@id":"https://www.tokyoprestige.com.au/#dealer"},"mileageFromOdometer":{"@type":"QuantitativeValue","value":4,"unitCode":"KMT"},"color":"Grey","vehicleInteriorColor":"Grey","vehicleTransmission":"Automatic","driveWheelConfiguration":"4WD","vehicleEngine":{"@type":"EngineSpecification","name":"660 cc"}},{"@context":"https://schema.org","@type":"AutoDealer","@id":"https://www.tokyoprestige.com.au/#dealer","name":"Tokyo Prestige","telephone":"+61883364674","email":"sales@tokyoprestige.com.au","address":{"@type":"PostalAddress","streetAddress":"216-218 Kensington Road","addressLocality":"Marryatville","addressRegion":"SA","postalCode":"5068","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]}]</script>
 <link rel="stylesheet" href="/assets/css/tp.css">
 <link rel="stylesheet" href="/assets/css/car.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
 </head>
 <body class="has-dock">
 <a class="skip" href="#main">Skip to content</a>
@@ -22,6 +23,7 @@
   <div class="wrap hdr__in">
     <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main"><a href="/stock">Stock</a><a href="/coming-soon">Coming soon</a><a href="/importing">How importing works</a><a href="/finance">Finance</a><a href="/servicing">Servicing</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">MVD 287394</span>
     <a class="hdr__call" href="tel:+61883364674" aria-label="Call Tokyo Prestige on 08 8336 4674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg><span class="num">08 8336 4674</span></a>
     <details class="menu" data-menu>
@@ -36,6 +38,7 @@
         <a class="menu__link" href="/contact">Contact</a>
         <a class="menu__link" href="/faq">Questions</a>
         <div class="menu__meta">
+          <div class="look look--menu" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
           <a class="btn btn--shu" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a>
           <p>216-218 Kensington Road, Marryatville SA 5068</p>
           <p class="plate">Licensed dealer MVD 287394</p>
@@ -84,9 +87,14 @@
       </div>
       </div>
 
+      <dl class="nums" aria-label="Key facts">
+        <div><dt>Year</dt><dd class="num" data-count="2026" data-plain>2026</dd></div>
+        <div><dt>Kilometres</dt><dd class="num" data-count="4">4</dd></div>
+        <div><dt>Stock number</dt><dd class="num">1503</dd></div>
+      </dl>
       <div class="figs figs--car" role="group" aria-label="Key facts">
-        <div class="fig"><span class="fig__l">Year</span><b class="num"><span data-count="2026" data-plain>2026</span></b></div>
-        <div class="fig"><span class="fig__l">Kilometres</span><b class="num"><span data-count="4">4</span><small>km</small></b></div>
+        <div class="fig"><span class="fig__l">Year</span><b class="num">2026</b></div>
+        <div class="fig"><span class="fig__l">Kilometres</span><b class="num">4<small>km</small></b></div>
         <div class="fig"><span class="fig__l">Gearbox</span><b class="num">Automatic</b></div>
         <div class="fig"><span class="fig__l">Stock number</span><b class="num">1503</b></div>
       </div>
@@ -262,10 +270,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>DA16T</span><span class="num">2026</span></p>
     <h3 class="card__title"><a href="/cars/2026-suzuki-super-carry-da16t-1507">Suzuki Super Carry</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>5 km</span><span>4-speed automatic</span><span>4WD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">DA16T · 4-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2026</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">5<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1470" data-make="Suzuki" data-model="Super Carry" data-body="Kei truck" data-year="2025" data-price="" data-km="292" data-trans="Automatic" data-status="coming-soon" data-q="suzuki super carry da16t 2025 kei truck grey 2025 suzuki super carry 660cc automatic" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1470/1-960.avif" srcset="/img/cars/1470/1-480.avif 480w, /img/cars/1470/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2025 Suzuki Super Carry, grey: front three-quarter, right side" loading="lazy" decoding="async">
@@ -273,10 +286,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>DA16T</span><span class="num">2025</span></p>
     <h3 class="card__title"><a href="/cars/2025-suzuki-super-carry-da16t-1470">Suzuki Super Carry</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>292 km</span><span>Automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">DA16T · Automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2025</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">292<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1479" data-make="Suzuki" data-model="Super Carry" data-body="Kei truck" data-year="2024" data-price="" data-km="19992" data-trans="Automatic" data-status="coming-soon" data-q="suzuki super carry da16t x limited 2024 kei truck green 2024 suzuki super carry 4wd special edition x li" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1479/1-960.avif" srcset="/img/cars/1479/1-480.avif 480w, /img/cars/1479/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2024 Suzuki Super Carry X Limited, green: front three-quarter, right side" loading="lazy" decoding="async">
@@ -284,10 +302,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>DA16T</span><span class="num">2024</span></p>
     <h3 class="card__title"><a href="/cars/2024-suzuki-super-carry-da16t-x-limited-1479">Suzuki Super Carry</a></h3>
+    <p class="card__grade">X Limited</p>
+    <p class="card__facts num"><span>19,992 km</span><span>Automatic</span><span>4WD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">DA16T · X Limited · Automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2024</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">19,992<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1411" data-make="Suzuki" data-model="Super Carry" data-body="Kei truck" data-year="2025" data-price="28888" data-km="3225" data-trans="Manual" data-status="available" data-q="suzuki super carry da16t x limited 2025 kei truck green 2025 suzuki carry da16t super carry x-limited utility 2dr man 5sp rwd 0.7i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1411/1-960.avif" srcset="/img/cars/1411/1-480.avif 480w, /img/cars/1411/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1921" alt="2025 Suzuki Super Carry X Limited, green: front three-quarter" loading="lazy" decoding="async">
@@ -295,10 +318,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>DA16T</span><span class="num">2025</span></p>
     <h3 class="card__title"><a href="/cars/2025-suzuki-super-carry-da16t-x-limited-1411">Suzuki Super Carry</a></h3>
+    <p class="card__grade">X Limited</p>
+    <p class="card__facts num"><span>3,225 km</span><span>5-speed manual</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$28,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">DA16T · X Limited · 5-speed manual</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2025</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">3,225<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$28,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article></div>
     </div>
   </section>

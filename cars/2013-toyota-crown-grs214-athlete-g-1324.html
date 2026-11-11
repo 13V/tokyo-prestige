@@ -9,12 +9,13 @@
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 <link rel="preload" as="image" href="/img/cars/1324/1-960.avif" imagesrcset="/img/cars/1324/1-480.avif 480w, /img/cars/1324/1-960.avif 960w, /img/cars/1324/1-1600.avif 1600w" imagesizes="(min-width: 1000px) 62vw, 100vw" fetchpriority="high">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Car","name":"2013 Toyota Crown Athlete G","brand":{"@type":"Brand","name":"Toyota"},"model":"Crown","vehicleModelDate":"2013","itemCondition":"https://schema.org/UsedCondition","image":["https://www.tokyoprestige.com.au/img/cars/1324/1-1600.avif","https://www.tokyoprestige.com.au/img/cars/1324/2-1600.avif","https://www.tokyoprestige.com.au/img/cars/1324/3-1600.avif","https://www.tokyoprestige.com.au/img/cars/1324/4-1600.avif","https://www.tokyoprestige.com.au/img/cars/1324/5-1600.avif"],"sku":"1324","seller":{"@id":"https://www.tokyoprestige.com.au/#dealer"},"vehicleConfiguration":"Athlete G","mileageFromOdometer":{"@type":"QuantitativeValue","value":103295,"unitCode":"KMT"},"vehicleIdentificationNumber":"6ZZDGRS2146001086","color":"Silver","vehicleInteriorColor":"Black","vehicleTransmission":"8-speed automatic","driveWheelConfiguration":"RWD","vehicleEngine":{"@type":"EngineSpecification","name":"3.5L V6"},"offers":{"@type":"Offer","price":27888,"priceCurrency":"AUD","availability":"https://schema.org/InStock","description":"Plus on-road costs","seller":{"@id":"https://www.tokyoprestige.com.au/#dealer"}}},{"@context":"https://schema.org","@type":"AutoDealer","@id":"https://www.tokyoprestige.com.au/#dealer","name":"Tokyo Prestige","telephone":"+61883364674","email":"sales@tokyoprestige.com.au","address":{"@type":"PostalAddress","streetAddress":"216-218 Kensington Road","addressLocality":"Marryatville","addressRegion":"SA","postalCode":"5068","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]}]</script>
 <link rel="stylesheet" href="/assets/css/tp.css">
 <link rel="stylesheet" href="/assets/css/car.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
 </head>
 <body class="has-dock">
 <a class="skip" href="#main">Skip to content</a>
@@ -22,6 +23,7 @@
   <div class="wrap hdr__in">
     <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main"><a href="/stock">Stock</a><a href="/coming-soon">Coming soon</a><a href="/importing">How importing works</a><a href="/finance">Finance</a><a href="/servicing">Servicing</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">MVD 287394</span>
     <a class="hdr__call" href="tel:+61883364674" aria-label="Call Tokyo Prestige on 08 8336 4674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg><span class="num">08 8336 4674</span></a>
     <details class="menu" data-menu>
@@ -36,6 +38,7 @@
         <a class="menu__link" href="/contact">Contact</a>
         <a class="menu__link" href="/faq">Questions</a>
         <div class="menu__meta">
+          <div class="look look--menu" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
           <a class="btn btn--shu" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a>
           <p>216-218 Kensington Road, Marryatville SA 5068</p>
           <p class="plate">Licensed dealer MVD 287394</p>
@@ -84,9 +87,14 @@
       </div>
       </div>
 
+      <dl class="nums" aria-label="Key facts">
+        <div><dt>Year</dt><dd class="num" data-count="2013" data-plain>2013</dd></div>
+        <div><dt>Kilometres</dt><dd class="num" data-count="103295">103,295</dd></div>
+        <div><dt>Stock number</dt><dd class="num">1324</dd></div>
+      </dl>
       <div class="figs figs--car" role="group" aria-label="Key facts">
-        <div class="fig"><span class="fig__l">Year</span><b class="num"><span data-count="2013" data-plain>2013</span></b></div>
-        <div class="fig"><span class="fig__l">Kilometres</span><b class="num"><span data-count="103295">103,295</span><small>km</small></b></div>
+        <div class="fig"><span class="fig__l">Year</span><b class="num">2013</b></div>
+        <div class="fig"><span class="fig__l">Kilometres</span><b class="num">103,295<small>km</small></b></div>
         <div class="fig"><span class="fig__l">Gearbox</span><b class="num">8<small>speed automatic</small></b></div>
         <div class="fig"><span class="fig__l">Stock number</span><b class="num">1324</b></div>
       </div>
@@ -315,10 +323,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GRS214</span><span class="num">2014</span></p>
     <h3 class="card__title"><a href="/cars/2014-toyota-crown-grs214-athlete-s-1330">Toyota Crown</a></h3>
+    <p class="card__grade">Athlete S</p>
+    <p class="card__facts num"><span>83,206 km</span><span>8-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$27,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">GRS214 · Athlete S · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2014</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">83,206<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$27,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1424" data-make="Toyota" data-model="Crown" data-body="Sedan" data-year="2013" data-price="28888" data-km="90425" data-trans="Automatic" data-status="available" data-q="toyota crown grs214 athlete g 2013 sedan white 2013 toyota crown grs214 athlete g sedan 4dr cvt 8sp 3.5i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1424/1-960.avif" srcset="/img/cars/1424/1-480.avif 480w, /img/cars/1424/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2013 Toyota Crown Athlete G, white: front three-quarter" loading="lazy" decoding="async">
@@ -326,10 +339,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GRS214</span><span class="num">2013</span></p>
     <h3 class="card__title"><a href="/cars/2013-toyota-crown-grs214-athlete-g-1424">Toyota Crown</a></h3>
+    <p class="card__grade">Athlete G</p>
+    <p class="card__facts num"><span>90,425 km</span><span>8-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$28,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">GRS214 · Athlete G · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2013</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">90,425<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$28,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1350" data-make="Toyota" data-model="Crown" data-body="Sedan" data-year="2013" data-price="26888" data-km="94645" data-trans="Automatic" data-status="available" data-q="toyota crown grs214 athlete s 2013 sedan pearl white 2013 toyota crown grs214 athlete s sedan 4dr spts auto 8sp 3.5i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1350/1-960.avif" srcset="/img/cars/1350/1-480.avif 480w, /img/cars/1350/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2048" height="1536" alt="2013 Toyota Crown Athlete S, pearl white: front three-quarter" loading="lazy" decoding="async">
@@ -337,10 +355,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GRS214</span><span class="num">2013</span></p>
     <h3 class="card__title"><a href="/cars/2013-toyota-crown-grs214-athlete-s-1350">Toyota Crown</a></h3>
+    <p class="card__grade">Athlete S</p>
+    <p class="card__facts num"><span>94,645 km</span><span>8-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$26,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">GRS214 · Athlete S · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2013</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">94,645<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$26,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1361" data-make="Toyota" data-model="Crown" data-body="Sedan" data-year="2013" data-price="29888" data-km="85700" data-trans="Automatic" data-status="available" data-q="toyota crown grs214 athlete s 2013 sedan black 2013 toyota crown grs214 athlete s sedan 4dr sports auto 8sp 3.5i" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1361/1-960.avif" srcset="/img/cars/1361/1-480.avif 480w, /img/cars/1361/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2013 Toyota Crown Athlete S, black: front three-quarter" loading="lazy" decoding="async">
@@ -348,10 +371,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GRS214</span><span class="num">2013</span></p>
     <h3 class="card__title"><a href="/cars/2013-toyota-crown-grs214-athlete-s-1361">Toyota Crown</a></h3>
+    <p class="card__grade">Athlete S</p>
+    <p class="card__facts num"><span>85,700 km</span><span>8-speed automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$29,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">GRS214 · Athlete S · 8-speed automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2013</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">85,700<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$29,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article></div>
     </div>
   </section>

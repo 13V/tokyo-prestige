@@ -190,9 +190,14 @@ export function carPage(c) {
       </div>
       </div>
 
+      <dl class="nums" aria-label="Key facts">
+        <div><dt>Year</dt><dd class="num" data-count="${c.year}" data-plain>${c.year}</dd></div>
+        ${c.km != null ? `<div><dt>Kilometres</dt><dd class="num" data-count="${c.km}">${km(c.km)}</dd></div>` : ""}
+        <div><dt>Stock number</dt><dd class="num">${c.id}</dd></div>
+      </dl>
       <div class="figs figs--car" role="group" aria-label="Key facts">
-        ${fig("Year", `<span data-count="${c.year}" data-plain>${c.year}</span>`)}
-        ${c.km != null ? fig("Kilometres", `<span data-count="${c.km}">${km(c.km)}</span>`, "km") : ""}
+        ${fig("Year", c.year)}
+        ${c.km != null ? fig("Kilometres", km(c.km), "km") : ""}
         ${gear(c) ? fig("Gearbox", esc(gear(c)[0]), esc(gear(c)[1])) : ""}
         ${fig("Stock number", c.id)}
       </div>

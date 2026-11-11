@@ -1,8 +1,7 @@
 # Direction: Tokyo Prestige
 
-> Superseded for the look on 11 November 2026: the live demo was rebuilt in "The figures" (light ground,
-> Geist, four figures per car). The tokens are in `assets/css/tp.css`. What follows describes the first,
-> dark build, kept at the git tag `direction-a-showroom-at-night`. The page structure it sets out still holds.
+> The live demo carries two looks: this one (dark, the default) and "The figures" (light), switched in the
+> header. The second look is in `assets/css/figures.css`.
 
 One page. Proved by two screens: the homepage's first screen with the stock search, and one complete car
 page (`/cars/2001-nissan-skyline-gt-r-bnr34-512`). Screenshots and a clip are in `direction/`.

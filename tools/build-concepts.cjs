@@ -15,11 +15,14 @@ const B = "http://localhost:4173";
     await p.screenshot({ path: path.join(ROOT, "concepts/shots", file), type: "jpeg", quality: 82 });
     await ctx.close();
   };
-  // A (the showroom at night) was the first build; its shots are kept as they were (git tag direction-a-showroom-at-night).
-  // J (the figures) is the live site now, so its shots come from the site itself.
-  await shot("/", "j-desktop.jpg", false, 2500, async (p) => { await p.setViewportSize({ width: 1440, height: 1200 }); await p.addStyleTag({ content: "[data-reveal],[data-reveal]>*{opacity:1!important;transform:none!important;clip-path:none!important}" }); await p.waitForTimeout(900); });
-  await shot("/", "j-phone-home.jpg", true, 2500);
-  await shot("/cars/2001-nissan-skyline-gt-r-bnr34-512", "j-phone-car.jpg", true, 2500);
+  // The live site carries two looks. A (the showroom at night) is the default; J (the figures) is the
+  // other side of the switch in the header, reached here with ?look=figures.
+  await shot("/", "a-desktop.jpg", false, 4200);
+  await shot("/", "a-phone-home.jpg", true, 4200);
+  await shot("/cars/2001-nissan-skyline-gt-r-bnr34-512", "a-phone-car.jpg", true, 2500);
+  await shot("/?look=figures", "j-desktop.jpg", false, 2500, async (p) => { await p.setViewportSize({ width: 1440, height: 1200 }); await p.addStyleTag({ content: "[data-reveal],[data-reveal]>*{opacity:1!important;transform:none!important;clip-path:none!important}" }); await p.waitForTimeout(900); });
+  await shot("/?look=figures", "j-phone-home.jpg", true, 2500);
+  await shot("/cars/2001-nissan-skyline-gt-r-bnr34-512?look=figures", "j-phone-car.jpg", true, 2500);
   for (const k of ["c", "d"]) {
     await shot(`/concepts/${k}`, `${k}-desktop.jpg`, false);
     await shot(`/concepts/${k}?s=home`, `${k}-phone-home.jpg`, true);

@@ -9,12 +9,13 @@
 <meta name="theme-color" content="#060607">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
 <link rel="preload" as="image" href="/img/cars/1519/1-960.avif" imagesrcset="/img/cars/1519/1-480.avif 480w, /img/cars/1519/1-960.avif 960w, /img/cars/1519/1-1024.avif 1024w" imagesizes="(min-width: 1000px) 62vw, 100vw" fetchpriority="high">
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"Car","name":"2019 Toyota Crown Hybrid RS Advance","brand":{"@type":"Brand","name":"Toyota"},"model":"Crown Hybrid","vehicleModelDate":"2019","itemCondition":"https://schema.org/UsedCondition","image":["https://www.tokyoprestige.com.au/img/cars/1519/1-1024.avif","https://www.tokyoprestige.com.au/img/cars/1519/2-1024.avif","https://www.tokyoprestige.com.au/img/cars/1519/3-1024.avif","https://www.tokyoprestige.com.au/img/cars/1519/4-1024.avif","https://www.tokyoprestige.com.au/img/cars/1519/5-1024.avif"],"sku":"1519","seller":{"@id":"https://www.tokyoprestige.com.au/#dealer"},"vehicleConfiguration":"RS Advance","mileageFromOdometer":{"@type":"QuantitativeValue","value":36542,"unitCode":"KMT"},"color":"Silver","vehicleInteriorColor":"Black","vehicleTransmission":"Hybrid automatic","driveWheelConfiguration":"RWD","vehicleEngine":{"@type":"EngineSpecification","name":"3.5L V6 hybrid"}},{"@context":"https://schema.org","@type":"AutoDealer","@id":"https://www.tokyoprestige.com.au/#dealer","name":"Tokyo Prestige","telephone":"+61883364674","email":"sales@tokyoprestige.com.au","address":{"@type":"PostalAddress","streetAddress":"216-218 Kensington Road","addressLocality":"Marryatville","addressRegion":"SA","postalCode":"5068","addressCountry":"AU"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"15:00"}]}]</script>
 <link rel="stylesheet" href="/assets/css/tp.css">
 <link rel="stylesheet" href="/assets/css/car.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>
 </head>
 <body class="has-dock">
 <a class="skip" href="#main">Skip to content</a>
@@ -22,6 +23,7 @@
   <div class="wrap hdr__in">
     <a class="brand" href="/"><span class="seal" aria-hidden="true">東<br>京</span><span class="brand__name">Tokyo <span>Prestige</span></span></a>
     <nav class="nav" aria-label="Main"><a href="/stock">Stock</a><a href="/coming-soon">Coming soon</a><a href="/importing">How importing works</a><a href="/finance">Finance</a><a href="/servicing">Servicing</a><a href="/about">About</a><a href="/contact">Contact</a></nav>
+    <div class="look" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
     <span class="hdr__lic">MVD 287394</span>
     <a class="hdr__call" href="tel:+61883364674" aria-label="Call Tokyo Prestige on 08 8336 4674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg><span class="num">08 8336 4674</span></a>
     <details class="menu" data-menu>
@@ -36,6 +38,7 @@
         <a class="menu__link" href="/contact">Contact</a>
         <a class="menu__link" href="/faq">Questions</a>
         <div class="menu__meta">
+          <div class="look look--menu" role="group" aria-label="Site design" data-look><button type="button" data-look-set="night" aria-pressed="true">Night</button><button type="button" data-look-set="figures" aria-pressed="false">Figures</button></div>
           <a class="btn btn--shu" href="tel:+61883364674"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.2 2.5h3l1.3 3.4-1.8 1.3a9 9 0 0 0 5.1 5.1l1.3-1.8 3.4 1.3v3a1 1 0 0 1-1.1 1A13.3 13.3 0 0 1 2.2 3.600a1 1 0 0 1 1-1.100Z"/></svg> Call 08 8336 4674</a>
           <p>216-218 Kensington Road, Marryatville SA 5068</p>
           <p class="plate">Licensed dealer MVD 287394</p>
@@ -84,9 +87,14 @@
       </div>
       </div>
 
+      <dl class="nums" aria-label="Key facts">
+        <div><dt>Year</dt><dd class="num" data-count="2019" data-plain>2019</dd></div>
+        <div><dt>Kilometres</dt><dd class="num" data-count="36542">36,542</dd></div>
+        <div><dt>Stock number</dt><dd class="num">1519</dd></div>
+      </dl>
       <div class="figs figs--car" role="group" aria-label="Key facts">
-        <div class="fig"><span class="fig__l">Year</span><b class="num"><span data-count="2019" data-plain>2019</span></b></div>
-        <div class="fig"><span class="fig__l">Kilometres</span><b class="num"><span data-count="36542">36,542</span><small>km</small></b></div>
+        <div class="fig"><span class="fig__l">Year</span><b class="num">2019</b></div>
+        <div class="fig"><span class="fig__l">Kilometres</span><b class="num">36,542<small>km</small></b></div>
         <div class="fig"><span class="fig__l">Gearbox</span><b class="num">Hybrid<small>automatic</small></b></div>
         <div class="fig"><span class="fig__l">Stock number</span><b class="num">1519</b></div>
       </div>
@@ -263,10 +271,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GWS224</span><span class="num">2022</span></p>
     <h3 class="card__title"><a href="/cars/2022-toyota-crown-hybrid-gws224-g-executive-1487">Toyota Crown Hybrid</a></h3>
+    <p class="card__grade">G-Executive</p>
+    <p class="card__facts num"><span>80,023 km</span><span>Hybrid automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">GWS224 · G-Executive · Hybrid automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2022</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">80,023<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1452" data-make="Toyota" data-model="Crown Hybrid" data-body="Sedan" data-year="2020" data-price="48888" data-km="24710" data-trans="Automatic" data-status="available" data-q="toyota crown hybrid gws224 g-executive 2020 sedan silver 2020 toyota crown gws224 hybrid g executive sedan 4dr cvt 1sp 3.5/132kw hybrid" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1452/1-960.avif" srcset="/img/cars/1452/1-480.avif 480w, /img/cars/1452/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="2560" height="1920" alt="2020 Toyota Crown Hybrid G-Executive, silver: front three-quarter" loading="lazy" decoding="async">
@@ -274,10 +287,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GWS224</span><span class="num">2020</span></p>
     <h3 class="card__title"><a href="/cars/2020-toyota-crown-hybrid-gws224-g-executive-1452">Toyota Crown Hybrid</a></h3>
+    <p class="card__grade">G-Executive</p>
+    <p class="card__facts num"><span>24,710 km</span><span>Hybrid automatic</span><span>RWD</span></p>
+    <p class="card__price"><b class="num">$48,888</b><small>plus on-road costs</small></p>
     <p class="card__sub">GWS224 · G-Executive · Hybrid automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2020</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">24,710<small>km</small></b></div><div class="fig"><span class="fig__l">Plus on-road costs</span><b class="num">$48,888</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1485" data-make="Toyota" data-model="Mark X" data-body="Sedan" data-year="2018" data-price="" data-km="94032" data-trans="Automatic" data-status="coming-soon" data-q="toyota mark x grx133 350rds 2018 sedan silver 2018 toyota mark x 350rds" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1485/1-960.avif" srcset="/img/cars/1485/1-480.avif 480w, /img/cars/1485/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2018 Toyota Mark X 350RDS, silver: front three-quarter, right side" loading="lazy" decoding="async">
@@ -285,10 +303,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>GRX133</span><span class="num">2018</span></p>
     <h3 class="card__title"><a href="/cars/2018-toyota-mark-x-grx133-350rds-1485">Toyota Mark X</a></h3>
+    <p class="card__grade">350RDS</p>
+    <p class="card__facts num"><span>94,032 km</span><span>Automatic</span><span>RWD</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">GRX133 · 350RDS · Automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2018</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">94,032<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article>
 <article class="card" data-card data-id="1486" data-make="Toyota" data-model="Crown Sedan" data-body="Sedan" data-year="2024" data-price="" data-km="10680" data-trans="Automatic" data-status="coming-soon" data-q="toyota crown sedan azsh32 2024 sedan black 2024 toyota crown sedan" data-angles="1,2,3,4,5">
   <div class="shot card__shot"><img src="/img/cars/1486/1-960.avif" srcset="/img/cars/1486/1-480.avif 480w, /img/cars/1486/1-960.avif 960w" sizes="(min-width: 1100px) 320px, (min-width: 700px) 46vw, 92vw" width="1024" height="768" alt="2024 Toyota Crown Sedan, black" loading="lazy" decoding="async">
@@ -296,10 +319,15 @@
     <div class="card__ticks" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i></div>
   </div>
   <div class="card__body">
+    <p class="code card__code"><span>AZSH32</span><span class="num">2024</span></p>
     <h3 class="card__title"><a href="/cars/2024-toyota-crown-sedan-azsh32-1486">Toyota Crown Sedan</a></h3>
+    <p class="card__grade">&nbsp;</p>
+    <p class="card__facts num"><span>10,680 km</span><span>Automatic</span></p>
+    <p class="card__price"><small>Price on arrival</small></p>
     <p class="card__sub">AZSH32 · Automatic</p>
     <div class="figs card__figs"><div class="fig"><span class="fig__l">Year</span><b class="num">2024</b></div><div class="fig"><span class="fig__l">Kilometres</span><b class="num">10,680<small>km</small></b></div><div class="fig fig--word"><span class="fig__l">Price</span><b>On arrival</b></div></div>
   </div>
+  <span class="card__go" aria-hidden="true"><svg class="arr" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
 </article></div>
     </div>
   </section>
