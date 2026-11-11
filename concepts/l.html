@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concept L: Start from what you need</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Concept L, "Start from what you need". The homepage asks what the car has to do, and answers from the
+   stock: doors into the list by need, a budget slider drawn from their real prices, body types with a
+   count and a lowest price. Every number is counted from the 62 cars for sale on 11 Nov 2026.
+   Research: the four buyer profiles (enthusiast by code, family after seven seats, luxury for less,
+   interstate), patterns 1 and 2 (search with a live count; filters that never reload), client audit
+   (all nine of their filters read "No options").
+   Mobbin: Cosmos (photo doors with a serif italic label and a View pill), Turo (price filter with a
+   histogram and "View 200+ results"), Kiwi.com (car-type tiles with a from price), Shift (search in
+   the header, body types in a row under it). */
+:root { --bg:#0e0f10; --card:#191a1c; --line:#2a2c2f; --txt:#f2f1ec; --sub:#a9aaa5; --mute:#7c7e7a; --red:#e0412c; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--txt); font:400 16px/1.5 "Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+img { display:block; width:100%; height:100%; object-fit:cover; }
+.it { font:italic 400 1em/1 "Instrument Serif",serif; }
+.pill { display:inline-grid; place-items:center; height:40px; padding:0 18px; border-radius:999px; background:#fff; color:#111; font-weight:500; font-size:14px; white-space:nowrap; }
+header { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:32px; align-items:center; padding:0 40px; height:72px; }
+.logo { font-weight:600; letter-spacing:.16em; text-transform:uppercase; font-size:14px; display:flex; gap:28px; align-items:center; white-space:nowrap; } .logo span { font-weight:400; letter-spacing:0; text-transform:none; font-size:15px; color:var(--sub); }
+.search { width:100%; max-width:460px; justify-self:center; height:44px; border-radius:12px; background:var(--card); display:flex; align-items:center; gap:10px; padding:0 14px; color:var(--mute); font-size:15px; box-shadow:inset 0 0 0 1px var(--line); } .search b { background:#2a2c2f; color:var(--txt); border-radius:6px; padding:3px 9px; font-weight:500; font-size:13px; } .search span { flex:1; }
+header .r { justify-self:end; display:flex; gap:20px; align-items:center; font-size:14px; color:var(--sub); } header .r b { color:var(--txt); font-weight:500; font-size:15px; }
+.q { padding:28px 40px 0; display:flex; justify-content:space-between; align-items:flex-end; }
+h1 { font:400 64px/1 "Instrument Serif",serif; letter-spacing:-.02em; } h1 i { color:var(--sub); }
+.q p { color:var(--sub); max-width:38ch; text-align:right; font-size:15px; }
+.doors { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:24px 40px 0; }
+.door { position:relative; height:300px; border-radius:20px; overflow:hidden; }
+.door img { object-position:50% 60%; }
+.door::after { content:""; position:absolute; inset:0; background:linear-gradient(rgba(10,10,11,.12) 30%, rgba(10,10,11,.86)); }
+.door > * { z-index:1; }
+.door .n { position:absolute; left:16px; top:16px; background:rgba(14,15,16,.7); backdrop-filter:blur(8px); border-radius:999px; padding:5px 12px; font-size:13px; font-weight:500; }
+.door h2 { position:absolute; left:20px; bottom:62px; font:400 34px/1 "Instrument Serif",serif; letter-spacing:-.01em; }
+.door p { position:absolute; left:20px; bottom:20px; font-size:13px; color:#d2d2cd; max-width:58%; line-height:1.3; }
+.door .pill { position:absolute; right:16px; bottom:16px; }
+.tools { display:grid; grid-template-columns:420px 1fr; gap:12px; padding:12px 40px 0; }
+.out { padding:28px 40px 40px; } .out .hd { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; } .out h3 { font:400 30px/1 "Instrument Serif",serif; } .out .hd span { color:var(--sub); font-size:14px; }
+.out .g { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; } .oc { background:var(--card); border-radius:16px; overflow:hidden; } .oc figure { aspect-ratio:3/2; } .oc img { object-position:50% 60%; } .oc div { padding:14px 16px 16px; } .oc h4 { font-weight:500; font-size:16px; } .oc p { color:var(--sub); font-size:13px; margin-top:2px; } .oc .p { display:flex; justify-content:space-between; align-items:baseline; margin-top:10px; color:var(--mute); font-size:12px; } .oc .p b { color:var(--txt); font-weight:600; font-size:18px; }
+.panel { background:var(--card); border-radius:20px; padding:22px 24px 24px; }
+.panel h3 { font-weight:500; font-size:15px; display:flex; justify-content:space-between; } .panel h3 span { color:var(--mute); font-weight:400; }
+.mm { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; } .mm div { box-shadow:inset 0 0 0 1px var(--line); border-radius:10px; padding:8px 12px; } .mm small { display:block; color:var(--mute); font-size:12px; } .mm b { font-weight:500; font-variant-numeric:tabular-nums; }
+.hist { display:flex; align-items:flex-end; gap:5px; height:76px; margin:18px 4px 0; } .hist i { flex:1; background:var(--red); border-radius:3px 3px 0 0; min-height:2px; } .hist i.off { background:#3a3c40; }
+.track { position:relative; height:2px; background:#3a3c40; margin:0 4px; } .track::before { content:""; position:absolute; left:0; width:50%; top:0; bottom:0; background:var(--red); } .track b { position:absolute; top:-10px; width:22px; height:22px; border-radius:50%; background:#fff; margin-left:-11px; }
+.ax { display:flex; justify-content:space-between; margin:14px 4px 0; font-size:12px; color:var(--mute); }
+.panel .pill { width:100%; height:48px; margin-top:18px; font-size:15px; }
+.body { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:16px; }
+.body div { box-shadow:inset 0 0 0 1px var(--line); border-radius:12px; padding:14px 16px; display:grid; gap:2px; } .body div.on { box-shadow:inset 0 0 0 1.5px var(--txt); }
+.body b { font-weight:500; display:flex; justify-content:space-between; } .body b span { color:var(--mute); font-weight:400; font-variant-numeric:tabular-nums; } .body small { color:var(--sub); font-size:13px; }
+.pres, .pcar, .dock { display:none; }
+@media (max-width:600px) { .out { display:none; } }
+
+@media (max-width:600px) {
+  header { grid-template-columns:1fr auto; padding:0 16px; height:56px; } .search, .logo span, header .r span { display:none; }
+  .q { display:block; padding:16px 16px 0; } h1 { font-size:42px; } .q p { text-align:left; margin-top:8px; }
+  .psearch { margin:16px 16px 0; height:52px; border-radius:12px; background:var(--card); box-shadow:inset 0 0 0 1px var(--line); display:flex; align-items:center; padding:0 16px; color:var(--mute); }
+  .doors { grid-template-columns:1fr 1fr; gap:8px; padding:16px 16px 0; } .door { height:176px; border-radius:16px; } .door h2 { font-size:24px; left:14px; bottom:46px; } .door p { left:14px; bottom:12px; font-size:12px; max-width:86%; } .door .pill { display:none; } .door .n { left:10px; top:10px; }
+  .tools { grid-template-columns:1fr; padding:8px 16px 24px; } .tools .panel:last-child { display:none; } .panel { border-radius:16px; padding:18px; }
+  body.is-car .q, body.is-car .psearch, body.is-car .doors, body.is-car .tools { display:none; }
+  body.is-car .pres { display:block; padding:0 0 100px; }
+  .crumb { display:flex; gap:8px; align-items:center; padding:12px 16px; font-size:14px; color:var(--sub); border-bottom:1px solid var(--line); } .crumb b { color:var(--txt); font-weight:500; } .crumb .x { margin-left:auto; box-shadow:inset 0 0 0 1px var(--line); border-radius:999px; padding:5px 12px; color:var(--txt); }
+  .res { display:grid; grid-template-columns:132px 1fr; gap:14px; padding:14px 16px; border-bottom:1px solid var(--line); align-items:center; }
+  .res figure { height:96px; border-radius:12px; overflow:hidden; } .res h3 { font-weight:500; font-size:16px; line-height:1.25; } .res p { color:var(--sub); font-size:13px; margin-top:2px; } .res .p { display:flex; justify-content:space-between; align-items:baseline; margin-top:8px; } .res .p b { font-weight:600; font-size:17px; } .res .p span { font-size:12px; color:var(--mute); }
+  .res .why { display:inline-block; margin-top:6px; font-size:12px; color:var(--txt); background:#2a2c2f; border-radius:6px; padding:2px 8px; }
+  body.is-car .dock { display:flex; position:fixed; left:16px; right:16px; bottom:14px; background:#fff; color:#111; border-radius:999px; height:54px; align-items:center; justify-content:space-between; padding:0 8px 0 22px; font-weight:500; } .dock span:last-child { background:#111; color:#fff; border-radius:999px; height:40px; padding:0 18px; display:grid; place-items:center; font-size:14px; }
+}
+@media (min-width:601px) { .psearch { display:none; } }
+</style>
+</head>
+<body>
+<script>if (new URLSearchParams(location.search).get("s") === "car") document.body.classList.add("is-car");</script>
+<header>
+  <div class="logo">Tokyo Prestige<span>Stock</span><span>Coming soon</span><span>Importing</span><span>Finance</span></div>
+  <div class="search"><span>Search a model or a code, like BNR34</span><b>62 cars</b></div>
+  <div class="r"><span>Licensed dealer MVD 287394</span><b>08 8336 4674</b></div>
+</header>
+<section class="q">
+  <h1>What does it <i class="it">need to do?</i></h1>
+  <p>62 hand-picked Japanese imports in Adelaide. Start from the job, the budget or the shape.</p>
+</section>
+<div class="psearch">Search a model or a code</div>
+<section class="doors">
+  <div class="door"><img src="/img/cars/1442/1-960.avif" alt=""><span class="n">5 cars</span><h2><i class="it">Seven seats</i></h2><p>Voxy, Alphard, Serena, Odyssey</p><span class="pill">View 5</span></div>
+  <div class="door"><img src="/img/cars/1461/1-960.avif" alt=""><span class="n">31 cars</span><h2>Under <i class="it">$30,000</i></h2><p>From $10,888 plus on-road costs</p><span class="pill">View 31</span></div>
+  <div class="door"><img src="/img/cars/512/1-960.avif" alt=""><span class="n">6 cars</span><h2><i class="it">Three pedals</i></h2><p>GT-R, MR2, MR-S, LBX Morizo RR</p><span class="pill">View 6</span></div>
+  <div class="door"><img src="/img/cars/1448/1-960.avif" alt=""><span class="n">10 cars</span><h2>Under <i class="it">30,000 km</i></h2><p>From 13 km on the clock</p><span class="pill">View 10</span></div>
+</section>
+<section class="tools">
+  <div class="panel">
+    <h3>Budget <span>plus on-road costs</span></h3>
+    <div class="mm"><div><small>Minimum</small><b>$10,000</b></div><div><small>Maximum</small><b>$60,000</b></div></div>
+    <div class="hist"><i style="height:82%"></i><i style="height:100%"></i><i style="height:71%"></i><i style="height:29%"></i><i style="height:35%"></i><i class="off" style="height:18%"></i><i class="off" style="height:12%"></i><i class="off" style="height:6%"></i><i class="off" style="height:0"></i><i class="off" style="height:12%"></i></div>
+    <div class="track"><b style="left:0"></b><b style="left:50%"></b></div>
+    <div class="ax"><span>$10k</span><span>$30k</span><span>$50k</span><span>$70k</span><span>$100k+</span></div>
+    <span class="pill">Show 29 sedans</span>
+  </div>
+  <div class="panel">
+    <h3>Shape <span>62 cars</span></h3>
+    <div class="body">
+      <div class="on"><b>Sedan <span>32</span></b><small>from $15,888</small></div>
+      <div><b>SUV &amp; 4WD <span>6</span></b><small>from $17,888</small></div>
+      <div><b>Coupe <span>6</span></b><small>from $18,888</small></div>
+      <div><b>People mover <span>5</span></b><small>from $31,888</small></div>
+      <div><b>Wagon <span>5</span></b><small>from $21,888</small></div>
+      <div><b>Hatch <span>4</span></b><small>from $10,888</small></div>
+      <div><b>Kei truck <span>3</span></b><small>from $28,888</small></div>
+      <div><b>Convertible <span>1</span></b><small>$30,888</small></div>
+    </div>
+  </div>
+</section>
+<section class="out">
+  <div class="hd"><h3>Sedans, $10,000 to $60,000</h3><span>29 cars · newest first · the list updates as you move the slider</span></div>
+  <div class="g">
+    <div class="oc"><figure><img src="/img/cars/1356/1-960.avif" alt=""></figure><div><h4>2021 Nissan Skyline 400R</h4><p>RV37 · 28,808 km · 3.0L V6 twin-turbo</p><p class="p"><b>$52,888</b>plus on-road costs</p></div></div>
+    <div class="oc"><figure><img src="/img/cars/1452/1-960.avif" alt=""></figure><div><h4>2020 Toyota Crown Hybrid G-Executive</h4><p>GWS224 · 24,710 km · 3.5L V6 hybrid</p><p class="p"><b>$48,888</b>plus on-road costs</p></div></div>
+    <div class="oc"><figure><img src="/img/cars/1355/1-960.avif" alt=""></figure><div><h4>2019 Toyota Mark X 350RDS</h4><p>GRX133 · 54,228 km · 3.5L V6</p><p class="p"><b>$36,888</b>plus on-road costs</p></div></div>
+    <div class="oc"><figure><img src="/img/cars/1294/1-960.avif" alt=""></figure><div><h4>2016 Lexus LS 460 Version C</h4><p>USF45 · 83,602 km · 4.6L V8</p><p class="p"><b>$33,888</b>plus on-road costs</p></div></div>
+  </div>
+</section>
+<section class="pres">
+  <div class="crumb"><b>Seven seats</b>5 cars<span class="x">Filter</span></div>
+  <div class="res"><figure><img src="/img/cars/1442/1-480.avif" alt=""></figure><div><h3>2023 Toyota Voxy Hybrid S-Z</h3><p>25,865 km · CVT · 1.8L hybrid</p><span class="why">7 seats</span><p class="p"><b>$49,888</b><span>plus on-roads</span></p></div></div>
+  <div class="res"><figure><img src="/img/cars/9974441/1-480.avif" alt=""></figure><div><h3>2018 Toyota Alphard Hybrid</h3><p>73,119 km · CVT · 2.5L hybrid</p><span class="why">7 seats</span><p class="p"><b>$54,888</b><span>plus on-roads</span></p></div></div>
+  <div class="res"><figure><img src="/img/cars/1397/1-480.avif" alt=""></figure><div><h3>2021 Nissan Serena Highway Star</h3><p>74,602 km · S-Hybrid</p><span class="why">8 seats</span><p class="p"><b>$33,888</b><span>plus on-roads</span></p></div></div>
+  <div class="res"><figure><img src="/img/cars/1326/1-480.avif" alt=""></figure><div><h3>2018 Honda Odyssey Hybrid Absolute</h3><p>70,712 km · e-CVT · 2.0L hybrid</p><span class="why">7 seats</span><p class="p"><b>$31,888</b><span>plus on-roads</span></p></div></div>
+</section>
+<div class="dock"><span>08 8336 4674</span><span>Ask about these</span></div>
+</body>
+</html>
