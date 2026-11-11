@@ -106,13 +106,14 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
   `gaps.md` lists each one.
 - **Photos.** All are the dealer's own. In the dark look the four hero cars have hand-traced outlines; a new
   hero car needs one drawn (about ten minutes each).
-- **The intro on the dark homepage** is one eight-second clip made with Higgsfield (MiniMax H3), played once
-  per visit: a black R34 GT-R slides in along a wet Tokyo expressway, rolls up to the camera, and the clip
-  ends on the dealer's own photo as the hero shows it. It was generated between two frames: a still of a
-  generated empty road, and that photo. The car in motion is an illustration, not their car: details such
-  as the intercooler and wing differ. It is the only generated asset on the site (`img/hero/drift.mp4`,
-  see its size on disk). It is fetched after the page starts, skipped with reduced motion or data saving,
-  skipped if not ready within four seconds, and there is a Skip button. **Before a real launch the dealer
-  must approve it**: it shows drifting on a public road, which a licensed dealer may not want to be seen
-  to promote.
+- **Generated and retouched imagery (dark homepage only).** Made with Higgsfield at Troy's direction:
+  1. *The GT-R hero image* (`img/hero/512-*.avif`) is a retouch of the dealer's photo (GPT Image 2.6, then
+     upscaled): the same car, angle and framing, relit in a dark showroom with neon Tokyo behind the glass.
+     The room in it is invented. Small details of the car may differ from the real one.
+  2. *The intro clip* (`img/hero/drift.mp4`, MiniMax H3, 7 s, once per visit): a black R34 drifts through a
+     neon Tokyo street and the scene dissolves into that hero image. The car in motion is an illustration.
+  Everything else is the dealer's own photography, untouched: the GT-R's car page and the Figures look still
+  use the original photos. The clip is fetched after the page starts, skipped with reduced motion, data
+  saving or if not ready in four seconds, and has a Skip button. **The dealer must approve both before a
+  real launch**: the hero no longer shows their showroom, and the clip shows drifting on a city street.
 - **The figures look** was checked in Chromium at 1440 and 390 wide; it has had less testing than the dark look.

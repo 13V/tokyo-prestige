@@ -49,6 +49,15 @@
 .hs__room {
   filter: brightness(0.17) saturate(0.45) contrast(1.1);
 }
+/* A slide whose photo is already a finished night shot is shown whole: no dimming, no cut-out, no code behind it */
+.hs--pro .hs__room {
+  filter: none;
+}
+.hs--pro .hs__car,
+.hs--pro .hs__lamp,
+.hs--pro .hs__code {
+  display: none;
+}
 /* the model code, set large behind the car */
 .hs__code {
   position: absolute;
@@ -110,10 +119,11 @@
   transition: opacity 400ms var(--ease);
 }
 /* a torch that follows the pointer across the dark showroom (desktop, set by home.js) */
-/* The intro, once per visit: a black R34 slides in along a wet Tokyo expressway, rolls up to the camera,
-   and the clip lands on the dealer's own photo as the hero shows it, where the page takes over. The clip
-   is generated (Higgsfield); the car in motion is an illustration, and every other image on the site is
-   as taken. If the clip is not ready within a few seconds the hero simply opens as it always has. */
+/* The intro, once per visit: a black R34 slides through a neon-lit Tokyo street in the rain, rolls up to
+   the camera, and the street dissolves into a dark showroom: the last frame is the hero image, where the
+   page takes over. The clip is generated (Higgsfield), and the hero image for this car is a retouched
+   version of the dealer's photo. The untouched photos are on the car's own page and in the Figures look.
+   If the clip is not ready within a few seconds the hero simply opens as it always has. */
 .intro__run,
 .intro__wake {
   position: absolute;

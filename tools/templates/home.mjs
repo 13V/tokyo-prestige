@@ -3,7 +3,7 @@ import { cars, card, dealer, dealerLd, esc, gear, icon, km, layout, manifest, mo
 // The four cars in the hero: one for each kind of buyer. Each has a hand-traced outline in assets/img/
 // (mask-<stock no>.svg) and the position of its headlight, so the light lands where the lamp is.
 const FEATURED = [
-  { id: "512", lamp: [70, 49] }, // Skyline GT-R BNR34
+  { id: "512", lamp: [70, 49], pro: true }, // Skyline GT-R BNR34: a retouched studio version of their photo, shown whole
   { id: "1412", lamp: [77, 54] }, // Century GZG50
   { id: "1452", lamp: [64, 52] }, // Crown Hybrid G-Executive
   { id: "9974441", lamp: [72, 43] }, // Alphard Hybrid
@@ -64,8 +64,8 @@ export function home() {
 `;
 
   const imgAttrs = (id, i) => (i === 0 ? `src="/img/hero/${id}-1280.avif" srcset="${srcset(id)}"` : `data-src="/img/hero/${id}-1280.avif" data-srcset="${srcset(id)}"`);
-  const slide = ({ id, lamp, car: c }, i) => `
-      <div class="hs${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
+  const slide = ({ id, lamp, pro, car: c }, i) => `
+      <div class="hs${pro ? " hs--pro" : ""}${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
         <img class="hs__room" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">
         <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
         <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-${id}.svg);mask-image:url(/assets/img/mask-${id}.svg)">
