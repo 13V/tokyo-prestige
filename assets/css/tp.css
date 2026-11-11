@@ -1731,3 +1731,170 @@ html:not([data-look="figures"]) .dock__btn--main,
 html:not([data-look="figures"]) .seal {
   color: #fff;
 }
+
+
+/* ==========================================================================
+   Trying the secondary colour (the 30). A small picker on the page sets <html data-tone>: steel, warm,
+   blue (the default, as above) or paper. It is a demo control: once one is chosen, the others and the
+   picker come out.
+   ========================================================================== */
+
+html:not([data-look="figures"])[data-tone="steel"] {
+  --ink-1: #111214;
+  --ink-2: #18191c;
+  --ink-3: #222428;
+  --ink-4: #2e3136;
+  --mid: #131416;
+  --line: rgba(225, 230, 240, 0.11);
+  --line-2: rgba(225, 230, 240, 0.22);
+}
+html:not([data-look="figures"])[data-tone="steel"] .find {
+  background: #131416d1;
+}
+html:not([data-look="figures"])[data-tone="steel"] .hdr::before {
+  background: #131416d1;
+}
+html:not([data-look="figures"])[data-tone="steel"] .flt {
+  background: #131416eb;
+}
+html:not([data-look="figures"])[data-tone="steel"] .btn--ghost {
+  background: rgba(225, 230, 240, 0.05);
+}
+
+html:not([data-look="figures"])[data-tone="warm"] {
+  --ink-1: #131312;
+  --ink-2: #1b1a18;
+  --ink-3: #252320;
+  --ink-4: #33302b;
+  --mid: #161514;
+  --line: rgba(255, 240, 220, 0.11);
+  --line-2: rgba(255, 240, 220, 0.22);
+}
+html:not([data-look="figures"])[data-tone="warm"] .find {
+  background: #161514d1;
+}
+html:not([data-look="figures"])[data-tone="warm"] .hdr::before {
+  background: #161514d1;
+}
+html:not([data-look="figures"])[data-tone="warm"] .flt {
+  background: #161514eb;
+}
+html:not([data-look="figures"])[data-tone="warm"] .btn--ghost {
+  background: rgba(255, 240, 220, 0.05);
+}
+
+html:not([data-look="figures"])[data-tone="paper"] {
+  --ink-1: #101011;
+  --ink-2: #161617;
+  --ink-3: #1f1f21;
+  --ink-4: #2a2a2d;
+  --mid: #0c0c0d;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-2: rgba(255, 255, 255, 0.2);
+}
+html:not([data-look="figures"])[data-tone="paper"] .find,
+html:not([data-look="figures"])[data-tone="paper"] .hdr::before {
+  background: rgba(8, 8, 9, 0.82);
+}
+html:not([data-look="figures"])[data-tone="paper"] .flt {
+  background: rgba(8, 8, 9, 0.92);
+}
+/* the light surfaces: every other band of a page, and the panels people type into */
+html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even),
+html:not([data-look="figures"])[data-tone="paper"] .quick-wrap--inline,
+html:not([data-look="figures"])[data-tone="paper"] .deal--side,
+html:not([data-look="figures"])[data-tone="paper"] .est,
+html:not([data-look="figures"])[data-tone="paper"] .enq,
+html:not([data-look="figures"])[data-tone="paper"] .form {
+  background: #efece6;
+  color: #111110;
+  --text: #111110;
+  --text-2: #4a4944;
+  --text-3: #6b6a64;
+  --night: #efece6;
+  --ink-1: #f6f4ef;
+  --ink-2: #ffffff;
+  --ink-3: #e7e3da;
+  --ink-4: #dad5ca;
+  --line: rgba(17, 17, 16, 0.12);
+  --line-2: rgba(17, 17, 16, 0.25);
+  --shu-t: #b93227;
+}
+html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even) .btn--ghost,
+html:not([data-look="figures"])[data-tone="paper"] .deal--side .btn--ghost {
+  background: transparent;
+}
+html:not([data-look="figures"])[data-tone="paper"] main > .sec:nth-of-type(even) .btn:not(.btn--shu):not(.btn--ghost):not(.btn--quiet) {
+  --bg: #111110;
+  --fg: #ffffff;
+}
+/* labels that sit on a photo keep their own dark chip and light text */
+html:not([data-look="figures"])[data-tone="paper"] .card__top .status,
+html:not([data-look="figures"])[data-tone="paper"] .tile__txt,
+html:not([data-look="figures"])[data-tone="paper"] .tile__txt b {
+  color: #f3f2ee;
+}
+html:not([data-look="figures"])[data-tone="paper"] .card__top .card__tag {
+  background: #ffffff;
+  color: #111110;
+}
+html:not([data-look="figures"])[data-tone="paper"] .chip input:checked + span {
+  background: #111110;
+  border-color: #111110;
+  color: #ffffff;
+}
+html:not([data-look="figures"])[data-tone="paper"] .card__ask:hover {
+  background: #111110;
+  color: #ffffff;
+}
+
+/* the picker */
+.tone {
+  position: fixed;
+  z-index: 60;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px 6px 12px;
+  border-radius: 999px;
+  background: rgba(20, 20, 22, 0.92);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16), 0 8px 30px rgba(0, 0, 0, 0.5);
+  color: #f3f2ee;
+  font-size: 12px;
+}
+.has-dock .tone {
+  bottom: 84px;
+}
+@media (min-width: 1000px) {
+  .has-dock .tone {
+    bottom: 12px;
+  }
+}
+.tone button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.tone button i {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--sw);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+.tone button[aria-pressed="true"] i {
+  box-shadow: 0 0 0 2px #141416, 0 0 0 4px #f3f2ee;
+}
+html[data-look="figures"] .tone {
+  display: none;
+}

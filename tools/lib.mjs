@@ -169,7 +169,7 @@ export function layout({ title, description, path: p, body, css = [], js = [], h
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures"}catch(e){}}(document.documentElement)</script>
+<script>!function(d){d.classList.add("js");try{var q=new URLSearchParams(location.search).get("look"),l=q||localStorage.getItem("tp-look");if(q)localStorage.setItem("tp-look",q);if(l==="figures")d.dataset.look="figures";var tq=new URLSearchParams(location.search).get("tone"),t=tq||localStorage.getItem("tp-tone");if(tq)localStorage.setItem("tp-tone",tq);if(t&&t!=="blue")d.dataset.tone=t}catch(e){}}(document.documentElement)</script>
 ${head}<link rel="stylesheet" href="/assets/css/tp.css">
 ${css.map((h) => `<link rel="stylesheet" href="${h}">`).join("\n")}
 <script>document.documentElement.dataset.look==="figures"&&document.write('<link rel="stylesheet" href="/assets/css/figures.css" data-figures>')</script>

@@ -225,6 +225,31 @@
   looks.forEach((b) => b.addEventListener("click", () => (root.dataset.look || "night") !== b.dataset.lookSet && setLook(b.dataset.lookSet)));
   paint();
 
+  // DEMO CONTROL: a picker for the secondary colour, while it is being chosen. Remembered on this device.
+  const TONES = [["steel", "Steel graphite", "#2e3136"], ["warm", "Warm graphite", "#33302b"], ["blue", "Midnight blue", "#22304f"], ["paper", "Paper white", "#efece6"]];
+  const tone = document.createElement("div");
+  tone.className = "tone";
+  tone.setAttribute("role", "group");
+  tone.setAttribute("aria-label", "Try a secondary colour");
+  tone.innerHTML = "<span>30%</span>" + TONES.map(([k, n, c]) => `<button type="button" data-tone-set="${k}" aria-label="${n}" title="${n}" style="--sw:${c}"><i></i></button>`).join("");
+  document.body.append(tone);
+  const tonePaint = () => $$("[data-tone-set]", tone).forEach((b) => b.setAttribute("aria-pressed", String((root.dataset.tone || "blue") === b.dataset.toneSet)));
+  tone.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-tone-set]");
+    if (!b) return;
+    const apply = () => {
+      if (b.dataset.toneSet === "blue") delete root.dataset.tone;
+      else root.dataset.tone = b.dataset.toneSet;
+      tonePaint();
+    };
+    try {
+      localStorage.setItem("tp-tone", b.dataset.toneSet);
+    } catch (err) {}
+    if (!calm && document.startViewTransition) document.startViewTransition(apply);
+    else apply();
+  });
+  tonePaint();
+
   // a car's photo travels from its card to its page (where the browser supports it)
   if (!calm && "startViewTransition" in document) {
     addEventListener("click", (e) => {
