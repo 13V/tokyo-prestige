@@ -51,7 +51,7 @@
   let at = 0;
   let busy = false;
   const mine = () => document.documentElement.dataset.look !== "figures"; // this hero belongs to the dark look
-  let paused = calm || !mine() || document.documentElement.classList.contains("intro");
+  let paused = calm || !mine();
   let userPaused = false;
   let run = null; // the progress animation on the active bar
 
@@ -164,7 +164,7 @@
 
   // it rests while it is hovered, focused, off screen or in a hidden tab, and there is a pause button
   const setPaused = () => {
-    const p = calm || userPaused || hovering || focused || !visible || document.hidden || !mine() || document.documentElement.classList.contains("intro");
+    const p = calm || userPaused || hovering || focused || !visible || document.hidden || !mine();
     if (p === paused) return;
     paused = p;
     if (run) paused ? run.pause() : run.play();
@@ -192,68 +192,14 @@
     setTimeout(progress, 2600);
   }
 
-  // the intro, once per visit (the page head decides whether to try it and sets html.intro)
   const root = document.documentElement;
-  const runV = $("[data-intro-run]", hero);
-  const wakeV = $("[data-intro-wake]", hero);
-  const skip = $("[data-intro-skip]", hero);
-  if (root.classList.contains("intro") && wakeV) {
-    let over = false;
-    const end = (played) => {
-      if (over) return;
-      over = true;
-      try {
-        sessionStorage.setItem("tp-intro", "1");
-      } catch (e) {}
-      skip.hidden = true;
-      if (played) root.classList.add("intro-done");
-      root.classList.remove("intro");
-      runV?.classList.remove("is-on");
-      wakeV.classList.remove("is-on");
-      setTimeout(() => {
-        root.classList.remove("intro-done");
-        runV?.remove();
-        wakeV.remove();
-      }, 1100);
-      removeEventListener("scroll", onScroll);
-      setPaused();
-    };
-    const onScroll = () => scrollY > 120 && end(true);
-    const can = (v) =>
-      new Promise((res) => {
-        v.addEventListener("canplay", () => res(true), { once: true });
-        v.addEventListener("error", () => res(false), { once: true });
-        v.preload = "auto";
-        v.src = v.dataset.src;
-        v.load();
-      });
-    Promise.race([Promise.all([runV ? can(runV) : true, can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 3000))]).then((ok) => {
-      if (over) return;
-      if (!ok || ok.includes(false)) return end(false);
-      skip.hidden = false;
-      const wake = () => {
-        wakeV.classList.add("is-on");
-        runV?.classList.remove("is-on");
-        wakeV.play().catch(() => end(true));
-      };
-      if (runV) {
-        runV.classList.add("is-on");
-        runV.play().catch(() => end(false));
-        runV.addEventListener("ended", wake);
-      } else wake();
-      wakeV.addEventListener("ended", () => end(true));
-    });
-    skip.addEventListener("click", () => end(true));
-    addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("keydown", (e) => e.key === "Escape" && end(true));
-  }
 
   // the featured car idles: its loop plays only while that car is showing, on screen, in the dark look
   const alive = $("[data-alive]", hero);
   if (alive && !calm && !(navigator.connection && navigator.connection.saveData)) {
     let got = false;
     const aliveSet = () => {
-      const on = mine() && visible && !document.hidden && !root.classList.contains("intro") && alive.closest("[data-hs]").classList.contains("is-on");
+      const on = mine() && visible && !document.hidden && alive.closest("[data-hs]").classList.contains("is-on");
       if (on && !got) {
         got = true;
         alive.src = alive.dataset.src;

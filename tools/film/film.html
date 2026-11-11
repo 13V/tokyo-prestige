@@ -90,22 +90,22 @@ const img = (p, src, w, hh, st = "") => h(`<img src="shots/${src}" style="width:
   cue("impact", 0.9, 0.9); }
 
 /* ---------- 1. the hero, 4 to 17.6 ---------- */
-{ const a = 4, b = 17.7; const s = scene(a, b, 0.6, 0.5); 
+{ const a = 4, b = 17.7; const s = scene(a, b, 0.6, 0.5);
   const cam = h(`<div class="abs" style="inset:0;transform-origin:1101px 915px"></div>`, s);
   img(cam, "hero-bare.png", 1920, 1080, "position:absolute;left:0;top:0");
-  const v = h(`<video data-at="4.5" muted playsinline preload="auto" src="shots/drift.mp4" style="position:absolute;left:853.6px;top:102px;width:982.9px;height:740.5px;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect"></video>`, cam);
-  K(v, { opacity: [[4.3, 0, LIN], [5.0, 1, LIN], [11.2, 1, "ease-in-out"], [12.0, 0]] });
-  const full = img(cam, "hero.png", 1920, 1080, "position:absolute;left:0;top:0"); K(full, { opacity: [[11.3, 0, "ease-in-out"], [12.3, 1]] });
+  // the idle loop the site plays on this car: headlights and wipers
+  const v = h(`<video data-at="5.2" muted playsinline preload="auto" src="shots/alive.mp4" style="position:absolute;left:853.6px;top:102px;width:982.9px;height:740.5px;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent),linear-gradient(transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect"></video>`, cam);
+  K(v, { opacity: [[5.0, 0, LIN], [5.7, 1, LIN], [11.0, 1, "ease-in-out"], [11.7, 0]] });
+  const full = img(cam, "hero.png", 1920, 1080, "position:absolute;left:0;top:0"); K(full, { opacity: [[8.6, 0, "ease-in-out"], [9.6, 1]], clipPath: [[0, "inset(0 0 0 0)", LIN], [8.6, "inset(0 900px 0 0)", LIN], [11.7, "inset(0 900px 0 0)", LIN], [11.75, "inset(0 0 0 0)"]] });
   K(cam, { scale: [[12.6, "1", EIO], [14.0, "1.4"]] });
   const hide = img(cam, "hero-bare.png", 1920, 1080, "position:absolute;left:0;top:0;clip-path:inset(500px 900px 205px 0)"); K(hide, { opacity: [[12.7, 0, "ease-in-out"], [13.5, 1]] });
   ring(cam, 552, 876, 1098, 78, 13.6, 17.4, 18);
   const scrim = h(`<div class="abs" style="left:0;right:0;top:300px;height:560px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.82) 45%,rgba(0,0,0,.82) 80%,transparent)"></div>`, s); vis(scrim, 13.0, b, 0.8, 0.4);
-  const left = "left:150px;";
-  const c1 = h(`<div class="abs" style="${left}top:520px;width:640px"><div class="h h2">${lines("You get three|seconds to earn|a second look.")}</div></div>`, s); rise(c1, 4.9, 7.9);
-  const c2 = h(`<div class="abs" style="${left}top:520px;width:680px"><div class="h h2">${lines("So it opens with|a drift through|<span class='grad'>neon Tokyo.</span>")}</div></div>`, s); rise(c2, 8.1, 11.3);
-  const c3 = h(`<div class="abs" style="left:346px;top:500px;width:1300px"><div class="h h2">${lines("And lands on a real car,|in stock, with its real price.")}</div><p class="sub" style="margin-top:22px;opacity:.95">Not a stock video. The hero is the stock list: code, kilometres, price, one tap to the car.</p></div>`, s); rise(c3, 14.0, 17.5); 
-  const chipP = h(`<div class="abs chip" style="left:346px;top:440px"><i></i>Plays once per visit. One tap to skip.</div>`, s); up(chipP, 14.6, 17.4, 16);
-  cue("amb", 4.4, 0.28); cue("pass", 5.7, 0.8); cue("whoosh2", 11.2, 0.6); cue("subdrop", 11.95, 0.7); cue("whoosh1", 12.7, 0.6); cue("tick", 13.6, 0.9); }
+  const c1 = h(`<div class="abs" style="left:150px;top:500px;width:660px"><div class="h h2">${lines("You get three|seconds to earn|a second look.")}</div></div>`, s); rise(c1, 4.9, 8.5);
+  const c2 = h(`<div class="abs" style="left:150px;top:230px;width:800px"><div class="h h2">${lines("So the first screen|is a car, <span class='grad'>lit like one.</span>")}</div></div>`, s); rise(c2, 9.4, 12.7);
+  const c3 = h(`<div class="abs" style="left:346px;top:500px;width:1300px"><div class="h h2">${lines("And it is a real car,|in stock, with its real price.")}</div><p class="sub" style="margin-top:22px;opacity:.95">The hero is the stock list: code, kilometres, price, one tap to the car.</p></div>`, s); rise(c3, 14.0, 17.5);
+  const chipP = h(`<div class="abs chip" style="left:346px;top:440px"><i></i>Four featured cars, straight from your stock</div>`, s); up(chipP, 14.6, 17.4, 16);
+  cue("whoosh2", 3.9, 0.6); cue("subdrop", 8.55, 0.7); cue("tick", 9.4, 0.5); cue("whoosh1", 12.7, 0.6); cue("tick", 13.6, 0.6); }
 
 /* ---------- 2. the page, 17.6 to 28.2 ---------- */
 { const a = 17.5, b = 28.3; const s = scene(a, b); h(`<div class="bg"></div>`, s); chapter("02", "One page, every kind of buyer", a, b);

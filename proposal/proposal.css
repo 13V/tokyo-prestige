@@ -268,3 +268,27 @@ html:not(.js) .seg, html:not(.js) .rail, html:not(.js) .flow-nav { display: none
 html { scroll-padding-top: 84px; }
 html:not(.js) .film-play { display: none; }
 @media (max-width: 700px) { .film-play small { display: none; } .film-play b { font-size: 16px; } }
+
+/* a shorter page: tighter rhythm, the long list folded, and on a phone the card rows swipe sideways */
+.sec { padding-top: clamp(56px, 7vw, 100px); }
+.paper { margin-top: clamp(48px, 6vw, 88px); padding-top: clamp(32px, 4.5vw, 64px); padding-bottom: clamp(32px, 4.5vw, 64px); }
+.foot { padding-top: clamp(56px, 7vw, 100px); }
+.sec-head { margin-bottom: clamp(24px, 3vw, 40px); }
+.onward { margin-top: clamp(16px, 2.4vw, 28px); }
+.more-built { margin-top: clamp(22px, 3vw, 36px); border-top: 1px solid var(--line); }
+.more-built summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 60px; font-size: 19px; letter-spacing: -0.02em; border-bottom: 1px solid var(--line); }
+.more-built summary::-webkit-details-marker { display: none; }
+.more-built summary i { font-style: normal; font-size: 24px; color: var(--muted); transition: transform 0.3s var(--ease); }
+.more-built[open] summary i { transform: rotate(45deg); }
+.more-built .built { margin-top: 0; border-top: 0; }
+@media (max-width: 700px) {
+  .nums, .taps, .team, .guard, .steps { display: flex; grid-template-columns: none; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-left: -14px; margin-right: -14px; padding: 2px 14px 6px; scroll-padding-left: 14px; }
+  .nums::-webkit-scrollbar, .taps::-webkit-scrollbar, .team::-webkit-scrollbar, .guard::-webkit-scrollbar, .steps::-webkit-scrollbar { display: none; }
+  .nums > *, .taps > *, .team > *, .guard > *, .steps > * { flex: 0 0 84%; scroll-snap-align: start; min-height: 0; }
+  .taps .card { grid-template-columns: 1fr; align-content: space-between; }
+  .taps .vs { text-align: left; }
+  .hero-in { padding-top: 24px; }
+}
+.asks.one { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+@media (min-width: 1101px) { .team .card, .team .card:nth-child(-n + 2) { grid-column: auto; min-height: 0; } .team { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; } .team .card h3 { font-size: 19px; } .team .n { margin-bottom: 14px; flex-wrap: wrap; gap: 6px; } }
+@media (max-width: 1000px) { .asks.one { grid-template-columns: 1fr; } }

@@ -8,8 +8,6 @@ gen() { # name seconds influence prompt
   file "$1.mp3" | grep -q -i "audio\|MPEG" && echo "ok $1" || { echo "FAIL $1: $(head -c 200 $1.mp3)"; rm -f "$1.mp3"; }
 }
 gen impact 3 0.5 "Cinematic deep sub bass impact hit with a short reversed riser before it, clean, modern film trailer, no reverb tail noise"
-gen pass 4.5 0.75 "Deep smooth six cylinder sports car engine approaching fast and passing the camera on a wet road at night, low powerful roar with doppler effect, then fading into the distance. No tyre squeal, no screeching, no horn"
-gen amb 8 0.6 "Calm night city street ambience after rain, soft distant traffic hum, faint electrical neon buzz, gentle and quiet, no voices, no horns"
 gen subdrop 3 0.6 "Deep cinematic sub bass drop, one soft low boom with a long clean smooth tail, no distortion"
 gen whoosh1 1.2 0.6 "Clean fast airy whoosh transition, modern tech product video, short"
 gen whoosh2 1.5 0.6 "Smooth low swoosh with subtle shimmer tail, premium interface transition, short"

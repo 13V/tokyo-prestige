@@ -1,6 +1,6 @@
 # Tokyo Prestige demo: hand-over
 
-11 November 2026. Live at **https://tokyo-prestige.vercel.app/** (public address, `noindex`, not connected
+11 November 2026. Live at **https://www.tokyoprestigedemo.site/** (also https://tokyo-prestige.vercel.app/) (public address, `noindex`, not connected
 to GitHub: it was deployed from the build session). Code is on branch `claude/ecstatic-cray-bwl9f8`.
 
 ## Two looks, one switch (11 November 2026)
@@ -59,7 +59,8 @@ smaller encode, `proposal/img/film.mp4`.
 - What is illustrative: the AI receptionist, old-lead follow-up and automation scenes are marked Example;
   they show what can be built, not things that exist. The security list is what Lumen commits to build
   (two-step sign-in, staff roles, encryption, daily backups); the demo stock manager has no sign-in yet.
-- The opening uses the generated drift clip, so it needs the same dealer approval as the homepage intro.
+- The opening shows the retouched GT-R hero image and its idle loop, so it needs the same dealer approval
+  as the homepage hero.
 
 ## What is in this folder
 
@@ -159,12 +160,10 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
      retouch of the dealer's photo (GPT Image 2.6, then
      upscaled): the same car, angle and framing, relit in a dark showroom with neon Tokyo behind the glass.
      The room in it is invented. Small details of the car may differ from the real one.
-  2. *The intro clip* (`img/hero/drift.mp4`, MiniMax H3, 7 s, once per visit): a black R34 drifts through a
-     neon Tokyo street and the scene dissolves into that hero image. The car in motion is an illustration.
-  3. *The idle loop* (`img/hero/alive.mp4`, MiniMax H3, 6.6 s): on that hero image the headlights glow on and
+  2. *The idle loop* (`img/hero/alive.mp4`, MiniMax H3, 6.6 s): on that hero image the headlights glow on and
      fade and the wipers sweep once. It plays only while the GT-R is the car showing.
   Everything else is the dealer's own photography, untouched: the GT-R's car page and the Figures look still
-  use the original photos. The clip is fetched after the page starts, skipped with reduced motion, data
-  saving or if not ready in four seconds, and has a Skip button. **The dealer must approve both before a
-  real launch**: the hero no longer shows their showroom, and the clip shows drifting on a city street.
+  use the original photos. The loop is fetched after the page starts and skipped with reduced motion or data
+  saving. **The dealer must approve both before a real launch**: the hero no longer shows their showroom.
+  (An earlier generated intro clip of the car drifting through Tokyo was removed on 11 November 2026.)
 - **The figures look** was checked in Chromium at 1440 and 390 wide; it has had less testing than the dark look.

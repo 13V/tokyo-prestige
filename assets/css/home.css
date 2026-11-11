@@ -142,63 +142,6 @@
   transition: opacity 400ms var(--ease);
 }
 /* a torch that follows the pointer across the dark showroom (desktop, set by home.js) */
-/* The intro, once per visit: a black R34 slides through a neon-lit Tokyo street in the rain, rolls up to
-   the camera, and the street dissolves into a dark showroom: the last frame is the hero image, where the
-   page takes over. The clip is generated (Higgsfield), and the hero image for this car is a retouched
-   version of the dealer's photo. The untouched photos are on the car's own page and in the Figures look.
-   If the clip is not ready within a few seconds the hero simply opens as it always has. */
-.intro__run,
-.intro__wake {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  pointer-events: none;
-}
-.intro__run {
-  z-index: 3;
-  transition: opacity 700ms var(--ease-io);
-}
-.intro__wake {
-  z-index: 2;
-  transition: opacity 900ms var(--ease-io);
-}
-.intro__run.is-on,
-.intro__wake.is-on {
-  opacity: 1;
-}
-/* lights off while the clips are fetched, and while they play */
-html.intro .hs,
-html.intro .hero__torch {
-  visibility: hidden !important;
-}
-/* when the clip hands over, the hero is already in its lit state: no second reveal */
-html.intro-done .hero__stage * {
-  animation-duration: 1ms !important;
-  animation-delay: 0s !important;
-}
-.intro__skip {
-  position: absolute;
-  z-index: 6;
-  top: calc(var(--bar-h) + 12px);
-  right: var(--gutter);
-  min-height: 44px;
-  padding: 0 16px;
-  border: 1px solid var(--line-2);
-  border-radius: var(--r);
-  background: rgba(6, 6, 7, 0.6);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  color: var(--text);
-  font: inherit;
-  font-size: var(--t-13);
-  cursor: pointer;
-}
-.intro__skip[hidden] {
-  display: none;
-}
 .hero__torch {
   position: absolute;
   z-index: 3;
@@ -1004,7 +947,6 @@ html.intro-done .hero__stage * {
   --vw: 94.81%;
   --vh: 95.24%;
 }
-.intro__wake,
 .hs__alive {
   inset: auto;
   left: var(--vx);
@@ -1017,17 +959,10 @@ html.intro-done .hero__stage * {
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
-.intro__wake {
-  transition-delay: 500ms;
-}
 @keyframes pro-in {
   from {
     opacity: 0;
   }
-}
-html.intro-done .hero__stage .hs--pro.is-on .hs__room {
-  animation: pro-in 900ms var(--ease-io) both !important;
-  animation-duration: 900ms !important;
 }
 @media (max-width: 899px) {
   .hero__frame {
@@ -1094,8 +1029,7 @@ html.intro-done .hero__stage .hs--pro.is-on .hs__room {
       linear-gradient(180deg, transparent 0, transparent calc(44px + 62.5vw - 40px), var(--night) calc(44px + 62.5vw + 2px));
   }
   /* the clips are cut for 4:3, so on this crop the car simply rests */
-  .hs__alive,
-  .intro__wake {
+  .hs__alive {
     display: none;
   }
 }

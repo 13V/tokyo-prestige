@@ -1488,9 +1488,6 @@ html:not([data-look="figures"]) .gal__item, html:not([data-look="figures"]) .gal
 html:not([data-look="figures"]) .flt .select, html:not([data-look="figures"]) .flt .input, html:not([data-look="figures"]) .flt__open {
   border-radius: 999px;
 }
-html:not([data-look="figures"]) .intro__skip {
-  border-radius: 999px;
-}
 
 /* on a phone the search fields are separate controls, so each keeps its own soft fill */
 @media (max-width: 899px) {
