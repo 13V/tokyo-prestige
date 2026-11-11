@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<title>Tokyo Prestige: four design directions</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page { size: A4 landscape; margin: 0; }
+* { box-sizing: border-box; margin: 0; }
+body { font: 10.5pt/1.45 "Archivo", sans-serif; color: #15140f; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.pg { width: 297mm; height: 210mm; padding: 13mm 14mm 11mm; position: relative; overflow: hidden; page-break-after: always; background: #f7f5f0; }
+.pg:last-child { page-break-after: auto; }
+.mono { font: 500 7.5pt/1.3 "Geist Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: #6d685c; }
+h1 { font-size: 40pt; line-height: 1; font-weight: 500; font-stretch: 112%; letter-spacing: -.03em; }
+h2 { font-size: 25pt; line-height: 1.02; font-weight: 500; font-stretch: 110%; letter-spacing: -.025em; }
+h3 { font-size: 9pt; font-weight: 600; margin-bottom: 1.2mm; }
+p + p { margin-top: 2mm; }
+.foot { position: absolute; left: 14mm; right: 14mm; bottom: 6mm; display: flex; justify-content: space-between; }
+/* cover */
+.cover { background: #0a0a0b; color: #f3f2ee; display: grid; grid-template-columns: 1fr 1.25fr; gap: 12mm; }
+.cover .mono { color: #9a9993; }
+.cover h1 { font-size: 46pt; margin-top: 5mm; }
+.cover p { color: #c4c3bd; max-width: 92mm; font-size: 11.5pt; }
+.cover ol { margin-top: 9mm; padding: 0; list-style: none; border-top: 0.3mm solid #3a3a3d; }
+.cover li { display: grid; grid-template-columns: 9mm 1fr; padding: 2.6mm 0; border-bottom: 0.3mm solid #2a2a2d; }
+.cover li b { font-size: 12.5pt; font-weight: 500; font-stretch: 108%; }
+.cover li span { color: #9a9993; font-size: 9.5pt; display: block; }
+.cover li i { font-style: normal; color: #ff4a22; font: 500 8pt "Geist Mono"; padding-top: 1mm; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; align-content: center; }
+.grid4 figure { position: relative; border-radius: 1mm; overflow: hidden; aspect-ratio: 16/10; background: #222; }
+.grid4 img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.grid4 figcaption { position: absolute; left: 2.5mm; top: 2.5mm; background: #ff4a22; color: #0b0b0c; font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; padding: 1mm 2mm; border-radius: .6mm; }
+/* concept */
+.con { display: grid; grid-template-columns: 68mm 1fr; gap: 9mm; }
+.sr { margin-top: 7mm; gap: 8mm; font-size: 10pt; } .sr > div { border-top: 0.4mm solid #15140f; padding-top: 2.5mm; }
+.txt { display: grid; align-content: start; gap: 3.2mm; }
+.tag { display: inline-block; background: #15140f; color: #f7f5f0; font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; padding: 1mm 2.2mm; border-radius: .6mm; }
+.idea { font-size: 11.5pt; line-height: 1.4; }
+.sw { display: flex; gap: 1.5mm; margin-top: .5mm; }
+.sw i { width: 9mm; height: 9mm; border-radius: .8mm; border: 0.2mm solid rgba(0,0,0,.18); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+ul { padding-left: 3.6mm; } li { margin-bottom: .7mm; }
+.vis { display: grid; grid-template-columns: 1fr auto auto; gap: 4mm; align-items: start; }
+.vis figure { border-radius: 1.2mm; overflow: hidden; box-shadow: 0 2mm 6mm rgba(20,15,5,.22); background: #ddd; }
+.vis img { display: block; width: 100%; }
+.vis .ph { width: 43mm; border-radius: 3mm; border: .5mm solid #15140f; }
+.vis figcaption, .cap { font: 500 7pt "Geist Mono"; letter-spacing: .08em; text-transform: uppercase; color: #6d685c; margin-top: 1.5mm; }
+.vis > div { display: grid; }
+/* table */
+table { width: 100%; border-collapse: collapse; margin-top: 6mm; font-size: 9.5pt; }
+th, td { text-align: left; padding: 2.4mm 3mm 2.4mm 0; border-bottom: 0.25mm solid #cfc8b6; vertical-align: top; }
+thead th { font: 500 7.5pt "Geist Mono"; letter-spacing: .08em; text-transform: uppercase; color: #6d685c; border-bottom: 0.4mm solid #15140f; }
+tbody th { font-weight: 600; width: 34mm; }
+.rec { margin-top: 6mm; display: grid; grid-template-columns: 1fr 1fr; gap: 10mm; }
+.rec div { border-top: 0.6mm solid #ff4a22; padding-top: 3mm; }
+.rec b { font-size: 12pt; font-weight: 600; display: block; margin-bottom: 1.5mm; }
+</style>
+</head>
+<body>
+
+<section class="pg cover">
+  <div>
+    <p class="mono">Lumen adl for Tokyo Prestige · November 2026</p>
+    <h1>Four design directions</h1>
+    <p style="margin-top:6mm">The same cars, prices and facts, shown four ways. Each direction answers a different finding from the research, so the choice is about which buyer the site should put first.</p>
+    <ol>
+      <li><i>A</i><div><b>The showroom at night</b><span>Dark and cinematic. The car lit, everything else quiet. Built and live.</span></div></li>
+      <li><i>B</i><div><b>The record</b><span>The site as an inspection sheet. Paper, ruled boxes, data first.</span></div></li>
+      <li><i>C</i><div><b>The gallery</b><span>Light and editorial. One car at a time, labelled like an exhibit.</span></div></li>
+      <li><i>D</i><div><b>Find it fast</b><span>A marketplace layout. Search and results on the first screen.</span></div></li>
+    </ol>
+    <p class="mono" style="margin-top:7mm">Every car, price and figure shown is from tokyoprestige.com.au, read 11 Nov 2026. B, C and D are static mock-ups of two screens; A is the working site.</p>
+  </div>
+  <div class="grid4">
+    <figure><img src="shots/a-desktop.jpg"><figcaption>A</figcaption></figure>
+    <figure><img src="shots/b-desktop.jpg"><figcaption>B</figcaption></figure>
+    <figure><img src="shots/c-desktop.jpg"><figcaption>C</figcaption></figure>
+    <figure><img src="shots/d-desktop.jpg"><figcaption>D</figcaption></figure>
+  </div>
+</section>
+
+<section class="pg con">
+  <div class="txt">
+    <div><span class="tag">Direction A · built</span></div>
+    <h2>The showroom at night</h2>
+    <p class="idea">Their own photos with the lights turned down: the room falls to near black and the car stays lit, with its model code set large behind it. The page reads like a spec plate.</p>
+    <div><h3>Who it puts first</h3><p>The enthusiast and the luxury buyer. It makes a $229,888 GT-R and a $29,888 Corolla both look looked-after.</p></div>
+    <div><h3>From the research</h3><p>Premium sites win by restraint (Classic Throttle Shop, Porsche, Polestar). No dealer site we found has purposeful motion or a clean first phone screen with the car, the search and one action.</p></div>
+    <div class="two">
+      <div><h3>Colour</h3><div class="sw"><i style="background:#060607"></i><i style="background:#1b1b1f"></i><i style="background:#f3f2ee"></i><i style="background:#ff4a22"></i></div></div>
+      <div><h3>Type</h3><p>Archivo, wide. Geist Mono for codes.</p></div>
+    </div>
+  </div>
+  <div class="vis">
+    <div><figure><img src="shots/a-desktop.jpg"></figure><p class="cap">Homepage, desktop</p>
+    <div class="two sr">
+      <div><h3>Strengths</h3><ul><li>Most distinctive; nothing like it among Australian importers</li><li>Hides the busy showroom backgrounds</li><li>Motion earns attention in the pitch</li></ul></div>
+      <div><h3>Risks</h3><ul><li>Dark sites can feel exclusive to a family buyer</li><li>The hero needs a hand-traced outline per featured car</li></ul></div>
+    </div>
+    </div>
+    <div><figure class="ph"><img src="shots/a-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
+    <div><figure class="ph"><img src="shots/a-phone-car.jpg"></figure><p class="cap">Car page</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>A · 2 of 6</span></div>
+</section>
+
+<section class="pg con">
+  <div class="txt">
+    <div><span class="tag">Direction B · mock-up</span></div>
+    <h2>The record</h2>
+    <p class="idea">The whole site borrows the form of a Japanese auction sheet: warm paper, ruled boxes, monospaced data and a red seal for status. The stock is a table you can scan, not a wall of cards.</p>
+    <div><h3>Who it puts first</h3><p>The wary buyer and the enthusiast who searches by chassis code. It says “nothing hidden” before a word is read.</p></div>
+    <div><h3>From the research</h3><p>The top buyer fear is odometer and history fraud; “if the dealer can't show you the auction sheet, walk away”. No dealer site structures proof. BE FORWARD alone filters by model code.</p></div>
+    <div class="two">
+      <div><h3>Colour</h3><div class="sw"><i style="background:#f3efe6"></i><i style="background:#faf7f0"></i><i style="background:#15140f"></i><i style="background:#d32f1c"></i></div></div>
+      <div><h3>Type</h3><p>IBM Plex Sans Condensed. IBM Plex Mono.</p></div>
+    </div>
+  </div>
+  <div class="vis">
+    <div><figure><img src="shots/b-desktop.jpg"></figure><p class="cap">Homepage, desktop</p>
+    <div class="two sr">
+      <div><h3>Strengths</h3><ul><li>Trust is the design, not a section</li><li>Fastest to scan 62 cars</li><li>Photos need no treatment</li></ul></div>
+      <div><h3>Risks</h3><ul><li>Promises paperwork the listings don't yet have</li><li>Less glamour for the prestige stock</li><li>A table suits a desk better than a phone</li></ul></div>
+    </div>
+    </div>
+    <div><figure class="ph"><img src="shots/b-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
+    <div><figure class="ph"><img src="shots/b-phone-car.jpg"></figure><p class="cap">Car page</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>B · 3 of 6</span></div>
+</section>
+
+<section class="pg con">
+  <div class="txt">
+    <div><span class="tag">Direction C · mock-up</span></div>
+    <h2>The gallery</h2>
+    <p class="idea">Light, calm and editorial. A serif headline, generous space, and one featured car at a time with a label like an exhibit card. The opposite of a car yard.</p>
+    <div><h3>Who it puts first</h3><p>The luxury-for-less buyer comparing a Crown or an LS with a new mid-range car, and anyone put off by “JDM” styling.</p></div>
+    <div><h3>From the research</h3><p>Classic Throttle Shop and Romans International feel premium through light type, uniform photos and space. Buyers of Crowns and Lexus talk about condition and comfort, not heritage.</p></div>
+    <div class="two">
+      <div><h3>Colour</h3><div class="sw"><i style="background:#f6f4ef"></i><i style="background:#ffffff"></i><i style="background:#16130f"></i><i style="background:#2f4034"></i></div></div>
+      <div><h3>Type</h3><p>Fraunces, light. Hanken Grotesk.</p></div>
+    </div>
+  </div>
+  <div class="vis">
+    <div><figure><img src="shots/c-desktop.jpg"></figure><p class="cap">Homepage, desktop</p>
+    <div class="two sr">
+      <div><h3>Strengths</h3><ul><li>Reads as prestige, not performance</li><li>Welcoming to families and older buyers</li><li>Light pages suit long reading</li></ul></div>
+      <div><h3>Risks</h3><ul><li>Shows the showroom backgrounds as they are; wants better photos</li><li>Search is quieter, so finding a car takes a tap more</li><li>Least “Tokyo”</li></ul></div>
+    </div>
+    </div>
+    <div><figure class="ph"><img src="shots/c-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
+    <div><figure class="ph"><img src="shots/c-phone-car.jpg"></figure><p class="cap">Car page</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>C · 4 of 6</span></div>
+</section>
+
+<section class="pg con">
+  <div class="txt">
+    <div><span class="tag">Direction D · mock-up</span></div>
+    <h2>Find it fast</h2>
+    <p class="idea">A marketplace layout. No hero image: the search, quick filters and the first eight cars with prices are all on the first screen, with Call and Enquire on every card.</p>
+    <div><h3>Who it puts first</h3><p>The family and budget buyer who arrives from Carsales or Facebook with a price in mind and wants to compare quickly.</p></div>
+    <div><h3>From the research</h3><p>Autotrader and AutoProject lead with search, a live count and price. On Tokyo Prestige's current phone homepage the first price is 8,070px down, and every filter on the stock page is empty.</p></div>
+    <div class="two">
+      <div><h3>Colour</h3><div class="sw"><i style="background:#111c2e"></i><i style="background:#eef0f3"></i><i style="background:#ffffff"></i><i style="background:#e1291c"></i></div></div>
+      <div><h3>Type</h3><p>Manrope, bold.</p></div>
+    </div>
+  </div>
+  <div class="vis">
+    <div><figure><img src="shots/d-desktop.jpg"></figure><p class="cap">Homepage, desktop</p>
+    <div class="two sr">
+      <div><h3>Strengths</h3><ul><li>Fewest taps to a car and a price</li><li>Familiar: nothing to learn</li><li>Uses their red</li></ul></div>
+      <div><h3>Risks</h3><ul><li>Looks like every marketplace; little reason to remember it</li><li>Flattens a GT-R and a kei truck into the same card</li><li>Least impressive in a pitch</li></ul></div>
+    </div>
+    </div>
+    <div><figure class="ph"><img src="shots/d-phone-home.jpg"></figure><p class="cap">Homepage</p></div>
+    <div><figure class="ph"><img src="shots/d-phone-car.jpg"></figure><p class="cap">Car page</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>D · 5 of 6</span></div>
+</section>
+
+<section class="pg">
+  <p class="mono">Side by side</p>
+  <h2 style="margin-top:3mm">Which one, and why</h2>
+  <table>
+    <thead><tr><th></th><th>A · Showroom at night</th><th>B · The record</th><th>C · The gallery</th><th>D · Find it fast</th></tr></thead>
+    <tbody>
+      <tr><th>First impression</th><td>Cinematic, expensive</td><td>Exact, trustworthy</td><td>Calm, refined</td><td>Practical, familiar</td></tr>
+      <tr><th>Buyer it favours</th><td>Enthusiast, luxury</td><td>Wary buyer, enthusiast</td><td>Luxury-for-less, family</td><td>Family, budget</td></tr>
+      <tr><th>Layout</th><td>Full-screen showcase, search docked below</td><td>Split sheet: stock table and one car's record</td><td>Headline beside one framed car</td><td>Search bar, filter rail, card grid</td></tr>
+      <tr><th>Taps to a car with a price</th><td>0 (featured car), 1 to the list</td><td>0 (eight in the table)</td><td>0 (five shown)</td><td>0 (eight cards)</td></tr>
+      <tr><th>Works with today's photos</th><td>Yes: the room is darkened</td><td>Yes: photos are small</td><td>Partly: backgrounds show</td><td>Yes: photos are small</td></tr>
+      <tr><th>Needs from the dealer</th><td>Nothing new</td><td>Auction sheets, to deliver on its promise</td><td>Cleaner photography</td><td>Nothing new</td></tr>
+      <tr><th>Stands apart from competitors</th><td>Most</td><td>Strongly</td><td>Moderately</td><td>Least</td></tr>
+    </tbody>
+  </table>
+  <div class="rec">
+    <div><b>My recommendation: A, with B's discipline inside it.</b><p>A is the one the owner will remember and it flatters the stock they have photographed today. Its car page already carries B's idea (the “what is on record” panel with a source for each line). If the dealer starts publishing auction sheets, that panel can grow toward B without a redesign.</p></div>
+    <div><b>If the owner wants lighter or simpler.</b><p>C is the safer choice for a buyer base that is mostly Crowns, Lexus and people movers, but it should wait for better photos. D would be the quickest to build and the easiest to use, and the least likely to win the project on looks. A light theme of A is also possible: the layout and motion stay, the palette changes.</p></div>
+  </div>
+  <div class="foot mono"><span>Tokyo Prestige · design directions</span><span>6 of 6</span></div>
+</section>
+</body>
+</html>

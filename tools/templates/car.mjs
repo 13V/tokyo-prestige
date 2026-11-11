@@ -203,6 +203,15 @@ export function carPage(c) {
           : ""
       }
 
+      ${
+        c.features?.length
+          ? `<section class="blk" aria-labelledby="ft-h">
+        <div class="blk__top"><h2 class="blk__h" id="ft-h">Equipment, as listed</h2><span class="jp" lang="ja">装備</span></div>
+        <ul class="tags tags--quiet">${c.features.map((h) => `<li>${esc(h)}</li>`).join("")}</ul>
+      </section>`
+          : ""
+      }
+
       <section class="blk" aria-labelledby="spec-h">
         <div class="blk__top"><h2 class="blk__h" id="spec-h">Specification</h2><span class="jp" lang="ja">諸元</span></div>
         <dl class="plate-tbl" data-plate>

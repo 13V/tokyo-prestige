@@ -481,8 +481,8 @@
     font-size: var(--t-18);
   }
   .feat {
-    grid-template-columns: 250px 1fr;
-    gap: var(--s-6);
+    grid-template-columns: clamp(190px, 17vw, 250px) minmax(0, 1fr);
+    gap: clamp(20px, 2.4vw, 32px);
     align-items: center;
     padding-top: var(--s-4);
   }
@@ -502,19 +502,26 @@
     margin-bottom: 10px;
   }
   .feat__car {
-    grid-template-columns: minmax(0, 1.5fr) auto auto auto auto;
-    gap: var(--s-6);
+    grid-template-columns: minmax(0, 1fr) auto auto auto auto;
+    gap: clamp(16px, 2.2vw, 32px);
     align-items: center;
   }
   .feat__name {
     grid-column: auto;
     padding-right: 0;
+    min-width: 0;
   }
   .feat__title {
-    font-size: var(--t-28);
+    font-size: clamp(1.25rem, 0.4rem + 1.5vw, 1.75rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .feat__title .roll {
+    vertical-align: top;
   }
   .feat__fact b {
-    font-size: var(--t-28);
+    font-size: clamp(1.25rem, 0.4rem + 1.5vw, 1.75rem);
     font-weight: 300;
   }
   .feat__fact--price b {
@@ -563,6 +570,16 @@
     min-width: 200px;
     margin-left: 6px;
     padding: 0 22px;
+  }
+}
+@media (min-width: 900px) and (max-width: 1239px) {
+  .feat__go {
+    width: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+  .feat__go span {
+    display: none;
   }
 }
 @media (hover: hover) {

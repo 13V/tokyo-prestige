@@ -40,6 +40,15 @@
    "engineNumber": "G16E-GTS",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "20″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -107,6 +116,13 @@
    "engineNumber": "R06A-3692918",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "350kg Load Rating",
+    "3-sided Access Gates",
+    "Rear Cargo Spotlight",
+    "Electric Windows",
+    "Bi-xenon HID Headlights"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -174,6 +190,13 @@
    "engineNumber": "R06A-3599369",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "350kg Load Rating",
+    "3-sided Access Gates",
+    "Rear Cargo Spotlight",
+    "Electric Windows",
+    "Bi-xenon HID Headlights"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -241,6 +264,11 @@
    "engineNumber": "R06A-3311145",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Glass Display Case and Shelving",
+    "350kg Load Rating",
+    "3-sided Access Gates"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -308,6 +336,17 @@
    "engineNumber": "T24A-N813826",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "21-inch machine-finished 10-spoke alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Facial Recognition",
+    "Wireless Apple CarPlay and Android Auto",
+    "Electric Tailgate",
+    "Heated and Cooled Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -375,6 +414,15 @@
    "engineNumber": "2ZR-2V88451",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "7 Seats",
+    "17″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -442,6 +490,7 @@
    "engineNumber": "T24A–N597573",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -509,6 +558,15 @@
    "engineNumber": "2ZR-2T87472",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "7 Seats",
+    "17″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -568,7 +626,7 @@
    "transmission": "8-speed Steptronic",
    "transmissionType": "Automatic",
    "drivetrain": "AWD",
-   "engine": "3.0L six-cylinder twin-turbo",
+   "engine": "3.0L turbo six-cylinder",
    "colour": "White",
    "interiorColour": "Black",
    "vin": "WBA6N12010FM32363",
@@ -576,6 +634,15 @@
    "engineNumber": "13776539-258B305",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "19″ black alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -611,7 +678,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/2021-bmw-3-series-g21-m340i-xdrive-touring-5dr-steptronic-8sp-4wd-3-0tt/",
    "sourceModified": "2026-10-30T02:39:52+00:00",
-   "notes": null
+   "notes": "Engine listed as twin turbo; the M340i has a single twin-scroll turbo."
   },
   {
    "id": "1360",
@@ -643,6 +710,17 @@
    "engineNumber": "2GR-K938329",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "20″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto",
+    "Electric Sunroof",
+    "Electric Fold Down Rear Seats",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -705,6 +783,16 @@
    "engineNumber": "MR20-867059C",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Adaptive Cruise Control",
+    "Lane Keep Assist and Crash Avoidance System",
+    "Apple CarPlay and Android Auto",
+    "Heated Seats",
+    "Front and Rear Parking Sensors",
+    "360 Degree Parking Cameras",
+    "Electric Sliding Doors",
+    "Digital rearview mirror"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -772,6 +860,11 @@
    "engineNumber": "VR30-205967A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Driving Modes Including Sports +",
+    "360 degree Parking Camera",
+    "Adaptive Cruise Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "FULL SERVICE HISTORY",
@@ -839,6 +932,7 @@
    "engineNumber": "VR30-202185A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -906,6 +1000,12 @@
    "engineNumber": "2ZR-2L49434",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Modellista body kit",
+    "Keyless entry and start",
+    "Reverse Parking Camera",
+    "Apple CarPlay and Android Auto"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -962,7 +1062,7 @@
    "km": 24710,
    "price": 48888,
    "priceNote": "Plus on-road costs",
-   "transmission": "e-CVT",
+   "transmission": "Hybrid automatic",
    "transmissionType": "Automatic",
    "drivetrain": "RWD",
    "engine": "3.5L V6 hybrid",
@@ -973,6 +1073,16 @@
    "engineNumber": "8GR-9541407",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "17″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Soft Close Doors",
+    "Rear Seat Controls",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Electric Sunroof"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1008,7 +1118,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/2020-toyota-crown-gws224-hybrid-g-executive-sedan-4dr-cvt-1sp-3-5-132kw-hybrid/",
    "sourceModified": "2026-11-03T21:11:59+00:00",
-   "notes": null
+   "notes": "Listed as CVT; the 3.5 V6 hybrid uses a stepped Multi Stage Hybrid transmission."
   },
   {
    "id": "1453",
@@ -1040,6 +1150,17 @@
    "engineNumber": "V35A-0026923",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "20″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Reclining Rear Seats with Rear Seat Controls",
+    "Electric Rear Window Blinds",
+    "Soft Close Doors",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1099,7 +1220,7 @@
    "transmission": "9G-TRONIC 9-speed automatic",
    "transmissionType": "Automatic",
    "drivetrain": "AWD",
-   "engine": "3.0L six-cylinder twin-turbo",
+   "engine": "3.0L turbo six-cylinder",
    "colour": "White",
    "interiorColour": "Black",
    "vin": "WDD2132612A595217",
@@ -1107,6 +1228,7 @@
    "engineNumber": "256930-30010114",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1142,7 +1264,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/13889/",
    "sourceModified": "2026-10-21T02:43:47+00:00",
-   "notes": null
+   "notes": "Engine listed as twin turbo; the E 53 has one turbo and an electric compressor."
   },
   {
    "id": "1355",
@@ -1174,6 +1296,13 @@
    "engineNumber": "2GR- 9060346",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Adaptive Cruise Control",
+    "Lane Keep Assist and Crash Avoidance System",
+    "Electric Seats with Lumbar Support",
+    "Dual-Zone Climate Control",
+    "Electric Sunroof"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1241,6 +1370,7 @@
    "engineNumber": "LFA-1907718",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1308,6 +1438,7 @@
    "engineNumber": "256930 30 005010",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1375,6 +1506,19 @@
    "engineNumber": "2ARJ218411",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "17-inch Chrome Alloy Wheels",
+    "Dual Electric Sunroof",
+    "Heated and cooled black leather seats",
+    "Electric Tailgate",
+    "360 degree parking cameras",
+    "LED mood lighting",
+    "DVD Player",
+    "LED Driving Headlights",
+    "Dual-zone automatic climate control",
+    "Keyless ignition",
+    "Adaptive Cruise Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1442,6 +1586,7 @@
    "engineNumber": "1UR-0603723",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1509,6 +1654,12 @@
    "engineNumber": "K12C-5042944",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Electric Folding Mirrors",
+    "Bluetooth",
+    "USB and AUX Connectivity",
+    "Air Conditioning"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1576,6 +1727,13 @@
    "engineNumber": "2UR – 2062891",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "19″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "Reverse Camera and Sensors"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1643,6 +1801,13 @@
    "engineNumber": "2GR-8858479",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Cruise Control",
+    "Bluetooth Connectivity and Compact Disc Player",
+    "Black Cloth and Electric Seats",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1710,6 +1875,16 @@
    "engineNumber": "1UR 0334785",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18-inch alloy wheels",
+    "Soft Close Doors",
+    "Heated and cooled black leather seats",
+    "Electric Tailgate",
+    "Xenon headlights",
+    "Dual-zone automatic climate control",
+    "Keyless ignition",
+    "Cruise Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1777,6 +1952,14 @@
    "engineNumber": "2GR-8791804",
    "location": "Totness",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Black Leather and Electric Seats with Heating",
+    "Electric Sunroof"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1844,6 +2027,14 @@
    "engineNumber": "2GR 8791436",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Black Leather and Electric Seats with Heating",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1911,6 +2102,14 @@
    "engineNumber": "2GR-8810546",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "360 Degree Parking Cameras",
+    "Cruise Control",
+    "Bluetooth Connectivity and Compact Disc Player",
+    "Black Cloth and Electric Seats with Heating",
+    "Electric Sunroof",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -1978,6 +2177,13 @@
    "engineNumber": "2GR-871772",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Cruise Control",
+    "Bluetooth Connectivity and Compact Disc Player",
+    "Black Cloth and Electric Seats",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2050,6 +2256,13 @@
     "FULL HISTORY",
     "2 KEYS"
    ],
+   "features": [
+    "Reverse Sensors",
+    "Electric Panoramic Glass Roof",
+    "Bluetooth",
+    "USB and Compact Disc Player",
+    "Black Leather Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "FULL HISTORY",
@@ -2121,6 +2334,16 @@
     "FULL HISTORY",
     "2 KEYS"
    ],
+   "features": [
+    "20″ black alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "Front and Rear Parking Cameras",
+    "Electric Sunroof",
+    "Electric Tailgate",
+    "Automatic Rear Wing"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "FULL HISTORY",
@@ -2190,6 +2413,16 @@
    "highlights": [
     "JUST TRADED"
    ],
+   "features": [
+    "18″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Heads Up Display",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "Rear Parking Camera",
+    "Electric Sunroof",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2257,6 +2490,11 @@
    "engineNumber": "VQ37 229604A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Compact Disc Player",
+    "Black Leather and Cloth Electric Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2324,6 +2562,11 @@
    "engineNumber": "1GZ-0010191",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Automatic Electric Curtains",
+    "Soft Close Doors",
+    "6 Stack CD Player"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2391,6 +2634,14 @@
    "engineNumber": "2GR-8713665",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera and Side View Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Electric Sunroof",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2453,6 +2704,11 @@
    "engineNumber": "VQ37-",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Compact Disc Player",
+    "Black Leather and Electric Seats with Heating"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "SERVICE HISTORY",
@@ -2520,6 +2776,11 @@
    "engineNumber": "VQ37-104043A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Compact Disc Player",
+    "Black Leather and Cloth Electric Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2587,6 +2848,14 @@
    "engineNumber": "VQ37-",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18 Inch Alloy Wheels",
+    "Reverse Camera",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Black Leather and Electric Seats",
+    "Heated Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2654,6 +2923,7 @@
    "engineNumber": "1UR-0145003",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2721,6 +2991,18 @@
    "engineNumber": "1UR-0140129",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "17-inch alloy wheels",
+    "Night vision driving",
+    "Soft Close Doors",
+    "Rear Seat Controls",
+    "Xenon Headlights",
+    "Dual-Zone Climate Control",
+    "Keyless Ignition",
+    "Radar Cruise Control",
+    "Height adjustable air suspension",
+    "Reverse Camera"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2788,6 +3070,13 @@
    "engineNumber": "2GR – 8578678",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Electric Sunroof"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2855,6 +3144,18 @@
    "engineNumber": "1UR0038025",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18-inch alloy wheels",
+    "Soft Close Doors",
+    "Electric Sunroof",
+    "Heated and cooled beige leather seats",
+    "Electric Tailgate",
+    "Xenon headlights",
+    "Dual-zone automatic climate control",
+    "Keyless ignition",
+    "Cruise Control",
+    "Height adjustable air suspension"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2922,6 +3223,14 @@
    "engineNumber": "VQ37010456A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18 Inch Alloy Wheels",
+    "Reverse Camera",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Black Leather and Electric Seats",
+    "Heated Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -2989,6 +3298,15 @@
    "engineNumber": "2GR – 8533988",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Cream Leather and Electric Seats with Heating",
+    "Electric Sunroof",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3056,6 +3374,16 @@
    "engineNumber": "1UR 0028208",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18-inch alloy wheels",
+    "Soft Close Doors",
+    "Heated and cooled leather seats",
+    "Xenon headlights",
+    "Dual-zone automatic climate control",
+    "Keyless ignition",
+    "Cruise Control",
+    "Height adjustable air suspension"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3123,6 +3451,15 @@
    "engineNumber": "2GR-8501881",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Reverse Parking Camera",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player",
+    "Cream Leather and Electric Seats with Heating",
+    "Electric Sunroof",
+    "Dual zone climate control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3190,6 +3527,14 @@
    "engineNumber": "3UZ-0408360",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Keyless entry and start",
+    "Reverse Parking Camera",
+    "Rear Seat Controls with Heating",
+    "Bluetooth",
+    "Cruise Control",
+    "Compact Disc Player"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3257,6 +3602,11 @@
    "engineNumber": "SR20 615998W",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Bluetooth Calling",
+    "Climate Air Control",
+    "Reverse Camera"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3324,6 +3674,11 @@
    "engineNumber": "1JZ-GTE",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "BBS Alloy Wheels",
+    "Compact Disc Player and DVD Headrest Screens",
+    "Climate Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3391,6 +3746,11 @@
    "engineNumber": "1JZ –",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Compact Disc Player and Dual Cargo Blinds",
+    "Grey Velour Seats",
+    "Climate Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3458,6 +3818,7 @@
    "engineNumber": "RB26700766X",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3525,6 +3886,11 @@
    "engineNumber": "M96-0466116170",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18 inch Alloy Wheels",
+    "Electric Aero Wing",
+    "Climate Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3592,6 +3958,11 @@
    "engineNumber": "B176489",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Bilstein Suspension",
+    "Compact Disc Player",
+    "Electric Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3659,6 +4030,15 @@
    "engineNumber": "1JZ6163999",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "2 piece 18″ staggered BBS alloy wheels",
+    "Yamaha Strut Tower Bar",
+    "Improved ECU and Suspension",
+    "Wireless Apple CarPlay and Android Auto",
+    "Climate Control",
+    "Reverse Camera",
+    "Electric Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3715,7 +4095,7 @@
    "km": 19941,
    "price": 30888,
    "priceNote": "Plus on-road costs",
-   "transmission": "6-speed manual",
+   "transmission": "6-speed manual (listed as upgraded)",
    "transmissionType": "Manual",
    "drivetrain": "RWD",
    "engine": "1.8L four-cylinder",
@@ -3730,6 +4110,13 @@
     "SERVICE HISTORY",
     "ONLY 19,941 ORIGINAL KMS",
     "2 KEYS"
+   ],
+   "features": [
+    "Electric Roof",
+    "Rear Spoiler",
+    "15 inch Alloy Wheels",
+    "Tan Leather Seats",
+    "Cruise Control"
    ],
    "published": {
     "auctionGrade": null,
@@ -3766,7 +4153,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/2001-toyota-mr-s-zzw30r-spyder-convertible-2dr-manual-6sp-1-8i/",
    "sourceModified": "2026-11-02T22:46:22+00:00",
-   "notes": null
+   "notes": "The listing says \"UPGRADED 6 Speed Manual Transmission\". A 2001 MR-S left the factory with a 5-speed, so the page says the 6-speed is an upgrade."
   },
   {
    "id": "1219",
@@ -3798,6 +4185,7 @@
    "engineNumber": "1HD-0202731",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -3865,6 +4253,12 @@
    "engineNumber": "1UZ-0801610",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "2 keys",
+    "Cruise Control",
+    "Climate Control",
+    "19″ AME wheels"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "SERVICE HISTORY",
@@ -3952,6 +4346,11 @@
    "engineNumber": "RB26-064886A",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "All Original",
+    "Original 17″ Alloy Wheels",
+    "Climate Control and Compact Disc Player"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "FULL SERVICE HISTORY",
@@ -4019,6 +4418,11 @@
    "engineNumber": "1HD0156804",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "Steel Bull Bar",
+    "Electric Sunroof",
+    "Velour Beige Seats"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4090,6 +4494,14 @@
     "ALL ORIGINAL INCLUDING FACTORY HEAD UNIT",
     "ONLY 38,523 ORIGINAL KMS"
    ],
+   "features": [
+    "16 inch Alloy Wheels",
+    "Electric Black Leather Seats",
+    "Electric Sunroof",
+    "Cruise Control",
+    "CD Stacker",
+    "Doily Seat Covers"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4157,6 +4569,11 @@
    "engineNumber": "3SGE-",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "15 inch Alloy Wheels",
+    "PopUp Glass Headlights",
+    "Climate Control"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4224,6 +4641,17 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "20″ alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Apple CarPlay and Android Auto",
+    "Electric Sunroof",
+    "Electric Fold Down Rear Seats",
+    "Electric Tailgate"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4291,6 +4719,17 @@
    "engineNumber": "A25A-1439362",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "21-inch machine-finished 10-spoke alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Facial Recognition",
+    "Wireless Apple CarPlay and Android Auto",
+    "Electric Tailgate",
+    "Heated Steering Wheel"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4347,7 +4786,7 @@
    "km": 120512,
    "price": null,
    "priceNote": null,
-   "transmission": "e-CVT",
+   "transmission": "Hybrid automatic",
    "transmissionType": "Automatic",
    "drivetrain": "RWD",
    "engine": "3.5L V6 hybrid",
@@ -4358,6 +4797,17 @@
    "engineNumber": "8GR-9553083",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "18″ alloy wheels",
+    "Luxury Light Grey Leather Interior",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "360 Degree Cameras",
+    "Reclining Rear Seats with Rear Seat Controls",
+    "Apple CarPlay and Android Auto",
+    "Soft Close Doors"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4393,7 +4843,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/2021-toyota-crown-gws224-hybrid-g-executive-sedan-4dr-cvt-1sp-3-5-132kw-hybrid/",
    "sourceModified": "2026-11-08T22:26:03+00:00",
-   "notes": null
+   "notes": "Listed as CVT; the 3.5 V6 hybrid uses a stepped Multi Stage Hybrid transmission."
   },
   {
    "id": "1304",
@@ -4425,6 +4875,7 @@
    "engineNumber": "276823 30 717594",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4496,6 +4947,18 @@
     "FULL HISTORY",
     "2 KEYS"
    ],
+   "features": [
+    "S&j dyno tuned",
+    "Cat-back Exhaust",
+    "BC Racing Coilovers",
+    "18″ black alloy wheels",
+    "Adaptive Cruise Control",
+    "Lane Keep Assistance",
+    "Crash Avoidance System",
+    "Front and Rear Parking Cameras",
+    "Electric Sunroof",
+    "STI Rear Wing"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": "FULL HISTORY",
@@ -4563,6 +5026,19 @@
    "engineNumber": "1UR 0364369",
    "location": "Marryatville",
    "highlights": [],
+   "features": [
+    "19-inch chrome wheels with new tyres",
+    "Classy Body Kit",
+    "Catback Exhaust System",
+    "Soft Close Doors",
+    "Electric Sunroof",
+    "Xenon Headlights",
+    "Dual-Zone Climate Control",
+    "Keyless Ignition",
+    "Cruise Control",
+    "Height adjustable air suspension",
+    "Reverse Camera"
+   ],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4630,6 +5106,7 @@
    "engineNumber": "EJ-552206",
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4697,6 +5174,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4779,6 +5257,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4846,6 +5325,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4913,6 +5393,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -4980,6 +5461,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5047,6 +5529,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5114,6 +5597,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5181,6 +5665,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5248,6 +5733,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5315,6 +5801,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5382,6 +5869,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5449,6 +5937,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5516,6 +6005,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5583,6 +6073,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5650,6 +6141,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5717,6 +6209,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5784,6 +6277,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5851,6 +6345,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5918,6 +6413,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -5985,6 +6481,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6052,6 +6549,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6119,6 +6617,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6186,6 +6685,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6253,6 +6753,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6320,6 +6821,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6376,7 +6878,7 @@
    "km": 80023,
    "price": null,
    "priceNote": null,
-   "transmission": "Automatic",
+   "transmission": "Hybrid automatic",
    "transmissionType": "Automatic",
    "drivetrain": "RWD",
    "engine": "3.5L V6 hybrid",
@@ -6387,6 +6889,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6454,6 +6957,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6510,7 +7014,7 @@
    "km": 36542,
    "price": null,
    "priceNote": null,
-   "transmission": "e-CVT",
+   "transmission": "Hybrid automatic",
    "transmissionType": "Automatic",
    "drivetrain": "RWD",
    "engine": "3.5L V6 hybrid",
@@ -6521,6 +7025,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6588,6 +7093,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6655,6 +7161,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6707,6 +7214,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6774,6 +7282,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6841,6 +7350,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6908,6 +7418,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -6975,6 +7486,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7042,6 +7554,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7109,6 +7622,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7176,6 +7690,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7243,6 +7758,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7310,6 +7826,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7377,6 +7894,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7444,6 +7962,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7483,16 +8002,16 @@
   },
   {
    "id": "1491",
-   "slug": "2001-toyota-celsior-ucf31-c-specification-1491",
+   "slug": "2001-toyota-celsior-ucf31-version-c-1491",
    "status": "coming-soon",
    "badge": null,
-   "title": "2001 Toyota Celsior C Specification",
+   "title": "2001 Toyota Celsior Version C",
    "titleAsListed": "2001 Toyota Celcior Version C",
    "year": 2001,
    "make": "Toyota",
    "model": "Celsior",
    "modelCode": "UCF31",
-   "grade": "C Specification",
+   "grade": "Version C",
    "gradeNeedsConfirming": false,
    "body": "Sedan",
    "bodyAsListed": "Sedan",
@@ -7503,7 +8022,7 @@
    "transmission": "Automatic",
    "transmissionType": "Automatic",
    "drivetrain": "RWD",
-   "engine": "4.0L V8",
+   "engine": null,
    "colour": "White",
    "interiorColour": "Black",
    "vin": "UCF31-0022816",
@@ -7511,6 +8030,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7546,7 +8066,7 @@
    ],
    "sourceUrl": "https://www.tokyoprestige.com.au/listings/2001-toyota-celcior-version-c/",
    "sourceModified": "2026-10-13T05:56:59+00:00",
-   "notes": null
+   "notes": "Engine listed as 4.0 V8; a UCF31 has the 4.3 V8. Either the code or the engine is wrong, so the engine is left off."
   },
   {
    "id": "1509",
@@ -7578,6 +8098,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7645,6 +8166,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7712,6 +8234,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7779,6 +8302,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7846,6 +8370,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7913,6 +8438,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -7980,6 +8506,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -8047,6 +8574,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -8114,6 +8642,7 @@
    "engineNumber": null,
    "location": null,
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -8191,6 +8720,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,
@@ -8258,6 +8788,7 @@
    "engineNumber": null,
    "location": "Marryatville",
    "highlights": [],
+   "features": [],
    "published": {
     "auctionGrade": null,
     "serviceHistory": null,

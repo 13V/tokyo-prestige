@@ -223,6 +223,25 @@ ${js.map((s) => `<script src="${s}" defer></script>`).join("\n")}
 `;
 }
 
+// The dealership as structured data, from the facts on their Contact page.
+export function dealerLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AutoDealer",
+    "@id": "https://www.tokyoprestige.com.au/#dealer",
+    name: dealer.name,
+    url: "https://www.tokyoprestige.com.au/",
+    telephone: dealer.tel,
+    email: dealer.email,
+    address: { "@type": "PostalAddress", streetAddress: dealer.street, addressLocality: dealer.suburb, addressRegion: dealer.state, postalCode: dealer.postcode, addressCountry: "AU" },
+    openingHoursSpecification: [
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "17:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
+    ],
+    sameAs: [dealer.facebook],
+  };
+}
+
 export function write(rel, html) {
   const f = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(f), { recursive: true });

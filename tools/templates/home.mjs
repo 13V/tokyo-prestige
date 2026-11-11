@@ -1,4 +1,4 @@
-import { cars, card, dealer, esc, icon, km, layout, money, carUrl, photo, KATAKANA } from "../lib.mjs";
+import { cars, card, dealer, dealerLd, esc, icon, km, layout, money, carUrl, photo, KATAKANA } from "../lib.mjs";
 
 // The four cars in the hero: one for each kind of buyer. Each has a hand-traced outline in assets/img/
 // (mask-<stock no>.svg) and the position of its headlight, so the light lands where the lamp is.
@@ -50,7 +50,7 @@ export function home() {
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="jp hero__jp" lang="ja" data-hero-line style="--i:0">東京からアデレードへ</p>
-      <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked in Japan.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
+      <h1 class="display" id="hero-h"><span class="hero__l" data-hero-line style="--i:1"><span>Hand-picked Japanese imports.</span></span> <span class="hero__l" data-hero-line style="--i:2"><span>Here to drive in Adelaide.</span></span></h1>
       <p class="lede hero__lede" data-hero-line style="--i:3"><span class="num">${available.length}</span> cars to see today at Marryatville, <span class="num">${soon.length}</span> more on the way. Serviced, complied and ready to register.</p>
     </div>
 
@@ -197,6 +197,6 @@ export function home() {
     solidHeader: false,
     css: ["/assets/css/home.css"],
     js: ["/assets/js/home.js"],
-    head: `<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n`,
+    head: `<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
   });
 }

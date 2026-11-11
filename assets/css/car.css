@@ -405,6 +405,11 @@
   flex-wrap: wrap;
   gap: 8px;
 }
+.tags--quiet li {
+  border-color: var(--line);
+  color: var(--text-2);
+  font-weight: 400;
+}
 .tags li {
   padding: 8px 12px;
   border: 1px solid var(--line-2);

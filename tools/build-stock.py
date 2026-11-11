@@ -22,7 +22,7 @@ T = {
  '1403': ('911 Carrera', '996', None, 'Coupe', {}),
  '1429': ('Legacy Touring Wagon', 'BH5', 'GT-B E-tune', 'Wagon', {}),
  '1508': ('Crown', 'JZS171', 'Athlete VX', 'Sedan', {}),
- '1438': ('MR-S', 'ZZW30', None, 'Convertible', {}),
+ '1438': ('MR-S', 'ZZW30', None, 'Convertible', {'transmission': '6-speed manual (listed as upgraded)', 'note': 'The listing says "UPGRADED 6 Speed Manual Transmission". A 2001 MR-S left the factory with a 5-speed, so the page says the 6-speed is an upgrade.'}),
  '1427': ('Crown', 'JZS171', 'Athlete V', 'Sedan', {}),
  '1420': ('Crown Estate', 'JZS171', 'Athlete V', 'Wagon', {}),
  '1320': ('X-Trail', 'PNT30', 'GT', 'SUV & 4WD', {}),
@@ -60,11 +60,11 @@ T = {
  '1182': ('S 450', 'W222', None, 'Sedan', {}),
  '9974441': ('Alphard Hybrid', 'AYH30W', None, 'People mover', {'seats': 7, 'gradeGap': True, 'note': 'Grade conflict: title says "AGH30W SC", the model field says "Executive Lounge S", the VIN and engine number are a hybrid AYH30. Drivetrain listed as FWD; AYH30 hybrids are E-Four. Confirm grade and drivetrain.', 'drivetrain': None}),
  '1453': ('LS 500', 'VXFA55', None, 'Sedan', {'transmission': '10-speed automatic'}),
- '1297': ('E 53 AMG Estate', 'S213', '4MATIC+', 'Wagon', {'transmission': '9G-TRONIC 9-speed automatic'}),
+ '1297': ('E 53 AMG Estate', 'S213', '4MATIC+', 'Wagon', {'transmission': '9G-TRONIC 9-speed automatic', 'engine': '3.0L turbo six-cylinder', 'note': 'Engine listed as twin turbo; the E 53 has one turbo and an electric compressor.'}),
  '1355': ('Mark X', 'GRX133', '350RDS', 'Sedan', {}),
- '1452': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {}),
- '1426': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {}),
- '1437': ('M340i xDrive Touring', 'G21', None, 'Wagon', {'transmission': '8-speed Steptronic', 'drivetrain': 'AWD'}),
+ '1452': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {'transmission': 'Hybrid automatic', 'note': 'Listed as CVT; the 3.5 V6 hybrid uses a stepped Multi Stage Hybrid transmission.'}),
+ '1426': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {'transmission': 'Hybrid automatic', 'note': 'Listed as CVT; the 3.5 V6 hybrid uses a stepped Multi Stage Hybrid transmission.'}),
+ '1437': ('M340i xDrive Touring', 'G21', None, 'Wagon', {'transmission': '8-speed Steptronic', 'drivetrain': 'AWD', 'engine': '3.0L turbo six-cylinder', 'note': 'Engine listed as twin turbo; the M340i has a single twin-scroll turbo.'}),
  '1360': ('RX 450h', 'GYL20', 'F Sport', 'SUV & 4WD', {'transmission': 'e-CVT'}),
  '1397': ('Serena', 'C27', 'Highway Star S-Hybrid', 'People mover', {'seats': 8}),
  '1356': ('Skyline', 'RV37', '400R', 'Sedan', {}),
@@ -91,7 +91,7 @@ T = {
  '1462': ('Land Cruiser 100', 'HDJ101', 'VX Limited G Selection', 'SUV & 4WD', {}),
  '1494': ('XJ', None, 'Executive 3.2 V8', 'Sedan', {}),
  '1439': ('XJ', None, 'Executive 4.0 V8', 'Sedan', {}),
- '1491': ('Celsior', 'UCF31', 'C Specification', 'Sedan', {'grade_as_listed': 'Version C'}),
+ '1491': ('Celsior', 'UCF31', 'Version C', 'Sedan', {'engine': None, 'note': 'Engine listed as 4.0 V8; a UCF31 has the 4.3 V8. Either the code or the engine is wrong, so the engine is left off.'}),
  '1509': ('Soarer', 'UZZ40', None, 'Convertible', {}),
  '1469': ('Legacy B4', None, None, 'Sedan', {'transmission': '6-speed manual', 'note': 'Frame number listed as BES002187. Title says 6-speed manual. Confirm the grade.'}),
  '1428': ('X-Trail', 'PNT30', 'GT', 'SUV & 4WD', {}),
@@ -107,10 +107,10 @@ T = {
  '1504': ('Ignis', 'FF21S', 'Hybrid F', 'Hatch', {}),
  '1502': ('Ignis', 'FF21S', 'Hybrid MX', 'Hatch', {}),
  '1485': ('Mark X', 'GRX133', '350RDS', 'Sedan', {}),
- '1519': ('Crown Hybrid', 'GWS224', 'RS Advance', 'Sedan', {}),
+ '1519': ('Crown Hybrid', 'GWS224', 'RS Advance', 'Sedan', {'transmission': 'Hybrid automatic'}),
  '1516': ('RX 450h', 'GYL20', 'Version L', 'SUV & 4WD', {}),
  '1515': ('RX 450h', 'GYL20', 'Version L', 'SUV & 4WD', {}),
- '1487': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {}),
+ '1487': ('Crown Hybrid', 'GWS224', 'G-Executive', 'Sedan', {'transmission': 'Hybrid automatic'}),
  '1493': ('IS 350', 'GSE31', None, 'Sedan', {}),
  '1449': ('RC F', 'USC10', None, 'Coupe', {}),
  '1480': ('AMG GT 43', None, None, 'Sedan', {'engine': None, 'note': 'Engine listed as 2.0 turbo; the VIN is a four-door GT 43, which has a 3.0 inline six. Confirm.'}),
@@ -195,6 +195,26 @@ for r in src:
         if len(p_) > 400: continue
         m_ = re.search(r'(FULL SERVICE HISTORY|FULL HISTORY|SERVICE HISTORY)', p_)
         if m_: sh = m_.group(1); break
+    feats = []
+    marker = False
+    for p_ in ov:
+        if p_.startswith(('ENGINE #', 'VIN #')): break
+        if re.match(r'^(WHAT.S IN THE BOX|Things you should know|Features that you.ll find|The features you.ll find)', p_): marker = True; continue
+        seps = len(re.findall(r' [–-] |, ', p_))
+        if len(p_) < 520 and seps >= 3 and (marker or (seps >= 5 and '!' not in p_ and not re.search(r'\b(we|our|you|your)\b', p_, re.I))):
+            for it in re.split(r' [–-] |,\s+', p_):
+                it = re.sub(r'\s+', ' ', it).strip(' .…,-–')
+                it = re.sub(r'(?i)^and\s+', '', it)
+                if not it or len(it) > 46 or len(it) < 4: continue
+                if re.search(r'(?i)much more|\dHP|\bHP\b|\bkw\b|seconds|km/?h|0-100|units|producing|produces|top speed|only \d|history|speed|heated$|^full electric', it): continue
+                if re.search(r'(?i)\b(drive|transmission|cylinder|litre|ltr|engine|turbo|v6|v8|v12|sedan|wagon|estate|coupe)\b', it): continue
+                if re.search(r'(?i)finished in|ensuring|combines|masterpiece|comfortably|perfect|offers|designed|litres|\dkw|acceleration|classic|^\d{4} |seating|experience|adventure|journey|ride|drive[rs]? will', it): continue
+                if re.search(r'(?i)\b(is|has|it|this|that)\b|promising|offering|turning|under the|unlike|reliab|^performance$|^(lexus|toyota|nissan|subaru|suzuki|honda|bmw|audi|mercedes)\b', it): continue
+                for a_, b_ in (('Coiloves', 'Coilovers'), ('Mirriors', 'Mirrors'), ('Conectivity', 'Connectivity'), ('Builstein', 'Bilstein'), ('Colse', 'Close'), ('Xenon Hid Bi-xenon', 'Bi-xenon HID')): it = it.replace(a_, b_)
+                if it.isupper(): it = it.capitalize()
+                it = it[0].upper() + it[1:]
+                if it.lower() not in [f.lower() for f in feats]: feats.append(it)
+    feats = feats[:14]
     engno = next((re.sub(r'^ENGINE #\s*', '', p).strip() for p in ov if p.startswith('ENGINE #')), None)
     if no == '1433': engno = None
     photos = []
@@ -216,7 +236,7 @@ for r in src:
       'colour': cap(s.get('exterior-color')), 'interiorColour': cap(s.get('interior-color')),
       'vin': vin, 'vinType': ('Japanese frame number' if soon and vin and '-' in vin else 'VIN') if vin else None,
       'engineNumber': engno, 'location': s.get('location'),
-      'highlights': hl, 'published': {
+      'highlights': hl, 'features': feats, 'published': {
         'auctionGrade': None, 'serviceHistory': sh,
         'australianDelivered': any('AUSTRALIAN DELIVERED' in h.upper() for h in hl),
         'expectedArrival': None },

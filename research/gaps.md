@@ -62,5 +62,9 @@ The demo shows the safe reading and leaves the doubtful field empty. Each should
 | 1465 | 1998 Safari WGY61 | Engine "4.5i V6"; the 4.5 is an inline six. |
 | 1406 | 1998 Pajero Evolution | Frame number "AP1-1004596"; a Pajero Evolution is a V55W. |
 | 1469 | 2002 Legacy B4 | Frame "BES002187", 6-speed manual: grade not stated. |
-| 1438 | 2001 MR-S | Listed 6-speed manual; worth checking against the build date. |
+| 1438 | 2001 MR-S | Listing says "upgraded 6 speed manual". A 2001 car left the factory with a 5-speed, so the demo says the 6-speed is an upgrade. Confirm. |
+| 1491 | 2001 Celsior UCF31 | Engine listed as 4.0 V8; a UCF31 has the 4.3. Engine left off the demo. |
+| 1452, 1426, 1487, 1519 | Crown Hybrid GWS224 | Listed as CVT or eCVT; the 3.5 V6 hybrid has a stepped Multi Stage Hybrid transmission. Shown as "Hybrid automatic". |
+| 1437, 1297 | BMW M340i, Mercedes E 53 AMG | Engines listed as twin turbo; both have a single turbo. Shown as "turbo six-cylinder". |
+| 9942778 | 1998 Skyline GT-R Autech | Listing says "Nissan's 40th anniversary" (it marked the Skyline's 40th) and "produced by Autech and Nismo". Neither is repeated on the demo. |
 | 1462 | 1999 Land Cruiser 100 | No kilometres listed. |

@@ -459,6 +459,11 @@ html:not(.js) .flt {
   padding-top: var(--s-5);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
 }
+/* cards far down the list are not laid out until they are near the screen */
+.cards--list .card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 470px;
+}
 .cards--list .card[hidden] {
   display: none;
 }

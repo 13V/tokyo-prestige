@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concept D: Find it fast</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Concept D, "Find it fast": a marketplace layout. Search and results on the first screen, dense and clear. */
+:root { --bg:#eef0f3; --white:#fff; --ink:#0f1722; --mute:#5c6675; --line:#d9dee6; --red:#e1291c; --navy:#111c2e; --green:#0f7a4d; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--ink); font:15px/1.45 "Manrope",sans-serif; }
+img { display:block; width:100%; height:100%; object-fit:cover; }
+header { background:var(--navy); color:#fff; display:flex; align-items:center; gap:26px; padding:0 32px; height:60px; }
+.logo { font-weight:800; font-size:19px; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; }
+.logo i { font-style:normal; background:var(--red); border-radius:6px; padding:5px 8px; font-size:14px; }
+header nav { display:flex; gap:22px; font-weight:600; font-size:14px; opacity:.92; }
+header .sp { flex:1; }
+header .lic { font-size:12px; opacity:.7; }
+header .call { background:var(--red); border-radius:8px; padding:10px 16px; font-weight:700; }
+.search { background:var(--navy); color:#fff; padding:18px 32px 26px; }
+.search h1 { font-size:30px; font-weight:800; letter-spacing:-.02em; }
+.search h1 span { color:#ff8a7f; }
+.bar { margin-top:14px; display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1fr auto; gap:8px; background:var(--white); border-radius:12px; padding:8px; color:var(--ink); }
+.f { border:1px solid var(--line); border-radius:8px; padding:8px 12px; display:grid; }
+.f small { color:var(--mute); font-size:11px; font-weight:600; }
+.f b { font-weight:600; display:flex; justify-content:space-between; }
+.go { background:var(--red); color:#fff; border-radius:8px; font-weight:800; padding:0 26px; display:grid; place-items:center; font-size:16px; }
+.quick { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+.quick span { background:rgba(255,255,255,.12); border-radius:99px; padding:6px 13px; font-weight:600; font-size:13px; }
+.body { display:grid; grid-template-columns:250px 1fr; gap:20px; padding:18px 32px; }
+aside { background:var(--white); border-radius:12px; padding:16px; align-self:start; }
+aside h2 { font-size:15px; font-weight:800; display:flex; justify-content:space-between; }
+aside h2 a { color:var(--red); font-size:13px; font-weight:600; }
+aside h3 { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--mute); margin:16px 0 6px; }
+aside label { display:flex; justify-content:space-between; padding:5px 0; font-weight:500; }
+aside label span { color:var(--mute); }
+aside label::before { content:""; width:16px; height:16px; border:1.5px solid #9aa4b2; border-radius:4px; margin-right:9px; flex:none; }
+aside label b { flex:1; font-weight:500; }
+aside label.on::before { background:var(--red); border-color:var(--red); }
+.res h2 { display:flex; align-items:center; gap:14px; font-size:18px; font-weight:800; margin-bottom:12px; }
+.res h2 span { margin-left:auto; font-size:14px; font-weight:600; background:var(--white); border:1px solid var(--line); border-radius:8px; padding:8px 12px; }
+.grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.card { background:var(--white); border-radius:12px; overflow:hidden; display:grid; }
+.card figure { aspect-ratio:4/2.9; position:relative; }
+.tag { position:absolute; left:8px; top:8px; background:var(--green); color:#fff; font-size:11px; font-weight:700; border-radius:6px; padding:3px 8px; }
+.tag.n { background:var(--navy); left:auto; right:8px; }
+.cnt { position:absolute; right:8px; bottom:8px; background:rgba(15,23,34,.75); color:#fff; font-size:11px; font-weight:600; border-radius:6px; padding:2px 7px; }
+.card div { padding:10px 12px 12px; display:grid; gap:3px; }
+.card h3 { font-size:15.5px; font-weight:800; letter-spacing:-.01em; }
+.card p { color:var(--mute); font-size:13px; }
+.card .p { display:flex; align-items:baseline; gap:8px; margin-top:4px; }
+.card .p b { font-size:21px; font-weight:800; letter-spacing:-.02em; }
+.card .p small { color:var(--mute); font-size:12px; }
+.card .a { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:6px; padding:0; }
+.card .a span { border:1px solid var(--line); border-radius:8px; padding:7px; text-align:center; font-weight:700; font-size:13px; }
+.card .a span:last-child { background:var(--ink); color:#fff; border-color:var(--ink); }
+.car, .m-only { display:none; }
+
+@media (max-width:600px) {
+  header { padding:0 14px; height:54px; gap:10px; }
+  header nav, header .lic { display:none; }
+  .logo { font-size:16px; } header .call { padding:8px 12px; font-size:13px; }
+  .search { padding:12px 14px 14px; }
+  .search h1 { font-size:21px; }
+  .bar { grid-template-columns:1fr 1fr; margin-top:10px; }
+  .bar .f:first-child { grid-column:1/-1; }
+  .bar .f:nth-child(4), .bar .f:nth-child(5) { display:none; }
+  .go { grid-column:1/-1; min-height:48px; }
+  .quick { flex-wrap:nowrap; overflow:hidden; margin-top:10px; }
+  .quick span { white-space:nowrap; }
+  .body { grid-template-columns:1fr; padding:12px 14px 80px; }
+  aside { display:none; }
+  .res h2 { font-size:16px; } .res h2 span { padding:6px 10px; font-size:13px; }
+  .grid { grid-template-columns:1fr; gap:10px; }
+  .card { grid-template-columns:132px 1fr; }
+  .card figure { aspect-ratio:auto; height:100%; }
+  .card .a, .tag.n { display:none; }
+  .card .p b { font-size:19px; }
+  .tabs { display:none; position:fixed; left:0; right:0; bottom:0; background:var(--white); border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(4,1fr); }
+  .tabs span { padding:10px 0 12px; text-align:center; font-size:11px; font-weight:700; color:var(--mute); }
+  .tabs span.on { color:var(--red); }
+  .tabs span::before { content:""; display:block; width:22px; height:22px; margin:0 auto 3px; border:2px solid currentColor; border-radius:7px; }
+  body.is-car .search, body.is-car .res, body.is-car .tabs { display:none; }
+  body.is-car .body { padding:0 0 90px; }
+  body.is-car .car { display:block; }
+  .car figure { aspect-ratio:4/3; position:relative; }
+  .car .in { padding:12px 14px; display:grid; gap:10px; }
+  .car h2 { font-size:22px; font-weight:800; letter-spacing:-.02em; }
+  .car .pr { display:flex; align-items:baseline; gap:10px; } .car .pr b { font-size:30px; font-weight:800; letter-spacing:-.02em; } .car .pr small { color:var(--mute); }
+  .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .facts div { background:var(--white); border-radius:10px; padding:9px 10px; } .facts small { display:block; color:var(--mute); font-size:11px; font-weight:600; } .facts b { font-weight:800; }
+  .trust { background:var(--white); border-radius:12px; padding:12px; display:grid; gap:7px; font-weight:600; }
+  .trust span::before { content:"✓ "; color:var(--green); font-weight:800; } .trust span.q::before { content:"? "; color:var(--red); }
+  .cta { position:fixed; left:0; right:0; bottom:0; background:var(--white); border-top:1px solid var(--line); padding:10px 14px; grid-template-columns:auto 1fr; gap:8px; }
+  .cta span { border:1px solid var(--line); border-radius:10px; padding:14px 18px; font-weight:800; text-align:center; } .cta span:last-child { background:var(--red); color:#fff; border-color:var(--red); }
+}
+</style>
+</head>
+<body>
+<script>if (new URLSearchParams(location.search).get("s") === "car") document.body.classList.add("is-car");</script>
+<header>
+  <div class="logo"><i>TP</i>Tokyo Prestige</div>
+  <nav><span>Buy</span><span>Coming soon</span><span>Finance</span><span>Servicing</span><span>Importing guide</span><span>About</span></nav>
+  <span class="sp"></span><span class="lic">Licensed dealer MVD 287394</span><span class="call">Call 08 8336 4674</span>
+</header>
+<section class="search">
+  <h1>Find your Japanese import. <span>62 in Adelaide today.</span></h1>
+  <div class="bar">
+    <div class="f"><small>Search</small><b>Model or code, e.g. Crown, JZS171</b></div>
+    <div class="f"><small>Make</small><b>Any make <span>▾</span></b></div>
+    <div class="f"><small>Body</small><b>Any body <span>▾</span></b></div>
+    <div class="f"><small>Max price</small><b>Any <span>▾</span></b></div>
+    <div class="f"><small>Max km</small><b>Any <span>▾</span></b></div>
+    <div class="go">Show 62 cars</div>
+  </div>
+  <div class="quick"><span>Under $20,000</span><span>Under $30,000</span><span>People movers</span><span>Hybrid</span><span>Manual</span><span>Just arrived</span><span>Coming soon 53</span></div>
+</section>
+<div class="body">
+  <aside>
+    <h2>Filters <a>Clear</a></h2>
+    <h3>Make</h3>
+    <label><b>Toyota</b><span>27</span></label><label><b>Lexus</b><span>12</span></label><label><b>Nissan</b><span>11</span></label><label><b>Suzuki</b><span>4</span></label>
+    <h3>Body</h3>
+    <label class="on"><b>Sedan</b><span>32</span></label><label><b>SUV and 4WD</b><span>6</span></label><label><b>People mover</b><span>5</span></label><label><b>Wagon</b><span>5</span></label>
+    <h3>Transmission</h3>
+    <label><b>Automatic</b><span>56</span></label><label><b>Manual</b><span>6</span></label>
+  </aside>
+  <section class="res">
+    <h2>62 cars available <span>Sort: newest arrivals ▾</span></h2>
+    <div class="grid">
+      <article class="card"><figure><img src="/img/cars/1461/1-960.avif" alt=""><span class="tag">Just arrived</span><span class="cnt">5 photos</span></figure><div><h3>2021 Toyota Corolla Touring</h3><p>ZWE211W · 51,224 km · CVT · Hybrid</p><p class="p"><b>$29,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/1452/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2020 Toyota Crown Hybrid</h3><p>GWS224 · 24,710 km · Hybrid · RWD</p><p class="p"><b>$48,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/1442/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2023 Toyota Voxy Hybrid</h3><p>ZWR90W · 25,865 km · 7 seats</p><p class="p"><b>$49,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/1453/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2019 Lexus LS 500</h3><p>VXFA55 · 30,500 km · 10-speed · AWD</p><p class="p"><b>$68,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/1355/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2019 Toyota Mark X</h3><p>GRX133 · 54,228 km · 6-speed auto</p><p class="p"><b>$36,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/9974441/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2018 Toyota Alphard Hybrid</h3><p>AYH30W · 73,119 km · 7 seats</p><p class="p"><b>$54,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/1412/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2010 Toyota Century</h3><p>GZG50 · 97,864 km · V12</p><p class="p"><b>$48,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+      <article class="card"><figure><img src="/img/cars/512/1-960.avif" alt=""><span class="cnt">5 photos</span></figure><div><h3>2001 Nissan Skyline GT-R</h3><p>BNR34 · 204,322 km · 6-speed manual</p><p class="p"><b>$229,888</b><small>plus on-roads</small></p><p class="a"><span>Call</span><span>Enquire</span></p></div></article>
+    </div>
+  </section>
+  <section class="car">
+    <figure><img src="/img/cars/1452/1-960.avif" alt=""><span class="cnt">1 / 5</span></figure>
+    <div class="in">
+      <h2>2020 Toyota Crown Hybrid G-Executive</h2>
+      <p class="pr"><b>$48,888</b><small>plus on-road costs</small></p>
+      <div class="facts"><div><small>Kilometres</small><b>24,710</b></div><div><small>Code</small><b>GWS224</b></div><div><small>Drive</small><b>RWD</b></div></div>
+      <div class="trust"><span>Clear title, guaranteed</span><span>Serviced and ready to register</span><span>Delivery Australia-wide</span><span class="q">Auction sheet: ask for it</span></div>
+    </div>
+  </section>
+</div>
+<div class="m-only tabs"><span class="on">Search</span><span>Coming soon</span><span>Finance</span><span>Call</span></div>
+<div class="m-only cta"><span>Call</span><span>Enquire about this car</span></div>
+<script>
+  if (innerWidth <= 600) document.querySelector(document.body.classList.contains("is-car") ? ".cta" : ".tabs").style.display = "grid";
+</script>
+</body>
+</html>

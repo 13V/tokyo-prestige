@@ -1,4 +1,4 @@
-import { cars, dealer, esc, icon, layout, money } from "../lib.mjs";
+import { cars, dealer, dealerLd, esc, icon, layout, money } from "../lib.mjs";
 
 const nAvail = cars.filter((c) => c.status === "available").length;
 const nSoon = cars.filter((c) => c.status === "coming-soon").length;
@@ -43,8 +43,8 @@ export function importing() {
       lat: "Japan, 35° N",
       h: "It starts at auction in Japan",
       p: [
-        "Most used cars in Japan change hands at dealer auctions, where thousands of cars are sold each week. Every car is looked over by the auction house's own inspector before it is offered.",
-        "Tokyo Prestige says its cars are hand-picked: chosen one at a time for quality, reliability and value, not bought in bulk.",
+        "A large share of used cars in Japan change hands at dealer auctions. Each car is looked over by the auction house's own inspector before it is offered.",
+        "Tokyo Prestige says its cars are hand-picked for quality, reliability and value.",
       ],
     },
     {
@@ -64,7 +64,7 @@ export function importing() {
       lat: "The Pacific, 0°",
       h: "Deregistered, then shipped south",
       p: [
-        "Before a car leaves Japan it is deregistered, and the paperwork records its odometer reading. Then it sails about 7,800 km, nearly due south, to Australia.",
+        "Before a car leaves Japan it is deregistered, and the paperwork records its odometer reading. Then it is shipped to Australia. In a straight line, Japan and Adelaide are about 7,800 km apart, almost due north and south of each other.",
         "Tokyo Prestige says an original deregistration certificate is provided for vehicles it sources, and that the odometer reading is guaranteed on vehicles it imports directly. Ask to see the certificate for the car you are looking at.",
       ],
       link: ["/coming-soon", `See the ${nSoon} cars on the way`],
@@ -76,7 +76,7 @@ export function importing() {
       h: "Made ready for Australian roads",
       p: [
         "An imported used car has to be approved under Australia's Road Vehicle Standards Act before it can be registered. Cars 25 years or older come in under one pathway; newer cars must be a model on the Specialist and Enthusiast Vehicle register and are checked against an approved report for that model.",
-        "Since 2021 an approved car is entered on the Register of Approved Vehicles, which replaced the old compliance plate. Tokyo Prestige sells its cars Australian-compliant and ready for registration.",
+        "Since July 2021 an approved car is entered on the Register of Approved Vehicles, the online register that took over from the compliance plate. Tokyo Prestige sells its cars Australian-compliant and ready for registration.",
       ],
     },
     {
@@ -98,6 +98,7 @@ export function importing() {
     ["4", "Good. A few small scratches or dents for its age."],
     ["3.5", "Fair. Noticeable marks, or higher kilometres."],
     ["3", "Rough. Marks, dents or paint that need work."],
+    ["2, 1", "Poor condition or heavy modification. What each means varies between auction houses."],
     ["R, RA", "Has had accident repair. RA usually means minor and well repaired; what counts as R varies between auction houses."],
   ];
   const body = `
@@ -118,7 +119,7 @@ export function importing() {
         <span class="route__port route__port--b"><b>アデレード</b>Adelaide</span>
         <span class="route__ship" data-route-ship></span>
       </div>
-      <p class="plate route__cap">139° E · about 7,800 km</p>
+      <p class="plate route__cap">139° E · about 7,800 km in a straight line</p>
     </aside>
     <ol class="route__steps">
       ${steps
@@ -130,7 +131,7 @@ export function importing() {
         ${
           s.extra === "grades"
             ? `<table class="grades" data-reveal style="--i:3"><caption class="vh">Japanese auction grades and what they usually mean</caption><thead><tr><th scope="col">Grade</th><th scope="col">What it usually means</th></tr></thead><tbody>${grades.map(([g, t]) => `<tr><th scope="row" class="num">${g}</th><td>${t}</td></tr>`).join("")}</tbody></table>
-        <p class="fine" data-reveal style="--i:4">Interiors are graded A to D, with A the cleanest. On the body diagram, A is a scratch, U a dent and W a repaired or wavy panel, each with a number from 1 (slight) to 3 (obvious). XX marks a panel that has been replaced.</p>
+        <p class="fine" data-reveal style="--i:4">Interiors are graded A to D, with A the cleanest. On the body diagram, A is a scratch, U a dent and W a repaired or wavy panel, each with a number from 1 (slight) to 3 (obvious), or 4 at some auction houses. XX marks a panel that has been replaced.</p>
         <div class="note" data-reveal style="--i:5"><p><b>Ask for the sheet.</b> Tokyo Prestige does not show auction sheets on its listings yet. Every car page here has an “ask for it” link for the auction sheet and grade.</p></div>`
             : ""
         }
@@ -284,7 +285,7 @@ export function servicing() {
       <p class="eyebrow">Book it in</p>
       <h2 class="h2">Tell us about the car.</h2>
       <p class="lede">Say what it is and what it needs. The workshop will call to arrange a time.</p>
-      <p class="fine" style="margin-top:16px">Bought your car elsewhere? That is fine. The workshop services Japanese imports and prestige cars whoever sold them.</p>
+      <p class="fine" style="margin-top:16px">The workshop services all passenger vehicles, from Japanese imports to high-end European performance cars.</p>
     </div>
     <form class="form" data-form novalidate action="#book" method="post" data-endpoint="" data-done="The workshop will call to arrange a time.">
       ${HOOK}
@@ -331,7 +332,7 @@ export function about() {
     </figure>
     <div class="wrap abt__txt">
       <p class="eyebrow">About Tokyo Prestige</p>
-      <h1 class="display">Hand-picked Japanese cars, on Kensington Road.</h1>
+      <h1 class="display">Hand-picked Japanese imports, on Kensington Road.</h1>
       <p class="lede">A locally owned family business with over a decade in the trade, on Kensington Road at Marryatville.</p>
     </div>
   </header>
@@ -342,7 +343,7 @@ export function about() {
       <h2 class="h2" data-reveal style="--i:1">Make the car you have wanted easy to buy.</h2>
     </div>
     <div class="prose">
-      <p data-reveal>Importing a car yourself takes months and a fair amount of guesswork. Tokyo Prestige does that part first. The cars are hand-picked in Japan, brought here, complied and serviced, so you can see and drive the one you want today.</p>
+      <p data-reveal>Skip the lengthy import process and the guesswork. Tokyo Prestige does that part first: the cars are hand-picked, imported, complied and serviced, so you can see and drive the one you want today.</p>
       <p data-reveal style="--i:1">The aim is affordable, high-quality cars and a straightforward sale: nationwide delivery, video inspections for buyers who cannot visit, and independent inspections welcomed.</p>
       <p data-reveal style="--i:2"><a class="btn btn--ghost" href="/importing">How importing works ${icon.arrow}</a></p>
     </div>
@@ -495,6 +496,7 @@ export function contact() {
     body,
     css: ["/assets/css/pages.css"],
     js: ["/assets/js/pages.js"],
+    head: `<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
   });
 }
 

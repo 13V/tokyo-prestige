@@ -36,11 +36,16 @@ seal that reads 東京. A model with no checked katakana gets none. No rising su
 
 ## The two screens
 
-**Homepage, first screen.** A BNR34 from their stock comes out of the dark as one band of light crosses
-it, and the headline rises on the same beat: "Hand-picked in Japan. Here to drive in Adelaide." (their
-words: "hand-picked", "right here, right now"). The car is named like a plate, with its real price. The
-search is on the first screen on both sizes: text (model or code), make, body, budget, and a button that
-counts ("Show 62 cars"). On a phone the search sits under the thumb. *Findings: features 2 and 17.*
+**Homepage, first screen** (reworked after Troy's feedback on the first version). A showcase of four
+cars from their stock, one for each kind of buyer: the BNR34 GT-R, the Century, a Crown Hybrid and an
+Alphard. Each comes out of the dark as one band of light crosses it and its lamp comes on, with its model
+code set large behind the car. The featured car is a plate across the hero (name in katakana, code,
+kilometres, price as they state it) whose figures roll over like an odometer when the car changes. It
+rests on hover, has a pause button, and with a mouse a soft torch follows the pointer through the dark
+room. The headline: "Hand-picked Japanese imports. Here to drive in Adelaide." (their words:
+"hand-picked", "Japanese imported vehicles", "right here, right now"). The search is on the first screen
+on both sizes: text (model or code), make, body, budget, and a button that counts ("Show 62 cars").
+*Findings: features 2 and 17.*
 
 **Car page.** Top to bottom, the order a wary buyer needs:
 1. Gallery: swipe on a phone, mosaic on a desk, full screen on tap, each angle labelled.
