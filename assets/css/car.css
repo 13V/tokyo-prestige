@@ -227,7 +227,7 @@
   padding: 6px 10px;
   border: 1px solid var(--shu);
   border-radius: var(--r);
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
   font-size: var(--t-13);
   font-weight: 500;
 }
@@ -315,7 +315,7 @@
 .deal__mini svg {
   width: 18px;
   height: 18px;
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
 }
 .deal__lic {
   margin-top: var(--s-2);
@@ -452,7 +452,7 @@
 }
 .gap {
   padding: 2px 8px;
-  border: 1px dashed rgba(255, 74, 34, 0.6);
+  border: 1px dashed rgba(208, 64, 52, 0.6);
   border-radius: var(--r);
   color: var(--text-2);
   font-size: var(--t-14);
@@ -498,8 +498,8 @@
   height: 14px;
 }
 .rec__row--ask .rec__mark {
-  background: rgba(255, 74, 34, 0.14);
-  color: var(--shu);
+  background: rgba(208, 64, 52, 0.14);
+  color: var(--shu-t, var(--shu));
 }
 .rec__k {
   font-family: var(--mono);
@@ -533,7 +533,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
   font-weight: 600;
   font-size: var(--t-14);
 }
@@ -706,7 +706,7 @@
   border-radius: 50%;
   background: var(--text);
   border: 0;
-  box-shadow: 0 0 0 0 rgba(255, 74, 34, 0.3);
+  box-shadow: 0 0 0 0 rgba(208, 64, 52, 0.3);
   transition:
     box-shadow var(--d-state) var(--ease),
     transform var(--d-press) var(--ease);
@@ -720,13 +720,13 @@
 }
 .range:active::-webkit-slider-thumb {
   transform: scale(1.15);
-  box-shadow: 0 0 0 8px rgba(255, 74, 34, 0.22);
+  box-shadow: 0 0 0 8px rgba(208, 64, 52, 0.22);
 }
 .range:focus-visible {
   outline: none;
 }
 .range:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgba(255, 74, 34, 0.5);
+  box-shadow: 0 0 0 4px rgba(208, 64, 52, 0.5);
 }
 .est__out {
   display: grid;
@@ -906,7 +906,7 @@
   border-bottom: 1px solid var(--line);
 }
 .steps .code {
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
   padding-top: 4px;
 }
 .steps h3 {

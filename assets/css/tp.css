@@ -387,7 +387,7 @@ button {
   height: 8px;
   border-radius: 50%;
   background: var(--shu);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.18);
+  box-shadow: 0 0 0 3px rgba(208, 64, 52, 0.18);
 }
 .status--contract::before {
   background: transparent;
@@ -530,7 +530,7 @@ button {
 .hdr__call svg {
   width: 16px;
   height: 16px;
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
 }
 .hdr__lic {
   display: none;
@@ -948,7 +948,7 @@ textarea.input {
   outline: none;
   border-color: var(--shu);
   background-color: var(--ink-3);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.28);
+  box-shadow: 0 0 0 3px rgba(208, 64, 52, 0.28);
 }
 .input[aria-invalid="true"] {
   border-color: var(--bad);
@@ -1129,9 +1129,9 @@ textarea.input {
 .ph {
   position: relative;
   padding: var(--s-5);
-  border: 1px dashed rgba(255, 74, 34, 0.55);
+  border: 1px dashed rgba(208, 64, 52, 0.55);
   border-radius: var(--r);
-  background: repeating-linear-gradient(135deg, rgba(255, 74, 34, 0.05) 0 10px, transparent 10px 20px);
+  background: repeating-linear-gradient(135deg, rgba(208, 64, 52, 0.05) 0 10px, transparent 10px 20px);
 }
 .ph__tag {
   display: inline-block;
@@ -1204,7 +1204,7 @@ textarea.input {
 }
 @media (hover: hover) {
   .ftr a:hover {
-    color: var(--shu);
+    color: var(--shu-t, var(--shu));
   }
 }
 @media (min-width: 820px) {
@@ -1711,4 +1711,23 @@ html[data-look="figures"] .card__ask {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+
+/* ==========================================================================
+   The accent is the red of the Tokyo Prestige logo (measured from their TP-HR-logo.png: #d04034).
+   Fills use it with white text; red text on dark uses a lighter tint so it stays readable.
+   ========================================================================== */
+html:not([data-look="figures"]) {
+  --shu: #d04034;
+  --shu-press: #b5352a;
+  --shu-ink: #ffffff;
+  --shu-t: #f0695d;
+}
+html:not([data-look="figures"]) .btn--shu:hover {
+  --bg: #dc4a3e;
+}
+html:not([data-look="figures"]) .dock__btn--main,
+html:not([data-look="figures"]) .seal {
+  color: #fff;
 }

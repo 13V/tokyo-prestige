@@ -409,7 +409,7 @@ html.intro-done .hero__stage * {
 }
 .feat__codev {
   font-family: var(--mono);
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
   letter-spacing: 0.04em !important;
 }
 .feat__go {
@@ -495,7 +495,7 @@ html.intro-done .hero__stage * {
 .find__input:focus-visible {
   outline: none;
   border-color: var(--shu);
-  box-shadow: 0 0 0 3px rgba(255, 74, 34, 0.28);
+  box-shadow: 0 0 0 3px rgba(208, 64, 52, 0.28);
 }
 .find .select {
   background-color: rgba(19, 19, 22, 0.92);
@@ -914,7 +914,7 @@ html.intro-done .hero__stage * {
   border-bottom: 1px solid var(--line);
 }
 .why__list .code {
-  color: var(--shu);
+  color: var(--shu-t, var(--shu));
   padding-top: 5px;
 }
 .why__list h3 {
