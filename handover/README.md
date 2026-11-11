@@ -9,6 +9,8 @@ to GitHub: it was deployed from the build session). Code is on branch `claude/ec
   and a sent test-drive request, with the motion playing.
 - `screens/`: every page type on desktop and phone, the first screen and the whole page (52 images).
 - `design-directions.pdf`: the built direction and four alternatives (one built on Astryx), compared.
+- `design-directions-2.pdf`: a second set of four, each built on one memorable idea (the plate, the
+  catalogue, the arrivals board, the line map), with a pick. Mock-ups are in `../concepts/` (f to i).
 - The research is in `../research/`; what to ask the owner is in `../research/gaps.md`.
 
 ## Pages built

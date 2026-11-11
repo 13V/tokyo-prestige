@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concept I: The line map</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+<style>
+/* Concept I, "The line map": the stock drawn as a Tokyo-style rail map. Each make is a coloured line,
+   each car a numbered station (T for Toyota, L for Lexus, N for Nissan, K for kei). Buyers ride a line
+   to compare like with like, and change lines where two cars answer the same need. */
+:root { --bg:#fbfaf7; --ink:#14161a; --mute:#666a72; --rule:#e2e0d9; --T:#e2452b; --L:#1c4fa8; --N:#0d9a6c; --K:#e6a700; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--ink); font:16px/1.45 "Hanken Grotesk",sans-serif; }
+img { display:block; width:100%; height:100%; object-fit:cover; }
+.jp { font-family:"Zen Kaku Gothic New",sans-serif; font-weight:700; }
+.st { --c:var(--T); display:inline-grid; place-items:center; width:2.5em; height:2.5em; border-radius:50%; border:.3em solid var(--c); background:#fff; font-weight:800; font-size:14px; line-height:.95; text-align:center; flex:none; }
+.st small { display:block; font-size:.74em; font-weight:700; }
+.L { --c:var(--L); } .N { --c:var(--N); } .K { --c:var(--K); }
+header { display:flex; align-items:center; gap:26px; padding:0 32px; height:62px; border-bottom:1px solid var(--rule); background:#fff; }
+.logo { font-weight:800; font-size:18px; letter-spacing:.02em; display:flex; gap:10px; align-items:center; }
+.logo i { display:flex; } .logo i b { width:9px; height:22px; } .logo i b:nth-child(1) { background:var(--T); } .logo i b:nth-child(2) { background:var(--L); } .logo i b:nth-child(3) { background:var(--N); } .logo i b:nth-child(4) { background:var(--K); }
+header nav { display:flex; gap:22px; font-weight:500; font-size:15px; } header .sp { flex:1; } header small { color:var(--mute); font-size:12px; letter-spacing:.05em; }
+.call { background:var(--ink); color:#fff; padding:10px 16px; border-radius:999px; font-weight:700; }
+.top { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:30px; align-items:end; padding:26px 32px 6px; }
+h1 { font-weight:800; font-size:58px; line-height:.98; letter-spacing:-.03em; } h1 em { font-style:normal; color:var(--T); }
+.top p { margin-top:10px; font-size:17px; color:#3b3e45; max-width:52ch; }
+.key { display:grid; grid-template-columns:auto auto; gap:6px 22px; font-size:14px; font-weight:600; } .key span { display:flex; align-items:center; gap:8px; } .key i { width:30px; height:8px; border-radius:4px; background:var(--T); } .key b { color:var(--mute); font-weight:500; }
+.map { position:relative; margin:14px 32px 0; padding:22px 26px 20px; background:#fff; border:1px solid var(--rule); border-radius:16px; display:grid; gap:20px; }
+.ln { --c:var(--T); position:relative; display:grid; grid-template-columns:150px repeat(6,1fr); align-items:start; }
+.ln::before { content:""; position:absolute; left:150px; right:-26px; top:14px; height:10px; background:var(--c); border-radius:5px 0 0 5px; }
+.ln.short::before { right:auto; width:calc((100% - 150px) / 6 * 2 + 20px); border-radius:5px; }
+.ln .nm { font-weight:800; font-size:20px; line-height:1.1; padding-top:4px; } .ln .nm small { display:block; font-weight:500; font-size:13px; color:var(--mute); } .ln .nm .jp { color:var(--c); font-size:13px; letter-spacing:.14em; display:block; }
+.stop { position:relative; display:grid; justify-items:start; gap:5px; padding-right:12px; }
+.stop .st { font-size:13px; }
+.stop b { font-size:15px; line-height:1.15; } .stop span { font-size:13px; color:var(--mute); } .stop u { text-decoration:none; font-weight:700; color:var(--ink); }
+.stop em { font-style:normal; font-size:12px; font-weight:600; color:var(--mute); display:flex; gap:5px; align-items:center; border:1px dashed #b9bcc2; border-radius:999px; padding:2px 8px 2px 3px; } .stop em .st { font-size:7px; border-width:.36em; }
+.stop.on b { color:var(--c); } .stop.on .st { background:var(--c); color:#fff; box-shadow:0 0 0 5px color-mix(in srgb, var(--c) 22%, transparent); }
+.card { margin:16px 32px 26px; display:grid; grid-template-columns:250px minmax(0,1fr) auto; gap:22px; align-items:center; background:var(--ink); color:#fff; border-radius:16px; overflow:hidden; padding-right:24px; }
+.card figure { height:150px; } .card img { object-position:50% 62%; }
+.card .k { display:flex; gap:10px; align-items:center; font-size:13px; color:#b8bbc2; } .card .st { color:var(--ink); font-size:12px; }
+.card h2 { font-size:27px; font-weight:800; letter-spacing:-.015em; margin:6px 0 2px; } .card p { color:#b8bbc2; font-size:15px; }
+.card .r { text-align:right; } .card .r b { font-size:32px; font-weight:800; display:block; line-height:1; } .card .r small { color:#b8bbc2; } .card .r span { display:inline-block; margin-top:10px; background:var(--T); padding:11px 18px; border-radius:999px; font-weight:700; }
+.route, .dock, .detail { display:none; }
+
+@media (max-width:600px) {
+  header { padding:0 14px; height:56px; } header nav, header small { display:none; } .logo { font-size:15px; } .call { padding:8px 12px; font-size:14px; }
+  .top { grid-template-columns:1fr; padding:18px 14px 0; gap:12px; } h1 { font-size:36px; } .top p { font-size:15px; }
+  .key { display:flex; gap:6px; overflow:hidden; } .key span { border:1.5px solid var(--rule); background:#fff; border-radius:999px; padding:7px 11px; white-space:nowrap; } .key span:first-child { border-color:var(--T); } .key i { width:14px; } .key b { display:none; }
+  .map, .card { display:none; }
+  .route { display:block; margin:14px 14px 20px; background:#fff; border:1px solid var(--rule); border-radius:16px; padding:6px 14px 6px 12px; position:relative; }
+  .route::before { content:""; position:absolute; left:27px; top:24px; bottom:24px; width:8px; border-radius:4px; background:var(--T); }
+  .rs { position:relative; display:grid; grid-template-columns:auto minmax(0,1fr) 76px; gap:12px; align-items:center; padding:9px 0; }
+  .rs .st { font-size:12px; } .rs b { display:block; font-size:16px; line-height:1.15; } .rs span { font-size:13px; color:var(--mute); } .rs u { text-decoration:none; color:var(--ink); font-weight:700; }
+  .rs figure { height:54px; border-radius:8px; overflow:hidden; }
+  .rs .chg { grid-column:2/-1; display:flex; gap:6px; align-items:center; font-size:12px; font-weight:600; color:var(--mute); margin-top:-4px; } .rs .chg .st { font-size:8px; border-width:.34em; }
+  body.is-car .top, body.is-car .route { display:none; }
+  body.is-car .detail { display:block; padding-bottom:96px; }
+  .detail figure { aspect-ratio:4/3; } .detail img { object-position:50% 60%; }
+  .detail .bar { background:var(--T); color:#fff; display:flex; align-items:center; gap:10px; padding:8px 14px; font-weight:700; font-size:14px; } .detail .bar .st { color:var(--ink); font-size:11px; } .detail .bar span:last-child { margin-left:auto; opacity:.9; font-weight:500; }
+  .detail .in { padding:14px; } .detail h2 { font-size:28px; font-weight:800; letter-spacing:-.02em; line-height:1.05; }
+  .detail .pr { display:flex; gap:10px; align-items:baseline; margin-top:4px; } .detail .pr b { font-size:30px; font-weight:800; } .detail .pr span { color:var(--mute); }
+  .detail .nx { margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:8px; } .detail .nx div { border:1px solid var(--rule); background:#fff; border-radius:12px; padding:10px; font-size:13px; color:var(--mute); } .detail .nx b { display:block; color:var(--ink); font-size:15px; } .detail .nx div:last-child { text-align:right; }
+  .detail .chg { margin-top:8px; border:1px dashed #b9bcc2; border-radius:12px; padding:10px; display:flex; gap:10px; align-items:center; font-size:14px; } .detail .chg .st { font-size:11px; }
+  body.is-car .dock { display:grid; position:fixed; left:0; right:0; bottom:0; grid-template-columns:1fr 1fr 1.7fr; gap:8px; padding:10px 14px 14px; background:rgba(251,250,247,.95); border-top:1px solid var(--rule); }
+  .dock span { text-align:center; padding:14px 4px; border-radius:999px; font-weight:700; border:1.5px solid var(--ink); } .dock span:last-child { background:var(--T); color:#fff; border-color:var(--T); }
+}
+</style>
+</head>
+<body>
+<script>if (new URLSearchParams(location.search).get("s") === "car") document.body.classList.add("is-car");</script>
+<header>
+  <div class="logo"><i><b></b><b></b><b></b><b></b></i>Tokyo Prestige</div>
+  <nav><span>The map</span><span>Coming soon</span><span>How importing works</span><span>Finance</span><span>Servicing</span><span>About</span></nav>
+  <span class="sp"></span><small>LICENSED DEALER MVD 287394</small><span class="call">08 8336 4674</span>
+</header>
+<section class="top">
+  <div>
+    <h1>Find your <em>line.</em></h1>
+    <p>62 hand-picked Japanese imports in Adelaide, drawn as a map. Each make is a line, each car a stop. Ride one to compare like with like, or change where two cars do the same job.</p>
+  </div>
+  <div class="key"><span><i></i>Toyota <b>27 stops</b></span><span><i style="background:var(--L)"></i>Lexus <b>12 stops</b></span><span><i style="background:var(--N)"></i>Nissan <b>11 stops</b></span><span><i style="background:var(--K)"></i>Kei trucks <b>3 stops</b></span></div>
+</section>
+<section class="map">
+  <div class="ln">
+    <div class="nm"><span class="jp">トヨタ線</span>Toyota line<small>27 cars</small></div>
+    <div class="stop"><span class="st"><span>T<small>01</small></span></span><b>Crown Crossover RS</b><span>2023 · <u>$58,888</u></span></div>
+    <div class="stop"><span class="st"><span>T<small>02</small></span></span><b>Voxy Hybrid S-Z</b><span>2023 · <u>$49,888</u></span><em><span class="st N"></span>Change for Serena</em></div>
+    <div class="stop"><span class="st"><span>T<small>05</small></span></span><b>Corolla Touring W×B</b><span>2021 · <u>$29,888</u></span></div>
+    <div class="stop on"><span class="st"><span>T<small>06</small></span></span><b>Crown Hybrid G-Executive</b><span>2020 · <u>$48,888</u></span><em><span class="st L"></span>Change for LS 500</em></div>
+    <div class="stop"><span class="st"><span>T<small>08</small></span></span><b>Alphard Hybrid</b><span>2018 · <u>$54,888</u></span></div>
+    <div class="stop"><span class="st"><span>T<small>19</small></span></span><b>Century</b><span>2010 · <u>$48,888</u></span></div>
+  </div>
+  <div class="ln" style="--c:var(--L)">
+    <div class="nm"><span class="jp">レクサス線</span>Lexus line<small>12 cars</small></div>
+    <div class="stop"><span class="st L"><span>L<small>01</small></span></span><b>LBX Morizo RR</b><span>2025 · <u>$74,888</u></span></div>
+    <div class="stop"><span class="st L"><span>L<small>02</small></span></span><b>RX 450h F Sport</b><span>2021 · <u>$66,888</u></span></div>
+    <div class="stop"><span class="st L"><span>L<small>03</small></span></span><b>LS 500</b><span>2019 · <u>$68,888</u></span></div>
+    <div class="stop"><span class="st L"><span>L<small>04</small></span></span><b>LS 460 Version C</b><span>2016 · <u>$33,888</u></span></div>
+    <div class="stop"><span class="st L"><span>L<small>05</small></span></span><b>GS F</b><span>2015 · <u>$73,888</u></span></div>
+    <div class="stop"><span class="st L"><span>L<small>08</small></span></span><b>IS 350 Version L</b><span>2007 · <u>$18,888</u></span></div>
+  </div>
+  <div class="ln" style="--c:var(--N)">
+    <div class="nm"><span class="jp">日産線</span>Nissan line<small>11 cars</small></div>
+    <div class="stop"><span class="st N"><span>N<small>01</small></span></span><b>Serena Highway Star</b><span>2021 · <u>$33,888</u></span></div>
+    <div class="stop"><span class="st N"><span>N<small>02</small></span></span><b>Skyline 400R</b><span>2021 · <u>$52,888</u></span></div>
+    <div class="stop"><span class="st N"><span>N<small>04</small></span></span><b>Skyline 370GT Type S</b><span>2010 · <u>$18,888</u></span></div>
+    <div class="stop"><span class="st N"><span>N<small>07</small></span></span><b>Skyline Coupe 370GT</b><span>2009 · <u>$19,888</u></span></div>
+    <div class="stop"><span class="st N"><span>N<small>10</small></span></span><b>Skyline GT-R (BNR34)</b><span>2001 · <u>$229,888</u></span></div>
+    <div class="stop"><span class="st N"><span>N<small>11</small></span></span><b>Skyline GT-R Autech</b><span>1998 · <u>$109,888</u></span></div>
+  </div>
+  <div class="ln short" style="--c:var(--K)">
+    <div class="nm"><span class="jp">軽トラ線</span>Kei truck line<small>3 cars</small></div>
+    <div class="stop"><span class="st K"><span>K<small>01</small></span></span><b>Super Carry X Limited</b><span>2025 · <u>$28,888</u></span></div>
+    <div class="stop"><span class="st K"><span>K<small>02</small></span></span><b>Super Carry X</b><span>2024 · <u>$29,888</u></span></div>
+    <div class="stop"><span class="st K"><span>K<small>03</small></span></span><b>Carry KC refrigerated</b><span>2023 · <u>$37,888</u></span></div>
+  </div>
+</section>
+<section class="card">
+  <figure><img src="/img/cars/1452/1-960.avif" alt=""></figure>
+  <div><p class="k"><span class="st"><span>T<small>06</small></span></span>Toyota line · stock no. 1452 · GWS224</p><h2>2020 Toyota Crown Hybrid G-Executive</h2><p>24,710 km · silver · 3.5L V6 hybrid · next stop: Mark X 350RDS</p></div>
+  <div class="r"><b>$48,888</b><small>plus on-road costs</small><br><span>See this car</span></div>
+</section>
+
+<section class="route">
+  <div class="rs"><span class="st"><span>T<small>01</small></span></span><div><b>Crown Crossover RS Advanced</b><span>2023 · 29,278 km · <u>$58,888</u></span></div><figure><img src="/img/cars/1292/1-480.avif" alt=""></figure></div>
+  <div class="rs"><span class="st"><span>T<small>02</small></span></span><div><b>Voxy Hybrid S-Z</b><span>2023 · 25,865 km · <u>$49,888</u></span></div><figure><img src="/img/cars/1442/1-480.avif" alt=""></figure><p class="chg">Change for <span class="st N"></span> Serena Highway Star</p></div>
+  <div class="rs"><span class="st"><span>T<small>05</small></span></span><div><b>Corolla Touring W×B Hybrid</b><span>2021 · 51,224 km · <u>$29,888</u></span></div><figure><img src="/img/cars/1461/1-480.avif" alt=""></figure></div>
+  <div class="rs"><span class="st"><span>T<small>06</small></span></span><div><b>Crown Hybrid G-Executive</b><span>2020 · 24,710 km · <u>$48,888</u></span></div><figure><img src="/img/cars/1452/1-480.avif" alt=""></figure><p class="chg">Change for <span class="st L"></span> LS 500</p></div>
+  <div class="rs"><span class="st"><span>T<small>07</small></span></span><div><b>Mark X 350RDS</b><span>2019 · 54,228 km · <u>$36,888</u></span></div><figure><img src="/img/cars/1355/1-480.avif" alt=""></figure></div>
+  <div class="rs"><span class="st"><span>T<small>08</small></span></span><div><b>Alphard Hybrid</b><span>2018 · 73,119 km · <u>$54,888</u></span></div><figure><img src="/img/cars/9974441/1-480.avif" alt=""></figure></div>
+</section>
+<section class="detail">
+  <figure><img src="/img/cars/1452/1-960.avif" alt=""></figure>
+  <div class="bar"><span class="st"><span>T<small>06</small></span></span>Toyota line<span>Stock no. 1452 · GWS224</span></div>
+  <div class="in">
+    <h2>2020 Toyota Crown Hybrid G-Executive</h2>
+    <p class="pr"><b>$48,888</b><span>plus on-road costs</span></p>
+    <div class="nx"><div>← Previous stop<b>Corolla Touring W×B</b></div><div>Next stop →<b>Mark X 350RDS</b></div></div>
+    <div class="chg"><span class="st L"><span>L<small>03</small></span></span><span>Change here for the <b>Lexus LS 500</b>, 2019, $68,888</span></div>
+  </div>
+</section>
+<div class="dock"><span>Call</span><span>Ask</span><span>Test drive</span></div>
+</body>
+</html>
