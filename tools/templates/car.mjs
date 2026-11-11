@@ -5,11 +5,11 @@ const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 function similar(c) {
   const pool = cars.filter((o) => o.id !== c.id && o.status !== "under-contract");
   const score = (o) =>
-    (o.body === c.body ? 0 : 4) +
+    (o.body === c.body ? 0 : 2.5) +
     (o.make === c.make ? 0 : 1.5) +
     (o.model === c.model ? -2 : 0) +
     (o.status === c.status ? 0 : 1) +
-    (c.price && o.price ? Math.min(4, Math.abs(o.price - c.price) / 15000) : 1.5) +
+    (c.price && o.price ? Math.min(9, Math.abs(Math.log(o.price / c.price)) * 4) : 3) +
     Math.min(2, Math.abs(o.year - c.year) / 8);
   return pool.sort((a, b) => score(a) - score(b)).slice(0, 4);
 }
@@ -101,24 +101,26 @@ export function carPage(c) {
     k: "Kilometres",
     v: c.km != null ? `${km(c.km)} km, as listed` : "Not stated in the listing",
     s: soon
-      ? "Tokyo Prestige says: for vehicles it sources, an original deregistration certificate is provided, and the odometer reading is guaranteed for vehicles it imports directly. Ask for this car's certificate."
-      : "Tokyo Prestige says: for vehicles it sources, an original deregistration certificate is provided, and the odometer reading is guaranteed for vehicles it imports directly. Ask whether that applies to this car.",
+      ? "For vehicles we source, we provide the original deregistration certificate, and we guarantee the odometer reading on vehicles we import directly. Ask for this car's certificate."
+      : "For vehicles we source, we provide the original deregistration certificate, and we guarantee the odometer reading on vehicles we import directly. Ask us for this car's paperwork.",
     ok: c.km != null,
     src: "Listing; About and FAQ",
   });
-  rec.push({ k: "Auction grade and sheet", v: "Not published for this car", s: "Ask for the auction sheet and grade. A dealer that imported the car will have them.", ok: false, src: "Not on the listing", ask: "auction sheet" });
-  rec.push({ k: "Service history", v: serviceHistory ? cap(serviceHistory.toLowerCase()) : "Not stated in the listing", s: serviceHistory ? "Stated in the listing. Ask to see the records." : "Ask what records come with the car.", ok: !!serviceHistory, src: serviceHistory ? "Listing" : "Not on the listing", ask: serviceHistory ? null : "service records" });
+  rec.push({ k: "Auction grade and sheet", v: "On request", s: "Not shown on the listing. Ask and we will send what we hold for this car.", ok: false, src: "Not on the listing", ask: "auction sheet" });
+  rec.push({ k: "Service history", v: serviceHistory ? cap(serviceHistory.toLowerCase()) : "On request", s: serviceHistory ? "Stated in the listing. Ask to see the records." : "Not stated on the listing. Ask what records come with the car.", ok: !!serviceHistory, src: serviceHistory ? "Listing" : "Not on the listing", ask: serviceHistory ? null : "service records" });
   if (c.published?.australianDelivered) rec.push({ k: "Origin", v: "Australian delivered", s: "Sold new in Australia, not an import.", ok: true, src: "Listing" });
   rec.push({
     k: "Compliance",
     v: soon ? "Completed after arrival" : "Australian-compliant and ready for registration",
-    s: soon ? "Tokyo Prestige says every vehicle in its range is Australian-compliant and ready for registration before sale." : "Stated by Tokyo Prestige for every vehicle in its range. Cars are registered in South Australia on purchase.",
+    s: soon ? "Every vehicle in our range is Australian-compliant and ready for registration before sale." : "As is every vehicle in our range. Cars are registered in South Australia on purchase.",
     ok: !soon,
     src: "Listing; FAQ",
   });
-  rec.push({ k: "Title", v: "Guaranteed clear title", s: "Free from any ownership or finance issues, as Tokyo Prestige states for every car.", ok: true, src: "About" });
-  rec.push({ k: "Workshop", v: "Fully serviced before sale", s: "Workshop checked by Tokyo Prestige's own mechanics, and comprehensively detailed.", ok: true, src: "Listing; About" });
-  rec.push({ k: "Independent inspection", v: "Welcome", s: "Send your own inspector. Tokyo Prestige encourages buyers to do their own checks before any purchase.", ok: true, src: "About; FAQ" });
+  rec.push({ k: "Title", v: "Guaranteed clear title", s: "Free from any ownership or finance issues, on every car.", ok: true, src: "About" });
+  rec.push({ k: "Workshop", v: "Fully serviced before sale", s: "Workshop checked by our own qualified mechanics, and comprehensively detailed.", ok: true, src: "Listing; About" });
+  rec.push({ k: "Independent inspection", v: "Welcome", s: "Send your own inspector. We encourage every buyer to do their own checks before purchase.", ok: true, src: "About; FAQ" });
+
+  rec.sort((a, b) => Number(b.ok) - Number(a.ok)); // what is confirmed first, what to ask for last
 
   // ---- spec plate
   const spec = [
@@ -157,7 +159,7 @@ export function carPage(c) {
     ? `<p class="deal__price"><b class="num" data-count="${c.price}" data-pre="$">${money(c.price)}</b></p>
        <p class="deal__note">${esc(c.priceNote)}. <a href="#price">What that means</a></p>`
     : `<p class="deal__price deal__price--none">${soon ? "Price on arrival" : "Under contract"}</p>
-       <p class="deal__note">${soon ? "Tokyo Prestige has not priced this car yet. Ask to be told when it lands." : "A buyer has this car under contract. Ask to be told if it comes back, or about similar cars."}</p>`;
+       <p class="deal__note">${c.reserved ? "A buyer already has this car under contract. Ask to be told if it comes back, or when another one is on the way." : soon ? "Tokyo Prestige has not priced this car yet. Ask to be told when it lands." : "A buyer has this car under contract. Ask to be told if it comes back, or about similar cars."}</p>`;
 
   const actions = soon
     ? `<a class="btn btn--shu" href="#enquire" data-intent="notify">Tell me when it lands ${icon.arrow}</a>
@@ -176,7 +178,7 @@ export function carPage(c) {
     <div class="car__main">
       <div class="car__lead">
       <header class="car__head">
-        <p class="car__kicker">${jp ? `<span class="jp" lang="ja">${jp}</span>` : ""}<span class="status${st.cls}">${st.long}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : ""}</p>
+        <p class="car__kicker">${jp ? `<span class="jp" lang="ja">${jp}</span>` : ""}<span class="status${st.cls}">${c.reserved ? "Coming soon, already under contract" : st.long}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : ""}</p>
         <h1 class="car__title"><span class="num">${c.year}</span> ${esc(c.make)} ${esc(c.model)}</h1>
         <p class="car__codes">${c.modelCode ? `<span class="code car__code">${esc(c.modelCode)}</span>` : ""}${c.grade ? `<span class="car__grade">${esc(c.grade)}</span>` : c.gradeNeedsConfirming ? `<span class="car__grade muted">Grade to be confirmed</span>` : ""}</p>
         <p class="car__sub">${esc(sub)}</p>
@@ -227,7 +229,7 @@ export function carPage(c) {
 
       <section class="blk" aria-labelledby="rec-h" id="record">
         <div class="blk__top"><h2 class="blk__h" id="rec-h">Condition and history: what is on record</h2></div>
-        <p class="blk__lede">Only what Tokyo Prestige has published. Where something is not published, we say so and you can ask for it.</p>
+        <p class="blk__lede">What we can tell you about this car today, and what we will send you on request.</p>
         <ul class="rec">
           ${rec
             .map(
@@ -244,7 +246,7 @@ export function carPage(c) {
       <section class="blk seen" aria-labelledby="seen-h">
         <div>
           <h2 class="blk__h" id="seen-h">${n} photos here. See the rest on video.</h2>
-          <p class="blk__lede">${soon ? "These photos were taken in Japan. " : ""}Want the underside, the engine bay, a cold start or a close look at a mark? Tokyo Prestige offers video inspections, so you can check the car from anywhere.</p>
+          <p class="blk__lede">${soon ? "These photos were taken in Japan. " : ""}Want the underside, the engine bay, a cold start or a close look at a mark? We offer video inspections, so you can check the car from anywhere.</p>
         </div>
         <a class="btn btn--ghost" href="#enquire" data-intent="video">${icon.video} Request a walk-around video</a>
       </section>
@@ -257,7 +259,7 @@ export function carPage(c) {
           <div>
             <p class="cover__big num">${money(c.price)}</p>
             <p class="cover__note">${esc(c.priceNote)}</p>
-            <p class="fine">Tokyo Prestige lists its cars plus on-road costs. Ask for the drive-away figure for your state before you compare it with another car.</p>
+            <p class="fine">Our prices are listed plus on-road costs. Ask for the drive-away figure for your state before you compare it with another car.</p>
             <p style="margin-top:16px"><a class="btn btn--quiet" href="#enquire" data-intent="driveaway">Get the drive-away price ${icon.arrow}</a></p>
           </div>
           <ul class="ticks">
@@ -274,7 +276,7 @@ export function carPage(c) {
         <div class="est" data-est data-price="${c.price}">
           <div class="est__head">
             <h3 class="est__h">Repayment estimator</h3>
-            <p class="fine">An estimate only, not an offer of finance. Tokyo Prestige does not publish a rate, so you set it.</p>
+            <p class="fine">An estimate only, not an offer of finance. We do not publish a rate, so you set it.</p>
           </div>
           <noscript><p class="fine">The estimator needs JavaScript. Call ${dealer.phone} and the team will work a figure out with you.</p></noscript>
           <div class="est__grid" data-est-ui hidden>
@@ -297,7 +299,7 @@ export function carPage(c) {
               <a class="btn btn--quiet" href="#enquire" data-intent="question" data-opt="finance">Ask about finance ${icon.arrow}</a>
             </div>
           </div>
-          <p class="fine est__legal">The figure is the car's listed price less your deposit, repaid in equal instalments at the rate and term you chose. It leaves out on-road costs, fees and charges, and it is not a quote. Finance is arranged through Credit One, Tokyo Prestige's finance partner, and depends on approval. Ask for a written quote with the comparison rate before you decide.</p>
+          <p class="fine est__legal">The figure is the car's listed price less your deposit, repaid in equal instalments at the rate and term you chose. It leaves out on-road costs, fees and charges, and it is not a quote. Finance is arranged through Credit One, our finance partner, and depends on approval. Ask for a written quote with the comparison rate before you decide.</p>
         </div>
       </section>`
           : ""
@@ -344,7 +346,7 @@ export function carPage(c) {
         <div class="blk__top"><h2 class="blk__h" id="del-h">Buying from interstate</h2><span class="jp" lang="ja">全国配送</span></div>
         <ol class="steps">
           <li><span class="code">01</span><div><h3>See it without visiting</h3><p>Ask for a walk-around video of this car, and send your own inspector if you would like a second opinion. Third-party inspections are welcome.</p></div></li>
-          <li><span class="code">02</span><div><h3>Delivered Australia-wide</h3><p>Tokyo Prestige uses several freight companies and the car is insured in transit. To your door, or to a depot if you would rather save a little.</p></div></li>
+          <li><span class="code">02</span><div><h3>Delivered Australia-wide</h3><p>We use several freight companies and the car is insured in transit. To your door, or to a depot if you would rather save a little.</p></div></li>
           <li><span class="code">03</span><div><h3>Registering it at home</h3><p>Cars are registered in South Australia on purchase. If the car is leaving the state, you organise the roadworthy and registration where you live.</p></div></li>
         </ol>
         <p style="margin-top:20px"><a class="btn btn--quiet" href="#enquire" data-intent="question" data-opt="interstate" data-msg="Could you quote delivery to my postcode: ">Ask for a delivery quote ${icon.arrow}</a></p>
@@ -353,7 +355,7 @@ export function carPage(c) {
       <section class="blk" aria-labelledby="who-h">
         <div class="blk__top"><h2 class="blk__h" id="who-h">Who you are buying from</h2></div>
         <div class="who">
-          <figure class="who__pic shot"><img src="/img/site/yard-dusk-800.avif" srcset="/img/site/yard-dusk-800.avif 800w, /img/site/yard-dusk-1600.avif 1600w" sizes="(min-width: 1000px) 420px, 100vw" width="2560" height="1707" alt="The Tokyo Prestige showroom on Kensington Road, Marryatville, at dusk" loading="lazy" decoding="async"></figure>
+          <figure class="who__pic shot"><img src="/img/site/yard-night-800.avif" srcset="/img/site/yard-night-800.avif 800w, /img/site/yard-night-1600.avif 1600w" sizes="(min-width: 1000px) 420px, 100vw" width="2560" height="1707" alt="The Tokyo Prestige showroom on Kensington Road, Marryatville, at night with the sign lit" loading="lazy" decoding="async"></figure>
           <div class="who__txt">
             <p class="who__lede">A locally owned family business, with over a decade in Japanese imports and its own workshop.</p>
             <dl class="who__dl">
@@ -365,7 +367,7 @@ export function carPage(c) {
         </div>
         <div class="ph" style="margin-top:16px">
           <span class="ph__tag">Placeholder: reviews</span>
-          <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown because none could be read for this demo. See research/gaps.md.</p>
+          <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown yet: we need them from you.</p>
         </div>
       </section>
     </div>

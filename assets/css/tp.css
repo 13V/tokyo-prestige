@@ -75,7 +75,7 @@
   --s-7: 48px;
   --s-8: 64px;
   --s-9: 96px;
-  --s-10: clamp(96px, 11vw, 160px);
+  --s-10: clamp(80px, 9vw, 128px);
   --gutter: clamp(16px, 4vw, 56px);
   --wrap: 1360px;
 
@@ -412,11 +412,25 @@ button {
     border-color var(--d-state) var(--ease);
   border-bottom: 1px solid transparent;
 }
-.hdr.is-solid,
-.hdr--solid {
+/* the frosted ground is a layer behind the bar, not a filter on the bar itself: a filter here would
+   trap the phone menu (a fixed sheet inside the header) in a box the height of the header */
+.hdr::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(6, 6, 7, 0.82);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   backdrop-filter: blur(16px) saturate(1.2);
+  opacity: 0;
+  transition: opacity var(--d-state) var(--ease);
+}
+.hdr.is-solid::before,
+.hdr--solid::before {
+  opacity: 1;
+}
+.hdr.is-solid,
+.hdr--solid {
   border-bottom-color: var(--line);
 }
 .hdr__in {
@@ -724,6 +738,11 @@ button {
   text-transform: uppercase;
   border-radius: var(--r);
 }
+.card__tag--quiet {
+  background: rgba(6, 6, 7, 0.72);
+  color: var(--text-2);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
 .card__ticks {
   position: absolute;
   z-index: 2;
@@ -836,7 +855,12 @@ button {
   .card:hover .card__shot::after {
     opacity: 0.55;
   }
-  .card:hover .card__ticks {
+  .card:hover .card__tag--quiet {
+  background: rgba(6, 6, 7, 0.72);
+  color: var(--text-2);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+.card__ticks {
     opacity: 1;
   }
   .card:hover .card__go {
@@ -1154,6 +1178,7 @@ textarea.input {
 }
 .ftr li a {
   min-height: 44px;
+  min-width: 44px;
 }
 .ftr__big {
   font-size: var(--t-28);

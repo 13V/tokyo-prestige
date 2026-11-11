@@ -40,7 +40,7 @@
     max: (v) => `Under ${money(v)}`,
     km: (v) => `Under ${Number(v).toLocaleString("en-AU")} km`,
     trans: (v) => v,
-    status: (v) => (v === "available" ? "Available" : "Under contract"),
+    status: (v) => (v === "all" ? "Including under contract" : "Under contract"),
   };
   const field = (k) => form.elements[k];
   const state = () => Object.fromEntries(KEYS.filter((k) => field(k) && field(k).value.trim()).map((k) => [k, field(k).value.trim()]));
@@ -59,7 +59,11 @@
     if (s.max && !(c.price && c.price <= Number(s.max))) return false;
     if (s.km && !(c.km != null && c.km <= Number(s.km))) return false;
     if (s.trans && c.trans !== s.trans) return false;
-    if (s.status && c.status !== s.status) return false;
+    // by default the list is what can be bought today; under-contract cars are a choice in Status
+    if (root.dataset.mode === "stock") {
+      if (!s.status && c.status !== "available") return false;
+      if (s.status === "under-contract" && c.status !== "under-contract") return false;
+    }
     if (s.q) {
       const words = s.q.toLowerCase().split(/\s+/).filter(Boolean);
       if (!words.every((w) => c.forms.some((f) => f.startsWith(squash(w))))) return false;
@@ -88,6 +92,11 @@
   };
 
   let onPaint = null;
+  // a phone shows 24 cars at a time, so the page is not 35 screens long
+  const PAGE = 24;
+  let limit = PAGE;
+  const more = $("[data-more]");
+  const moreN = $("[data-more-n]");
   let shown = cards.length;
   const setCount = (n) => {
     $$("[data-tally]").forEach((el) => {
@@ -102,13 +111,15 @@
 
   const paint = (s) => {
     const list = cards.filter((c) => match(c, s)).sort(ORDER[sort.value] || ORDER[""]);
-    const keep = new Set(list);
+    const keep = new Set(list.slice(0, limit));
     cards.forEach((c) => (c.el.hidden = !keep.has(c)));
     list.forEach((c, n) => {
-      c.el.style.setProperty("--n", n);
+      c.el.style.setProperty("--n", n % PAGE);
       grid.append(c.el);
     });
     shown = list.length;
+    more.hidden = shown <= limit;
+    moreN.textContent = `Showing ${Math.min(limit, shown)} of ${shown}`;
     empty.hidden = shown > 0;
     grid.hidden = shown === 0;
   };
@@ -151,7 +162,8 @@
 
   // the grid reflows: cards on screen glide to their new places where the browser can do it,
   // otherwise the new set rises in
-  const apply = ({ url = true, animate = true } = {}) => {
+  const apply = ({ url = true, animate = true, keepLimit = false } = {}) => {
+    if (!keepLimit) limit = PAGE;
     syncModels();
     const s = state();
     const run = () => {
@@ -164,7 +176,9 @@
     if (animate && !calm && document.startViewTransition && near.length) {
       near.forEach((c) => (c.el.style.viewTransitionName = "c" + c.i));
       const t = document.startViewTransition(run);
-      t.finished.finally(() => near.forEach((c) => (c.el.style.viewTransitionName = "")));
+      const tidy = () => near.forEach((c) => (c.el.style.viewTransitionName = ""));
+      t.ready.catch(() => {}); // a newer change can cut this one short; that is fine
+      t.finished.then(tidy, tidy);
     } else {
       run();
       if (animate && !calm) {
@@ -194,6 +208,11 @@
   if (params.has("sort") && ORDER[params.get("sort")]) sort.value = params.get("sort");
   apply({ url: false, animate: false });
 
+  $("[data-more-btn]").addEventListener("click", () => {
+    limit += PAGE;
+    apply({ url: false, animate: false, keepLimit: true });
+  });
+
   let typing = 0;
   form.addEventListener("input", (e) => {
     if (e.target.type === "search") {
@@ -216,7 +235,7 @@
 
   // desk: the less-used filters sit behind "More filters", and open by themselves if one is set
   const moreBtn = $("[data-flt-more]", form);
-  const moreN = $("[data-flt-more-n]", form);
+  const moreBadge = $("[data-flt-more-n]", form);
   const fbody = $(".flt__body", form);
   const MORE = $$("[data-flt-more-box] select", form).map((el) => el.name);
   const setMore = (on) => {
@@ -225,8 +244,8 @@
   };
   const countMore = () => {
     const n = MORE.filter((k) => field(k).value).length;
-    moreN.hidden = n === 0;
-    moreN.textContent = n;
+    moreBadge.hidden = n === 0;
+    moreBadge.textContent = n;
     return n;
   };
   moreBtn.addEventListener("click", () => setMore(!fbody.classList.contains("is-more")));
@@ -235,11 +254,17 @@
 
   // phone: the form lives in a sheet; desk: it sits above the grid
   const wide = matchMedia("(min-width: 1000px)");
+  const sortField = sort.closest(".flt__sort");
+  const sortHome = sortField.parentElement;
   const place = () => {
     if (wide.matches) {
       if (sheet.open) sheet.close();
       inline.append(form);
-    } else sheet.append(form);
+      sortHome.append(sortField);
+    } else {
+      sheet.append(form);
+      $(".flt__body", form).append(sortField); // on a phone, Sort lives in the sheet with the filters
+    }
   };
   place();
   wide.addEventListener("change", place);

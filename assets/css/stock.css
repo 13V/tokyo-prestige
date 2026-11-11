@@ -246,8 +246,18 @@ html:not(.js) .flt {
 .flt__sheet .flt__grid {
   display: contents;
 }
-.flt__sheet .flt__field--q {
+.flt__sheet .flt__field--q,
+.flt__sheet .flt__sort {
   grid-column: 1 / -1;
+}
+.flt__sheet .flt__sort {
+  display: block;
+}
+.flt__sheet .flt__sort label {
+  position: static;
+  width: auto;
+  height: auto;
+  clip-path: none;
 }
 .flt__sheet .flt__form {
   display: flex;
@@ -482,6 +492,13 @@ html:not(.js) .flt {
     animation-duration: 460ms;
     animation-timing-function: var(--ease);
   }
+}
+.lst__more-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4);
+  padding-top: var(--s-6);
 }
 .lst__empty {
   display: grid;

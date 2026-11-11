@@ -13,10 +13,19 @@ export function listPage({ soon = false } = {}) {
   const bodies = BODY_ORDER.filter((b) => list.some((c) => c.body === b));
   const models = [...new Map(list.map((c) => [`${c.make}|${c.model}`, c])).values()].sort((a, b) => (a.make + a.model).localeCompare(b.make + b.model));
   const years = [...new Set(list.map((c) => c.year))].sort((a, b) => b - a);
-  const count = (fn) => list.filter(fn).length;
+  // counts beside the options are of cars for sale now, the same numbers the homepage search shows
+  const count = (fn) => list.filter((c) => (soon ? true : c.status === "available")).filter(fn).length;
   // default order: just arrived first, then newest
   const rank = (c) => (c.status === "available" ? 0 : c.status === "under-contract" ? 2 : 0) + (c.badge === "Just Arrived" ? -1 : 0);
   const sorted = [...list].sort((a, b) => rank(a) - rank(b) || b.year - a.year || (b.price || 0) - (a.price || 0));
+  // Coming soon has no prices or arrival dates to order by, so it opens on a mix: one of each body in turn
+  if (soon) {
+    const groups = BODY_ORDER.map((b) => sorted.filter((c) => c.body === b && c.status === "coming-soon"));
+    const held = sorted.filter((c) => c.status !== "coming-soon");
+    sorted.length = 0;
+    for (let i = 0; groups.some((g) => g[i]); i++) groups.forEach((g) => g[i] && sorted.push(g[i]));
+    sorted.push(...held);
+  }
 
   const sel = (id, name, label, any, opts) => `<div class="field"><label for="${id}">${label}</label><select class="select" id="${id}" name="${name}"><option value="">${any}</option>${opts}</select></div>`;
   const fMake = sel("f-make", "make", "Make", "Any make", makes.map((m) => opt(m, m, count((c) => c.make === m))).join(""));
@@ -25,8 +34,8 @@ export function listPage({ soon = false } = {}) {
   const fYear = sel("f-year", "year", "Year, from", "Any year", years.map((y) => opt(y, `${y} or newer`)).join(""));
   const fMax = soon ? "" : sel("f-max", "max", "Price, up to", "Any price", [20000, 30000, 40000, 50000, 75000, 100000].map((p) => opt(p, `Under ${money(p)}`)).join(""));
   const fKm = sel("f-km", "km", "Kilometres, up to", "Any kilometres", [20000, 50000, 80000, 100000, 150000].map((k) => opt(k, `Under ${k.toLocaleString("en-AU")} km`)).join(""));
-  const fTrans = sel("f-trans", "trans", "Transmission", "Any transmission", opt("Automatic", "Automatic", count((c) => c.transmissionType === "Automatic")) + opt("Manual", "Manual", count((c) => c.transmissionType === "Manual")));
-  const fStatus = soon ? "" : sel("f-status", "status", "Status", "Any status", opt("available", "Available", nAvail) + opt("under-contract", "Under contract", nContract));
+  const fTrans = sel("f-trans", "trans", "Gearbox", "Any gearbox", opt("Automatic", "Automatic", count((c) => c.transmissionType === "Automatic")) + opt("Manual", "Manual", count((c) => c.transmissionType === "Manual")));
+  const fStatus = soon ? "" : sel("f-status", "status", "Status", `Available (${nAvail})`, opt("all", "Available and under contract", nAvail + nContract) + opt("under-contract", "Under contract", nContract));
   // the first row is what most people use; the rest sits behind "More filters" on a desk
   const filters = `
       <div class="flt__field flt__field--q">
@@ -48,10 +57,10 @@ export function listPage({ soon = false } = {}) {
     <p class="lede">${
       soon
         ? `<span class="num">${nSoon}</span> cars bought in Japan and on their way to Adelaide. They are not priced yet. Find one you like and ask to be told when it lands.`
-        : `<span class="num">${nAvail}</span> cars you can see and drive today, and <span class="num">${nContract}</span> under contract. Prices are plus on-road costs.`
+        : `<span class="num">${nAvail}</span> cars you can see and drive today. Prices are plus on-road costs.`
     }</p>
     <nav class="lst__tabs" aria-label="Stock lists">
-      <a href="/stock"${soon ? "" : ' aria-current="page"'}>In stock <span class="num">${nAvail + nContract}</span></a>
+      <a href="/stock"${soon ? "" : ' aria-current="page"'}>In stock <span class="num">${nAvail}</span></a>
       <a href="/coming-soon"${soon ? ' aria-current="page"' : ""}>Coming soon <span class="num">${nSoon}</span></a>
     </nav>
   </header>
@@ -59,7 +68,7 @@ export function listPage({ soon = false } = {}) {
   <div class="flt" data-flt>
     <div class="wrap flt__bar">
       <button class="btn btn--quiet flt__open" type="button" data-flt-open aria-haspopup="dialog">${icon.search} Search and filter <span class="flt__n num" data-flt-n hidden></span></button>
-      <p class="flt__count" aria-live="polite"><b class="num" data-tally>${list.length}</b> <span data-tally-w>cars</span></p>
+      <p class="flt__count" aria-live="polite"><b class="num" data-tally>${soon ? list.length : nAvail}</b> <span data-tally-w>cars</span></p>
       <div class="field flt__sort"><label class="vh" for="f-sort">Sort by</label><select class="select" id="f-sort" name="sort" form="flt-form">
         <option value="">Sort: newest arrivals</option>${soon ? "" : `<option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option>`}<option value="km-asc">Kilometres: low to high</option><option value="year-desc">Year: newest first</option><option value="year-asc">Year: oldest first</option>
       </select></div>
@@ -70,7 +79,7 @@ export function listPage({ soon = false } = {}) {
         <div class="flt__body">${filters}</div>
         <div class="flt__foot">
           <button class="btn btn--ghost" type="reset" data-flt-reset>Clear all</button>
-          <button class="btn btn--shu" type="submit" data-flt-apply><span>Show <span class="num" data-tally>${list.length}</span> <span data-tally-w>cars</span></span></button>
+          <button class="btn btn--shu" type="submit" data-flt-apply><span>Show <span class="num" data-tally>${soon ? list.length : nAvail}</span> <span data-tally-w>cars</span></span></button>
         </div>
       </form>
     </div>
@@ -83,6 +92,7 @@ export function listPage({ soon = false } = {}) {
     <div class="cards cards--list" data-grid>
       ${sorted.map((c, i) => card(c, { lazy: i > 1, h: 2 })).join("\n")}
     </div>
+    <p class="lst__more-row" data-more hidden><button class="btn btn--ghost" type="button" data-more-btn>Show more cars ${icon.arrow}</button><span class="plate num" data-more-n></span></p>
     <div class="lst__empty" data-empty hidden>
       <h2 class="h3">No cars match that.</h2>
       <p class="lede">Try a wider search${soon ? "" : ", or look at what is coming soon"}. If you are after something in particular, tell the team and they will look for it.</p>
@@ -98,7 +108,7 @@ export function listPage({ soon = false } = {}) {
         <p class="eyebrow">Stock alert</p>
         <h2 class="h2" id="alert-h">Tell me when one lands.</h2>
         <p class="lede">Name the make and model you are waiting for. The team will contact you when one arrives in Adelaide, whether it is on this list or not.</p>
-        <p class="fine">Tokyo Prestige does not publish arrival dates. Ask about a particular car and the team will tell you where it is up to.</p>
+        <p class="fine">Arrival dates are not listed here. Ask about a particular car and the team will tell you where it is up to.</p>
       </div>
       <form class="form" data-form novalidate action="#alert" method="post" data-endpoint="" data-done="You are on the list. The team will be in touch when one lands.">
         <!-- HOOK: set data-endpoint to the real lead endpoint. Until then the form validates and shows its thank-you state, and sends nothing. -->

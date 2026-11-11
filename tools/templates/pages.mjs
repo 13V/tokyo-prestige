@@ -15,7 +15,7 @@ const pageHead = ({ eyebrow, title, jp, lede }) => `
 
 const reviewsPh = `<div class="ph" data-reveal>
       <span class="ph__tag">Placeholder: reviews</span>
-      <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown because none could be read for this demo. See research/gaps.md.</p>
+      <p>Three Google reviews go here, word for word, with the reviewer's name, the date and a link to the review. None are shown yet: we need them from you.</p>
     </div>`;
 
 const visit = `
@@ -44,7 +44,7 @@ export function importing() {
       h: "It starts at auction in Japan",
       p: [
         "A large share of used cars in Japan change hands at dealer auctions. Each car is looked over by the auction house's own inspector before it is offered.",
-        "Tokyo Prestige says its cars are hand-picked for quality, reliability and value.",
+        "We hand-pick our cars for quality, reliability and value.",
       ],
     },
     {
@@ -65,7 +65,7 @@ export function importing() {
       h: "Deregistered, then shipped south",
       p: [
         "Before a car leaves Japan it is deregistered, and the paperwork records its odometer reading. Then it is shipped to Australia. In a straight line, Japan and Adelaide are about 7,800 km apart, almost due north and south of each other.",
-        "Tokyo Prestige says an original deregistration certificate is provided for vehicles it sources, and that the odometer reading is guaranteed on vehicles it imports directly. Ask to see the certificate for the car you are looking at.",
+        "For vehicles we source, we provide the original deregistration certificate, and we guarantee the odometer reading on vehicles we import directly. Ask to see the certificate for the car you are looking at.",
       ],
       link: ["/coming-soon", `See the ${nSoon} cars on the way`],
     },
@@ -76,7 +76,7 @@ export function importing() {
       h: "Made ready for Australian roads",
       p: [
         "An imported used car has to be approved under Australia's Road Vehicle Standards Act before it can be registered. Cars 25 years or older come in under one pathway; newer cars must be a model on the Specialist and Enthusiast Vehicle register and are checked against an approved report for that model.",
-        "Since July 2021 an approved car is entered on the Register of Approved Vehicles, the online register that took over from the compliance plate. Tokyo Prestige sells its cars Australian-compliant and ready for registration.",
+        "Since July 2021 an approved car is entered on the Register of Approved Vehicles, the online register that took over from the compliance plate. Our cars are sold Australian-compliant and ready for registration.",
       ],
     },
     {
@@ -85,7 +85,7 @@ export function importing() {
       lat: "Adelaide, 35° S",
       h: "On the floor at Marryatville",
       p: [
-        "Each car is fully serviced by the dealership's own mechanics and comprehensively detailed before it goes on the floor. Then it is yours to look over, drive, and have inspected by anyone you choose.",
+        "Each car is fully serviced by our own mechanics and comprehensively detailed before it goes on the floor. Then it is yours to look over, drive, and have inspected by anyone you choose.",
         "Buying in South Australia, the car is registered here on purchase. Buying from interstate, it can be freighted to your door, and you arrange the roadworthy and registration at home.",
       ],
       link: ["/stock", `See the ${nAvail} cars here now`],
@@ -132,7 +132,7 @@ export function importing() {
           s.extra === "grades"
             ? `<table class="grades" data-reveal style="--i:3"><caption class="vh">Japanese auction grades and what they usually mean</caption><thead><tr><th scope="col">Grade</th><th scope="col">What it usually means</th></tr></thead><tbody>${grades.map(([g, t]) => `<tr><th scope="row" class="num">${g}</th><td>${t}</td></tr>`).join("")}</tbody></table>
         <p class="fine" data-reveal style="--i:4">Interiors are graded A to D, with A the cleanest. On the body diagram, A is a scratch, U a dent and W a repaired or wavy panel, each with a number from 1 (slight) to 3 (obvious), or 4 at some auction houses. XX marks a panel that has been replaced.</p>
-        <div class="note" data-reveal style="--i:5"><p><b>Ask for the sheet.</b> Tokyo Prestige does not show auction sheets on its listings yet. Every car page here has an “ask for it” link for the auction sheet and grade.</p></div>`
+        <div class="note" data-reveal style="--i:5"><p><b>Ask for the sheet.</b> Auction sheets are not shown on our listings yet. Every car page has an “ask for it” link for the auction sheet and grade.</p></div>`
             : ""
         }
         ${s.link ? `<p data-reveal style="--i:3"><a class="btn btn--ghost" href="${s.link[0]}">${s.link[1]} ${icon.arrow}</a></p>` : ""}
@@ -151,7 +151,7 @@ export function importing() {
           ["The deregistration certificate", "The Japanese paperwork that records the odometer reading before export."],
           ["The service history", "What came with the car, and what the workshop did before sale."],
           ["A walk-around video", "The underside, the engine bay, a cold start and any marks, on camera."],
-          ["An independent inspection", "Send your own inspector. Tokyo Prestige welcomes third-party inspections."],
+          ["An independent inspection", "Send your own inspector. We welcome third-party inspections."],
           ["The drive-away price", "Listings are plus on-road costs. Ask for the full figure for your state."],
         ]
           .map(([h, p], i) => `<li data-reveal style="--i:${i % 3}"><span class="code">0${i + 1}</span><h3>${h}</h3><p>${p}</p></li>`)
@@ -178,13 +178,13 @@ export function finance() {
   const mid = 29888;
   const body = `
 <div class="pg">
-  ${pageHead({ eyebrow: "Finance", title: "Finance, arranged in house", lede: "Tokyo Prestige arranges finance through Credit One, its finance partner. Talk it through with the sales team, or work out a rough figure here first." })}
+  ${pageHead({ eyebrow: "Finance", title: "Finance, arranged for you", lede: "We arrange finance through Credit One, our finance partner. Talk it through with the sales team, or work out a rough figure here first." })}
 
   <section class="wrap pg__sec">
     <div class="est est--page" data-est data-price="${mid}">
       <div class="est__head">
         <h2 class="est__h">Repayment estimator</h2>
-        <p class="fine">An estimate only, not an offer of finance. Tokyo Prestige does not publish a rate, so you set it.</p>
+        <p class="fine">An estimate only, not an offer of finance. We do not publish a rate, so you set it.</p>
       </div>
       <noscript><p class="fine">The estimator needs JavaScript. Call ${dealer.phone} and the team will work a figure out with you.</p></noscript>
       <div class="est__grid" data-est-ui hidden>
@@ -265,7 +265,7 @@ export function servicing() {
   ];
   const body = `
 <div class="pg">
-  ${pageHead({ eyebrow: "The workshop", title: "Servicing", jp: "サービス", lede: "Tokyo Prestige does not only source, import and sell cars. Its own qualified mechanic services, rebuilds and upgrades them, with the parts network to keep a Japanese import on the road." })}
+  ${pageHead({ eyebrow: "The workshop", title: "Servicing", jp: "サービス", lede: "We do not only source, import and sell cars. Our own qualified mechanic services, rebuilds and upgrades them, and we can source and fit parts for your Japanese import." })}
 
   <section class="wrap pg__sec svc">
     ${groups
@@ -316,9 +316,9 @@ export function about() {
   const why = [
     ["Knowledgeable staff", "The team loves everything JDM and knows these cars inside and out."],
     ["Clear title", "Every car has a guaranteed clear title, free from ownership or finance issues."],
-    ["Guaranteed odometer reading", "For vehicles imported directly by Tokyo Prestige."],
+    ["Guaranteed odometer reading", "On vehicles we import directly."],
     ["Third-party inspections", "Welcome, so you know what you are buying."],
-    ["Workshop checked", "By the dealership's own qualified mechanics."],
+    ["Workshop checked", "By our own qualified mechanics."],
     ["Finance in house", "Arranged for you through Credit One."],
     ["Video inspections", "See every detail of a car from anywhere."],
     ["Warranty", "Options from 1 to 5 years."],
@@ -343,14 +343,14 @@ export function about() {
       <h2 class="h2" data-reveal style="--i:1">Make the car you have wanted easy to buy.</h2>
     </div>
     <div class="prose">
-      <p data-reveal>Skip the lengthy import process and the guesswork. Tokyo Prestige does that part first: the cars are hand-picked, imported, complied and serviced, so you can see and drive the one you want today.</p>
+      <p data-reveal>Skip the lengthy import process and the guesswork. We do that part first: the cars are hand-picked, imported, complied and serviced, so you can see and drive the one you want today.</p>
       <p data-reveal style="--i:1">The aim is affordable, high-quality cars and a straightforward sale: nationwide delivery, video inspections for buyers who cannot visit, and independent inspections welcomed.</p>
       <p data-reveal style="--i:2"><a class="btn btn--ghost" href="/importing">How importing works ${icon.arrow}</a></p>
     </div>
   </section>
 
   <section class="wrap pg__sec">
-    <div class="sec__head"><p class="eyebrow" data-reveal>Why choose us</p><h2 class="h2" data-reveal style="--i:1">Eight things you can hold the dealership to.</h2></div>
+    <div class="sec__head"><p class="eyebrow" data-reveal>Why choose us</p><h2 class="h2" data-reveal style="--i:1">Eight things you can hold us to.</h2></div>
     <ol class="asks asks--4">
       ${why.map(([h, p], i) => `<li data-reveal style="--i:${i % 4}"><span class="code">0${i + 1}</span><h3>${h}</h3><p>${p}</p></li>`).join("\n      ")}
     </ol>
@@ -361,8 +361,6 @@ export function about() {
     <div class="pics">
       <figure class="shot" data-reveal>${img("yard-dusk", "The Tokyo Prestige showroom at dusk, seen from Kensington Road", { sizes: "(min-width: 900px) 60vw, 100vw" })}</figure>
       <figure class="shot" data-reveal style="--i:1">${img("showroom-floor", "A white Toyota Crown on the showroom floor at Tokyo Prestige", { sizes: "(min-width: 900px) 38vw, 100vw", w: 2048, h: 1536 })}</figure>
-      <figure class="shot" data-reveal style="--i:2">${img("yard-sign", "The Tokyo Prestige sign and forecourt with cars on display", { sizes: "(min-width: 900px) 38vw, 100vw" })}</figure>
-      <figure class="shot" data-reveal style="--i:3">${img("yard-dusk-wide", "The Tokyo Prestige yard from across Kensington Road, with cars lined up at the front", { sizes: "(min-width: 900px) 60vw, 100vw" })}</figure>
     </div>
   </section>
 
@@ -370,7 +368,7 @@ export function about() {
     <div class="sec__head"><p class="eyebrow" data-reveal>The people</p><h2 class="h2" data-reveal style="--i:1">Who you will deal with.</h2></div>
     <div class="ph" data-reveal>
       <span class="ph__tag">Placeholder: the team</span>
-      <p>Names, roles and photos of the people at Tokyo Prestige go here. Their current site has no real team information, so none is shown. See research/gaps.md.</p>
+      <p>Names, roles and photos of the people at Tokyo Prestige go here. None are shown yet: we need them from you.</p>
     </div>
     <div style="margin-top:16px">${reviewsPh}</div>
   </section>
@@ -400,7 +398,7 @@ export function about() {
 /* ------------------------------------------------------------------ FAQ */
 export function faq() {
   const qa = [
-    ["finance", "Do you offer finance?", ["Yes. Finance is arranged in house through Credit One, Tokyo Prestige's finance partner. Call the sales team to talk it through."], ["/finance", "Finance and the repayment estimator"]],
+    ["finance", "Do you offer finance?", ["Yes. We arrange finance through Credit One, our finance partner. Call the sales team to talk it through."], ["/finance", "Finance and the repayment estimator"]],
     [
       "warranty",
       "Do the cars come with a warranty?",
@@ -413,10 +411,10 @@ export function faq() {
         "If your car needs repairs under the statutory warranty, contact the dealer within the warranty period and before having the repairs done. Apart from excluded accessories, repairs should be completed free of charge with new or second-hand parts. Your warranty is extended by the time the dealer keeps your vehicle for repairs.",
       ],
     ],
-    ["odometer", "How do I know the odometer is correct?", ["There are several ways to check an odometer reading, from services in Japan to local services in Australia. For vehicles Tokyo Prestige sources, an original deregistration certificate is provided. Buyers are encouraged to do their own checks before any purchase."], ["/importing#step-3", "How a car's kilometres are recorded before export"]],
-    ["delivery", "Can you deliver to my state?", ["Yes. Tokyo Prestige uses several freight companies around Australia, and the car is insured while it is in transit. It can go to your door, or to a depot if you would rather save a little."]],
+    ["odometer", "How do I know the odometer is correct?", ["There are several ways to check an odometer reading, from services in Japan to local services in Australia. For vehicles we source, an original deregistration certificate is provided. We encourage buyers to do their own checks before any purchase."], ["/importing#step-3", "How a car's kilometres are recorded before export"]],
+    ["delivery", "Can you deliver to my state?", ["Yes. We use several freight companies around Australia, and the car is insured while it is in transit. It can go to your door, or to a depot if you would rather save a little."]],
     ["registration", "Are the cars ready to be registered?", ["Cars are registered in South Australia on purchase. If a car is sold out of the state, the buyer organises the roadworthy certificate and any local registration requirements."]],
-    ["servicing", "Do you service Japanese imports and prestige cars?", ["Yes. Tokyo Prestige has its own qualified mechanic and can source parts for Japanese imports and prestige cars. The workshop handles servicing, major work and modifications."], ["/servicing", "The workshop"]],
+    ["servicing", "Do you service Japanese imports and prestige cars?", ["Yes. We have our own qualified mechanic and can source parts for Japanese imports and prestige cars. The workshop handles servicing, major work and modifications."], ["/servicing", "The workshop"]],
   ];
   const strip = (h) => h.replace(/<li>/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
   const ld = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: qa.map(([, q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a.map(strip).join(" ") } })) };

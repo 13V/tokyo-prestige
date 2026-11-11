@@ -10,10 +10,14 @@ Static HTML, CSS and JavaScript. No framework, and no build step on Vercel.
 
 - `data/stock.json`: every car, captured from tokyoprestige.com.au on 11 Nov 2026. In production a feed
   from the dealer's system replaces this one file.
-- `node tools/build.mjs`: writes the pages from the stock file (`index.html`, `cars/<car>.html`). Run it
-  after the stock file changes and commit the result.
+- `node tools/build.mjs`: writes every page from the stock file (home, stock, coming soon, a page per car,
+  importing, finance, servicing, about, questions, contact, 404). Run it after the stock file changes and
+  commit the result.
 - `node tools/serve.mjs 4173`: local preview that serves clean URLs the way Vercel does.
-- `assets/css/tp.css` holds the design tokens; `home.css` and `car.css` are the page styles.
+- `assets/css/tp.css` holds the design tokens; `home.css`, `stock.css`, `car.css` and `pages.css` are the
+  page styles. Scripts are in `assets/js/`, one per page type, and every page works without them.
+- `handover/` has the walkthrough clips, screenshots of every page, the numbers and what was not tested.
+- `concepts/` has three alternative design directions; `node tools/build-concepts.cjs` writes the PDF.
 - `img/cars/<stock no>/`: their photos as responsive AVIF. `tools/build-images.py` makes them from the
   originals; `tools/build-stock.py` makes the stock file from the crawl in `data/source-listings.json`.
 

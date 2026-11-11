@@ -178,9 +178,10 @@
       toggle.setAttribute("aria-label", userPaused ? "Play the featured cars" : "Pause the featured cars");
       setPaused();
     });
-    feat.addEventListener("pointerenter", () => ((hovering = true), setPaused()));
+    // a mouse resting on it or keyboard focus inside it; a tap on a phone must not leave it stopped
+    feat.addEventListener("pointerenter", (e) => e.pointerType === "mouse" && ((hovering = true), setPaused()));
     feat.addEventListener("pointerleave", () => ((hovering = false), setPaused()));
-    feat.addEventListener("focusin", () => ((focused = true), setPaused()));
+    feat.addEventListener("focusin", (e) => ((focused = e.target.matches(":focus-visible")), setPaused()));
     feat.addEventListener("focusout", () => ((focused = false), setPaused()));
     document.addEventListener("visibilitychange", setPaused);
     new IntersectionObserver((es) => es.forEach((e) => ((visible = e.isIntersecting), setPaused())), { threshold: 0.35 }).observe(hero);

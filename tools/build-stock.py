@@ -224,7 +224,7 @@ for r in src:
     slug = slugify(f"{s['year']} {make} {model} {code or ''} {grade or ''}")[:70].strip('-') + '-' + no
     title_clean = ' '.join(x for x in [s['year'], make, model, grade] if x)
     car = {
-      'id': no, 'slug': slug, 'status': status,
+      'id': no, 'slug': slug, 'status': status, 'reserved': bool(soon and uc),
       'badge': r['badge'] if r['badge'] in ('Just Arrived', 'Just Traded') else None,
       'title': title_clean, 'titleAsListed': r['title'].replace('\xa0', ' '),
       'year': int(s['year']), 'make': make, 'model': model, 'modelCode': code, 'grade': grade, 'gradeNeedsConfirming': bool(o.get('gradeGap')),

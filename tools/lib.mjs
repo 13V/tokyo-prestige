@@ -114,7 +114,7 @@ export function card(c, { sizes = "(min-width: 1100px) 320px, (min-width: 700px)
     : `<p class="card__price"><small>${c.status === "coming-soon" ? "Price on arrival" : "Under contract"}</small></p>`;
   return `<article class="card" data-card data-id="${c.id}" data-make="${esc(c.make)}" data-model="${esc(c.model)}" data-body="${esc(c.body)}" data-year="${c.year}" data-price="${c.price ?? ""}" data-km="${c.km ?? ""}" data-trans="${esc(c.transmissionType ?? "")}" data-status="${c.status}" data-q="${esc([c.make, c.model, c.modelCode, c.grade, c.year, c.body, c.colour, c.titleAsListed].filter(Boolean).join(" ").toLowerCase())}" data-angles="${angles.join(",")}">
   <div class="shot card__shot">${photo(c, 1, { sizes, lazy, max: 960 })}
-    <div class="card__top"><span class="status${st.cls}">${st.label}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : ""}</div>
+    <div class="card__top"><span class="status${st.cls}">${st.label}</span>${c.badge ? `<span class="card__tag">${esc(c.badge)}</span>` : c.reserved ? `<span class="card__tag card__tag--quiet">Under contract</span>` : ""}</div>
     <div class="card__ticks" aria-hidden="true">${angles.map((_, i) => `<i${i === 0 ? ' class="is-on"' : ""}></i>`).join("")}</div>
   </div>
   <div class="card__body">
