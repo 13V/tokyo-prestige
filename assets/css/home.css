@@ -980,3 +980,134 @@ html.intro-done .hero__stage * {
     gap: var(--s-8);
   }
 }
+
+
+/* ==========================================================================
+   The hero photos are finished night shots with room around the car. The whole car is always in view:
+   nothing fades over it, the headline sits beside it on a wide screen, and its nose stays clear of the
+   right edge. These rules come last and replace the earlier framing.
+   ========================================================================== */
+.hero__stage {
+  container-type: size;
+}
+.hs--pro picture,
+.hs--pro .hs__room {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero__frame {
+  /* where the 4:3 clips sit inside the photo of the first car */
+  --vx: 1.31%;
+  --vy: 1.11%;
+  --vw: 94.81%;
+  --vh: 95.24%;
+}
+.intro__wake,
+.hs__alive {
+  inset: auto;
+  left: var(--vx);
+  top: var(--vy);
+  width: var(--vw);
+  height: var(--vh);
+  /* soft edges, so a clip never shows as a box on the photo */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent), linear-gradient(180deg, transparent, #000 7%, #000 93%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.intro__wake {
+  transition-delay: 500ms;
+}
+@keyframes pro-in {
+  from {
+    opacity: 0;
+  }
+}
+html.intro-done .hero__stage .hs--pro.is-on .hs__room {
+  animation: pro-in 900ms var(--ease-io) both !important;
+  animation-duration: 900ms !important;
+}
+@media (max-width: 899px) {
+  .hero__frame {
+    top: 44px;
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+  .hero__shade {
+    background:
+      linear-gradient(180deg, rgba(6, 6, 7, 0.8) 0, transparent 90px),
+      linear-gradient(180deg, transparent 0, transparent calc(44px + 75vw - 30px), var(--night) calc(44px + 75vw + 2px));
+  }
+}
+@media (min-width: 900px) {
+  .hero__frame {
+    --vx: 38.29%;
+    --vy: 13.44%;
+    --vw: 56.88%;
+    --vh: 68.57%;
+    left: auto;
+    right: 0;
+    top: -4%;
+    margin: 0;
+    width: min(160cqh, 100cqw);
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+  /* the far wall of the room melts into the page well before the car begins */
+  .hs--pro .hs__room {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 20%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 20%);
+  }
+  .hero__shade {
+    background:
+      linear-gradient(180deg, rgba(6, 6, 7, 0.7) 0%, transparent 14%),
+      linear-gradient(0deg, var(--night) 0%, rgba(6, 6, 7, 0.9) 16%, transparent 29%);
+  }
+  .hero__copy {
+    max-width: 34vw;
+  }
+  .hero .display {
+    font-size: clamp(1.875rem, 3.1vw, 3.5rem);
+  }
+  .hero__lede {
+    max-width: 30ch;
+  }
+}
+
+/* tablets: a wider cut of the same photo, so the headline clears the car */
+@media (min-width: 600px) and (max-width: 899px) {
+  .hero__frame {
+    aspect-ratio: 16 / 10;
+  }
+  .hs--pro .hs__room {
+    object-fit: cover;
+    object-position: 50% 70%;
+  }
+  .hero__shade {
+    background:
+      linear-gradient(180deg, rgba(6, 6, 7, 0.8) 0, transparent 90px),
+      linear-gradient(180deg, transparent 0, transparent calc(44px + 62.5vw - 40px), var(--night) calc(44px + 62.5vw + 2px));
+  }
+  /* the clips are cut for 4:3, so on this crop the car simply rests */
+  .hs__alive,
+  .intro__wake {
+    display: none;
+  }
+}
+/* small laptops: the headline column is narrow, so the type steps down and the car keeps its room */
+@media (min-width: 900px) and (max-width: 1239px) {
+  .hero__copy {
+    max-width: 31vw;
+  }
+  .hero .display {
+    font-size: clamp(1.625rem, 2.7vw, 2.25rem);
+  }
+  .hero__lede {
+    font-size: var(--t-14);
+  }
+}

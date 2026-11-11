@@ -8,7 +8,7 @@ const FEATURED = [
   { id: "1452", lamp: [64, 52], pro: true }, // Crown Hybrid G-Executive
   { id: "9974441", lamp: [72, 43], pro: true }, // Alphard Hybrid
 ];
-const SIZES = "(min-width: 900px) 133vh, 88vh";
+const WSIZES = "min(100vw, 160vh)";
 const srcset = (id) => [800, 1280, 1920].map((w) => `/img/hero/${id}-${w}.avif ${w}w`).join(", ");
 
 export function home() {
@@ -63,18 +63,15 @@ export function home() {
     </div>
 `;
 
-  const imgAttrs = (id, i) => (i === 0 ? `src="/img/hero/${id}-1280.avif" srcset="${srcset(id)}"` : `data-src="/img/hero/${id}-1280.avif" data-srcset="${srcset(id)}"`);
-  const slide = ({ id, lamp, pro, car: c }, i) => `
-      <div class="hs${pro ? " hs--pro" : ""}${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
-        <img class="hs__room" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">
+  // Each hero photo is a retouched, widened version of the dealer's photo, cut once for wide screens
+  // (16:10, the car on the right with room beside it) and once for phones (4:3, the whole car).
+  const wide = (id) => `/img/hero/${id}-w-1280.avif 1280w, /img/hero/${id}-w-1920.avif 1920w`;
+  const tall = (id) => `/img/hero/${id}-p-800.avif 800w, /img/hero/${id}-p-1280.avif 1280w`;
+  const slide = ({ id }, i) => `
+      <div class="hs hs--pro${i === 0 ? " is-on" : ""}" data-hs>
+        <picture><source media="(min-width: 900px)" ${i === 0 ? "" : "data-"}srcset="${wide(id)}" sizes="${WSIZES}"><img class="hs__room" ${i === 0 ? `src="/img/hero/${id}-p-800.avif" srcset="${tall(id)}"` : `data-src="/img/hero/${id}-p-800.avif" data-srcset="${tall(id)}"`} sizes="100vw" width="1600" height="1200" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async"></picture>
 ${id === "512" ? `        <video class="hs__alive" data-alive muted loop playsinline preload="none" data-src="/img/hero/alive.mp4" tabindex="-1"></video>
-` : ""}        <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
-        <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-${id}.svg);mask-image:url(/assets/img/mask-${id}.svg)">
-          <img class="hs__img" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt="" decoding="async">
-          <span class="hs__beam"></span>
-        </div>
-        <span class="hs__lamp"></span>
-      </div>`;
+` : ""}      </div>`;
 
   const body = `
 <section class="hero" data-hero aria-labelledby="hero-h">
@@ -238,6 +235,6 @@ ${figuresHero}
     solidHeader: false,
     css: ["/assets/css/home.css"],
     js: ["/assets/js/home.js"],
-    head: `<script>!function(d){try{var c=navigator.connection;if(d.dataset.look!=="figures"&&!sessionStorage.getItem("tp-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!(c&&c.saveData))d.classList.add("intro")}catch(e){}}(document.documentElement)</script>\n<link rel="preload" as="image" href="/img/hero/${first.id}-1280.avif" imagesrcset="${srcset(first.id)}" imagesizes="${SIZES}" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
+    head: `<script>!function(d){try{var c=navigator.connection;if(d.dataset.look!=="figures"&&!sessionStorage.getItem("tp-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!(c&&c.saveData))d.classList.add("intro")}catch(e){}}(document.documentElement)</script>\n<link rel="preload" as="image" media="(min-width: 900px)" href="/img/hero/${first.id}-w-1280.avif" imagesrcset="/img/hero/${first.id}-w-1280.avif 1280w, /img/hero/${first.id}-w-1920.avif 1920w" imagesizes="${WSIZES}" fetchpriority="high">\n<link rel="preload" as="image" media="(max-width: 899px)" href="/img/hero/${first.id}-p-800.avif" imagesrcset="/img/hero/${first.id}-p-800.avif 800w, /img/hero/${first.id}-p-1280.avif 1280w" imagesizes="100vw" fetchpriority="high">\n<script type="application/ld+json">${JSON.stringify(dealerLd())}</script>\n`,
   });
 }

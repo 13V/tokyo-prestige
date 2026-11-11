@@ -60,6 +60,7 @@
   const load = (i) => {
     if (loaded.has(i)) return;
     loaded.add(i);
+    $$("source[data-srcset]", slides[i]).forEach((so) => (so.srcset = so.dataset.srcset));
     $$("img[data-src]", slides[i]).forEach((im) => {
       im.srcset = im.dataset.srcset;
       im.src = im.dataset.src;
@@ -67,7 +68,7 @@
   };
   const ready = (i) => {
     load(i);
-    const im = $(".hs__img", slides[i]);
+    const im = $(".hs__img", slides[i]) || $(".hs__room", slides[i]);
     return im.complete && im.naturalWidth ? Promise.resolve() : (im.decode ? im.decode().catch(() => {}) : new Promise((r) => im.addEventListener("load", r, { once: true })));
   };
   const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 1200));

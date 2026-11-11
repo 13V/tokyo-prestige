@@ -1351,3 +1351,13 @@ html:not(.js) .look {
   }
 }
 
+
+/* the bar never wraps: links stay on one line and the licence yields first */
+.nav a {
+  white-space: nowrap;
+}
+@media (max-width: 1279px) {
+  .hdr__lic {
+    display: none;
+  }
+}
