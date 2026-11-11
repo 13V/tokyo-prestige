@@ -167,7 +167,8 @@
   const v = document.querySelector("video[data-film]"), b = document.querySelector("[data-film-play]");
   if (!v || !b) return;
   const box = v.parentElement;
-  b.addEventListener("click", () => { v.play(); v.focus(); });
+  v.controls = false; // the page's own button starts it; without scripts the browser's controls stay
+  b.addEventListener("click", () => { v.controls = true; v.play(); v.focus(); });
   v.addEventListener("play", () => box.classList.add("is-playing"));
-  v.addEventListener("ended", () => { box.classList.remove("is-playing"); v.load(); });
+  v.addEventListener("ended", () => { box.classList.remove("is-playing"); v.controls = false; v.load(); });
 })();
