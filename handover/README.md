@@ -112,6 +112,8 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
      The room in it is invented. Small details of the car may differ from the real one.
   2. *The intro clip* (`img/hero/drift.mp4`, MiniMax H3, 7 s, once per visit): a black R34 drifts through a
      neon Tokyo street and the scene dissolves into that hero image. The car in motion is an illustration.
+  3. *The idle loop* (`img/hero/alive.mp4`, MiniMax H3, 6.6 s): on that hero image the headlights glow on and
+     fade and the wipers sweep once. It plays only while the GT-R is the car showing.
   Everything else is the dealer's own photography, untouched: the GT-R's car page and the Figures look still
   use the original photos. The clip is fetched after the page starts, skipped with reduced motion, data
   saving or if not ready in four seconds, and has a Skip button. **The dealer must approve both before a

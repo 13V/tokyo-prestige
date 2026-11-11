@@ -220,13 +220,13 @@
     const onScroll = () => scrollY > 120 && end(true);
     const can = (v) =>
       new Promise((res) => {
-        v.addEventListener("canplaythrough", () => res(true), { once: true });
+        v.addEventListener("canplay", () => res(true), { once: true });
         v.addEventListener("error", () => res(false), { once: true });
         v.preload = "auto";
         v.src = v.dataset.src;
         v.load();
       });
-    Promise.race([Promise.all([runV ? can(runV) : true, can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 4000))]).then((ok) => {
+    Promise.race([Promise.all([runV ? can(runV) : true, can(wakeV)]), new Promise((r) => setTimeout(() => r(null), 3000))]).then((ok) => {
       if (over) return;
       if (!ok || ok.includes(false)) return end(false);
       skip.hidden = false;
@@ -245,6 +245,27 @@
     skip.addEventListener("click", () => end(true));
     addEventListener("scroll", onScroll, { passive: true });
     addEventListener("keydown", (e) => e.key === "Escape" && end(true));
+  }
+
+  // the featured car idles: its loop plays only while that car is showing, on screen, in the dark look
+  const alive = $("[data-alive]", hero);
+  if (alive && !calm && !(navigator.connection && navigator.connection.saveData)) {
+    let got = false;
+    const aliveSet = () => {
+      const on = mine() && visible && !document.hidden && !root.classList.contains("intro") && alive.closest("[data-hs]").classList.contains("is-on");
+      if (on && !got) {
+        got = true;
+        alive.src = alive.dataset.src;
+        alive.addEventListener("playing", () => alive.classList.add("is-on"), { once: true });
+      }
+      if (!got) return;
+      on ? alive.play().catch(() => {}) : alive.pause();
+    };
+    new MutationObserver(aliveSet).observe(hero, { attributes: true, attributeFilter: ["class"], subtree: true });
+    new MutationObserver(aliveSet).observe(root, { attributes: true, attributeFilter: ["class", "data-look"] });
+    new IntersectionObserver(() => setTimeout(aliveSet, 0), { threshold: 0.35 }).observe(hero);
+    document.addEventListener("visibilitychange", aliveSet);
+    addEventListener("load", () => setTimeout(aliveSet, 1500), { once: true });
   }
 
   // on a phone, a swipe across the photo changes the car

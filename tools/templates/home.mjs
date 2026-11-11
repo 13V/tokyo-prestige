@@ -67,7 +67,8 @@ export function home() {
   const slide = ({ id, lamp, pro, car: c }, i) => `
       <div class="hs${pro ? " hs--pro" : ""}${i === 0 ? " is-on" : ""}" data-hs style="--lx:${lamp[0]}%;--ly:${lamp[1]}%">
         <img class="hs__room" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt=""${i === 0 ? ' fetchpriority="high"' : ""} decoding="async">
-        <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
+${pro ? `        <video class="hs__alive" data-alive muted loop playsinline preload="none" data-src="/img/hero/alive.mp4" tabindex="-1"></video>
+` : ""}        <p class="hs__code" style="--n:${c.modelCode.length}"><span>${esc(c.modelCode)}</span></p>
         <div class="hs__car" style="-webkit-mask-image:url(/assets/img/mask-${id}.svg);mask-image:url(/assets/img/mask-${id}.svg)">
           <img class="hs__img" ${imgAttrs(id, i)} sizes="${SIZES}" width="1920" height="1440" alt="" decoding="async">
           <span class="hs__beam"></span>

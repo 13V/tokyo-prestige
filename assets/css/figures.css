@@ -600,3 +600,13 @@ html[data-look="figures"] .figs--car {
   display: inline-block;
   white-space: pre;
 }
+
+/* the hero figures scale with the column so a long figure is never clipped */
+@media (min-width: 900px) {
+  html[data-look="figures"] .fh__figs .fig b {
+    font-size: clamp(1.875rem, 3.5vw, 3.75rem);
+  }
+}
+html[data-look="figures"] .fh__figs .fig b {
+  overflow: visible;
+}

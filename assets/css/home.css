@@ -58,6 +58,29 @@
 .hs--pro .hs__code {
   display: none;
 }
+/* The car idles: a short loop (headlights glow, one wiper sweep, the city flickers) that begins and ends
+   on the still, laid over it once it is playing */
+.hs__alive {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms var(--ease-io);
+}
+.hs__alive.is-on {
+  opacity: 1;
+}
+/* tablets: the photo spans the full width (it was offset for phones and left a dark strip) */
+@media (min-width: 600px) and (max-width: 899px) {
+  .hero__frame {
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
 /* the model code, set large behind the car */
 .hs__code {
   position: absolute;
