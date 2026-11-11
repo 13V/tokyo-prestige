@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lumen adl: a proposal for Tokyo Prestige</title>
+<meta name="description" content="A private proposal from Lumen adl to Tokyo Prestige: a working demo site, five design directions, and what automation and AI can do after it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/proposal/proposal.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<div class="prog" data-prog aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="mark" href="#top">Lumen adl<small>A proposal for Tokyo Prestige</small></a>
+    <nav aria-label="On this page">
+      <a href="#today">Today</a><a href="#demo">The demo</a><a href="#look">The look</a><a href="#team">For the team</a><a href="#after">Automation and AI</a><a href="#next">Next</a>
+    </nav>
+    <a class="pill light plain" href="https://tokyo-prestige.vercel.app/" target="_blank" rel="noopener">Open the demo</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-top">
+      <div class="reveal">
+        <p class="eyebrow">Prepared for Tokyo Prestige · November 2026</p>
+        <h1><span class="ln" style="--i:0"><span>A site that sells</span></span><span class="ln" style="--i:1"><span>the cars. A system</span></span><span class="ln" style="--i:2"><span>that does the chasing.</span></span></h1>
+      </div>
+      <div class="hero-side reveal" data-reveal style="--delay:.5s">
+        <p class="lede">We didn't want to describe it, so we built it: a working site with your 123 cars, your prices and your photos. This page shows what it does, the looks you can choose from, and what comes after.</p>
+        <div class="btns">
+          <a class="pill" href="https://tokyo-prestige.vercel.app/" target="_blank" rel="noopener">Open the live demo <i>→</i></a>
+          <a class="pill ghost plain" href="#after">What comes after</a>
+        </div>
+      </div>
+    </div>
+    <div class="devices reveal" data-develop>
+      <div class="dev-desk"><img src="/proposal/img/ours-desktop.webp" alt="The demo homepage on a desktop: a black Skyline GT-R lit in a dark showroom, with a stock search under it." width="1440" height="900"></div>
+      <div class="dev-phone"><img src="/proposal/img/ours-phone.webp" alt="The same homepage on a phone." width="780" height="1688"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="today">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">Today, and with the demo</p><h2><span class="ln" style="--i:0"><span>Same cars.</span></span><span class="ln" style="--i:1"><span>A different first minute.</span></span></h2></div>
+      <p class="reveal" data-reveal>Both screens show your homepage as a buyer first sees it. On yours, the first price is about nine screens down a phone. On the demo, a car, its price and the search are there before anyone scrolls.</p>
+    </div>
+    <ul class="versus reveal" style="list-style:none;padding:0">
+      <li class="side before">
+        <p class="side-label">Your site today</p>
+        <p class="side-title">A long scroll before the first car with a price.</p>
+        <div class="screen"><picture><source media="(max-width: 700px)" srcset="/proposal/img/theirs-phone.webp"><img src="/proposal/img/theirs-desktop.webp" alt="tokyoprestige.com.au today." loading="lazy" width="1400" height="875"></picture></div>
+      </li>
+      <li class="side after">
+        <p class="side-label">The demo</p>
+        <p class="side-title">A featured car with its price, and a search that counts as you type.</p>
+        <div class="screen"><picture><source media="(max-width: 700px)" srcset="/proposal/img/ours-phone.webp"><img src="/proposal/img/ours-desktop.webp" alt="The demo homepage." loading="lazy" width="1440" height="900"></picture></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="paper" aria-labelledby="h-num">
+  <div class="in">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">Measured, not claimed</p><h2 id="h-num"><span class="ln"><span>The car page, on a phone.</span></span></h2></div>
+      <p class="reveal" data-reveal>Most buyers arrive on a phone from a search or a social post, and land on one car. This is that page: the BNR34 GT-R, yours and ours, measured with the same tool on the same day.</p>
+    </div>
+    <div class="nums reveal" data-stagger>
+      <div class="card num" style="--i:0">
+        <p class="k">Speed score out of 100</p>
+        <p class="pair"><span class="now" data-count="99">99</span><span class="was">was <b>34</b></span></p>
+        <div class="bars"><div class="bar"><i style="--w:99%"></i></div><div class="bar old"><i style="--w:34%"></i></div></div>
+      </div>
+      <div class="card num" style="--i:1">
+        <p class="k">Seconds until the car appears</p>
+        <p class="pair"><span class="now"><span data-count="1.7" data-dp="1">1.7</span><small>s</small></span><span class="was">was <b>16.6 s</b></span></p>
+        <div class="bars"><div class="bar"><i style="--w:10%"></i></div><div class="bar old"><i style="--w:100%"></i></div></div>
+      </div>
+      <div class="card num" style="--i:2">
+        <p class="k">Page weight</p>
+        <p class="pair"><span class="now"><span data-count="0.47" data-dp="2">0.47</span><small>MB</small></span><span class="was">was <b>2.1 MB</b></span></p>
+        <div class="bars"><div class="bar"><i style="--w:22%"></i></div><div class="bar old"><i style="--w:100%"></i></div></div>
+      </div>
+    </div>
+    <div class="taps reveal" data-stagger>
+      <div class="card" style="--i:0"><div><h3>Find a Crown under $30,000</h3><p>On your stock page every filter reads “No options”. On the demo: type Crown, pick a budget, nine cars, no reload.</p></div><p class="vs"><b>4 taps</b>not possible today</p></div>
+      <div class="card" style="--i:1"><div><h3>Homepage to a sent test-drive request</h3><p>Call, Message and Book a test drive stay under the thumb on every car, and the form already knows which car.</p></div><p class="vs"><b>7 taps</b>about 12 today</p></div>
+    </div>
+    <p class="note">Lighthouse 12, phone profile, 11 November 2026. Your figures are from one run of tokyoprestige.com.au; ours are from three runs of the live demo (99, 100, 99). Your test-drive taps were counted from the forms on your site and not submitted.</p>
+  </div>
+</section>
+
+<section class="sec" id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">The demo</p><h2><span class="ln" style="--i:0"><span>It's built.</span></span><span class="ln" style="--i:1"><span>Go and use it.</span></span></h2></div>
+      <div class="reveal" data-reveal><p style="color:var(--muted);font-size:17px;max-width:44ch">Every one of your cars has its own page. The stock search filters without reloading. The forms check what is typed and thank the buyer; they send nowhere yet, by design.</p><p style="margin-top:18px"><a class="pill light" href="https://tokyo-prestige.vercel.app/" target="_blank" rel="noopener">tokyo-prestige.vercel.app <i>→</i></a></p></div>
+    </div>
+    <div class="clips reveal" data-reveal>
+      <div><div class="clip desk"><video data-clip muted loop playsinline preload="none" poster="/proposal/img/walk-desktop.jpg" src="/proposal/img/walk-desktop.mp4" aria-label="A 52 second walk through the demo on a desktop: homepage, stock search, a car page and a test-drive request."></video></div><p class="clip-cap">Desktop, 52 seconds: homepage, search, a car, a test-drive request.</p></div>
+      <div><div class="clip phone"><video data-clip muted loop playsinline preload="none" poster="/proposal/img/walk-phone.jpg" src="/proposal/img/walk-phone.mp4" aria-label="The same walk through on a phone, 48 seconds."></video></div><p class="clip-cap">Phone, 48 seconds.</p></div>
+    </div>
+    <div class="built reveal" data-stagger>
+      <div style="--i:0"><b>123 car pages</b><span>62 for sale, 8 under contract, 53 coming soon</span></div>
+      <div style="--i:1"><b>Stock search</b><span>By model, chassis code, body, budget, kilometres</span></div>
+      <div style="--i:2"><b>What is on record</b><span>Each fact with its source, and “ask for it”</span></div>
+      <div style="--i:3"><b>Coming soon</b><span>“Tell me when it lands” on every car</span></div>
+      <div style="--i:4"><b>How importing works</b><span>Auction, grades, shipping, compliance</span></div>
+      <div style="--i:5"><b>Finance</b><span>An estimator where the buyer sets the rate</span></div>
+      <div style="--i:6"><b>Servicing</b><span>The workshop, with a booking request</span></div>
+      <div style="--i:7"><b>Private</b><span>Hidden from Google until you say otherwise</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="look" aria-labelledby="h-look">
+  <div class="in">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">The look</p><h2 id="h-look"><span class="ln" style="--i:0"><span>Five directions.</span></span><span class="ln" style="--i:1"><span>The same cars and facts.</span></span></h2></div>
+      <p class="reveal" data-reveal>The demo is built in the first. The other four are drawn as two screens each, so you can choose a look before anything more is built. Each one answers something the research found.</p>
+    </div>
+    <div class="reveal" data-reveal>
+      <div class="seg" role="tablist" aria-label="Design directions">
+        <button role="tab" aria-selected="true" aria-controls="dir-a" id="tab-a">Showroom at night</button>
+        <button role="tab" aria-selected="false" aria-controls="dir-j" id="tab-j" tabindex="-1">The figures</button>
+        <button role="tab" aria-selected="false" aria-controls="dir-c" id="tab-c" tabindex="-1">The gallery</button>
+        <button role="tab" aria-selected="false" aria-controls="dir-d" id="tab-d" tabindex="-1">Find it fast</button>
+        <button role="tab" aria-selected="false" aria-controls="dir-e" id="tab-e" tabindex="-1">Light and dark</button>
+      </div>
+      <div class="dirs">
+        <article class="dir" id="dir-a" role="tabpanel" aria-labelledby="tab-a">
+          <div class="dir-shots"><img class="dk" src="/proposal/img/a-desktop.webp" alt="Showroom at night, homepage on a desktop." loading="lazy"><img class="ph" src="/proposal/img/a-phone-home.webp" alt="Homepage on a phone." loading="lazy"><img class="ph" src="/proposal/img/a-phone-car.webp" alt="Car page on a phone." loading="lazy"></div>
+          <div class="card dir-txt"><span><span class="badge live">Built: this is the demo</span></span><h3>The showroom at night</h3><dl><div><dt>The idea</dt><dd>Your own photos with the lights turned down. The room falls to near black, the car stays lit, and the page reads like a spec plate.</dd></div><div><dt>Who it puts first</dt><dd>The enthusiast and the luxury buyer. A $229,888 GT-R and a $29,888 Corolla both look looked-after.</dd></div><div><dt>Worth knowing</dt><dd>The most dramatic of the five. A dark site can feel exclusive to a family buyer.</dd></div></dl></div>
+        </article>
+        <article class="dir" id="dir-j" role="tabpanel" aria-labelledby="tab-j" hidden>
+          <div class="dir-shots"><img class="dk" src="/proposal/img/j-desktop.webp" alt="The figures, homepage on a desktop." loading="lazy"><img class="ph" src="/proposal/img/j-phone-home.webp" alt="Homepage on a phone." loading="lazy"><img class="ph" src="/proposal/img/j-phone-car.webp" alt="Car page on a phone." loading="lazy"></div>
+          <div class="card dir-txt"><span><span class="badge q">Drawn, not built</span></span><h3>The figures</h3><dl><div><dt>The idea</dt><dd>Every car opens with the same four figures in the same order: year, kilometres, gearbox, price. Large, light and calm, above one wide photo.</dd></div><div><dt>Who it puts first</dt><dd>The careful buyer. The four things people ask first are read before anything else.</dd></div><div><dt>Worth knowing</dt><dd>Kilometres are set as large as the price. That is honest, and it will not flatter every car.</dd></div></dl></div>
+        </article>
+        <article class="dir" id="dir-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+          <div class="dir-shots"><img class="dk" src="/proposal/img/c-desktop.webp" alt="The gallery, homepage on a desktop." loading="lazy"><img class="ph" src="/proposal/img/c-phone-home.webp" alt="Homepage on a phone." loading="lazy"><img class="ph" src="/proposal/img/c-phone-car.webp" alt="Car page on a phone." loading="lazy"></div>
+          <div class="card dir-txt"><span><span class="badge q">Drawn, not built</span></span><h3>The gallery</h3><dl><div><dt>The idea</dt><dd>Light and editorial. One car at a time, framed and labelled like an exhibit.</dd></div><div><dt>Who it puts first</dt><dd>The buyer after a Crown, a Lexus or a people mover who wants calm more than drama.</dd></div><div><dt>Worth knowing</dt><dd>It shows the showroom behind each car as it is, so it is at its best with plainer photos.</dd></div></dl></div>
+        </article>
+        <article class="dir" id="dir-d" role="tabpanel" aria-labelledby="tab-d" hidden>
+          <div class="dir-shots"><img class="dk" src="/proposal/img/d-desktop.webp" alt="Find it fast, homepage on a desktop." loading="lazy"><img class="ph" src="/proposal/img/d-phone-home.webp" alt="Homepage on a phone." loading="lazy"><img class="ph" src="/proposal/img/d-phone-car.webp" alt="Car page on a phone." loading="lazy"></div>
+          <div class="card dir-txt"><span><span class="badge q">Drawn, not built</span></span><h3>Find it fast</h3><dl><div><dt>The idea</dt><dd>A marketplace layout. Search and results are the first screen, with filters down the side.</dd></div><div><dt>Who it puts first</dt><dd>Family and budget buyers who already know roughly what they want.</dd></div><div><dt>Worth knowing</dt><dd>The most familiar and the quickest to use. It looks the least like a prestige dealer.</dd></div></dl></div>
+        </article>
+        <article class="dir" id="dir-e" role="tabpanel" aria-labelledby="tab-e" hidden>
+          <div class="dir-shots"><img class="dk" src="/proposal/img/e-desktop.webp" alt="Light and dark, homepage on a desktop." loading="lazy"><img class="ph" src="/proposal/img/e-phone-home.webp" alt="Homepage on a phone, light." loading="lazy"><img class="ph" src="/proposal/img/e-phone-car.webp" alt="Car page on a phone, dark." loading="lazy"></div>
+          <div class="card dir-txt"><span><span class="badge q">Drawn, not built</span></span><h3>Light and dark</h3><dl><div><dt>The idea</dt><dd>Built from Astryx, Meta's open design system, with your red as the one colour. It follows the buyer's phone: light by day, dark at night.</dd></div><div><dt>Who it puts first</dt><dd>Every buyer evenly. It reads like a well-made app more than an advertisement.</dd></div><div><dt>Worth knowing</dt><dd>The easiest to extend, since every new page is made of the same tested parts. Less drama than the first.</dd></div></dl></div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="team" aria-labelledby="h-team">
+  <div class="in">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">For the team at the yard</p><h2 id="h-team"><span class="ln" style="--i:0"><span>A website is the easy part.</span></span><span class="ln" style="--i:1"><span>This is the useful part.</span></span></h2></div>
+      <p class="reveal" data-reveal>Five things the site can do for the people who buy, list and sell the cars. Each one comes from something we found on your own site.</p>
+    </div>
+    <div class="team reveal" data-stagger>
+      <div class="card lift" style="--i:0"><p class="n">01<span class="badge live">Running at Lumen today</span></p><h3>Every enquiry on a salesperson's phone in seconds</h3><p>The alert carries the car, the stock number, what the buyer wants and a tap to call back. A copy goes to a simple pipeline so nothing is lost on a busy Saturday.</p><p class="why">Today: three separate pop-up forms and a reCAPTCHA.</p></div>
+      <div class="card lift" style="--i:1"><p class="n">02<span class="badge demo">Started in the demo</span></p><h3>A waiting list on every coming-soon car</h3><p>“Tell me when it lands” on each of the 53. You see who is waiting for which car, and everyone waiting is messaged the moment it arrives.</p><p class="why">Today: a list with no price and no way to follow a car.</p></div>
+      <div class="card lift" style="--i:2"><p class="n">03<span class="badge q">Proposed</span></p><h3>A weekly demand report</h3><p>What buyers searched for and did not find, which cars are viewed but never enquired on, and which arrivals have the longest list. Written for whoever buys at auction.</p><p class="why">It tells you what to buy next.</p></div>
+      <div class="card lift" style="--i:3"><p class="n">04<span class="badge demo">Started in the demo</span></p><h3>A listing checker</h3><p>Before a car goes live it is checked: chassis code against model, body type, gearbox, missing photos. Building the demo, we found about 25 listings that disagree with themselves.</p><p class="why">An enthusiast writes a dealer off for one wrong code.</p></div>
+      <div class="card lift" style="--i:4"><p class="n">05<span class="badge q">Proposed</span></p><h3>A walk-around video queue</h3><p>A buyer asks for a video, someone films it on a phone, and it goes onto the car's page for every later buyer and for social.</p><p class="why">Your About page already promises video inspections.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="after">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">After the site: automation and AI</p><h2><span class="ln" style="--i:0"><span>Follow one car</span></span><span class="ln" style="--i:1"><span>from Japan to a sale.</span></span></h2></div>
+      <p class="reveal" data-reveal>Automation does the chasing and the typing. AI drafts. A person approves anything that states a fact about a car. Step through the journey to see what happens at each stop.</p>
+    </div>
+    <div class="flow reveal" data-reveal data-flow>
+      <div class="rail" role="tablist" aria-label="The journey of a car">
+        <i class="fill" aria-hidden="true"></i>
+        <button class="stop" role="tab" data-n="1" aria-selected="true" aria-controls="st-1" id="sb-1">Bought in Japan</button>
+        <button class="stop" role="tab" data-n="2" aria-selected="false" aria-controls="st-2" id="sb-2" tabindex="-1">On the water</button>
+        <button class="stop" role="tab" data-n="3" aria-selected="false" aria-controls="st-3" id="sb-3" tabindex="-1">Lands in Adelaide</button>
+        <button class="stop" role="tab" data-n="4" aria-selected="false" aria-controls="st-4" id="sb-4" tabindex="-1">A buyer enquires</button>
+        <button class="stop" role="tab" data-n="5" aria-selected="false" aria-controls="st-5" id="sb-5" tabindex="-1">Test drive and sale</button>
+        <button class="stop" role="tab" data-n="6" aria-selected="false" aria-controls="st-6" id="sb-6" tabindex="-1">After delivery</button>
+      </div>
+      <div class="stages">
+        <div class="stage" id="st-1" role="tabpanel" aria-labelledby="sb-1">
+          <div><h3>Bought in Japan</h3><p>The car comes with an auction sheet in Japanese. Buyers ask for it before anything else.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag ai">AI drafts</span><span class="tag hand">A person approves</span></p><h4>Auction sheet reader</h4><p>Photograph the sheet. The inspector's notes are translated, and the grade, kilometres, chassis code and marked damage are pulled out into a draft listing for you to check.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>The sheet on the car's page</h4><p>Once approved, the sheet and its translation sit in the “what is on record” panel, where the demo today says “ask for it”.</p></div>
+          </div>
+        </div>
+        <div class="stage" id="st-2" role="tabpanel" aria-labelledby="sb-2" hidden>
+          <div><h3>On the water</h3><p>Weeks when the car earns nothing. It can be collecting buyers instead.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>A waiting list per car</h4><p>The car is listed as coming soon with “tell me when it lands”. Each request joins that car's list.</p></div>
+            <div class="auto"><p class="tags"><span class="tag ai">AI writes</span><span class="tag auto">Weekly</span></p><h4>The demand report</h4><p>Which arrivals have the longest list, and what people searched for that you do not have. In plain English, on Monday morning.</p></div>
+          </div>
+        </div>
+        <div class="stage" id="st-3" role="tabpanel" aria-labelledby="sb-3" hidden>
+          <div><h3>Lands in Adelaide</h3><p>One change of status sets everything else off.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Everyone waiting is told</h4><p>The waiting list for that car, and anyone who searched for one like it, gets a message with the link.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>The listing is checked</h4><p>Code against model, body, gearbox, all five angles present. Anything that disagrees is flagged before it is published.</p></div>
+            <div class="auto"><p class="tags"><span class="tag ai">AI drafts</span><span class="tag hand">A person approves</span></p><h4>One listing, everywhere</h4><p>The social post, the Marketplace text and the ad are drafted from the listing, in your voice, ready to approve.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Videos captioned</h4><p>A walk-around filmed on a phone is trimmed and captioned for the page and for social.</p></div>
+          </div>
+        </div>
+        <div class="stage" id="st-4" role="tabpanel" aria-labelledby="sb-4" hidden>
+          <div><h3>A buyer enquires</h3><p>The first reply usually wins. This is where speed matters most.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag live">Running at Lumen today</span></p><h4>An alert in seconds</h4><p>The enquiry reaches a phone with the car, what the buyer wants and a tap to call. A copy lands in the pipeline.</p></div>
+            <div class="auto"><p class="tags"><span class="tag ai">AI drafts</span><span class="tag hand">A person sends</span></p><h4>A summary and a drafted reply</h4><p>Interstate or local, finance, trade-in, and a reply written from that car's actual details. Edit and send in one tap.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Missed-call text back</h4><p>A missed call gets a text straight away with a link to reply.</p></div>
+            <div class="auto"><p class="tags"><span class="tag ai">AI answers</span><span class="tag hand">Hands over</span></p><h4>After-hours assistant</h4><p>On the site and Messenger. It answers only from your stock and your own FAQ, takes a test-drive request, and passes anything else to a person.</p></div>
+          </div>
+        </div>
+        <div class="stage" id="st-5" role="tabpanel" aria-labelledby="sb-5" hidden>
+          <div><h3>Test drive and sale</h3><p>The quiet days between an enquiry and a decision are where buyers drift.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Test-drive reminders</h4><p>A confirmation, and a reminder the day before, so fewer people fail to turn up.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Follow-up that runs itself</h4><p>No reply in two days, a price change on a car they asked about, or a similar car landing.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Sold in one tap</h4><p>The car moves to sold everywhere at once, and its page stays up with “find me one like this”.</p></div>
+            <div class="auto"><p class="tags"><span class="tag live">Running at Lumen today</span></p><h4>Ads tracked to the enquiry</h4><p>Which ad and which car produced each lead, so the budget follows what sells.</p></div>
+          </div>
+        </div>
+        <div class="stage" id="st-6" role="tabpanel" aria-labelledby="sb-6" hidden>
+          <div><h3>After delivery</h3><p>A buyer who is looked after sends the next one, and comes back to the workshop.</p></div>
+          <div class="autos">
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>A review request</h4><p>A few days after delivery, a short message with a link to leave a Google review.</p></div>
+            <div class="auto"><p class="tags"><span class="tag auto">Automatic</span></p><h4>Service reminders</h4><p>Past buyers are reminded when a service is due, with a link to book the workshop.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-nav"><button type="button" data-flow-prev disabled>← Back</button><span data-flow-at>1 of 6</span><button type="button" data-flow-next>Next stop →</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper" aria-labelledby="h-guard">
+  <div class="in">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">Where we hold the line</p><h2 id="h-guard"><span class="ln" style="--i:0"><span>AI is fast.</span></span><span class="ln" style="--i:1"><span>You are the licensed dealer.</span></span></h2></div>
+      <p class="reveal" data-reveal>A wrong claim about a car is your problem, not the software's. So these rules are built in, not left to good intentions.</p>
+    </div>
+    <div class="guard reveal" data-stagger>
+      <div class="card" style="--i:0"><h3>AI never states a fact about a car on its own</h3><p>Price, grade, kilometres, warranty and finance come from the listing or from a person. If it is not on record, the answer is “I'll get someone to confirm”.</p></div>
+      <div class="card" style="--i:1"><h3>No edited or generated car photos</h3><p>Every photo is the car as it stands in your showroom. A cleaned-up picture of a used car misleads a buyer.</p></div>
+      <div class="card" style="--i:2"><h3>A draft stays a draft</h3><p>The auction sheet reader will misread some handwriting. Nothing it produces is published until someone at the yard has checked it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="next" aria-labelledby="h-next">
+  <div class="in">
+    <div class="sec-head">
+      <div class="reveal"><p class="eyebrow">What happens next</p><h2 id="h-next"><span class="ln" style="--i:0"><span>Three steps,</span></span><span class="ln" style="--i:1"><span>one at a time.</span></span></h2></div>
+      <p class="reveal" data-reveal>Nothing here needs to be decided at once. The site stands on its own, and each automation is added only when the one before it is working.</p>
+    </div>
+    <div class="steps reveal" data-stagger>
+      <div class="card" style="--i:0"><h3>Choose the look</h3><p>Pick one of the five directions, or tell us what is missing. The demo is rebuilt in it, with your logo, your reviews and your team.</p></div>
+      <div class="card" style="--i:1"><h3>Connect it to the yard</h3><p>Stock comes in from however you load it today. Enquiries start reaching phones. The site goes live on your address.</p></div>
+      <div class="card" style="--i:2"><h3>Add the system</h3><p>The waiting list and the listing checker first, then the auction sheet reader and drafted replies, in the order that earns the most.</p></div>
+    </div>
+    <div class="asks reveal" data-reveal>
+      <h3>What we would need from you</h3>
+      <ul>
+        <li><span>1</span>How stock is loaded today: a dealer system, or typed in car by car.</li>
+        <li><span>2</span>Who answers enquiries, and on which phones.</li>
+        <li><span>3</span>One real auction sheet, so the reader can be shown working on your own car.</li>
+        <li><span>4</span>Your reviews, your team and your logo files. The demo marks these as placeholders.</li>
+      </ul>
+    </div>
+    <p class="note">What is real and what is not: the demo site is built and live. Lead alerts, the pipeline and ad tracking run on Lumen's own site today. The waiting list and listing checks are started in the demo. Everything else on this page is proposed, and none of it has been connected to your systems.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="reveal"><p class="eyebrow">Lumen adl · Adelaide</p><h2><span class="ln" style="--i:0"><span>Try the demo,</span></span><span class="ln" style="--i:1"><span>then call Troy.</span></span></h2></div>
+      <div class="contact reveal" data-reveal>
+        <span>Troy Watson, Lumen adl</span>
+        <a href="tel:+61421276482">0421 276 482</a>
+        <a href="mailto:hello@lumenadl.com">hello@lumenadl.com</a>
+        <a href="https://www.lumenadl.com" target="_blank" rel="noopener">lumenadl.com</a>
+        <p style="margin-top:18px"><a class="pill light" href="https://tokyo-prestige.vercel.app/" target="_blank" rel="noopener">Open the live demo <i>→</i></a></p>
+      </div>
+    </div>
+    <p class="wordmark" data-wordmark aria-hidden="true">Lumen adl</p>
+    <p class="small"><span>A private proposal for Tokyo Prestige, 216-218 Kensington Road, Marryatville. Not indexed.</span><span>All cars, prices and photos are Tokyo Prestige's own, from tokyoprestige.com.au on 11 November 2026.</span></p>
+  </div>
+</footer>
+<script src="/proposal/proposal.js" defer></script>
+</body>
+</html>

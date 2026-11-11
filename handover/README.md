@@ -8,7 +8,10 @@ to GitHub: it was deployed from the build session). Code is on branch `claude/ec
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page
   and a sent test-drive request, with the motion playing.
 - `screens/`: every page type on desktop and phone, the first screen and the whole page (52 images).
-- `design-directions.pdf`: the built direction and four alternatives (one built on Astryx), compared.
+- `design-directions.pdf`: five directions (the built one, the gallery, find it fast, Astryx, the figures),
+  compared, with a last page on automation and AI after the site.
+- The interactive proposal is `../proposal.html` (served at `/proposal`, noindex), in Lumen's own look;
+  screenshots of it are in `proposal/`.
 - `design-directions-2.pdf`: three further directions, each traced to a research finding and a Mobbin
   reference (the figures, the lineup, start from what you need), with a pick. Mock-ups: `../concepts/` (j to l).
 - The research is in `../research/`; what to ask the owner is in `../research/gaps.md`.
