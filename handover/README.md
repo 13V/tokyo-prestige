@@ -13,6 +13,14 @@ search, forms and wording are the same in both. Without JavaScript the site is t
 is hidden. The second look lives in `assets/css/figures.css`; the parts only one look uses are both in the
 page and each look hides the other's. The screenshots and clips in this folder show the dark look.
 
+## Instant enquiry on every car page
+
+Each car page has a short enquiry form beside the price (in the panel that follows the page on a desk,
+straight under the price on a phone): name, mobile or email, and a message that is already written for that
+car and stock number. Coming-soon cars get "tell me when it lands". Like the other forms it checks and thanks
+and sends nowhere; the hook is `data-endpoint`. The fuller form (test drive, hold, video, trade-in) is still
+further down the page.
+
 ## What is in this folder
 
 - `walkthrough-phone.mp4` (48 s) and `walkthrough-desktop.mp4` (52 s): homepage, stock search, a car page

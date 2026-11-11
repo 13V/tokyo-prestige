@@ -1145,3 +1145,67 @@
     }
   }
 }
+
+
+/* The instant enquiry beside the price */
+.quick {
+  display: grid;
+  gap: 10px;
+}
+.quick__h {
+  font-size: var(--t-16);
+  font-weight: 600;
+}
+.quick .field > label {
+  font-size: var(--t-12);
+}
+.quick .input {
+  min-height: 48px;
+}
+.quick textarea.input {
+  min-height: 84px;
+  font-size: var(--t-14);
+  line-height: 1.45;
+}
+.quick .btn {
+  width: 100%;
+}
+.quick__alt {
+  font-size: var(--t-13);
+  color: var(--text-2);
+  text-align: center;
+}
+.quick__alt a {
+  color: var(--text);
+}
+.quick-wrap {
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
+}
+.quick-wrap--inline {
+  margin-top: var(--s-5);
+  padding: var(--s-4);
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  scroll-margin-top: calc(var(--bar-h) + 12px);
+}
+@media (min-width: 1000px) {
+  .quick-wrap--inline {
+    display: none;
+  }
+}
+.quick-wrap .form__done {
+  padding: var(--s-4) 0;
+}
+
+/* one box, not two: the instant form sits straight in its panel */
+.quick.form {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+.quick-wrap .form__done {
+  border: 0;
+  background: none;
+}

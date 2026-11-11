@@ -167,6 +167,24 @@ export function carPage(c) {
     : `<a class="btn btn--shu" href="#enquire" data-intent="${contract ? "question" : "testdrive"}">${contract ? "Ask about this car" : "Book a test drive"} ${icon.arrow}</a>
        <a class="btn btn--ghost" href="tel:${dealer.tel}">${icon.phone} Call ${dealer.phone}</a>`;
 
+  // The instant enquiry: beside the price on a desk, straight under it on a phone. Two fields and a
+  // message that is already written; the fuller form (test drive, hold, video) stays further down.
+  // HOOK: like the other forms it only checks and thanks; set data-endpoint to send.
+  const ask = soon
+    ? `Hi, please tell me when the ${name} (stock ${c.id}) lands.`
+    : contract
+      ? `Hi, I'm interested in the ${name} (stock ${c.id}). Please tell me if it comes back, or about one like it.`
+      : `Hi, I'm interested in the ${name} (stock ${c.id}). Is it still available?`;
+  const quick = (id) => `<form class="form quick" data-form novalidate action="#" method="post" data-endpoint="" data-done="${soon ? "We will tell you when it lands." : "The sales team will reply during opening hours."}" aria-label="Enquire about this car">
+          <input type="hidden" name="car" value="${esc(name)}"><input type="hidden" name="stock" value="${c.id}"><input type="hidden" name="source" value="car-page-instant">
+          <p class="quick__h">${soon ? "Get told when it lands" : "Enquire about this car"}</p>
+          <div class="field"><label for="${id}-name">Name</label><input class="input" id="${id}-name" name="name" autocomplete="name" required><p class="field__err" hidden>Please add your name.</p></div>
+          <div class="field"><label for="${id}-contact">Mobile or email</label><input class="input" id="${id}-contact" name="contact" autocomplete="tel" inputmode="email" required><p class="field__err" hidden>Add a mobile number or an email so we can reply.</p></div>
+          <div class="field"><label for="${id}-msg">Message</label><textarea class="input" id="${id}-msg" name="message" rows="3">${esc(ask)}</textarea></div>
+          <button class="btn btn--shu" type="submit">${soon ? "Tell me when it lands" : "Send enquiry"} ${icon.arrow}</button>
+          <p class="quick__alt">Or call <a class="num" href="tel:${dealer.tel}">${dealer.phone}</a>${soon || contract ? "" : ` · <a href="#enquire" data-intent="testdrive">Book a test drive</a>`}</p>
+        </form>`;
+
   const body = `
 <div class="car" data-car data-id="${c.id}" data-title="${esc(name)}" data-price="${c.price ?? ""}">
   <nav class="wrap crumbs" aria-label="Breadcrumb">
@@ -188,6 +206,7 @@ export function carPage(c) {
         ${priceBlock}
         <div class="deal__acts">${actions}</div>
       </div>
+      <div class="quick-wrap quick-wrap--inline" id="quick">${quick("qi")}</div>
       </div>
 
       <dl class="nums" aria-label="Key facts">
@@ -383,10 +402,7 @@ export function carPage(c) {
         <p class="deal__top"><span class="status${st.cls}">${st.label}</span><span class="plate">Stock ${c.id}</span></p>
         <p class="deal__name">${esc(name)}</p>
         ${priceBlock}
-        <div class="deal__acts">
-          ${actions}
-          <a class="btn btn--quiet" href="#enquire" data-intent="question">${icon.msg} Send a message</a>
-        </div>
+        <div class="quick-wrap">${quick("qs")}</div>
         <ul class="deal__mini">
           <li><a href="#enquire" data-intent="${soon ? "hold" : "hold"}">${icon.key}<span>${soon ? "Hold it for me" : "Hold this car"}</span></a></li>
           <li><a href="#enquire" data-intent="video">${icon.video}<span>Walk-around video</span></a></li>
@@ -407,7 +423,7 @@ export function carPage(c) {
 
 <div class="dock" data-dock aria-label="Contact about this car">
   <a class="dock__btn" href="tel:${dealer.tel}">${icon.phone}<span>Call</span></a>
-  <a class="dock__btn" href="#enquire" data-intent="question">${icon.msg}<span>Message</span></a>
+  <a class="dock__btn" href="#quick">${icon.msg}<span>Message</span></a>
   <a class="dock__btn dock__btn--main" href="#enquire" data-intent="${soon ? "notify" : contract ? "question" : "testdrive"}">${soon ? "Tell me when it lands" : contract ? "Ask about it" : "Book a test drive"}</a>
 </div>
 
