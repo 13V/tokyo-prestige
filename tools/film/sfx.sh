@@ -14,7 +14,7 @@ gen subdrop 3 0.6 "Deep cinematic sub bass drop, one soft low boom with a long c
 gen whoosh1 1.2 0.6 "Clean fast airy whoosh transition, modern tech product video, short"
 gen whoosh2 1.5 0.6 "Smooth low swoosh with subtle shimmer tail, premium interface transition, short"
 gen click 0.5 0.8 "One loud sharp computer mouse click, close microphone, punchy and clear"
-gen tick 0.5 0.7 "Single soft high pitched digital pop blip, clean user interface notification, dry"
+# tick: one click cut from an ElevenLabs take of "One single short dry mechanical tick, like a precise camera dial click" (0.148 to 0.193 s, low-passed at 7 kHz)
 gen type 2.2 0.7 "Fast soft mechanical keyboard typing, close and dry, no room"
 gen chime 1.6 0.6 "Bright positive success chime, two glassy notes rising, clean modern app sound"
 gen sold 1.2 0.6 "Satisfying soft stamp thud followed by a small bright ding, clean"

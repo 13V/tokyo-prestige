@@ -6,7 +6,7 @@ const names = [...new Set(cues.map((c) => c.n))];
 // trim the silence before each sound so it lands on its frame, and bring them to a common level
 const run = (a, o = {}) => execFileSync("ffmpeg", ["-nostdin", ...a], { stdio: ["ignore", "pipe", "pipe"], ...o });
 for (const n of names) {
-  const trim = ["amb", "pass"].includes(n) ? "anull" : "silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.01";
+  const trim = ["amb", "pass"].includes(n) ? "anull" : "silenceremove=start_periods=1:start_threshold=-40dB:start_silence=0.002";
   const det = require("child_process").spawnSync("ffmpeg", ["-nostdin", "-i", `${D}/audio/${n}.mp3`, "-af", trim + ",volumedetect", "-f", "null", "-"], { encoding: "utf8" }).stderr;
   const peak = parseFloat((det.match(/max_volume: (-?[\d.]+) dB/) || [0, "-6"])[1]);
   run(["-y", "-loglevel", "error", "-i", `${D}/audio/${n}.mp3`, "-af", `${trim},volume=${(-4 - peak).toFixed(1)}dB,afade=t=in:d=0.004`, "-ar", "48000", "-ac", "2", `${D}/out/sfx/${n}.wav`]);
