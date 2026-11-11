@@ -125,7 +125,7 @@
   transition: opacity 1600ms var(--ease-io);
 }
 .hero__air.is-on {
-  opacity: 0.7;
+  opacity: 0.58;
 }
 .hero__torch {
   position: absolute;

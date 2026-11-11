@@ -106,4 +106,8 @@ importing 97, about 96, contact 99, coming soon 97 to 98 (live).
   `gaps.md` lists each one.
 - **Photos.** All are the dealer's own. In the dark look the four hero cars have hand-traced outlines; a new
   hero car needs one drawn (about ten minutes each).
+- **The light in the dark hero** is a clip made with Higgsfield (model Seedance 2.5): a shaft of light on
+  black, with no car, person or object in it, screened over the dealer's photo so it can only brighten it.
+  It is the one generated asset on the site. It loads after the page, and not at all with reduced motion
+  or data saving on. File: `img/hero/air.mp4` (0.43 MB).
 - **The figures look** was checked in Chromium at 1440 and 390 wide; it has had less testing than the dark look.
