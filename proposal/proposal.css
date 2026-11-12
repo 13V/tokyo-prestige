@@ -292,3 +292,45 @@ html:not(.js) .film-play { display: none; }
 .asks.one { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
 @media (min-width: 1101px) { .team .card, .team .card:nth-child(-n + 2) { grid-column: auto; min-height: 0; } .team { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; } .team .card h3 { font-size: 19px; } .team .n { margin-bottom: 14px; flex-wrap: wrap; gap: 6px; } }
 @media (max-width: 1000px) { .asks.one { grid-template-columns: 1fr; } }
+
+/* ---------- the phone pass ---------- */
+.jump, .dockbar { display: none; }
+@media (max-width: 1000px) {
+  .hdr .hdr-demo { display: none; }
+  .jump { display: block; margin-left: auto; position: relative; }
+  .jump summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 99px; background: rgba(244, 244, 241, 0.1); box-shadow: inset 0 0 0 1px rgba(244, 244, 241, 0.2); font-size: 15px; }
+  .jump summary::-webkit-details-marker { display: none; }
+  .jump summary::after { content: ""; width: 9px; height: 9px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-3px) rotate(45deg); transition: transform 0.25s var(--ease); }
+  .jump[open] summary::after { transform: translateY(2px) rotate(225deg); }
+  .jump nav { position: absolute; right: 0; top: calc(100% + 10px); width: min(84vw, 320px); display: grid; margin: 0; padding: 8px; gap: 0; border-radius: 20px; background: #1b1b1a; box-shadow: 0 0 0 1px rgba(244, 244, 241, 0.14), 0 30px 70px rgba(0, 0, 0, 0.6); font-size: 16px; color: var(--text); }
+  .jump nav a { display: flex; align-items: center; gap: 14px; min-height: 48px; padding: 0 14px; border-radius: 12px; text-decoration: none; }
+  .jump nav a b { font-weight: 400; font-size: 13px; color: #f3805e; }
+  .jump nav a:active { background: rgba(244, 244, 241, 0.08); }
+}
+@media (max-width: 700px) {
+  /* the first screen: the headline, one line, two actions; the film is the next thing down */
+  .hero-in { padding: 22px 18px 22px; }
+  .hero h1 { margin-top: 12px; }
+  .hero .lede .wide { display: none; }
+  .hero .devices { display: none; }
+  .hero .btns { width: 100%; display: grid; gap: 10px; } .hero .btns .pill { justify-content: space-between; width: 100%; min-height: 52px; } .hero .btns .pill.plain { justify-content: center; }
+  .hero .btns .pill.ghost { order: -1; background: var(--ink); color: #fff; box-shadow: none; }
+  .hero .btns .pill:not(.ghost) { background: rgba(255, 255, 255, 0.45); color: var(--ink); box-shadow: inset 0 0 0 1px rgba(17, 17, 16, 0.3); } .hero .btns .pill:not(.ghost) i { background: var(--ink); color: #fff; }
+  .film { padding-top: 36px; }
+  .sec-head { gap: 16px; } .sec-head > p, .sec-head > div > p[style] { font-size: 16px !important; }
+  /* swipe rows: a clear peek of the next card, and dots that say how many there are */
+  .nums > *, .taps > *, .team > *, .guard > *, .steps > * { flex-basis: 80%; }
+  .dots { display: flex; justify-content: center; gap: 7px; margin-top: 10px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: 0.22; transition: opacity 0.25s, transform 0.25s; } .dots i.on { opacity: 0.9; transform: scale(1.25); }
+  .seg { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); padding-right: 40px; }
+  .onward a { min-height: 44px; padding-top: 0; }
+  /* call and demo, always in reach */
+  .dockbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 105; display: grid; grid-template-columns: 1fr 1.25fr; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: rgba(17, 17, 16, 0.86); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-top: 1px solid rgba(244, 244, 241, 0.1); transform: translateY(110%); transition: transform 0.4s var(--ease); }
+  .dockbar.is-up { transform: none; }
+  .dockbar .pill { min-height: 48px; justify-content: center; font-size: 15px; } .dockbar .pill.light { justify-content: space-between; }
+  body { padding-bottom: calc(70px + env(safe-area-inset-bottom)); }
+  .foot { padding-bottom: 20px; }
+}
+@media (max-width: 700px) and (prefers-reduced-motion: reduce) { .dockbar { transition: none; } }
+/* no pointer to light the wordmark with on a touch screen, so it is simply lit */
+@media (hover: none) { .js .wordmark.is-lightable { color: var(--paper); } }

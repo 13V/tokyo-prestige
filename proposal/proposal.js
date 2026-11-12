@@ -172,3 +172,37 @@
   v.addEventListener("play", () => box.classList.add("is-playing"));
   v.addEventListener("ended", () => { box.classList.remove("is-playing"); v.controls = false; v.load(); });
 })();
+
+// phone: the section menu closes after a choice, swipe rows get dots, and the action bar comes up after the first screen
+(() => {
+  const jump = document.querySelector("[data-jump]");
+  if (jump) {
+    jump.addEventListener("click", (e) => e.target.closest("a") && jump.removeAttribute("open"));
+    document.addEventListener("click", (e) => jump.open && !jump.contains(e.target) && jump.removeAttribute("open"));
+    addEventListener("keydown", (e) => e.key === "Escape" && jump.removeAttribute("open"));
+  }
+  if (matchMedia("(max-width: 700px)").matches) {
+    document.querySelectorAll(".nums, .taps, .team, .guard, .steps").forEach((row) => {
+      const n = row.children.length;
+      if (n < 2) return;
+      const dots = document.createElement("div");
+      dots.className = "dots";
+      dots.setAttribute("aria-hidden", "true");
+      dots.innerHTML = "<i></i>".repeat(n);
+      row.after(dots);
+      const set = () => {
+        const end = row.scrollLeft + row.clientWidth >= row.scrollWidth - 4;
+        const i = end ? n - 1 : Math.round(row.scrollLeft / (row.children[1].offsetLeft - row.children[0].offsetLeft));
+        [...dots.children].forEach((d, k) => d.classList.toggle("on", k === i));
+      };
+      row.addEventListener("scroll", set, { passive: true });
+      set();
+    });
+  }
+  const dock = document.querySelector(".dockbar");
+  if (dock) {
+    const up = () => dock.classList.toggle("is-up", scrollY > innerHeight * 0.6);
+    addEventListener("scroll", up, { passive: true });
+    up();
+  }
+})();
